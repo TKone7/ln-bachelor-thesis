@@ -1,0 +1,37 @@
+\section{Bibliographien}
+Dieses Template arbeitet mit bibLaTeX und biber; einige Informationen dazu findet man in \cite{biblatex_biber}. Die Anwendung \texttt{biber.exe} ist standardmässig installiert, muss jedoch anstelle von \texttt{bibtex.exe} aufgerufen werden. \textbf{Dazu muss im verwendeten Editor der Bib(la)tex Befehl durch biber ersetzt werden.} 
+
+\subsection{Literaturdatenbank}
+Um zu Referenzieren braucht man nun nur die Datei \verb|literature/bibliography.bib| auszufüllen (BibLaTeX-Mode), zum Beispiel mit Hilfe des Quellenverwaltungsprogramm JabRef \cite{jabref}. Danach muss das Dokument mehrfach zu kompilieren: einmal mit pdfLaTeX, damit die Literaturverweise erkannt und festgehalten werden, dann einmal mit biber, welches die Daten aus \verb|literature/bibliography.bib| herausliest und in das richtige Format bringt, und dann zweimal mit pdfLaTeX, damit das Literaturverzeichnis korrekt wird und alle Nummern im Text stimmen.
+
+\subsection{Referenzieren}
+Man kann nun mit verschiedenen Versionen des Befehles \verb|\cite| nun einzelne Publikationen \cite{Mason1953}, mehrere miteinander \cite{Mason1953,Mason1956}, oder Abschnitte aus einer Publikation \cite[Sec.~4]{Schmid2018} zitieren.
+Für die genaue Positionierung der Referenzen bitte den Leitfaden verwenden.
+
+\subsection{Literaturverzeichnis}
+Der Befehl \verb|\printbibliography| erstellt ein Literaturverzeichnis.
+Wie auf Seite~\pageref{sec:lit} zu sehen ist, passt sich das Literaturverzeichnis so automatisch der gewählten Sprache an.
+
+\subsection{Was bedeutet eigentlich zitieren und referenzieren?}
+
+\paragraph{Woher habe ich meine Information?}
+Meine Ansichten darüber, wie Wissenschaft funktioniert, decken sich weitgehend mit \cite{Schmid2003}.
+
+\paragraph{Woher genau?}
+Die genaue Zusammenstellung der drei Kriterien für epirische Wissenschaftlichkeit ist zu finden in \cite[S.~80]{Schmid2003}
+
+\paragraph{Was steht denn dort?}
+Praphrasieren: In \cite{Schmid2003} beschreibt Schmid, dass es für empirische Wissenschaften nicht nur wesentlich ist, sich auf die Wirklichkeit zu beziehen und sich darüber Gedanken zu machen, sonder auch diese Gedanken mit anderen Wissenschaftlern zu teilen und zu besprechen.
+
+\paragraph{Was steht denn dort \emph{genau}?}
+In \cite{Schmid2003} steht:
+\begin{quote}
+\selectlanguage{english}				%ngerman or english
+All that is empirical science has three things in
+common: a practical injunction (if you want to know
+this, you have to do this); an apprehension, illumination, or experience (if you do this, you see this), and communal checking (did others who did this also see the same?).
+\end{quote}
+Das habe ich oben gemeint mit \enquote{[ \ldots ] dass es für empirische Wissenschaften nicht nur wesentlich ist, sich auf die Wirklichkeit zu beziehen und sich darüber Gedanken zu machen, sonder auch diese Gedanken mit anderen Wissenschaftlern zu teilen und zu besprechen.}
+
+\paragraph{Und wenn jemand einen Fehler gemacht hat?}
+Tellegen publizierte das 1954 schon in seinem Paper \emph{La recherche pour una [sic!] s{\'e}rie compl{\`e}te d’{\'e}l{\'e}ments de circuit ideaux non-lin{\'e}aires} \cite{Tellegen1954}.

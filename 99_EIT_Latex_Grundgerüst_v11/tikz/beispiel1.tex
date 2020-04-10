@@ -1,0 +1,40 @@
+\documentclass{standalone}
+%
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+\usetikzlibrary{intersections}
+\usetikzlibrary{calc}
+%
+
+\begin{document}
+  \def\grid#1#2#3#4{%
+    \begin{scope}
+      %Grid for intial drawing.
+      \def\figXs{#1}; \def\figXe{#3}; % From Xs to Xe
+      \def\figYs{#2}; \def\figYe{#4}; % From Ys to Ye
+      \draw [step=0.1,gray!10,very thin] (\figXs,\figYs) grid (\figXe,\figYe);
+      \draw [step=0.5,gray!30,very thin, dashed] (\figXs,\figYs) grid
+      (\figXe,\figYe); 
+      \draw [step=1,gray!50,very thin] (\figXs,\figYs) grid (\figXe,\figYe);
+      %\draw[blue,dotted, very thick] (\figXs,0) -- (\figXe,0);\draw[blue,dotted, very thick] (0,\figYs) -- (0,\figYe);
+      \foreach \x in {\figXs,...,\figXe} {
+        \node [anchor=north] at (\x,\figYs) {\x};}
+      \foreach \x in {\figXs,...,\figXe} {
+        \node [anchor=south] at (\x,\figYe) {\x};}
+      \foreach \y in {\figYs,...,\figYe} {
+        \node [anchor=east] at (\figXs,\y) {\y};}
+	  \foreach \y in {\figYs,...,\figYe} {
+        \node [anchor=west] at   (\figXe,\y) {\y};}
+   \end{scope}
+}
+
+  \begin{circuitikz}[american currents,american voltages,line width=0.25mm]
+    \onlyifstandalone{
+      \grid{0}{-2}{6}{3}
+    }
+    \draw (2,3) to [R=$R$,*-] (2,1.5) to [C=$C_1$] (2,1) node [ground] {};
+    \draw (3.5,3) to [C=$C_2$,*-] (3.5,1) node [ground] {};
+    \draw [o-o] (1.2,3) -- (4.5,3);
+  \end{circuitikz}
+\end{document}

@@ -1,0 +1,47 @@
+\documentclass[draft]{fhnwreport}       %[mode] = draft or final
+                                        %{class} = fhnwreport, article, 
+                                        %          report, book, beamer, standalone
+\input{header}			                %loads all packages, definitions and settings												
+\title{Kickoff Meeting Bachelor Thesis}          %Project Title
+\author{Tobias Koller}          %Document Type => Technical Report, ...
+\date{Online, 06.02.2020}             %Place and Date
+
+\begin{document}
+%%---TITLEPAGE---------------------------------------------------------------------------
+\selectlanguage{english}                %ngerman or english
+\maketitle
+
+\vspace*{-1cm}						    %compensates the space after the date line.
+\vfill
+
+{
+\renewcommand\arraystretch{2}
+\begin{center}
+\begin{tabular}{>{\bf}p{4cm} l}
+Organization                  &    FHNW, School of Business\\
+Study program                 &    Business Information Technology\\
+Author   	                  &    Tobias Koller\\
+Supervisor                    &    Prof. Dr. Kaspar Riesen\\
+Customer                      &    Prof. Dr. Thomas Hanne\\
+Expert                        &    René Pickhardt
+\end{tabular}
+\end{center}
+}
+\clearpage
+
+\pagenumbering{arabic}
+\section{Basics}
+\subsection{Kommentare}\label{sec:todos}
+Möchte man Kommentare setzen kann dies einfach mit dem Package \texttt{todonotes} realisiert werden. Die Kommentare können mit dem Befehl \verb|\todo{}| am Seitenrand oder für längere Kommentare mit \verb|\todo[inline]{}| direkt im Text angeordnet werden. \todo{Todo am Seitenrand}
+\todo[inline]{Todo im Text}
+
+%%---NOTES for DEBUG---------------------------------------------------------------------
+\ifdraft{%Do this only if mode=draft
+%%requires \usepackage{todonotes})
+\newpage
+\listoftodos[\section{Todo-Notes}]
+\clearpage
+}
+{%Do this only if mode=final
+}
+\end{document}

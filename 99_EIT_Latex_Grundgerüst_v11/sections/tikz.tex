@@ -1,0 +1,23 @@
+\section{Tikz-Grafiken}
+Tikz ist ebenfalls sehr mächtig und auf den ersten Blick auch sehr kompliziert. Schon alleine die Dokumentation des Grundpackages erstreckt sich über 1000 Seiten. Tikz lohnt sich vor allem, wenn die erstellte Grafik (oder nur Teile davon) wiederverwendet werden können.
+Es folgen drei Beispiele für Tikz-Grafiken.
+
+Man beachte, dass diese in einem eigenen \enquote{\LaTeX-Projekt} erstellt wurden. Dieses hat die \verb|\documentclass{standalone}| und kann deswegen eigenständig kompiliert werden. Dabei werden automatisch Unterstüzungslinien/Grid eingeblendet (wurde programmiert), welche die Gestaltung der Grafik extrem erleichtern. Schaut euch doch die Tikz-Dateien an und kompiliert sie separat, es lohnt sich!
+
+Mittels Befehl \verb|\includestandalone{}| werden dann diese in jedes andere Projekte eingebunden, und zwar nicht als PDF sondern direkt erstellt beim Kompilieren.
+
+Somit können wir nun einfache elektrische Schaltungen wie in Figur~\ref{subfig:einfach} oder auch komplizierte Blockschaltbilder wie in Figur~\ref{subfig:kompliziert} programmieren.
+
+\begin{figure}[b]
+\centering
+\subfloat[Einfach]{\includestandalone{tikz/beispiel1}\label{subfig:einfach}}
+
+\subfloat[Kompliziertes Blockschaltbild]{\includestandalone{tikz/beispiel2}\label{subfig:kompliziert}}
+
+\caption{Zwei tikz-Beispiele: \protect\subref{subfig:einfach} einfach, \protect\subref{subfig:kompliziert} kompliziert.}
+\label{fig:tikz}
+\end{figure}
+
+Im Dokumenteordner \mbox{\emph{/tikz/}} findet ihr noch zwei weitere Beispiele. Eines zeigt ein \textbf{animiertes Tikz} und das andere interagiert mit \textbf{gnuplot}, um Plots zur Laufzeit zu erstellen. Um gnuplot nutzen zu können sind ein paar zusätzliche Installationen notwendig. Weiter muss der Kompilierbefehl für \texttt{pdflatex} mit \texttt{--shell-escape} erweitert werden. Das Internet bietet gute Unterstützung bei der Integration von gnuplot.
+Viele weitere coole Beispiele findet ihr auf \mbox{http://www.texample.net/tikz/examples/}.
+

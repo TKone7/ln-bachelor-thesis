@@ -1,0 +1,117 @@
+\documentclass{standalone}
+%
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+\usetikzlibrary{calc}
+%
+
+\begin{document}
+  \def\grid#1#2#3#4{%
+    \begin{scope}
+      %Grid for intial drawing.
+      \def\figXs{#1}; \def\figXe{#3}; % From Xs to Xe
+      \def\figYs{#2}; \def\figYe{#4}; % From Ys to Ye
+      \draw [step=0.1,gray!10,very thin] (\figXs,\figYs) grid (\figXe,\figYe);
+      \draw [step=0.5,gray!30,very thin, dashed] (\figXs,\figYs) grid (\figXe,\figYe); 
+      \draw [step=1,gray!50,very thin] (\figXs,\figYs) grid (\figXe,\figYe);
+      %\draw[blue,dotted, very thick] (\figXs,0) -- (\figXe,0);\draw[blue,dotted, very thick] (0,\figYs) -- (0,\figYe);
+      \foreach \x in {\figXs,...,\figXe} {
+        \node [anchor=north] at (\x,\figYs) {\x};}
+      \foreach \x in {\figXs,...,\figXe} {
+        \node [anchor=south] at (\x,\figYe) {\x};}
+      \foreach \y in {\figYs,...,\figYe} {
+        \node [anchor=east] at (\figXs,\y) {\y};}
+	  \foreach \y in {\figYs,...,\figYe} {
+        \node [anchor=west] at (\figXe,\y) {\y};}
+    \end{scope}
+  }
+
+  \def\buffer(#1)#2#3{%
+    \begin{scope}[shift={(#1)}]
+      \draw (0,-1) -- (0,1) -- (1.8,0) node[xshift=-1.1cm] {#3} -- (0,-1);
+      \draw (-0.5,-0.5) node[left] {} coordinate (#2 inn) -- (0,-0.5);
+      \draw (-0.5,0.5)  node[left] {} coordinate (#2 inp) -- (0,0.5);
+      \draw (0.9,-0.5) -- (2.0,-0.5) node[right] {} coordinate (#2 outn) ;
+      \draw (0.9,0.5)  -- (2.0,0.5)  node[right] {} coordinate (#2 outp);
+      \node[anchor=south] (#2 en)  at (0.6,-2/3) {en};
+    \end{scope}
+  }
+
+  \def\sdm(#1)#2#3{%
+    \begin{scope}[shift={(#1)}]
+      \draw (0,-1) rectangle node {#3} (2,1);
+      \draw (-0.5,-0.5) node[left] {} coordinate (#2 inn) -- (0,-0.5);
+      \draw (-0.5,0.5)  node[left] {} coordinate (#2 inp) -- (0,0.5);
+      \draw (2.0,0) -- (2.5,0) node[right] {} coordinate (#2 data);
+      \node[anchor=south] (#2 en)  at (0.6,-1) {en};
+      \node[anchor=south] (#2 clk) at (1.4,-1) {clk};
+    \end{scope}
+  }
+
+  \def\dig(#1)#2#3{%
+    \begin{scope}[shift={(#1)}]
+      \draw[dashed] (0,0) rectangle (3,5);
+      \node[draw,text width=1.2cm,inner sep=0,minimum height=1.6cm,align=center] at (0.8,4)(cic) {CIC};
+      \draw[<-]  (cic.west) -- node[anchor=base,xshift=-0.5ex]{} ++(-0.7,0.0)  node {} coordinate (#2 din) ;
+      
+      \node[draw,text width=1.2cm,inner sep=0,minimum height=1.6cm,align=center] at (2.2,4.0)(i2c) {I2C};
+      \draw[<->] ($(i2c.east)+(0.0,-0.3)$) -- ++(0.7,0.0) node[right] {} coordinate (#2 sda);
+      \draw[<-] ($(i2c.east)+(0.0,+0.3)$) -- ++(0.7,0.0) node[right] {} coordinate (#2 scl);
+      
+      \node[draw,text width=2.6cm,inner sep=0,minimum height=1.6cm,align=center] at (1.5,2)(digctrl) {digital control};
+      \draw[<->] ( $(digctrl.east)+(0,-0.5)$ ) -- ++(0.7,0) node[right] {} coordinate (#2 rstn);
+      \draw[<->] (digctrl.east) -- ++(0.7,0) node[right] {} coordinate (#2 dtest);
+      \draw[<->] ( $(digctrl.east)+(0,0.5)$ ) -- ++(0.7,0) node[right] {} coordinate (#2 dmode);
+      \draw[->] ($(digctrl.west)+(0.0,+0.5)$) -- ++(-0.7,0) node[right] {} coordinate (#2 ena);  
+      \draw[->] (digctrl.west) -- ++(-0.7,0) node[right] {} coordinate (#2 clko);  
+      \draw[<-] ($(digctrl.west)+(0.0,-0.5)$) -- ++(-0.7,0) node[right] {} coordinate (#2 clki);  
+      \draw[<->] (i2c.south) -- ($(digctrl.north west)!(i2c.south)!(digctrl.north east)$);
+      \draw[<->] (cic.south) -- ($(digctrl.north west)!(cic.south)!(digctrl.north east)$);
+      \node[draw,text width=1.2cm,inner sep=0,minimum height=0.6cm,align=center] at (2.2,0.5)(prom) {PROM};
+      \draw[-] (prom.east) -- ++(0.7,0) node[right] {} coordinate (#2 vprog);  
+      \draw[<->] (prom.north) -- ($(digctrl.south west)!(prom.north)!(digctrl.south east)$);
+    \end{scope}
+  }
+
+  \def\bussym(#1)#2#3{%
+    \begin{scope}[shift={(#1)}]
+      \draw  (-0.1,-0.1) -- node[anchor=#3] {\small #2} (0.1,0.1);
+    \end{scope}
+  }
+  
+  
+  \begin{tikzpicture}
+    \onlyifstandalone{
+      \grid{-4}{-4}{12}{2}
+    }
+    \buffer(0,0){buf0}{A=1}
+    \sdm(2.5,0){sdm0}{$\Sigma\Delta$}
+    \draw (buf0 outp) -- (sdm0 inp);
+    \draw (buf0 outn) -- (sdm0 inn);
+    \dig(5.5,-4){dig0}{}
+    \draw (buf0 inn) -- ++(-0.5,0) node[left,circle,draw] (vref){};
+    \node[left of=vref, node distance=1ex,align=right,left] {\tt vref};
+    \draw (buf0 inp) -- ++(-0.5,0) node[left,circle,draw] (vsense) {};
+    \node[left of=vsense,node distance=1ex,align=right,left] {{\tt vsense}\\{\tt<9:0>}};
+    \draw (dig0 clki) |- (4,-3.0) node[left,circle,draw,align=center] {osc\\{\small\SI{2}{MHz}}};
+    \draw[-] (sdm0 data) -| (dig0 din);
+    \draw[->] (dig0 clko) -| (sdm0 clk);
+    \draw[->] (dig0 ena) -| (sdm0 en);
+    \draw[->] (dig0 ena) -| (buf0 en);
+    \node[draw,rectangle,right,label=right:{\tt sda}] at (dig0 sda) {}; 
+    \node[draw,rectangle,right,label=right:{\tt scl}] at (dig0 scl) {}; 
+    \node[draw,rectangle,right,label=right:{\tt reset\_n},style={inner sep=0,outer sep=0}] at (dig0 rstn) {\sf X}; 
+    \node[draw,rectangle,right,label=right:{\tt dtest<5:0>},style={inner sep=0,outer sep=0}] at (dig0 dtest) {\sf X}; 
+    \node[draw,rectangle,right,label=right:{\tt dmode<1:0>},style={inner sep=0,outer sep=0}] at (dig0 dmode) {\sf X}; 
+    \node[draw,rectangle,right,label=right:{\tt vprog},style={inner sep=0,outer sep=0}] at (dig0 vprog) {\sf X}; 
+    \bussym(buf0 inp){10}{south}
+    \bussym(buf0 inn){10}{south}
+    \bussym(buf0 outp){10}{south}
+    \bussym(buf0 outn){10}{south}
+    \bussym(sdm0 data){10}{south}
+    \bussym(0.6,-1.2){10}{west}
+    \bussym(3.1,-1.2){10}{west}
+    \bussym(3.9,-1.2){10}{west}
+  \end{tikzpicture}
+\end{document}
