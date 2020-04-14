@@ -1,9 +1,10 @@
-\documentclass[draft]{fhnwreport}       %[mode] = draft or final
+\documentclass[final]{fhnwreport}       %[mode] = draft or final
                                         %{class} = fhnwreport, article, 
                                         %          report, book, beamer, standalone
+\usepackage{hyperref}
 \input{header}			                %loads all packages, definitions and settings												
 \title{Kickoff Meeting Bachelor Thesis}          %Project Title
-\author{Tobias Koller}          %Document Type => Technical Report, ...
+\author{René Pickhardt, Tobias Koller}          %Document Type => Technical Report, ...
 \date{Online, 06.02.2020}             %Place and Date
 
 \begin{document}
@@ -22,7 +23,7 @@ Organization                  &    FHNW, School of Business\\
 Study program                 &    Business Information Technology\\
 Author   	                  &    Tobias Koller\\
 Supervisor                    &    Prof. Dr. Kaspar Riesen\\
-Customer                      &    Prof. Dr. Thomas Hanne\\
+Project sponsor               &    Prof. Dr. Thomas Hanne\\
 Expert                        &    René Pickhardt
 \end{tabular}
 \end{center}
@@ -30,16 +31,39 @@ Expert                        &    René Pickhardt
 \clearpage
 
 \pagenumbering{arabic}
-\section{Basics}
-\subsection{Kommentare}\label{sec:todos}
-Möchte man Kommentare setzen kann dies einfach mit dem Package \texttt{todonotes} realisiert werden. Die Kommentare können mit dem Befehl \verb|\todo{}| am Seitenrand oder für längere Kommentare mit \verb|\todo[inline]{}| direkt im Text angeordnet werden. \todo{Todo am Seitenrand}
-\todo[inline]{Todo im Text}
+\section{Introduction}
+René Pickhardt and Tobias Koller met on February 6, online to hold the kickoff meeting in a Skype session. The main goals were to get acquainted with each other, clearify any uncertainties from the previous paper upon which the thesis will build and to define the topic.
+
+René Pickhardt is a data scientist and lightning network protocol developer. Currently he is a PhD candidate at the Norwegian University of Science and Technology, NTNU. He is the co-author of the publication ``Imbalance measure and proactive channel rebalancing algorithm for the Lightning Network'' which serves as a starting point for the problem description.
+\todo[inline]{Bitte mir melden, falls du zu deiner Vorstellung noch etwas anfügen / ändern möchtest.}
+
+
+
+\section{Form of Collaboration}
+While the project sponsor is represented by Prof. Dr. Thomas Hanne at FHNW, René Pickhardt has profound knowledge of the Lightning protocol and, therefore,  will consult Tobias Koller on all questions regarding the Bitcoin and Lightning Network. Because of different locations, communication with René Pickhardt will be mainly via e-mail and, when required, video calls. Physical meetings are not required. René Pickhardt will be invited to all intermediate or final presentations whereas participation is voluntarily.
+
+Tobias Koller agrees to refine the findings from his thesis and, together with René Pickhardt, compile a publication for the community once the work is completed.  
+
+\section{Core Objectives}
+\subsection{Starting point}
+René Pickhardt's and Mariusz Nowostawski's publication ``Imbalance measure and proactive channel rebalancing algorithm for the Lightning Network'' (\url{https://arxiv.org/abs/1912.09555}) serves as a base to formulate the question for this thesis. In their work they present a solution for the path finding problem in a privacy-aware payment channel network. In such a network the sender of a payment needs to calculate a path of payment channels to the recipient. While the capacities of channels are public information the local distribution between the two channel parties are private which makes finding a path a difficult task. The proposed solution includes a rebalancing protocol which the nodes of the network should follow to achieve a higher balancedness (for itself but also for the entire network). It consists of instructions to proactively rebalance their channels within their friend of a friend's network, redistributing the relative funds owned in a channel but leaving total funds owned unchanged.
+
+However, these payment channel networks are decentralized by nature and no protocol changes can be forced upon the node operators. Therefore, the question arises how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure \footnote{Defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the networks ability to route payments between random nodes?
+
+\subsection{Experiment}
+In order to be able to compare the results of partial participation with the previous findings the experiment should be repeated in a similar way. The main independent variable should be the relative participation of nodes (in \%) in the new protocol. The dependent variables to test should then be the network's imbalance measure represented by the Ginicoefficients as well as different measures to determine the networks ability to route payments. 
+
+\subsection{Findings}
+
+\todo[inline]{Ich könnte hier schon konkrete Diagramme sketchen wie du vorgeschlagen hast. Allerdings möchte ich dies gerne fürs Proposal aufsparen (nächster step)}
+The results from the experiment could show that the networks ability to route payments increase linearly with the degree of node participation. Alternatively, a small participation might lead to a unproportional large improvement in routing capabilities or the other way around. These answers will help the Lightning protocol developers to make decisions about how to implement such changes.
 
 %%---NOTES for DEBUG---------------------------------------------------------------------
 \ifdraft{%Do this only if mode=draft
 %%requires \usepackage{todonotes})
 \newpage
 \listoftodos[\section{Todo-Notes}]
+
 \clearpage
 }
 {%Do this only if mode=final

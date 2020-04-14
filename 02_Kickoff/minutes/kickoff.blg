@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.13
+[0] Config.pm:307> INFO - Logfile is 'kickoff.blg'
+[19] biber:315> INFO - === Di Apr 14, 2020, 17:46:27
+[30] Biber.pm:375> INFO - Reading 'kickoff.bcf'
+[90] Biber.pm:905> INFO - Found 0 citekeys in bib section 0
+[95] Utils.pm:300> WARN - The file 'kickoff.bcf' does not contain any citations!
+[104] bbl.pm:648> INFO - Writing 'kickoff.bbl' with encoding 'UTF-8'
+[104] bbl.pm:751> INFO - Output to kickoff.bbl
+[104] Biber.pm:110> INFO - WARNINGS: 1

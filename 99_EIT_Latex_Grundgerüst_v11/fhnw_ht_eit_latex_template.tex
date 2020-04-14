@@ -16,7 +16,6 @@
 \vfill
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{titelbild.pdf}
 \end{figure}
 \vfill
 
@@ -39,7 +38,7 @@ Version                    &    1.0 %Normally not used!
 %%---ABSTRACT----------------------------------------------------------------------------
 \selectlanguage{ngerman}				%ngerman or english
 \thispagestyle{empty}
-\include{sections/abstract}
+\input{sections/abstract}
 
 %%---TABLE OF CONTENTS-------------------------------------------------------------------
 \pagenumbering{Roman}		
@@ -49,11 +48,19 @@ Version                    &    1.0 %Normally not used!
 
 %%---TEXT--------------------------------------------------------------------------------
 \pagenumbering{arabic}
-\include{sections/basics}
-\include{sections/floats}
-\include{sections/equations}
-\include{sections/tikz}
-\include{sections/bibliography}
+\input{sections/basics}
+\clearpage
+
+\input{sections/floats}
+\clearpage
+
+\input{sections/equations}
+\clearpage
+
+\input{sections/tikz}
+\clearpage
+
+\input{sections/bibliography}
 
 %%---BIBLIOGRAPHY------------------------------------------------------------------------
 {\sloppypar
@@ -64,7 +71,7 @@ Version                    &    1.0 %Normally not used!
 }
 
 %%--fhnwlogo.pdf-APPENDIX----------------------------------------------------------------------------
-\include{sections/appendix}
+\input{sections/appendix}
 
 %%---NOTES for DEBUG---------------------------------------------------------------------
 \ifdraft{%Do this only if mode=draft
