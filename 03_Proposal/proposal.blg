@@ -1,0 +1,17 @@
+[1] Config.pm:304> INFO - This is Biber 2.13
+[2] Config.pm:307> INFO - Logfile is 'proposal.blg'
+[82] biber:315> INFO - === Fr Mai  1, 2020, 09:19:16
+[130] Biber.pm:375> INFO - Reading 'proposal.bcf'
+[347] Biber.pm:905> INFO - Found 2 citekeys in bib section 0
+[395] Biber.pm:4196> INFO - Processing section 0
+[396] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
+[396] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
+[427] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
+[430] bibtex.pm:1462> INFO - LaTeX decoding ...
+[444] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
+[538] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[539] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[539] Biber.pm:4024> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'de-DE'
+[539] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
+[554] bbl.pm:648> INFO - Writing 'proposal.bbl' with encoding 'UTF-8'
+[563] bbl.pm:751> INFO - Output to proposal.bbl

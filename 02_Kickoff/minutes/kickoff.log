@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.4.12)  14 APR 2020 20:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.4.12)  16 APR 2020 20:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1894,43 +1894,41 @@ LaTeX Font Info:    Trying to load font information for T1+lmss on input line 3
 (/usr/share/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 38.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
-9.
+6.
 
 (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 51.
+(Font)              <9> on input line 48.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 51.
+(Font)              <5> on input line 48.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.55 
-      [1
+l.53 \subsection
+                {Findings} [1
 
 ] [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 67.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 67.
  (./kickoff.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 67.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 67.
 Package rerunfilecheck Info: File `kickoff.out' has not changed.
 (rerunfilecheck)             Checksum: 5CBBBD743EABFC2F712618B5296626C2;350.
 Package logreq Info: Writing requests to 'kickoff.run.xml'.
 \openout1 = `kickoff.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 67.
  ) 
 Here is how much of TeX's memory you used:
- 54831 strings out of 492167
- 1175132 string characters out of 6131558
- 1764206 words of memory out of 5000000
- 58445 multiletter control sequences out of 15000+600000
+ 54771 strings out of 492167
+ 1173603 string characters out of 6131558
+ 1763206 words of memory out of 5000000
+ 58387 multiletter control sequences out of 15000+600000
  608828 words of font info for 70 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  71i,8n,85p,1132b,2294s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1945,10 +1943,10 @@ m/lmr6.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/te
 xmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/lm/lmro10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></us
 r/share/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on kickoff.pdf (3 pages, 259480 bytes).
+Output written on kickoff.pdf (3 pages, 253948 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
+ 121 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
+ 10 named destinations out of 1000 (max. 500000)
  162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

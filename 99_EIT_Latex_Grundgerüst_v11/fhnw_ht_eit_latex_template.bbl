@@ -1,0 +1,310 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{l2kurz}{misc}{}
+      \name{author}{6}{}{%
+        {{hash=eb2a0d9a73f4546ffcc41aca5ed89664}{%
+           family={Daniel},
+           familyi={D\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b69e17d1da619fe745902f4a05d38ce3}{%
+           family={Gundlach},
+           familyi={G\bibinitperiod},
+           given={P},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0bde1723d6b23ba3f7467d3a6f9d060c}{%
+           family={Schmidt},
+           familyi={S\bibinitperiod},
+           given={W},
+           giveni={W\bibinitperiod}}}%
+        {{hash=cc33ed73f9a768231b6ab790b01ac48e}{%
+           family={Knappen},
+           familyi={K\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+        {{hash=4036abde1e7548a72578419041a3738e}{%
+           family={Partl},
+           familyi={P\bibinitperiod},
+           given={H},
+           giveni={H\bibinitperiod}}}%
+        {{hash=a22e1b6e5ee9c60c3bf0af606cec44f2}{%
+           family={Hyna},
+           familyi={H\bibinitperiod},
+           given={I},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{e3809c4868775a0b787a5b78780ae24b}
+      \strng{fullhash}{f2eaf3d61813d2141b306f0840744f35}
+      \strng{bibnamehash}{f2eaf3d61813d2141b306f0840744f35}
+      \strng{authorbibnamehash}{f2eaf3d61813d2141b306f0840744f35}
+      \strng{authornamehash}{e3809c4868775a0b787a5b78780ae24b}
+      \strng{authorfullhash}{f2eaf3d61813d2141b306f0840744f35}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{4}
+      \field{title}{\LaTeXe-{K}urzbeschreibung}
+      \field{year}{2018}
+      \field{dateera}{ce}
+    \endentry
+    \entry{doc_mathmode}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=88f6bdcc3575cdd4484282da88075cdf}{%
+           family={Voss},
+           familyi={V\bibinitperiod},
+           given={H},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{88f6bdcc3575cdd4484282da88075cdf}
+      \strng{fullhash}{88f6bdcc3575cdd4484282da88075cdf}
+      \strng{bibnamehash}{88f6bdcc3575cdd4484282da88075cdf}
+      \strng{authorbibnamehash}{88f6bdcc3575cdd4484282da88075cdf}
+      \strng{authornamehash}{88f6bdcc3575cdd4484282da88075cdf}
+      \strng{authorfullhash}{88f6bdcc3575cdd4484282da88075cdf}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{8}
+      \field{title}{Mathematical Typesetting with Latex}
+      \field{year}{2017}
+      \field{dateera}{ce}
+    \endentry
+    \entry{biblatex_biber}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{labeltitlesource}{title}
+      \field{title}{biblatex in a nutshell (for beginners)}
+      \field{urlday}{18}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://tex.stackexchange.com/questions/13509/biblatex-in-a-nutshell-for-beginners
+      \endverb
+      \verb{url}
+      \verb https://tex.stackexchange.com/questions/13509/biblatex-in-a-nutshell-for-beginners
+      \endverb
+    \endentry
+    \entry{jabref}{online}{}
+      \name{author}{1}{}{%
+        {{hash=ee334002f3da9d94e36fb695143246e8}{%
+           family={{Jabref Development Team}},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ee334002f3da9d94e36fb695143246e8}
+      \strng{fullhash}{ee334002f3da9d94e36fb695143246e8}
+      \strng{bibnamehash}{ee334002f3da9d94e36fb695143246e8}
+      \strng{authorbibnamehash}{ee334002f3da9d94e36fb695143246e8}
+      \strng{authornamehash}{ee334002f3da9d94e36fb695143246e8}
+      \strng{authorfullhash}{ee334002f3da9d94e36fb695143246e8}
+      \field{sortinit}{5}
+      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{JabRef}
+      \field{urlday}{18}
+      \field{urlmonth}{5}
+      \field{urlyear}{2018}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://www.jabref.org/
+      \endverb
+      \verb{url}
+      \verb http://www.jabref.org/
+      \endverb
+    \endentry
+    \entry{Mason1953}{article}{}
+      \name{author}{1}{}{%
+        {{hash=033f647cbc00974736eff573b6b0f215}{%
+           family={Mason},
+           familyi={M\bibinitperiod},
+           given={S.J.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{033f647cbc00974736eff573b6b0f215}
+      \strng{fullhash}{033f647cbc00974736eff573b6b0f215}
+      \strng{bibnamehash}{033f647cbc00974736eff573b6b0f215}
+      \strng{authorbibnamehash}{033f647cbc00974736eff573b6b0f215}
+      \strng{authornamehash}{033f647cbc00974736eff573b6b0f215}
+      \strng{authorfullhash}{033f647cbc00974736eff573b6b0f215}
+      \field{extraname}{1}
+      \field{sortinit}{6}
+      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IRE}
+      \field{number}{9}
+      \field{title}{Feedback Theory-Some Properties of Signal Flow Graphs}
+      \field{volume}{41}
+      \field{year}{1953}
+      \field{pages}{1144\bibrangedash 1156}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/JRPROC.1953.274449
+      \endverb
+      \verb{urlraw}
+      \verb http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4051460
+      \endverb
+      \verb{url}
+      \verb http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4051460
+      \endverb
+    \endentry
+    \entry{Mason1956}{article}{}
+      \name{author}{1}{}{%
+        {{hash=033f647cbc00974736eff573b6b0f215}{%
+           family={Mason},
+           familyi={M\bibinitperiod},
+           given={S.J.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{033f647cbc00974736eff573b6b0f215}
+      \strng{fullhash}{033f647cbc00974736eff573b6b0f215}
+      \strng{bibnamehash}{033f647cbc00974736eff573b6b0f215}
+      \strng{authorbibnamehash}{033f647cbc00974736eff573b6b0f215}
+      \strng{authornamehash}{033f647cbc00974736eff573b6b0f215}
+      \strng{authorfullhash}{033f647cbc00974736eff573b6b0f215}
+      \field{extraname}{2}
+      \field{sortinit}{7}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IRE}
+      \field{number}{7}
+      \field{title}{Feedback Theory-Further Properties of Signal Flow Graphs}
+      \field{volume}{44}
+      \field{year}{1956}
+      \field{pages}{920\bibrangedash 926}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/JRPROC.1956.275147
+      \endverb
+      \verb{urlraw}
+      \verb http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4052126
+      \endverb
+      \verb{url}
+      \verb http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4052126
+      \endverb
+    \endentry
+    \entry{Schmid2018}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9593d64c41e7c87c01a017a353b0157b}{%
+           family={Schmid},
+           familyi={S\bibinitperiod},
+           given={Hanspeter},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ffefb138736442c52723c1fdc286060d}{%
+           family={Huber},
+           familyi={H\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{7e6b1900c86cf56e20fd043426dc1a76}
+      \strng{fullhash}{7e6b1900c86cf56e20fd043426dc1a76}
+      \strng{bibnamehash}{7e6b1900c86cf56e20fd043426dc1a76}
+      \strng{authorbibnamehash}{7e6b1900c86cf56e20fd043426dc1a76}
+      \strng{authornamehash}{7e6b1900c86cf56e20fd043426dc1a76}
+      \strng{authorfullhash}{7e6b1900c86cf56e20fd043426dc1a76}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper extends the driving-point signal-flow graphs to switched-capacitor (SC) circuits by introducing a new theoretical element: an auxiliary voltage source that transfers no charge. In contrast to existing SFG methods, our method has no restrictions as to what types of SC circuits can be analysed, it requires no equivalent circuits or tables, and it works with two-phase as well as multi-phase SC circuits of any complexity. Compared to charge-equation matrix methods, it requires more effort, but is better suited for hand analysis because it makes causal relationships visible. Three illustrative examples are given to show the efficiency of the method and present a few application hints: a voltage doubler, the standard SC integrator, and a four-phase circuit simulating an inductor.}
+      \field{day}{1}
+      \field{issn}{1573-1979}
+      \field{journaltitle}{Analog Integrated Circuits and Signal Processing}
+      \field{month}{3}
+      \field{title}{Analysis of switched-capacitor circuits using driving-point signal-flow graphs}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1007/s10470-018-1131-7
+      \endverb
+    \endentry
+    \entry{Schmid2003}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9593d64c41e7c87c01a017a353b0157b}{%
+           family={Schmid},
+           familyi={S\bibinitperiod},
+           given={Hanspeter},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9593d64c41e7c87c01a017a353b0157b}
+      \strng{fullhash}{9593d64c41e7c87c01a017a353b0157b}
+      \strng{bibnamehash}{9593d64c41e7c87c01a017a353b0157b}
+      \strng{authorbibnamehash}{9593d64c41e7c87c01a017a353b0157b}
+      \strng{authornamehash}{9593d64c41e7c87c01a017a353b0157b}
+      \strng{authorfullhash}{9593d64c41e7c87c01a017a353b0157b}
+      \field{sortinit}{9}
+      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Analog Integrated Circuits and Signal Processing}
+      \field{number}{1}
+      \field{title}{Why ‘current mode’ does not guarantee good performance}
+      \field{volume}{35}
+      \field{year}{2003}
+      \field{pages}{79\bibrangedash 90}
+      \range{pages}{12}
+    \endentry
+    \entry{Tellegen1954}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4f56b6cc7c356a9c5906b78fc6562ea3}{%
+           family={Tellegen},
+           familyi={T\bibinitperiod},
+           given={BDH},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{4f56b6cc7c356a9c5906b78fc6562ea3}
+      \strng{fullhash}{4f56b6cc7c356a9c5906b78fc6562ea3}
+      \strng{bibnamehash}{4f56b6cc7c356a9c5906b78fc6562ea3}
+      \strng{authorbibnamehash}{4f56b6cc7c356a9c5906b78fc6562ea3}
+      \strng{authornamehash}{4f56b6cc7c356a9c5906b78fc6562ea3}
+      \strng{authorfullhash}{4f56b6cc7c356a9c5906b78fc6562ea3}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Rendiconti del seminario matematico e fisico di Milano}
+      \field{number}{1}
+      \field{title}{La recherche pour una s{é}rie compl{è}te d’{é}l{é}ments de circuit ideaux non-lin{é}aires}
+      \field{volume}{25}
+      \field{year}{1954}
+      \field{pages}{134\bibrangedash 144}
+      \range{pages}{11}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,17 @@
+[0] Config.pm:304> INFO - This is Biber 2.13
+[0] Config.pm:307> INFO - Logfile is 'fhnw_ht_eit_latex_template.blg'
+[24] biber:315> INFO - === Fr Mai  1, 2020, 14:50:42
+[38] Biber.pm:375> INFO - Reading 'fhnw_ht_eit_latex_template.bcf'
+[102] Biber.pm:905> INFO - Found 9 citekeys in bib section 0
+[114] Biber.pm:4196> INFO - Processing section 0
+[115] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
+[115] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
+[124] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
+[126] bibtex.pm:1462> INFO - LaTeX decoding ...
+[140] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
+[244] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[245] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[245] Biber.pm:4024> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'de-DE'
+[245] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
+[283] bbl.pm:648> INFO - Writing 'fhnw_ht_eit_latex_template.bbl' with encoding 'UTF-8'
+[304] bbl.pm:751> INFO - Output to fhnw_ht_eit_latex_template.bbl
