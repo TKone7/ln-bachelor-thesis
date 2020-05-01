@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.4.12)  1 MAY 2020 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.4.12)  1 MAY 2020 17:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1714,28 +1714,28 @@ LaTeX Warning: Label `fig:Figure' multiply defined.
 )
 \openout1 = `proposal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-5.
+4.
  (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 15
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 14
 .
 
 (/usr/share/texmf-dist/tex/latex/lm/t1lmr.fd
@@ -1806,7 +1806,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box109
-Package hyperref Info: Link coloring OFF on input line 15.
+Package hyperref Info: Link coloring OFF on input line 14.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -1816,9 +1816,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count500
 )
-LaTeX Info: Redefining \ref on input line 15.
-LaTeX Info: Redefining \pageref on input line 15.
-LaTeX Info: Redefining \nameref on input line 15.
+LaTeX Info: Redefining \ref on input line 14.
+LaTeX Info: Redefining \pageref on input line 14.
+LaTeX Info: Redefining \nameref on input line 14.
 
 (./proposal.out) (./proposal.out)
 \@outlinefile=\write5
@@ -1852,46 +1852,46 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'proposal.bbl' found.
  (./proposal.bbl)
-Package biblatex Info: Reference section=0 on input line 15.
-Package biblatex Info: Reference segment=0 on input line 15.
+Package biblatex Info: Reference section=0 on input line 14.
+Package biblatex Info: Reference segment=0 on input line 14.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-5.
+4.
 
 (/usr/share/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-5.
+4.
 
 (/usr/share/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-15.
+14.
 
 (/usr/share/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-15.
+14.
 
 (/usr/share/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 15.
+(Font)              <10.95> on input line 14.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 15.
+(Font)              <8> on input line 14.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 15.
+(Font)              <6> on input line 14.
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-15.
+14.
 
 (/usr/share/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
-15.
+14.
 
 (/usr/share/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1904,22 +1904,22 @@ Package epstopdf Info: Source file: <fhnw_hw_e_10mm.eps>
 (epstopdf)                    size: 13052 bytes
 (epstopdf)             Command: <repstopdf --outfile=fhnw_hw_e_10mm-eps-convert
 ed-to.pdf fhnw_hw_e_10mm.eps>
-(epstopdf)             \includegraphics on input line 19.
+(epstopdf)             \includegraphics on input line 18.
 Package epstopdf Info: Output file is already uptodate.
 <fhnw_hw_e_10mm-eps-converted-to.pdf, id=107, 298.11375pt x 29.10875pt>
 File: fhnw_hw_e_10mm-eps-converted-to.pdf Graphic file (type pdf)
 <use fhnw_hw_e_10mm-eps-converted-to.pdf>
 Package pdftex.def Info: fhnw_hw_e_10mm-eps-converted-to.pdf  used on input lin
-e 19.
+e 18.
 (pdftex.def)             Requested size: 349.71056pt x 34.1433pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 19.
+(Font)              <12> on input line 18.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fhnw_hw_e_10mm-eps-conve
 rted-to.pdf>]
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 3
-9.
+8.
 
 (/usr/share/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1927,31 +1927,31 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.62 
+l.59 
       [1
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 66.
+(Font)              <9> on input line 63.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 66.
+(Font)              <5> on input line 63.
  [2] [3]
 <dummy_charts/participation.png, id=145, 462.528pt x 346.896pt>
 File: dummy_charts/participation.png Graphic file (type png)
 <use dummy_charts/participation.png>
-Package pdftex.def Info: dummy_charts/participation.png  used on input line 121
+Package pdftex.def Info: dummy_charts/participation.png  used on input line 118
 .
 (pdftex.def)             Requested size: 199.16928pt x 149.37938pt.
 <dummy_charts/distribution_gini.png, id=147, 462.528pt x 346.896pt>
 File: dummy_charts/distribution_gini.png Graphic file (type png)
 <use dummy_charts/distribution_gini.png>
 Package pdftex.def Info: dummy_charts/distribution_gini.png  used on input line
- 124.
+ 121.
 (pdftex.def)             Requested size: 199.16928pt x 149.37938pt.
 <dummy_charts/rebal_op.png, id=148, 462.528pt x 346.896pt>
 File: dummy_charts/rebal_op.png Graphic file (type png)
 <use dummy_charts/rebal_op.png>
-Package pdftex.def Info: dummy_charts/rebal_op.png  used on input line 133.
+Package pdftex.def Info: dummy_charts/rebal_op.png  used on input line 130.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
  [4 <./dummy_charts/participation.png> <./dummy_charts/distribution_gini.png> <
 ./dummy_charts/rebal_op.png>]
@@ -1959,49 +1959,49 @@ Package pdftex.def Info: dummy_charts/rebal_op.png  used on input line 133.
 File: dummy_charts/success_measure.png Graphic file (type png)
 <use dummy_charts/success_measure.png>
 Package pdftex.def Info: dummy_charts/success_measure.png  used on input line 1
-43.
+40.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <dummy_charts/max_payable.png, id=162, 462.528pt x 346.896pt>
 File: dummy_charts/max_payable.png Graphic file (type png)
 <use dummy_charts/max_payable.png>
-Package pdftex.def Info: dummy_charts/max_payable.png  used on input line 152.
+Package pdftex.def Info: dummy_charts/max_payable.png  used on input line 149.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-63.
+60.
 
 (/usr/share/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [5 <./dummy_charts/success_measure.png> <./dummy_charts/max_payable.png>]
-Underfull \hbox (badness 1173) in paragraph at lines 195--195
+Underfull \hbox (badness 1173) in paragraph at lines 192--192
 []|\T1/lmr/m/n/10.95 Proposal ap-proved [fi-
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 196--196
+Underfull \hbox (badness 1033) in paragraph at lines 193--193
 []|[]\T1/lmr/m/n/10.95 Rebuild the Light-ning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--197
+Underfull \hbox (badness 10000) in paragraph at lines 194--194
 []|[]\T1/lmr/m/n/10.95 Reproduce sim-u-la-tion
  []
 
 
-Underfull \hbox (badness 4686) in paragraph at lines 197--197
+Underfull \hbox (badness 4686) in paragraph at lines 194--194
 \T1/lmr/m/n/10.95 re-sults from pre-vi-ous
  []
 
 
-Underfull \hbox (badness 2073) in paragraph at lines 201--201
+Underfull \hbox (badness 2073) in paragraph at lines 198--198
 []|[]\T1/lmr/m/n/10.95 Analyze and vi-su-al-ize
  []
 
 [6] [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 247.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 247.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 247.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 247.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: B70DDF6C68D7F3B7CCE36E8F600DF6DF;1516.
 
@@ -2011,7 +2011,7 @@ LaTeX Warning: There were multiply-defined labels.
 Package logreq Info: Writing requests to 'proposal.run.xml'.
 \openout1 = `proposal.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 247.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 244.
  ) 
 Here is how much of TeX's memory you used:
  55185 strings out of 492167
@@ -2034,7 +2034,7 @@ onts/type1/public/lm/lmbx9.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr
 texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/lm/lmri10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmro10.pfb></us
 r/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on proposal.pdf (8 pages, 419930 bytes).
+Output written on proposal.pdf (8 pages, 419959 bytes).
 PDF statistics:
  254 PDF objects out of 1000 (max. 8388607)
  203 compressed objects within 3 object streams
