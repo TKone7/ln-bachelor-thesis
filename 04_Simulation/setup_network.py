@@ -1,17 +1,22 @@
 import csv
+import json
 from operator import itemgetter
 import networkx as nx
 
-with open('dump.csv', 'r') as networkcsv:  # Open the file
-    reader = csv.reader(networkcsv, delimiter='\t')  # Read the csv
-    rows = [n for n in reader]
-    headers = rows[0:1]
-    channels = rows[1:]
+# with open('dump.csv', 'r') as networkcsv:  # Open the file
+#     reader = csv.reader(networkcsv, delimiter='\t')  # Read the csv
+#     rows = [n for n in reader]
+#     headers = rows[0:1]
+#     channels = rows[1:]
 
-nodes = set([c[0] for c in channels])
-nodes.update(set([c[1] for c in channels]))
+with open('dump.json', 'r') as network:  # Open the file
+    channels = json.load(network)
 
-edges = [tuple([c[0], c[1], {'chan_id': c[2], 'cap': c[3], 'base_fee_msat': c[4], 'fee_per_millionth': c[5]}]) for c in channels]
+nodes = set([c['source'] for c in channels])
+nodes.update(set([c['destination'] for c in channels]))
+
+edges = [tuple([c['source'], c['destination'], {'chan_id': c['short_channel_id'], 'cap': c['satoshis'], 'base_fee_msat': c['base_fee_millisatoshi'], 'fee_per_millionth': c['fee_per_millionth']}]) for c in channels]
+#edges = [tuple([c['source'], c['destination']]) for c in channels]
 
 print(len(nodes))
 print(len(edges))
@@ -31,8 +36,20 @@ for e in out_edges:
     else:
         print('available', e[1], e[2])
 
-[print(e) for e in G.edges(data=True) if e[2]['chan_id']=='539637x1777x0']
+[print(e) for e in G.edges(data=True) if e[2]['chan_id']=='570629x1280x1']
 
 print(nx.info(G, satoshilabs))
+
+
+
+G = nx.MultiGraph()
+G.add_nodes_from(nodes)
+G.add_edges_from(edges)
+print(nx.info(G))
+[print(e) for e in G.edges(data=True) if e[0]=='02f2db91d9c63aeeff2b2661b5398e4146aeb2cdb10fa48e570a2c20a420072672' and e[1] == '0331f80652fb840239df8dc99205792bba2e559a05469915804c08420230e23c7c']
+
+# why not multi?
+
+
 
 
