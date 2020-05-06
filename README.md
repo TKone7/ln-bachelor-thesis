@@ -12,12 +12,12 @@ larger payments and reducing errors during routing. While the previous
 findings proved to be effective under full participation, adoption of such a protocol change in a decentralised network will be gradually and perhaps never reach 100%. Thereof, the question arises how those proposed
 changes perform under a partial participation.
 
-## Objective
-- Definition of the scope of the protocol change
-- Determine possible scenarios with varying participation
-- Writing simulation software
-- Collecting simulation data from the Lightning Network
-- Running the simulation
-- Evaluate and interpret the result
-- Display results graphically
-- Draw conclusions for the Lightning Network
+## Main Objective
+- [x] Rebuild the Lightning Network
+  - [ ]  _Optional_: Develop heuristic for intial channel balances
+- [ ] Reproduce simulation results from previous study
+- [ ] Simulate different levels of participation
+  - [ ] _Optional_: Define different balance measurement
+  - [ ] _Optional_: Define different success measurements
+  - [ ] _Optional_: Non-random selection of participants
+- [ ] Analyze and visualize results
