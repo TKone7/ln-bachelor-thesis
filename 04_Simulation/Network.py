@@ -9,10 +9,24 @@ logger = logging.getLogger(__name__)
 class Network:
     def __init__(self, G):
         self.G = G
+        self.excluded = set()
         self.__history = []
         # calculate initial gini coefficients for all nodes
         self.__update_ginis()
         self.flow = None
+
+        self.fingerprint = self.__fingerprint()
+        logger.info('Fingerprint is {}'.format(self.fingerprint))
+
+    def __fingerprint(self):
+        # calculate a fingerprint for the initial network state. Should include:
+        # - nodes / edges / attributes
+        # - excluded nodes
+        networklist = list(self.G.edges(data=True))
+        networklist.sort()
+        input = bytearray(str(networklist), 'utf-8') + bytearray(str(self.excluded), 'utf-8')
+        m = hashlib.sha256(input)
+        return m.hexdigest()[:8]
 
     def __update_ginis(self):
         ginis = dict()
@@ -78,7 +92,7 @@ class Network:
 
     def create_snapshot(self):
         # should be able to store and restore from any intermediate network state
-        w = open("lightning_network", "w")
+        w = open(self.fingerprint + "_lightning_network", "w")
         for e in self.G.edges(data=True):
             w.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
                 e[0], e[1], e[2]["capacity"], e[2]["balance"],
