@@ -1,5 +1,5 @@
 import random
-import json, logging, random
+import json, logging, hashlib
 import networkx as nx
 
 FORMAT ='%(asctime)s - %(levelname)-8s: %(message)s'
@@ -62,15 +62,22 @@ class Network:
                 id_occurrence[sci] = 1
 
         report_non_dual = 0
+        dupl_channel = set()
         for channel in raw_channels:
             if id_occurrence[channel['short_channel_id']] == 2:
-                channels.append(channel)
-                # store some extra channel data for later use
                 s = channel['source']
                 d = channel['destination']
-                cap_attr[(s, d)] = channel['satoshis']
-                base_attr[(s, d)] = channel["base_fee_millisatoshi"] / 1000
-                rate_attr[(s, d)] = channel["fee_per_millionth"]
+                if tuple([s,d]) in dupl_channel:
+                    # remove channels between the same nodes
+                    continue
+                else:
+                    # add them
+                    dupl_channel.add(tuple([s,d]))
+                    channels.append(channel)
+                    # store some extra channel data for later use
+                    cap_attr[(s, d)] = channel['satoshis']
+                    base_attr[(s, d)] = channel["base_fee_millisatoshi"] / 1000
+                    rate_attr[(s, d)] = channel["fee_per_millionth"]
             else:
                 assert id_occurrence[channel['short_channel_id']] == 1, 'other id occurrence than 1 or 2 is not expected'
                 report_non_dual += 1
@@ -90,8 +97,9 @@ class Network:
             # shuffle source<->destination randomly
             shuffled = set()
             for channel in reduced:
-                r = random.randint(0, 1)
-                if r > 0:
+                input = bytearray(channel[0] + channel[1], 'utf-8')
+                hash_object = hashlib.sha256(input)
+                if hash_object.digest()[0] % 2 == 0:
                     shuffled.add(tuple([channel[1], channel[0]]))
                 else:
                     shuffled.add(channel)
