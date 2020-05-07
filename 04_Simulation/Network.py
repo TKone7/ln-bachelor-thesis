@@ -1,6 +1,7 @@
 import random
 import json, logging, hashlib
 import networkx as nx
+import numpy as np
 
 FORMAT ='%(asctime)s - %(levelname)-8s: %(message)s'
 logging.basicConfig(level=logging.DEBUG, format = FORMAT)
@@ -8,12 +9,72 @@ logger = logging.getLogger(__name__)
 class Network:
     def __init__(self, G):
         self.G = G
+        self.__history = []
+        # calculate initial gini coefficients for all nodes
+        self.__update_ginis()
+        self.flow = None
+
+    def __update_ginis(self):
+        ginis = dict()
+        nbcs = dict()
+        for u in self.G:
+            channel_balance_coeffs = []
+            total_balance = 0
+            total_capacity = 0
+            for v in self.G[u]:
+                balance = self.G[u][v]["balance"]
+                total_balance += balance
+                capacity = self.G[u][v]["capacity"]
+                total_capacity += capacity
+                cbc = balance / capacity
+                channel_balance_coeffs.append(cbc)
+            # calculate gini
+            gini = Network.gini(channel_balance_coeffs)
+            ginis[u] = gini
+            # calculate node balance coefficient
+            nbc = float(total_balance) / total_capacity
+            nbcs[u] = nbc
+        nx.set_node_attributes(self.G, ginis, 'gini')
+        nx.set_node_attributes(self.G, nbcs, 'nbc')
 
     def __repr__(self):
         return nx.info(self.G) + '\nMore info?'
 
     def __str__(self):
         return '<Network with {} nodes and {} channels>'.format(len(self.G), len(self.G.edges))
+
+    def play_rebaloperation(self, op):
+        # check if valid rebal op
+
+        self.__history.append(op)
+
+    def rollback_rebaloperation(self):
+        assert len(self.__history) > 0, 'Cannot rollback, history is empty'
+        op = self.__history.pop()
+        logger.info('pooped {}'.format(op))
+
+    @property
+    def ops(self):
+        return len(self.__history)
+
+    def compute_rebalance_directions(self):
+        self.flow = nx.DiGraph()
+        for u, v in self.G.edges():
+            nbc = self.G.nodes[u]['nbc']
+            balance = self.G[u][v]["balance"]
+            capacity = self.G[u][v]["capacity"]
+            cbc = balance / capacity
+            if cbc > nbc:
+                amt = int(capacity*(cbc - nbc))
+                # print(amt)
+                self.flow.add_edge(u, v, liquidity=amt)
+        # if both parties want to move an amount over the same channel, remove completely
+        delete_edges = []
+        for u,v in self.flow.edges():
+            if (v,u) in self.flow.edges():
+                delete_edges.append((u,v))
+                logger.error('channel wants to be rebalanced by both {} and {}'.format(u,v))
+        self.flow.remove_edges_from(delete_edges)
 
     def create_snapshot(self):
         # should be able to store and restore from any intermediate network state
@@ -130,3 +191,12 @@ class Network:
             raise NotImplementedError('mode <normal> is not yet implemented')
 
         return cls(G)
+
+    @staticmethod
+    def gini(x):
+        # FIXME: replace with a more efficient implementation
+        mean_absolute_differences = np.abs(np.subtract.outer(x, x)).mean()
+        # print(x)
+        relative_absolute_mean = mean_absolute_differences/np.mean(x)
+        # print(relative_absolute_mean)
+        return 0.5 * relative_absolute_mean
