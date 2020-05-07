@@ -3,6 +3,7 @@ import json, logging, hashlib
 import networkx as nx
 import numpy as np
 
+BASE_FILE = 'lightning_network'
 FORMAT ='%(asctime)s - %(levelname)-8s: %(message)s'
 logging.basicConfig(level=logging.DEBUG, format = FORMAT)
 logger = logging.getLogger(__name__)
@@ -19,12 +20,15 @@ class Network:
         logger.info('Fingerprint is {}'.format(self.fingerprint))
 
     def __fingerprint(self):
+        def s(tup):
+            return tup[0]+tup[1]+str(tup[2])+str(tup[3])+str(tup[4])+str(tup[5])
         # calculate a fingerprint for the initial network state. Should include:
         # - nodes / edges / attributes
         # - excluded nodes
         networklist = list(self.G.edges(data=True))
-        networklist.sort()
-        input = bytearray(str(networklist), 'utf-8') + bytearray(str(self.excluded), 'utf-8')
+        network = [(n[0], n[1], n[2]['capacity'], n[2]['balance'], n[2]['base'], n[2]['rate']) for n in networklist]
+        network.sort(key=s)
+        input = bytearray(str(network), 'utf-8') + bytearray(str(self.excluded), 'utf-8')
         m = hashlib.sha256(input)
         return m.hexdigest()[:8]
 
@@ -92,7 +96,7 @@ class Network:
 
     def create_snapshot(self):
         # should be able to store and restore from any intermediate network state
-        w = open(self.fingerprint + "_lightning_network", "w")
+        w = open(self.fingerprint + "_" + BASE_FILE, "w")
         for e in self.G.edges(data=True):
             w.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
                 e[0], e[1], e[2]["capacity"], e[2]["balance"],
@@ -101,16 +105,21 @@ class Network:
         w.close()
 
     @classmethod
-    def restore_snapshot(cls, network_file):
+    def restore_snapshot(cls, fingerprint, is_file=False):
         # should be able to store and restore from any intermediate network state
         G = nx.DiGraph()
-        f = open(network_file, "r")
+        if is_file:
+            f = open(fingerprint, "r")
+        else:
+            f = open(fingerprint + "_" + BASE_FILE, "r")
         for line in f:
             fields = line[:-1].split("\t")
             if len(fields) == 6:
                 s, d, c, a, base, rate = fields
-                G.add_edge(s, d, capacity=int(c), balance=int(a), base=float(base), rate=int(rate))
-        return cls(G)
+                G.add_edge(s, d, capacity=int(c), balance=int(a), base=int(base), rate=int(rate))
+        N = cls(G)
+        assert fingerprint == N.fingerprint or is_file, 'Fingerprints of stored and restored network are not equal'
+        return N
 
     @classmethod
     def parse_clightning(cls, channel_file, init_balance_mode = 'opened'):
@@ -150,9 +159,9 @@ class Network:
                     dupl_channel.add(tuple([s,d]))
                     channels.append(channel)
                     # store some extra channel data for later use
-                    cap_attr[(s, d)] = channel['satoshis']
-                    base_attr[(s, d)] = channel["base_fee_millisatoshi"] / 1000
-                    rate_attr[(s, d)] = channel["fee_per_millionth"]
+                    cap_attr[(s, d)] = int(channel['satoshis'])
+                    base_attr[(s, d)] = int(channel["base_fee_millisatoshi"])
+                    rate_attr[(s, d)] = int(channel["fee_per_millionth"])
             else:
                 assert id_occurrence[channel['short_channel_id']] == 1, 'other id occurrence than 1 or 2 is not expected'
                 report_non_dual += 1
