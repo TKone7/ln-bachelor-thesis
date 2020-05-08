@@ -1,5 +1,8 @@
+import hashlib
+import json
+import logging
 import random
-import json, logging, hashlib
+
 import networkx as nx
 import numpy as np
 
@@ -10,11 +13,13 @@ logger = logging.getLogger(__name__)
 class Network:
     def __init__(self, G):
         self.G = G
+        self.flow = None
         self.excluded = set()
         self.__history = []
+        self.__ops = []
+
         # calculate initial gini coefficients for all nodes
         self.__update_ginis()
-        self.flow = None
 
         self.fingerprint = self.__fingerprint()
         logger.info('Fingerprint is {}'.format(self.fingerprint))
@@ -33,8 +38,7 @@ class Network:
         return m.hexdigest()[:8]
 
     def __update_ginis(self):
-        ginis = dict()
-        nbcs = dict()
+        attrs = dict()
         for u in self.G:
             channel_balance_coeffs = []
             total_balance = 0
@@ -44,16 +48,36 @@ class Network:
                 total_balance += balance
                 capacity = self.G[u][v]["capacity"]
                 total_capacity += capacity
-                cbc = balance / capacity
+                cbc = float(balance) / capacity
                 channel_balance_coeffs.append(cbc)
             # calculate gini
             gini = Network.gini(channel_balance_coeffs)
-            ginis[u] = gini
             # calculate node balance coefficient
             nbc = float(total_balance) / total_capacity
-            nbcs[u] = nbc
-        nx.set_node_attributes(self.G, ginis, 'gini')
-        nx.set_node_attributes(self.G, nbcs, 'nbc')
+            attrs[u] = {}
+            attrs[u]['gini'] = gini
+            attrs[u]['nbc'] = nbc
+        nx.set_node_attributes(self.G, attrs)
+
+    def __rearrange(self, init, circle):
+        init_idx = circle.index(init)
+        new_circle = []
+        for i in range(len(circle)):
+            curr = (i + init_idx) % len(circle)
+            new_circle.append(circle[curr])
+        new_circle.append(init)
+        return new_circle
+
+    def __update_channel(self, op, rev = False):
+        # takes care of the channel balances
+        amount = op[0] if not rev else op[0] * -1
+        circle = op[1]
+        for i in range(len(circle)-1):
+            src = circle[i]
+            dest = circle[i+1]
+            self.G[src][dest]['balance'] -= amount
+            self.G[dest][src]['balance'] += amount
+            self.flow[src][dest]['liquidity'] -= amount
 
     def __repr__(self):
         return nx.info(self.G) + '\nMore info?'
@@ -63,36 +87,69 @@ class Network:
 
     def play_rebaloperation(self, op):
         # check if valid rebal op
+        if isinstance(op[0], float) and  isinstance(op[1], list):
+            self.__update_channel(op)
+            self.__history.append(op)
+        else:
+            logger.error('this is not a valid opertaion to perform: {}'.format(op))
 
-        self.__history.append(op)
-
-    def rollback_rebaloperation(self):
-        assert len(self.__history) > 0, 'Cannot rollback, history is empty'
-        op = self.__history.pop()
-        logger.info('pooped {}'.format(op))
+    def rollback_rebaloperation(self, nr=1):
+        for i in range(nr):
+            assert len(self.__history) > 0, 'Cannot rollback, history is empty'
+            op = self.__history.pop()
+            self.__update_channel(op, rev=True)
+            logger.info('pooped {}'.format(op))
 
     @property
     def ops(self):
         return len(self.__history)
 
-    def compute_rebalance_directions(self):
+    def compute_rebalance_network(self):
+        # This calculates a new graph of desired flows by each node.
         self.flow = nx.DiGraph()
+        delete_edges = []
         for u, v in self.G.edges():
             nbc = self.G.nodes[u]['nbc']
             balance = self.G[u][v]["balance"]
             capacity = self.G[u][v]["capacity"]
             cbc = balance / capacity
             if cbc > nbc:
+                # check if reverse channel is already in list, if yes, remove both
+                if (v,u) in self.flow.edges():
+                    logger.error('in frist loop: channel wants to be rebalanced by both {} and {}'.format(u, v))
+                    delete_edges.append((v, u))
+                    continue
                 amt = int(capacity*(cbc - nbc))
-                # print(amt)
                 self.flow.add_edge(u, v, liquidity=amt)
-        # if both parties want to move an amount over the same channel, remove completely
-        delete_edges = []
-        for u,v in self.flow.edges():
-            if (v,u) in self.flow.edges():
-                delete_edges.append((u,v))
-                logger.error('channel wants to be rebalanced by both {} and {}'.format(u,v))
+
+        if len(delete_edges) > 0: logger.debug('will delete {} edges'.format(len(delete_edges)))
         self.flow.remove_edges_from(delete_edges)
+
+    def compute_circles(self):
+        # remove edges with liquidity 0 since they don't want to route anything anymore
+        zero_flow = [e for e in self.flow.edges(data=True) if e[2]['liquidity'] <= 0]
+        self.flow.remove_edges_from(zero_flow)
+
+        circles = list(nx.simple_cycles(self.flow))
+        circles5 = [circle for circle in circles if len(circle) <= 5]
+        logger.debug('Found {} circles in the flow graph'.format(len(circles)))
+        logger.debug('Only {} are of length 5 or less'.format(len(circles5)))
+        self.__ops = circles5
+
+    def rebalance(self, max_ops = 10):
+        if len(self.__ops) <= 0:
+            logger.error('There are no ops to rebalance. Please compute operations first')
+        for i, circle in enumerate(self.__ops):
+            if i >= max_ops:
+                break
+            # check what is currently the max amount (maybe divide)
+            liqs = [self.flow[e][circle[(i + 1) % len(circle)]]['liquidity'] for i, e in enumerate(circle)]
+            amount = min(liqs) / 10
+            init = random.choice(circle)
+            new_circle = self.__rearrange(init, circle)
+            rebal_operation = (amount, new_circle)
+            self.play_rebaloperation(rebal_operation)
+            logger.info('Successfuly rebalanced {}sats over {}'.format(rebal_operation[0],rebal_operation[1]))
 
     def create_snapshot(self):
         # should be able to store and restore from any intermediate network state
