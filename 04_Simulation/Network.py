@@ -65,8 +65,8 @@ class Network:
         assert (not 'nbc' in self.G.nodes[node]) or self.G.nodes[node]['nbc'] == nbc, 'node balance coefficients should never change'
         self.G.nodes[node]['nbc'] = nbc
 
-        # if old_gini:
-        #     logger.info('gini for node {} changed by {}'.format(node, str(old_gini - gini)))
+        if old_gini:
+            logger.info('gini for node {} changed by {}'.format(node, str(old_gini - gini)))
 
     def __rearrange(self, init, circle):
         init_idx = circle.index(init)
@@ -87,6 +87,7 @@ class Network:
             self.G[src][dest]['balance'] -= amount
             self.G[dest][src]['balance'] += amount
             self.flow[src][dest]['liquidity'] -= amount
+            self.flow[dest][src]['liquidity'] += amount
         [self.__update_node_gini(n) for n in circle[:-1]]
         # todo for all involved parties, recalculate GINI
 
@@ -130,14 +131,22 @@ class Network:
             balance = self.G[u][v]["balance"]
             capacity = self.G[u][v]["capacity"]
             cbc = balance / capacity
-            if cbc > nbc:
-                # check if reverse channel is already in list, if yes, remove both
-                if (v,u) in self.flow.edges():
-                    logger.error('in frist loop: channel wants to be rebalanced by both {} and {}'.format(u, v))
+            # amount can be above or below zero (below signals desire for receiving balance)
+            amt = int(capacity * (cbc - nbc))
+            if (v,u) in self.flow.edges():
+                amt_ct = self.flow[v][u]['liquidity']
+                if np.sign(amt) == np.sign(amt_ct):
+                    logger.error('signs of desired channel flows are equal between {} and {}'.format(u, v))
                     delete_edges.append((v, u))
                     continue
-                amt = int(capacity*(cbc - nbc))
-                self.flow.add_edge(u, v, liquidity=amt)
+                common = min(abs(amt), abs(amt_ct))
+                amt_ct = common * np.sign(amt_ct)
+                amt = common * np.sign(amt)
+                self.flow[v][u]['liquidity'] = amt_ct
+            #if cbc > nbc:
+            # check if reverse channel is already in list, if yes, remove both
+
+            self.flow.add_edge(u, v, liquidity=amt)
 
         if len(delete_edges) > 0: logger.debug('will delete {} edges'.format(len(delete_edges)))
         self.flow.remove_edges_from(delete_edges)
@@ -145,7 +154,7 @@ class Network:
     def compute_circles(self):
         # remove edges with liquidity 0 since they don't want to route anything anymore
         # TODO, can probably be removed since we only compute these once in the beginning. Not after rebalancings took place
-        zero_flow = [e for e in self.flow.edges(data=True) if e[2]['liquidity'] <= 0]
+        zero_flow = [e for e in self.flow.edges(data=True) if e[2]['liquidity'] == 0]
         self.flow.remove_edges_from(zero_flow)
         if self.__cycles4 != []:
             logger.info('there are already cycles. Abort recomuting them')
@@ -156,8 +165,11 @@ class Network:
         ## circles = list(nx.simple_cycles(self.flow))
         cycles4 = []
         cycles5 = []
-        for u, v in self.flow.edges:
-            paths = [p for p in nx.all_simple_paths(self.flow, v, u, 3)]
+        pos_edges = [e for e in self.flow.edges(data=True) if e[2]['liquidity']>0]
+        pos_flow = nx.DiGraph()
+        pos_flow.add_edges_from(pos_edges)
+        for u, v in pos_flow.edges:
+            paths = [p for p in nx.all_simple_paths(pos_flow, v, u, 3)]
             if len(paths)>0:
                 [cycles4.append(p) for p in paths if len(p) <= 4]
                 [cycles5.append(p) for p in paths]
@@ -186,10 +198,10 @@ class Network:
             new_circle = circle.copy()
             new_circle.insert(0, circle[-1])
             rebal_operation = (amount, new_circle)
-            # logger.info('Rebalance {} sat over circle {}'.format(amount, ", ".join(new_circle)))
+            logger.info('Rebalance {} sat over circle {}'.format(amount, ", ".join(new_circle)))
             self.play_rebaloperation(rebal_operation)
             nr_executed += 1
-            if nr_executed % 100 == 0:
+            if nr_executed % 1 == 0:
                 logger.info('Networks mean gini is {}'.format(str(self.mean_gini)))
         after = len(self.__history)
         logger.info('Successfuly rebalanced {} operations'.format(after-before))
