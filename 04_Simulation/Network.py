@@ -65,8 +65,8 @@ class Network:
         assert (not 'nbc' in self.G.nodes[node]) or self.G.nodes[node]['nbc'] == nbc, 'node balance coefficients should never change'
         self.G.nodes[node]['nbc'] = nbc
 
-        if old_gini:
-            logger.info('gini for node {} changed by {}'.format(node, str(old_gini - gini)))
+        # if old_gini:
+        #     logger.info('gini for node {} changed by {}'.format(node, str(old_gini - gini)))
 
     def __rearrange(self, init, circle):
         init_idx = circle.index(init)
@@ -86,6 +86,8 @@ class Network:
             dest = circle[i+1]
             self.G[src][dest]['balance'] -= amount
             self.G[dest][src]['balance'] += amount
+            assert np.sign(self.flow[src][dest]['liquidity']) == 1 or rev, 'Liquidities should constantly go towards zero.'
+            assert np.sign(self.flow[dest][src]['liquidity']) == -1 or rev, 'Liquidities should constantly go towards zero.'
             self.flow[src][dest]['liquidity'] -= amount
             self.flow[dest][src]['liquidity'] += amount
         [self.__update_node_gini(n) for n in circle[:-1]]
@@ -110,7 +112,7 @@ class Network:
             assert len(self.__history) > 0, 'Cannot rollback, history is empty'
             op = self.__history.pop()
             self.__update_channel(op, rev=True)
-            logger.info('pooped {}'.format(op))
+            # logger.info('pooped {}'.format(op))
 
     @property
     def ops(self):
@@ -134,15 +136,15 @@ class Network:
             # amount can be above or below zero (below signals desire for receiving balance)
             amt = int(capacity * (cbc - nbc))
             if (v,u) in self.flow.edges():
-                amt_ct = self.flow[v][u]['liquidity']
-                if np.sign(amt) == np.sign(amt_ct):
+                amt_cp = self.flow[v][u]['liquidity']
+                if np.sign(amt) == np.sign(amt_cp):
                     logger.error('signs of desired channel flows are equal between {} and {}'.format(u, v))
                     delete_edges.append((v, u))
                     continue
-                common = min(abs(amt), abs(amt_ct))
-                amt_ct = common * np.sign(amt_ct)
+                common = min(abs(amt), abs(amt_cp))
+                amt_cp = common * np.sign(amt_cp)
                 amt = common * np.sign(amt)
-                self.flow[v][u]['liquidity'] = amt_ct
+                self.flow[v][u]['liquidity'] = amt_cp
             #if cbc > nbc:
             # check if reverse channel is already in list, if yes, remove both
 
@@ -151,58 +153,71 @@ class Network:
         if len(delete_edges) > 0: logger.debug('will delete {} edges'.format(len(delete_edges)))
         self.flow.remove_edges_from(delete_edges)
 
-    def compute_circles(self):
+    def compute_circles(self, force=False):
         # remove edges with liquidity 0 since they don't want to route anything anymore
         # TODO, can probably be removed since we only compute these once in the beginning. Not after rebalancings took place
-        zero_flow = [e for e in self.flow.edges(data=True) if e[2]['liquidity'] == 0]
-        self.flow.remove_edges_from(zero_flow)
-        if self.__cycles4 != []:
-            logger.info('there are already cycles. Abort recomuting them')
+        # zero_flow = [e for e in self.flow.edges(data=True) if e[2]['liquidity'] == 0]
+        # self.flow.remove_edges_from(zero_flow)
+        if self.__cycles4 != [] and not force:
+            logger.info('There are already cycles. Abort recomputing them.')
             return
         # All possible circles to conduct rebalancing
         # Need to be calculated only once (per network) since there never will be more / others
         # simple_cycle is not feasible in such a big network
         ## circles = list(nx.simple_cycles(self.flow))
         cycles4 = []
-        cycles5 = []
-        pos_edges = [e for e in self.flow.edges(data=True) if e[2]['liquidity']>0]
+        seen = set()
+        # cylces = set()
+        # cycles5 = []
+        pos_edges = [e for e in self.flow.edges(data=True) if e[2]['liquidity'] > 0]
         pos_flow = nx.DiGraph()
         pos_flow.add_edges_from(pos_edges)
-        for u, v in pos_flow.edges:
+        for i, (u, v) in enumerate(pos_flow.edges):
             paths = [p for p in nx.all_simple_paths(pos_flow, v, u, 3)]
-            if len(paths)>0:
-                [cycles4.append(p) for p in paths if len(p) <= 4]
-                [cycles5.append(p) for p in paths]
+            for p in paths:
+                if frozenset(p) not in seen:
+                    seen.add(frozenset(p))
+                    cycles4.append(p)
+            if i % 100 == 0: logger.info('{} edges checked for circles'.format(i))
+
+            # if len(paths) > 0:
+
+                # [cycles4.append(p) for p in paths if set(p) not in map(set, cycles4)]
+                # [cycles5.append(p) for p in paths]
         logger.debug('There are {} circles of length 4 or less'.format(len(cycles4)))
-        logger.debug('There are {} circles of length 5 or less'.format(len(cycles5)))
+        logger.debug('There are {} circles of length 5 or less'.format(len(cycles4)))
         self.__cycles4 = cycles4
-        self.__cycles5 = cycles5
+        self.__cycles5 = cycles4
+
 
     def rebalance(self, max_ops = 10):
         nr_executed = 0
+        executed_this_time = 0
         if len(self.__cycles4) <= 0:
             logger.error('There are no ops to rebalance. Please compute operations first')
+            return
         before = len(self.__history)
-        for circle in self.__cycles4:
-            if nr_executed >= max_ops:
+        while nr_executed < max_ops:
+            local_before = len(self.__history)
+            for circle in self.__cycles4:
+                if nr_executed >= max_ops:
+                    break
+                # check what is currently the max amount (maybe divide)
+                liqs = [self.flow[e][circle[(i + 1) % len(circle)]]['liquidity'] for i, e in enumerate(circle)]
+                amount = int(min(liqs) * 1)
+                if amount < 1:
+                    continue
+                new_circle = circle.copy()
+                new_circle.insert(0, circle[-1])
+                # logger.info('Rebalance {} sat over circle {}'.format(amount, ", ".join(new_circle)))
+
+                self.play_rebaloperation((amount, new_circle))
+                nr_executed += 1
+                if nr_executed % 1000 == 0:
+                    logger.info('{} ops: Networks mean-gini is {}'.format(nr_executed, str(self.mean_gini)))
+            if len(self.__history) - local_before == 0:
                 break
-            # check what is currently the max amount (maybe divide)
-            liqs = [self.flow[e][circle[(i + 1) % len(circle)]]['liquidity'] for i, e in enumerate(circle)]
-            amount = int(min(liqs)) # /10
-            if amount < 1:
-                continue
-            # chose one node from the circle to be the initiator (only relevant for fees)
-            # init = random.choice(circle)
-            # creates a circle with the initiator being start / end
-            # new_circle = self.__rearrange(init, circle)
-            new_circle = circle.copy()
-            new_circle.insert(0, circle[-1])
-            rebal_operation = (amount, new_circle)
-            logger.info('Rebalance {} sat over circle {}'.format(amount, ", ".join(new_circle)))
-            self.play_rebaloperation(rebal_operation)
-            nr_executed += 1
-            if nr_executed % 1 == 0:
-                logger.info('Networks mean gini is {}'.format(str(self.mean_gini)))
+
         after = len(self.__history)
         logger.info('Successfuly rebalanced {} operations'.format(after-before))
 
@@ -214,12 +229,12 @@ class Network:
                 f.write(" ".join(circle) + '\n')
                 f.flush()
             f.close()
-        if len(self.__cycles5) > 0:
-            f = open(self.fingerprint + '_' + CYCLES_FILE + '_5', 'w')
-            for circle in self.__cycles5:
-                f.write(" ".join(circle) + '\n')
-                f.flush()
-            f.close()
+        # if len(self.__cycles5) > 0:
+        #     f = open(self.fingerprint + '_' + CYCLES_FILE + '_5', 'w')
+        #     for circle in self.__cycles5:
+        #         f.write(" ".join(circle) + '\n')
+        #         f.flush()
+        #     f.close()
 
     def create_snapshot(self):
         # should be able to store and restore from any intermediate network state
@@ -230,6 +245,10 @@ class Network:
                 e[2]["base"], e[2]["rate"]))
             w.flush()
         w.close()
+
+    def gini_distr_data(self):
+        ginis_dict = nx.get_node_attributes(self.G, 'gini')
+        return list(ginis_dict.values())
 
     @classmethod
     def restore_snapshot(cls, fingerprint, is_file=False):
