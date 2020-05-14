@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../../04_Simulation/.idea/04_Simulation.iml" filepath="$PROJECT_DIR$/../../04_Simulation/.idea/04_Simulation.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/dummy_charts.iml" filepath="$PROJECT_DIR$/.idea/dummy_charts.iml" />
-      <module fileurl="file://$USER_HOME$/git/Imbalance-measure-and-proactive-channel-rebalancing-algorithm-for-the-Lightning-Network/code/vs/.idea/vs.iml" filepath="$USER_HOME$/git/Imbalance-measure-and-proactive-channel-rebalancing-algorithm-for-the-Lightning-Network/code/vs/.idea/vs.iml" />
     </modules>
   </component>
 </project>
