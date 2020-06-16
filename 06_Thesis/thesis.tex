@@ -1,0 +1,175 @@
+\documentclass[draft]{fhnwreport}       %[mode] = draft or final
+                                        %{class} = fhnwreport, article, 
+                                        %          report, book, beamer, standalone
+\usepackage{hyperref}
+\usepackage{longtable} % To display tables on several pages
+\usepackage{lipsum}
+\usepackage{silence}
+\WarningFilter{hyperref}{Draft mode on}
+
+\input{header}                            %loads all packages, definitions and settings, except bibliography (otherwise vim-latex doesn't recognise for completion)
+
+%%---Bibliography------------------------------------------------------------------------
+\usepackage[style=ieee,urldate=comp,backend=biber]{biblatex}
+\addbibresource{literature/bibliography.bib}
+
+\title{Effectivenes simulation of a rebalancing algorithm for the Lightning Network under partial participation}                          %Project Title
+\author{Bachelor Thesis}                %Document Type => Technical Report, ...
+\date{August 1, 2020}                   %Place and Date
+
+\begin{document}
+%%---TITLEPAGE---------------------------------------------------------------------------
+\selectlanguage{english}                %ngerman or english
+\maketitle
+
+\vspace*{-1cm}                            %compensates the space after the date line.
+\vfill
+{
+\renewcommand\arraystretch{2}
+\begin{center}
+\begin{tabular}{>{\bf}p{4cm} l}
+Organization                  &    FHNW, School of Business, Basel\\
+Study program                 &    Business Information Technology\\
+Author                        &    Tobias Koller\\
+Supervisor                    &    Prof. Dr. Kaspar Riesen\\
+Project sponsor               &    Prof. Dr. Thomas Hanne\\
+Expert                        &    René Pickhardt
+\end{tabular}
+\end{center}
+}
+\clearpage
+
+%% -- ABSTRACT
+\thispagestyle{empty}
+\begin{abstract}
+  Here follows my abstract
+  \lipsum{1-2}
+
+  \vspace{2ex}
+  \textbf{Keywords: Lightning, Bitcoin, path finding}
+\end{abstract}
+\vfill
+
+%%---TABLE OF CONTENTS-------------------------------------------------------------------
+\pagenumbering{Roman}		
+\tableofcontents
+\clearpage
+
+%%---DECLARATION OF HONOR
+\section*{Declaration of honor}
+\addcontentsline{toc}{section}{Declaration of honor}
+\todo[inline]{Add declaration of honor. I hereby confirm that: \ldots}
+\clearpage
+
+%%---FOREWORD
+\section*{Foreword}
+\addcontentsline{toc}{section}{Foreword}
+\todo[inline]{Some background}
+\clearpage
+
+%%---GLOSSARY
+\section*{Glossary}
+\addcontentsline{toc}{section}{Glossary}
+\todo[inline]{Should be able to auto generate that thing}
+\begin{itemize}
+  \item Bitcoin
+  \item Bitcoin Node
+  \item Lightning Node
+  \item Routing
+  \item Forwarding
+  \item Blockchain
+  \item Base chain, second layer
+\end{itemize}
+Also define here what does it mean if some text is:
+\begin{itemize}
+  \item \textbf{Bold}
+  \item \textit{Italic}
+  \item \underline{underlined}
+\end{itemize}
+\clearpage
+
+
+\pagenumbering{arabic}
+\section{Introduction}
+This section aims to give a basic understanding of the Bitcoin and Lightning technology. \todo[inline]{Define certain terms like, node, (block)chain, confirmation, channel, balance, capacity, source routing, forwarding}
+
+\subsection{Lightning technology}
+The Lightning Network is a network that utilizes Bitcoin as its underlying system. It can, therefore, be described as a ``second layer'' protocol building upon the Bitcoin ``base layer''. Bitcoin is a decentralized peer-to-peer money system with no central entities. The system was designed with security and robustness being the main objectives, sacrificing other properties such as transaction throughput (speed). 
+
+The Bitcoin system consists of nodes each maintaining a ledger of historic transactions. All new transactions must be distributed to all nodes and validated by them. Transactions are therefore public information and must be stored by all nodes. To allow many people to run a node, therefore promoting a decentralized network, the hardware requirements must be as low as possible. This is why there is a limitation of new transactions that can be recorded in the network causing this low transaction throughput.
+
+The Lightning technology offers a solution to this issue of scaling by adding a second network on top. In this network participants open payment channels with each other. Transactions within these channels are only visible to the two partners but stay invisible to the rest of the network. While opening and closing a channel each requires one transaction in the base layer (Bitcoin) unlimited transactions with almost no throughput restriction can be facilitated within a channel during its lifetime. 
+
+It is important to note the difference between a Lightning node and a Bitcoin node. While they can run on the same system, they operate in two different networks. A Bitcoin node works well individually but a Lightning node needs to have access to a Bitcoin node.
+
+For a node to pay another node that it has no direct channel open with, he can simply route the transaction via other nodes and their channels. Since the network graph is public, the path can be chosen by the initiator of a transaction. This is called source routing. 
+
+A payment channel is always opened between two nodes. One of the participants acts as the initiator and provides funds for the channel in the form of bitcoin. This leads to the total capacity being allocated to his or her balance within the channel. As soon as he starts to make payments towards the other node, his or her balance decreases, and the partner's balance increases (total capacity remains constant). Transactions can only be executed if the amount is smaller or equal than the channel's capacity and if the sending node has enough local balance. Channels and their capacities are announced to the network but the distribution of balances remains private to the channel partners.
+
+\subsection{Previous work}
+René Pickhardt's and Mariusz Nowostawski's publication ``Imbalance measure and proactive channel rebalancing algorithm for the Lightning Network'' \cite{pickhardt_imbalance_2019} serves as a base to formulate the question for this thesis. In their work, they present a solution for the pathfinding problem in a privacy-aware payment channel network. The proposed solution includes a rebalancing protocol which the nodes of the network should follow to achieve a higher balancedness (for itself but also the entire network). It consists of instructions to proactively rebalance their channels within their friend of a friend's network, redistributing the relative funds owned in a channel but leaving total funds owned unchanged.
+
+Rebalancing is an activity where one node engages in a circular payment that pays itself. This is only possible when the node has at least two channels with different peers. The payment gets routed \textbf{out} through one channel and is \textbf{received back} over another. On the way, it can use one or more hops to find back to the sender node. This procedure enables a node to change the balances of the individual channels while the total node balance stays the same. In practice, there would be a fee collected by the intermediate nodes whose channels are used. In the proposed rebalancing protocol nodes would forego the fee and only participate in the rebalancing attempt if their balancedness improves as well.
+
+\subsection{Problem statement}
+These payment channel networks are decentralized by nature and no protocol change can be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure \footnote{Defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
+
+
+\section{Path finding problem}
+\todo[inline]{Explain why finding a path in the lightning network can be so difficult}
+
+Nodes trying to find a path in the Lightning Network work with limited information. While they know what channels are available and what their capacities are, they do not know about the balances and therefore whether the nodes can forward their payment or not. Hence, it is likely that a payment attempt fails because a node had insufficient balance. The paying node needs to find another route and retry the payment until it succeeds. If the payment fails repeatedly it can cause delays that are bad for the user experience. 
+
+\section{Methodology} \label{sec:method}
+\todo[inline]{explain how to get the network information for a running node. quickly show how I extracted the data from the full node. Explain the structure of the python class \textbf{Network}}. And some more \textbf{bold text}.
+
+To model the network, public information from the Lightning Network is used. From a Lightning node, all the channel and node information can be extracted.
+
+For all further manipulations and calculations, the programming language Python will be used. This includes writing code that facilitates: 
+\begin{itemize}
+  \item The selection of nodes, participating in the protocol change.
+  \item Implement the proposed algorithm \cite[p.~3]{pickhardt_imbalance_2019}.
+  \item Performing rebalancing in the network.
+  \item Storing different network states for different scenarios.
+  \item Calculate different performance measures.
+  \item Aggregate data.
+  \item Plot graphs to visualize the results.
+\end{itemize}
+
+\section{Routing measures}
+%% Dummy text
+\section{Experimental setup}
+%% Dummy text
+
+\subsection{Preprocessing}
+\todo[inline]{explain which nodes and channels where selected}
+
+\subsection{Implementing routing protocol}
+\todo[inline]{Describe how the proposed protocol change is impolemented in the \textbf{Network} class. }
+\todo[inline]{show illustrations with a dummy network}
+\todo[inline]{ask Rene to his dummy network}
+\section{Results}
+%% Dummy text
+\section{Conclusion}
+%% Dummy text
+\section{Outlook}
+%% Dummy text
+
+%%---BIBLIOGRAPHY------------------------------------------------------------------------
+\newpage
+{\sloppypar
+\printbibliography
+\label{sec:lit}
+}
+
+%%---TODO-OVERVIEW-------------------
+\ifdraft{%Do this only if mode=draft
+\newpage
+\listoftodos[\section{Todo-Notes}]
+\clearpage
+}
+{%Do this only if mode=final
+}
+
+\end{document}
+

@@ -1,0 +1,10 @@
+\contentsline {todo}{Add declaration of honor. I hereby confirm that: \ldots }{III}{section*.3}% 
+\contentsline {todo}{Some background}{IV}{section*.5}% 
+\contentsline {todo}{Should be able to auto generate that thing}{V}{section*.7}% 
+\contentsline {todo}{Define certain terms like, node, (block)chain, confirmation, channel, balance, capacity, source routing, forwarding}{1}{section*.8}% 
+\contentsline {todo}{Explain why finding a path in the lightning network can be so difficult}{2}{section*.9}% 
+\contentsline {todo}{explain how to get the network information for a running node. quickly show how I extracted the data from the full node. Explain the structure of the python class \textbf {Network}}{2}{section*.10}% 
+\contentsline {todo}{explain which nodes and channels where selected}{3}{section*.11}% 
+\contentsline {todo}{Describe how the proposed protocol change is impolemented in the \textbf {Network} class. }{3}{section*.12}% 
+\contentsline {todo}{show illustrations with a dummy network}{3}{section*.13}% 
+\contentsline {todo}{ask Rene to his dummy network}{3}{section*.14}% 

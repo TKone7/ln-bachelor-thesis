@@ -1,0 +1,36 @@
+\section{Mathematische Formeln}
+Der Mathematikmodus ist sehr mächtig und kann nicht in wenigen Sätzen erklärt werden. Aus diesem Grund wird nochmals auf die \LaTeX2e-Kurzbeschreibung verwiesen, welche alles wichtige erklärt.
+Möchte sich jemand noch tiefer in die Materie einlesen, hilft die Dokumentation \cite{doc_mathmode}.
+
+\subsection{Mathematische Umgebungen}
+Selbst komplizierte Formeln können mit \LaTeX{} sehr schnell umgesetzt werden. Zur Verfügung stehen verschidene Modi:
+\begin{tabbing}
+\quad \= \verb|\begin{equation}| \qquad \= \kill
+      \> \verb|$ ... $|          \> Einfacher Mathe-Modus direkt im Text\\
+      \\
+      \> \verb|\[|         \> \\
+      \> \verb|...|         \> Abgesetzter Mathe-Modus ohne Nummerierung \\
+      \> \verb|\]|         \> \\
+      \\
+      \> \verb|\begin{equation}|  \> \\
+      \> \verb|...|  \> Abgesetzter Mathe-Modus mit Nummerierung\\
+      \> \verb|\end{equation}|
+\end{tabbing}
+
+\subsection{Bekannte Fehler}
+Dieses Kapitel soll auf die häufigsten Fehler aufmerksam machen, welche öfters falsch gemacht werden. Die Liste ist selbstverständlich nicht abgeschlossen, doch für den Anfang sollten diese Tipps schon reichen.
+
+{\def\arraystretch{2.0}
+\begin{tabular}{c c p{10.0cm}}
+\textbf{Falsch} & \textbf{Richtig} & \textbf{Beschreibung}\\ \hline
+$V_{IN}$ & $V_{\mathrm{IN}}$ & Variablen sind kursiv dargestellt. Im linken Fall würde sich der tiefgestellte Index aus den Variablen $I \cdot N$ berechnen. Bezeichnungen/Namen  werden jedoch mit aufrechter Schrift dargestellt. Dazu benutzt man \verb|\mathrm{}|.\\
+
+$e^{j \cdot \omega \cdot t}$ & $\mathrm{e}^{j\omega t}$ & Zwischen     einzelnen Variablen werden Multiplikationen impliziert und daher weggelassen. Es kann jedoch sinnvoll sein, für die optische Hervorhebung von wichtigen Thermen ein Punkt (\verb|\cdot|) zu setzen. \\
+
+$sin(\alpha)$ & $\sin(\alpha)$ & Funktionen sind keine Variablen und stehen deshalb nicht kursiv.\\
+
+$\exp(\dfrac{A}{B})$ & $\exp\left(\dfrac{A}{B}\right)$ & Klammern müssen mit \verb|\left| und \verb|\right| skaliert werden\\
+
+$\dfrac{A}{B}=\dfrac{\frac{C}{D}}{B}$ & $\dfrac{A}{B}=\dfrac{C/D}{B}$  & Nicht unterschiedlich skalierte Brüche verwenden. Lieber mal einen normalen Schrägstrich setzen.
+\end{tabular}\
+}
