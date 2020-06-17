@@ -2,18 +2,19 @@
                                         %{class} = fhnwreport, article, 
                                         %          report, book, beamer, standalone
 \usepackage{hyperref}
-\usepackage{longtable} % To display tables on several pages
+\usepackage{longtable} 			% To display tables on several pages
 \usepackage{lipsum}
 \usepackage{silence}
 \WarningFilter{hyperref}{Draft mode on}
 
-\input{header}                            %loads all packages, definitions and settings, except bibliography (otherwise vim-latex doesn't recognise for completion)
+\input{header}                          % loads all packages, definitions and settings, except bibliography
+					% (otherwise vim-latex doesn't recognise for completion)
 
 %%---Bibliography------------------------------------------------------------------------
 \usepackage[style=ieee,urldate=comp,backend=biber]{biblatex}
 \addbibresource{literature/bibliography.bib}
 
-\title{Effectivenes simulation of a rebalancing algorithm for the Lightning Network under partial participation}                          %Project Title
+\title{Effectivenes simulation of a rebalancing algorithm for the Lightning Network under partial participation}                                               %Project Title
 \author{Bachelor Thesis}                %Document Type => Technical Report, ...
 \date{August 1, 2020}                   %Place and Date
 
@@ -22,7 +23,8 @@
 \selectlanguage{english}                %ngerman or english
 \maketitle
 
-\vspace*{-1cm}                            %compensates the space after the date line.
+
+\vspace*{-1cm}                          %compensates the space after the date line.
 \vfill
 {
 \renewcommand\arraystretch{2}
@@ -39,7 +41,7 @@ Expert                        &    René Pickhardt
 }
 \clearpage
 
-%% -- ABSTRACT
+%% -- ABSTRACT---------------------------------------------------------------------------
 \thispagestyle{empty}
 \begin{abstract}
   Here follows my abstract
@@ -50,24 +52,24 @@ Expert                        &    René Pickhardt
 \end{abstract}
 \vfill
 
-%%---TABLE OF CONTENTS-------------------------------------------------------------------
+%%---TABLE OF CONTENTS---------------------------------------------------------------------
 \pagenumbering{Roman}		
 \tableofcontents
 \clearpage
 
-%%---DECLARATION OF HONOR
+%%---DECLARATION OF HONOR------------------------------------------------------------------
 \section*{Declaration of honor}
 \addcontentsline{toc}{section}{Declaration of honor}
 \todo[inline]{Add declaration of honor. I hereby confirm that: \ldots}
 \clearpage
 
-%%---FOREWORD
+%%---FOREWORD------------------------------------------------------------------------------
 \section*{Foreword}
 \addcontentsline{toc}{section}{Foreword}
 \todo[inline]{Some background}
 \clearpage
 
-%%---GLOSSARY
+%%---GLOSSARY---------------------------------------------------------------------------------
 \section*{Glossary}
 \addcontentsline{toc}{section}{Glossary}
 \todo[inline]{Should be able to auto generate that thing}
@@ -88,7 +90,7 @@ Also define here what does it mean if some text is:
 \end{itemize}
 \clearpage
 
-
+%%---THESIS-CONTENT------------------------------------------------------------------------------
 \pagenumbering{arabic}
 \section{Introduction}
 This section aims to give a basic understanding of the Bitcoin and Lightning technology. \todo[inline]{Define certain terms like, node, (block)chain, confirmation, channel, balance, capacity, source routing, forwarding}
@@ -143,8 +145,11 @@ For all further manipulations and calculations, the programming language Python 
 
 \subsection{Preprocessing}
 \todo[inline]{explain which nodes and channels where selected}
-
+\subsubsection{some test}
+bla
 \subsection{Implementing routing protocol}
+\subsubsection{somemore tests}
+blabla
 \todo[inline]{Describe how the proposed protocol change is impolemented in the \textbf{Network} class. }
 \todo[inline]{show illustrations with a dummy network}
 \todo[inline]{ask Rene to his dummy network}
@@ -162,7 +167,7 @@ For all further manipulations and calculations, the programming language Python 
 \label{sec:lit}
 }
 
-%%---TODO-OVERVIEW-------------------
+%%---TODO-OVERVIEW-------------------------------------------------------------------------
 \ifdraft{%Do this only if mode=draft
 \newpage
 \listoftodos[\section{Todo-Notes}]
@@ -172,4 +177,3 @@ For all further manipulations and calculations, the programming language Python 
 }
 
 \end{document}
-
