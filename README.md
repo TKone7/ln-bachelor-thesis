@@ -15,9 +15,11 @@ changes perform under a partial participation.
 ## Main Objective
 - [x] Rebuild the Lightning Network
   - [ ]  _Optional_: Develop heuristic for intial channel balances
-- [ ] Reproduce simulation results from previous study
-- [ ] Simulate different levels of participation
+- [x] Reproduce simulation results from previous study
+- [x] Simulate different levels of participation
   - [ ] _Optional_: Define different balance measurement
   - [ ] _Optional_: Define different success measurements
   - [ ] _Optional_: Non-random selection of participants
+  - [ ] _Optional_: Measure Gini on participants, performance on total network
+  - [ ] _Optional_: Measure Gini on participants, performance on participants
 - [ ] Analyze and visualize results
