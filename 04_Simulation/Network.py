@@ -35,7 +35,7 @@ class Network:
         self.__update_ginis()
         # calculate shortest paths (will not change in future)
         self.__compute_all_pair_shortest_paths()
-        self.__compute_all_pair_max_flow()
+        # currently not feasible to calc max flow: self.__compute_all_pair_max_flow()
         # exclude certain nodes
         if selection == 'random':
             # random1:
