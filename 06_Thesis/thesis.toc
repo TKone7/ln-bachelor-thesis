@@ -13,8 +13,8 @@
 \contentsline {section}{\numberline {4}Routing measures}{3}{section.4}% 
 \contentsline {section}{\numberline {5}Experimental setup}{3}{section.5}% 
 \contentsline {subsection}{\numberline {5.1}Preprocessing}{3}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}Implementing routing protocol}{3}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.2}Lightning properties}{3}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Implementing routing protocol}{3}{subsection.5.3}% 
 \contentsline {section}{\numberline {6}Results}{3}{section.6}% 
 \contentsline {section}{\numberline {7}Conclusion}{3}{section.7}% 
 \contentsline {section}{\numberline {8}Outlook}{3}{section.8}% 
-\contentsline {section}{\numberline {9}Todo-Notes}{5}{section.9}% 
