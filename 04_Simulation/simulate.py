@@ -1,8 +1,10 @@
 """Lightning Network Simulation.
 
 Usage:
-  simulate.py run (import|restore) <filename> <participation> [--force]
+  simulate.py run <filename> [--force]
+  simulate.py parse <filename>
   simulate.py runmulti (import|restore) <filename>
+  simulate.py randomexperiment <filename> <samplesize>
   simulate.py -h | --help
 
 Options:
@@ -27,6 +29,7 @@ logger = logging.getLogger(__name__)
 
 import os
 from Network import Network, CYCLES_FILE
+from Experiment import Experiment
 import time
 
 def cont(question):
@@ -36,20 +39,12 @@ def cont(question):
         return False
     return True
 
-def init_network(arguments):
-    if arguments["import"]:
-        start = time.time()
-        n = Network.parse_clightning(arguments["<filename>"], int(arguments["<participation>"])/100)
-        n.create_snapshot()
-        end = time.time()
-        logger.info("Time to init network {0:.2f} seconds".format(end - start))
-        return n
-    elif arguments["restore"]:
-        start = time.time()
-        n = Network.restore_snapshot(arguments["<filename>"], int(arguments["<participation>"])/100)
-        end = time.time()
-        logger.info("Time to init network {0:.2f} seconds".format(end - start))
-        return n
+def init_network():
+    start = time.time()
+    n = Network.restore_snapshot(arguments["<filename>"])
+    end = time.time()
+    logger.info("Time to init network {0:.2f} seconds".format(end - start))
+    return n
 
 def compute_circles(n):
     start = time.time()
@@ -72,8 +67,17 @@ def create_charts(n):
 
 def main(arguments):
     force = arguments["--force"]
+    if arguments["parse"]:
+        start = time.time()
+        n = Network.parse_clightning(arguments["<filename>"])
+        n.create_snapshot()
+        end = time.time()
+        logger.info("Time to init network {0:.2f} seconds".format(end - start))
+        logger.info("The network {} can now be used for experiments.".format(n.fingerprint))
+
     if arguments["run"]:
-        n = init_network(arguments)
+        n = init_network()
+        n.set_experiment_name(str(100) + '_' + 'random' + '_' + str(0))
         n.plot_gini_distr_hist('initial_gini_distr_hist')
         logger.info(n)
         if not force and not cont('Next step: Compute rebalancing circles.'):
@@ -85,6 +89,12 @@ def main(arguments):
         if not force and not cont('Next step: Create charts from the previous rebalancing operations.'):
             exit()
         create_charts(n)
+
+    if arguments["randomexperiment"]:
+        e = Experiment(arguments["<filename>"])
+        e.setup_randomexperiment(int(arguments["<samplesize>"]))
+        e.run_experiment()
+        e.plot_experiment()
 
     if arguments["runmulti"]:
         experiments = [(i+1) * 10 for i in range(10)][::-1]

@@ -1,3 +1,4 @@
+import sys
 import hashlib
 import json
 import logging
@@ -7,11 +8,16 @@ import os
 import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
+from itertools import islice
 
 BASE_FILE = 'lightning_network'
 CYCLES_FILE = BASE_FILE + '_cycles'
+SIMPLE_PATH = BASE_FILE + '_simple_path'
 STATS_GINIS = BASE_FILE + '_stats_ginis'
 STATS = BASE_FILE + '_stats'
+
+MICRO_PAYMENT_SIZE = 1000
+NORMAL_PAYMENT_SIZE = 50000
 
 FORMAT = '%(asctime)s - %(levelname)-8s: %(message)s'
 logging.basicConfig(level=logging.DEBUG, format=FORMAT)
@@ -19,52 +25,62 @@ logger = logging.getLogger(__name__)
 
 
 class Network:
-    def __init__(self, G, participation, cycles4=None, cycles5=None, iteration=1, selection='random'):
+    def __init__(self, G, cycles4=None, cycles5=None):
         self.G = G
         self.flow = None
-        self.participation = participation
-        self.iteration = iteration
-        self.selection = selection
+        self.participation = None
+        self.experiment_name = None
         self.__history = []
         self.__history_gini = []
         self.__stats = {}
-        self.__all_pair_shortest_paths = []
         self.__all_pair_max_flow = dict()
-
-        # calculate initial gini coefficients for all nodes
-        self.__update_ginis()
-        # calculate shortest paths (will not change in future)
-        self.__compute_all_pair_shortest_paths()
-        # currently not feasible to calc max flow: self.__compute_all_pair_max_flow()
-        # exclude certain nodes
-        if selection == 'random':
-            # random1:
-            # random.seed(100)
-            # random2:
-            #random.seed(200)
-            random.seed(iteration * 100)
-            nodes_sorted = list(self.G.nodes)
-            nodes_sorted.sort()
-            excl = random.sample(nodes_sorted, int(len(nodes_sorted) * (1 - participation)))
-        else:
-            raise NotImplementedError('Only random selection of participants is implemented. But \'{}\' was tried.'.format(selection))
-
-        self.__excluded = set(excl)
-
-        # reduce the cycles if available
-        if participation != 1 and cycles4:
-            # reduce the cycles available
-            cycles4 = [c for c in cycles4 if not (set(c) & self.__excluded)]
+        self.__excluded = []
         self.__cycles4 = cycles4 if cycles4 else []
         self.__cycles5 = cycles5 if cycles5 else []
-
-        # calculate rebalance network
-        self.__compute_rebalance_network()
-
+        self.__all_pair_shortest_paths = None
+        self.__all_pair_simple_paths = None
         self.fingerprint = self.__fingerprint()
-        self.experiment_name = self.fingerprint + '_' + str(int(participation * 100)) + '_' + selection + '_' + str(iteration)
         logger.info('Fingerprint is {}'.format(self.fingerprint))
 
+    def __repr__(self):
+        return nx.info(self.G)
+
+    def __str__(self):
+        return '<Network with {} nodes and {} channels>'.format(len(self.G), len(self.G.edges))
+
+    # getter / setter
+    def set_experiment_name(self, name):
+        self.experiment_name = self.fingerprint + '_' + name
+
+    def set_participation(self, participation):
+        self.participation = participation
+
+    def gini_distr_data(self):
+        ginis_dict = nx.get_node_attributes(self.G, 'gini')
+        return list(ginis_dict.values())
+
+    def gini_hist_data(self):
+        return self.__history_gini
+
+    def stats(self):
+        return self.__stats
+
+    def set_stats(self, stats):
+        self.__stats = stats
+
+    def history_gini(self):
+        return self.__history_gini
+
+    def set_history_gini(self, history_gini):
+        self.__history_gini = history_gini
+
+    def history(self):
+        return self.__history
+
+    def apmf(self):
+        return self.__all_pair_max_flow
+
+    # Private mthods
     def __fingerprint(self):
         def s(tup):
             return tup[0] + tup[1] + str(tup[2]) + str(tup[3]) + str(tup[4]) + str(tup[5])
@@ -79,7 +95,7 @@ class Network:
         m = hashlib.sha256(input)
         return m.hexdigest()[:8]
 
-    def __update_ginis(self):
+    def __update_all_ginis(self):
         for u in self.G:
             # calculate gini
             self.__update_node_gini(u)
@@ -107,20 +123,10 @@ class Network:
             'nbc'] == nbc, 'node balance coefficients should never change'
         self.G.nodes[node]['nbc'] = nbc
 
-    def __rearrange(self, init, circle):
-        raise ValueError('rearrange id deprecated and can no longer be used')
-        # init_idx = circle.index(init)
-        # new_circle = []
-        # for i in range(len(circle)):
-        #     curr = (i + init_idx) % len(circle)
-        #     new_circle.append(circle[curr])
-        # new_circle.append(init)
-        # return new_circle
-
-    def __update_channel(self, op, rev=False):
+    def __update_channel(self, tx, rev=False):
         # takes care of the channel balances
-        amount = op[0] if not rev else op[0] * -1
-        circle = op[1]
+        amount = tx[0] if not rev else tx[0] * -1
+        circle = tx[1]
         for i in range(len(circle) - 1):
             src = circle[i]
             dest = circle[i + 1]
@@ -134,91 +140,60 @@ class Network:
             self.flow[dest][src]['liquidity'] += amount
         [self.__update_node_gini(n) for n in circle[:-1]]
 
-    def __repr__(self):
-        return nx.info(self.G) + '\nMore info?'
-
-    def __str__(self):
-        return '<Network with {} nodes and {} channels>'.format(len(self.G), len(self.G.edges))
-
-    def play_rebaloperation(self, op):
-        # check if valid rebal op
-        if isinstance(op[0], int) and isinstance(op[1], list):
-            self.__update_channel(op)
-            self.__history.append(op)
-
-            mean_gini = self.mean_gini
-            self.__history_gini.append(mean_gini)
-
-            # store network statistics (success measures) for every 0.01 gini improvement
-            stats_key = "{0:.2f}".format(mean_gini)
-            if stats_key not in self.__stats:
-                self.__stats[stats_key] = self.calculate_routing_stats()
-        else:
-            logger.error('this is not a valid opertaion to perform: {}'.format(op))
-
-    def rollback_rebaloperation(self, nr=1):
-        raise ValueError('rollback id deprecated and can no longer be used')
-        # for i in range(nr):
-        # assert len(self.__history) > 0, 'Cannot rollback, history is empty'
-        # op = self.__history.pop()
-        # self.__update_channel(op, rev=True)
-        # # logger.info('pooped {}'.format(op))
-
-    @property
-    def ops(self):
-        raise ValueError('ops is deprecated and can no longer be used')
-        # return len(self.__history)
-
-    @property
-    def mean_gini(self):
-        ginis_dict = nx.get_node_attributes(self.G, 'gini')
-        ginis = list(ginis_dict.values())
-        return np.mean(ginis)
-
-    def calculate_routing_stats(self):
-        # (median_payment_amount, success_rate)
-        stats = {}
-        amounts = []
-        for path in self.__all_pair_shortest_paths:
-            liqs = []
-            for i in range(len(path) - 1):  # exclude last
-                src = path[i]
-                dest = path[i + 1]
-                liqs.append(self.G[src][dest]['balance'])
-            amount = int(min(liqs))
-            amounts.append(amount)
-        # calc stats
-        median_payment_amount = np.median(amounts)
-        zero_amounts = amounts.count(0)
-        success_rate = (len(amounts) - zero_amounts) / len(amounts)
-        stats['median_payment_amount'] = median_payment_amount
-        stats['success_rate'] = success_rate
-        return stats
-
     def __compute_all_pair_shortest_paths(self):
+        all_pair_shortest_paths = []
         apsp = nx.all_pairs_dijkstra_path(self.G, weight='base', cutoff=20)
         for paths in apsp:
             for k, v in paths[1].items():
                 if len(v) > 1:  # ignore paths with only one element (is source element)
-                    self.__all_pair_shortest_paths.append(v)
-    def __compute_all_pair_max_flow(self):
-        apmf = dict()
-        nodes = len(self.G.nodes)
-        conns = (nodes*(nodes-1))/2
-        done = 0
-        logger.info('todo: {}'.format(nodes))
-        for u in self.G.nodes:
-            s = dict()
-            for v in self.G.nodes:
-                if u != v:
-                    if v in apmf.keys():
-                        s[v] = apmf[v][u]
-                    else:
-                        s[v], _ = nx.maximum_flow(self.G, u, v)
-                        done +=1
-            apmf[u] = s
-            logger.info('status {}%'.format((done/conns)*100))
-        self.__all_pair_max_flow = apmf
+                    all_pair_shortest_paths.append(v)
+        return all_pair_shortest_paths
+
+    def __compute_all_pair_simple_paths(self):
+        assert self.__all_pair_shortest_paths, 'Shortest paths between all pair must be calculated first'
+        try:  # to load from file first
+            simple_path_file = os.path.join(self.fingerprint, self.fingerprint + '_' + SIMPLE_PATH) + '.json'
+            with open(simple_path_file, "r") as f:
+                sp = json.load(f)
+                return sp
+        except OSError as e:
+            simplepath = dict()
+            cnt = 0
+            for nodepair in self.__all_pair_shortest_paths:
+                src = nodepair[0]
+                dest = nodepair[-1]
+                k_shortest_path = list(islice(nx.all_simple_paths(self.G, src, dest, 6), 10))
+                cnt += 1
+                simplepath[cnt] = k_shortest_path
+                if cnt % 1000 == 0:
+                    logger.info('retry number status: {}%'.format(100/len(self.__all_pair_shortest_paths)*cnt))
+            # store result to file
+            simple_path_file = os.path.join(self.fingerprint, self.fingerprint + '_' + SIMPLE_PATH) + '.json'
+            with open(simple_path_file, "w") as f:
+                json.dump(simplepath, f)
+            return simplepath
+
+    def __compute_multi_payment_stat(self):
+        total_success_cnt = []
+        total_micro_cnt = []
+        total_normal_cnt = []
+
+        for _, path_list in self.__all_pair_simple_paths.items():
+            success_cnt = 0
+            micro_cnt = 0
+            normal_cnt = 0
+            for path in path_list:
+                max_flow = self.__max_flow_along_path(path)
+                if max_flow > 0:
+                    success_cnt += 1
+                if max_flow > MICRO_PAYMENT_SIZE:
+                    micro_cnt += 1
+                if max_flow > NORMAL_PAYMENT_SIZE:
+                    normal_cnt += 1
+            total_success_cnt.append(success_cnt)
+            total_micro_cnt.append(micro_cnt)
+            total_normal_cnt.append(normal_cnt)
+        return total_success_cnt, total_micro_cnt, total_normal_cnt
 
     def __compute_rebalance_network(self):
         # This calculates a new graph of desired flows by each node.
@@ -252,6 +227,96 @@ class Network:
         if len(delete_edges) > 0:
             logger.debug('will delete {} edges'.format(len(delete_edges)))
         self.flow.remove_edges_from(delete_edges)
+
+    def __max_flow_along_path(self, path):
+        assert len(path) > 1, 'Path must include at least two nodes, to calc the max flow.'
+        liqs = []
+        for i in range(len(path) - 1):  # exclude last
+            src = path[i]
+            dest = path[i + 1]
+            liqs.append(self.G[src][dest]['balance'])
+        return int(min(liqs))
+
+    def __store_cycles(self):
+        # check for operations to store
+        if len(self.__cycles4) > 0:
+            if not os.path.isdir(self.fingerprint):
+                logger.error('Folder {} is not available. Create snapshot first.'.format(self.fingerprint))
+            cycles_file = os.path.join(self.fingerprint, self.fingerprint + '_' + CYCLES_FILE + '_4')
+            f = open(cycles_file, 'w')
+            for circle in self.__cycles4:
+                f.write(" ".join(circle) + '\n')
+                f.flush()
+            f.close()
+
+    def exclude(self, excl_list):
+        assert self.__cycles4, 'Cannot exclude nodes before the cycles are not calculated. Run "compute_circles()" first.'
+
+        self.__excluded = set(excl_list)
+        cycles4 = [c for c in self.__cycles4 if not (set(c) & self.__excluded)]
+        self.__cycles4 = cycles4
+
+        # calculate initial gini coefficients for all nodes
+        self.__update_all_ginis()
+
+        # recalculate rebalance network
+        self.__compute_rebalance_network()
+
+    def play_rebaloperation(self, op):
+        # check if valid rebal op
+        if isinstance(op[0], int) and isinstance(op[1], list):
+            self.__update_channel(op)
+            self.__history.append(op)
+
+            mean_gini = self.mean_gini
+            self.__history_gini.append(mean_gini)
+
+            # store network statistics (success measures) for every 0.01 gini improvement
+            stats_key = "{0:.2f}".format(mean_gini)
+            if stats_key not in self.__stats:
+                self.__stats[stats_key] = self.calculate_routing_stats()
+        else:
+            logger.error('this is not a valid opertaion to perform: {}'.format(op))
+
+    def rollback_rebaloperation(self, nr=1):
+        raise ValueError('rollback id deprecated and can no longer be used')
+
+    @property
+    def ops(self):
+        raise ValueError('ops is deprecated and can no longer be used')
+
+    @property
+    def mean_gini(self):
+        ginis_dict = nx.get_node_attributes(self.G, 'gini')
+        ginis = list(ginis_dict.values())
+        return np.mean(ginis)
+
+    def calculate_routing_stats(self):
+        # (median_payment_amount, success_rate, median_retry)
+        stats = {}
+        amounts = []
+        # Get list with all amounts along all shortest paths
+        for path in self.__all_pair_shortest_paths:
+            max_flow = self.__max_flow_along_path(path)
+            amounts.append(max_flow)
+
+        # Get successful payments on 20 simple paths between all pairs
+        total_success_cnt, total_micro_cnt, total_normal_cnt = self.__compute_multi_payment_stat()
+
+        # calc stats
+        median_payment_amount = np.median(amounts)
+        zero_amounts = amounts.count(0)
+        success_rate = (len(amounts) - zero_amounts) / len(amounts)
+        median_success = np.median(total_success_cnt)
+        median_micro = np.median(total_micro_cnt)
+        median_normal = np.median(total_normal_cnt)
+        # store stats
+        stats['median_payment_amount'] = median_payment_amount
+        stats['success_rate'] = success_rate
+        stats['median_success'] = median_success
+        stats['median_micro'] = median_micro
+        stats['median_normal'] = median_normal
+        return stats
 
     def compute_circles(self, force=False):
         # remove edges with liquidity 0 since they don't want to route anything anymore
@@ -292,6 +357,11 @@ class Network:
         self.__store_cycles()
 
     def rebalance(self, max_ops=100000, amount_coeff=1):
+        # calculate shortest paths first (will change in future)
+        self.__all_pair_shortest_paths = self.__compute_all_pair_shortest_paths()
+        # calculate (if not loaded) simple paths between all node pairs
+        self.__all_pair_simple_paths = self.__compute_all_pair_simple_paths()
+
         nr_executed = 0
         executed_this_time = 0
         if len(self.__cycles4) <= 0:
@@ -323,19 +393,6 @@ class Network:
         after = len(self.__history)
         logger.info('Successfuly rebalanced {} operations'.format(after - before))
 
-    def __store_cycles(self):
-        # check for operations to store
-        if len(self.__cycles4) > 0:
-            if not os.path.isdir(self.fingerprint):
-                logger.error('Folder {} is not available. Create snapshot first.'.format(self.fingerprint))
-            cycles_file = os.path.join(self.fingerprint, self.fingerprint + '_' + CYCLES_FILE + '_4' + '_' + str(
-                int(self.participation * 100)))
-            f = open(cycles_file, 'w')
-            for circle in self.__cycles4:
-                f.write(" ".join(circle) + '\n')
-                f.flush()
-            f.close()
-
     def create_snapshot(self):
         # create folder for each specific network
         if not os.path.isdir(self.fingerprint):
@@ -350,7 +407,6 @@ class Network:
         w.close()
 
     def store_experiment_result(self):
-        # iteration=1, selection='random'
         assert self.__stats and self.__history_gini, 'Statistics are empty, no experiment was performed. Cannot store results.'
         assert self.__history, 'No experiment was performed. Cannot store results.'
         assert self.flow and self.G, 'The network is empty. Cannot store results.'
@@ -367,20 +423,6 @@ class Network:
             json.dump(self.gini_hist_data(), f)
         nx.write_gpickle(self.G, graph_file)
         nx.write_gpickle(self.flow, flow_graph_file)
-
-    # get data for plotting
-    def gini_distr_data(self):
-        ginis_dict = nx.get_node_attributes(self.G, 'gini')
-        return list(ginis_dict.values())
-
-    def gini_hist_data(self):
-        return self.__history_gini
-
-    def stats(self):
-        return self.__stats
-
-    def apmf(self):
-        return self.__all_pair_max_flow
 
     def plot_gini_distr_hist(self, filename='gini_distr_hist'):
         # plot gini distribution
@@ -429,8 +471,23 @@ class Network:
         plt.legend(loc="lower left")
         Network.__store_chart(self.fingerprint, filename + '_' + self.experiment_name)
 
+    def plot_payments_vs_imbalance(self, filename='payments_vs_imbalance'):
+        stats = self.stats()
+        plt.plot(list(stats.keys())[::-1], [s['median_success'] for s in stats.values()][::-1],
+                 label='Route min 1 sat', linewidth=3)
+        plt.plot(list(stats.keys())[::-1], [s['median_micro'] for s in stats.values()][::-1],
+                 label='Route min {} sats'.format(MICRO_PAYMENT_SIZE), linewidth=3)
+        plt.plot(list(stats.keys())[::-1], [s['median_normal'] for s in stats.values()][::-1],
+                 label='Route min {} sats'.format(NORMAL_PAYMENT_SIZE), linewidth=3)
+        plt.title("Comparing Network imbalance with successful payments")
+        plt.xlabel("Network imbalance (G)")
+        plt.ylabel("median nr of payments (out of 10)")
+        plt.grid()
+        plt.legend(loc="lower left")
+        Network.__store_chart(self.fingerprint, filename + '_' + self.experiment_name)
+
     @classmethod
-    def restore_snapshot(cls, fingerprint, participation=1, is_file=False, iteration=1, selection='random'):
+    def restore_snapshot(cls, fingerprint, is_file=False):
         # should be able to store and restore from any intermediate network state
         G = nx.DiGraph()
         cycles4 = None
@@ -446,16 +503,17 @@ class Network:
                 c = open(cycles_file, "r")
                 cycles4 = []
                 for line in c:
-                    cycle = line.replace('\n', '').split((' '))
+                    cycle = line.replace('\n', '').split(' ')
                     cycles4.append(cycle)
-            except:
+            except OSError as e:
                 logger.info('No file with precomputed cycles - length 4 - found. ')
         for line in f:
             fields = line[:-1].split("\t")
             if len(fields) == 6:
                 s, d, c, a, base, rate = fields
                 G.add_edge(s, d, capacity=int(c), balance=int(a), base=int(base), rate=int(rate))
-        N = cls(G, participation, cycles4, cycles5, iteration=iteration, selection=selection)
+
+        N = cls(G, cycles4, cycles5)
         assert fingerprint == N.fingerprint or is_file, 'Fingerprints of stored and restored network are not equal'
         return N
 
@@ -472,7 +530,7 @@ class Network:
         flow_graph_file = os.path.join(fingerprint, 'FLOW' + '_' + experiment_name)
 
         G = nx.read_gpickle(graph_file)
-        N = cls(G, participation, iteration=iteration, selection=selection)
+        N = cls(G)
         N.fingerprint = fingerprint
         N.flow = nx.read_gpickle(flow_graph_file)
         with open(stats_file, "r") as f:
@@ -484,8 +542,7 @@ class Network:
         return N
 
     @classmethod
-    def parse_clightning(cls, channel_file, participation=1, init_balance_mode='opened'):
-        assert init_balance_mode in ['opened', 'normal'], 'Invalid initial balance mode (init_balance_mode)'
+    def parse_clightning(cls, channel_file):
         f = open(channel_file, "r")
         logger.debug('parse c-lightning channel dump')
         list_channels = json.load(f)
@@ -526,63 +583,58 @@ class Network:
                 report_non_dual += 1
         logger.info('There were {} channels which did not point in both directions. ({} left)'.format(report_non_dual,
                                                                                                       len(channels)))
-        logger.info('init_balance_mode "{}" was chosen'.format(init_balance_mode))
-        if init_balance_mode == 'opened':
-            # reduce to uni-directional graph
-            reduced = set()
-            for channel in channels:
-                s = channel['source']
-                d = channel['destination']
-                if s > d:
-                    s, d = d, s
-                reduced.add(tuple([s, d]))
-            logger.info('Reduced to uni-directional graph ({} channels)'.format(len(reduced)))
 
-            # shuffle source<->destination randomly
-            shuffled = set()
-            for channel in reduced:
-                input = bytearray(channel[0] + channel[1], 'utf-8')
-                hash_object = hashlib.sha256(input)
-                if hash_object.digest()[0] % 2 == 0:
-                    shuffled.add(tuple([channel[1], channel[0]]))
-                else:
-                    shuffled.add(channel)
-            logger.info('Shuffled source<>destination ({} channels)'.format(len(reduced)))
+        # reduce to uni-directional graph
+        reduced = set()
+        for channel in channels:
+            s = channel['source']
+            d = channel['destination']
+            if s > d:
+                s, d = d, s
+            reduced.add(tuple([s, d]))
+        logger.info('Reduced to uni-directional graph ({} channels)'.format(len(reduced)))
 
-            # get max(strongly_connected_component)
-            T = nx.DiGraph()
-            T.add_edges_from(shuffled)
-            strong_conn = max(nx.strongly_connected_components(T), key=len)
-            T = T.subgraph(strong_conn).copy()
-            logger.info('Found max strongly connected component of length {}'.format(len(list(T.edges))))
-            assert strong_conn == max(nx.strongly_connected_components(T),
-                                      key=len), 'T should now be the strongly connected graph'
-            nx.set_edge_attributes(T, cap_attr, 'balance')
+        # shuffle source<->destination randomly
+        shuffled = set()
+        for channel in reduced:
+            input = bytearray(channel[0] + channel[1], 'utf-8')
+            hash_object = hashlib.sha256(input)
+            if hash_object.digest()[0] % 2 == 0:
+                shuffled.add(tuple([channel[1], channel[0]]))
+            else:
+                shuffled.add(channel)
+        logger.info('Shuffled source<>destination ({} channels)'.format(len(reduced)))
 
-            # Reverse the whole graph to replicate channels, set balance to zero
-            R = T.reverse(copy=True)
-            nx.set_edge_attributes(R, 0, 'balance')
-            # Merge the two graphs
-            G = nx.compose(T, R)
-            logger.info('Replicate reverse edges and merged the network ({} channels)'.format(len(list(G.edges))))
+        # get max(strongly_connected_component)
+        T = nx.DiGraph()
+        T.add_edges_from(shuffled)
+        strong_conn = max(nx.strongly_connected_components(T), key=len)
+        T = T.subgraph(strong_conn).copy()
+        logger.info('Found max strongly connected component of length {}'.format(len(list(T.edges))))
+        assert strong_conn == max(nx.strongly_connected_components(T),
+                                  key=len), 'T should now be the strongly connected graph'
+        nx.set_edge_attributes(T, cap_attr, 'balance')
 
-            # set edge properties to new graph
-            nx.set_edge_attributes(G, cap_attr, 'capacity')
-            nx.set_edge_attributes(G, base_attr, 'base')
-            nx.set_edge_attributes(G, rate_attr, 'rate')
-            logger.info('Set all the edge properties ({} channels)'.format(len(list(G.edges))))
-        elif init_balance_mode == 'normal':
-            raise NotImplementedError('mode <normal> is not yet implemented')
+        # Reverse the whole graph to replicate channels, set balance to zero
+        R = T.reverse(copy=True)
+        nx.set_edge_attributes(R, 0, 'balance')
+        # Merge the two graphs
+        G = nx.compose(T, R)
+        logger.info('Replicate reverse edges and merged the network ({} channels)'.format(len(list(G.edges))))
 
-        return cls(G, participation=participation)
+        # set edge properties to new graph
+        nx.set_edge_attributes(G, cap_attr, 'capacity')
+        nx.set_edge_attributes(G, base_attr, 'base')
+        nx.set_edge_attributes(G, rate_attr, 'rate')
+        logger.info('Set all the edge properties ({} channels)'.format(len(list(G.edges))))
+
+        return cls(G)
 
     @staticmethod
     def gini(x):
         # FIXME: replace with a more efficient implementation
         mean_absolute_differences = np.abs(np.subtract.outer(x, x)).mean()
-        # print(x)
         relative_absolute_mean = mean_absolute_differences / np.mean(x)
-        # print(relative_absolute_mean)
         return 0.5 * relative_absolute_mean
 
     @staticmethod
@@ -594,108 +646,71 @@ class Network:
         rmad = mad / np.average(x, weights=weights)
         return 0.5 * rmad
 
-    @staticmethod
-    def plot_gini_vs_rebalops_merge(networks, filename='gini_vs_rebalops_merge'):
-        assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
-        fingerprint = networks[0].fingerprint
-        for n in networks:
-            hist = n.gini_hist_data()
-            lbl = '{:d} % participation'.format(int(n.participation * 100))
-            plt.plot(hist, label=lbl, linewidth=3)
-        plt.title("Network imbalance over time (successfull rebalancing operations)")
-        plt.xlabel("Number of successfull rebalancing operations (logarithmic)")
-        plt.ylabel("Network imbalance (G)")
-        plt.xscale("log")
-        plt.xlim(100, 10000000)
-        plt.grid()
-        plt.legend(loc="upper right")
-        Network.__store_chart(fingerprint, filename)
-
-    @staticmethod
-    def plot_paymentsize_vs_imbalance_merge(networks, filename='median_payment_size_merge'):
-        # plot stats per 0.01 gini
-        assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
-        fingerprint = networks[0].fingerprint
-        for n in networks:
-            lbl = '{:d} % participation'.format(int(n.participation * 100))
-            stats = n.stats()
-            plt.plot(list(stats.keys())[::-1], [s['median_payment_amount'] for s in stats.values()][::-1],
-                     label=lbl, linewidth=3)
-            #plt.plot(list(stats.keys())[::-1], [s['median_payment_amount_std'] for s in stats.values()][::-1], label=lbl + ' st dev', linewidth=3)
-        plt.title("Comparing Network imbalance with possible payment size")
-        plt.xlabel("Network imbalance (G)")
-        plt.ylabel("Median possible payment size [satoshi]")
-        plt.legend(loc="upper right")
-        plt.grid()
-        Network.__store_chart(fingerprint, filename)
-
-    @staticmethod
-    def plot_successrate_vs_imbalance_merge(networks, filename='successrate_vs_imbalance_merge'):
-        assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
-        fingerprint = networks[0].fingerprint
-        for n in networks:
-            lbl = '{:d} % participation'.format(int(n.participation * 100))
-            stats = n.stats()
-            plt.plot(list(stats.keys())[::-1], [s['success_rate'] for s in stats.values()][::-1],
-                     label=lbl, linewidth=3)
-            #plt.plot(list(stats.keys())[::-1], [s['success_rate_std'] for s in stats.values()][::-1], label=lbl + ' st dev', linewidth=3)
-        plt.title("Comparing Network imbalance with success rate of random payments")
-        plt.xlabel("Network imbalance (G)")
-        plt.ylabel("Success rate of random payment")
-        plt.grid()
-        plt.legend(loc="lower left")
-        Network.__store_chart(fingerprint, filename)
-
-    @staticmethod
-    def plot_gini_vs_participation(networks, filename='gini_vs_participation'):
-        def byParticipation(n):
-            return n.participation
-        assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
-        fingerprint = networks[0].fingerprint
-        networks.sort(key=byParticipation)
-        data = [n.gini_distr_data() for n in networks]
-        lbl = [str(n.participation*100)+'%' for n in networks]
-        # Create a figure instance
-
-        plt.boxplot(data, labels=lbl)
-        Network.__store_chart(fingerprint, filename)
-
-    @classmethod
-    def condense_networks(cls, networks):
-        assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot condense different networks together'
-        assert len(set([n.participation for n in networks])) == 1, 'You cannot condense different participations together'
-        assert len(set([n.selection for n in networks])) == 1, 'You cannot condense different selection together'
-        fingerprint = networks[0].fingerprint
-        participation = networks[0].participation
-        selection = networks[0].selection
-        N = cls(networks[0].G, participation, iteration=0, selection=selection)
-        N.fingerprint = fingerprint
-
-        keys = set()
-        figures = set()
-        [keys.update(n.stats().keys()) for n in networks]
-        for n in networks:
-            for v in list(n.stats().values()):
-                figures.update(v.keys())
-        print('keys {}, figures {}'.format(keys, figures))
-        key_l = list(keys)
-        key_l.sort(reverse=True)
-
-        avg_stats = dict()
-        for k in key_l:
-            avg_figures = dict()
-            for f in figures:
-                available = [n for n in networks ]
-                avg_figures[f] = np.average([n.stats()[k][f] for n in networks if k in n.stats()])
-                avg_figures[f+'_std'] = np.std([n.stats()[k][f] for n in networks if k in n.stats()])
-            avg_stats[k] = avg_figures
-        N.__stats = avg_stats
-
-        # gini history
-        entries = max([len(n.gini_hist_data()) for n in networks])
-        avg_gini_hist = [np.average([n.gini_hist_data()[e] for n in networks if len(n.gini_hist_data()) >= e+1]) for e in range(entries)]
-        N.__history_gini = avg_gini_hist
-        return N
+    # @staticmethod
+    # def plot_gini_vs_rebalops_merge(networks, filename='gini_vs_rebalops_merge'):
+    #     assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
+    #     fingerprint = networks[0].fingerprint
+    #     for n in networks:
+    #         hist = n.gini_hist_data()
+    #         lbl = '{:d} % participation'.format(int(n.participation * 100))
+    #         plt.plot(hist, label=lbl, linewidth=3)
+    #     plt.title("Network imbalance over time (successfull rebalancing operations)")
+    #     plt.xlabel("Number of successfull rebalancing operations (logarithmic)")
+    #     plt.ylabel("Network imbalance (G)")
+    #     plt.xscale("log")
+    #     plt.xlim(100, 10000000)
+    #     plt.grid()
+    #     plt.legend(loc="upper right")
+    #     Network.__store_chart(fingerprint, filename)
+    #
+    # @staticmethod
+    # def plot_paymentsize_vs_imbalance_merge(networks, filename='median_payment_size_merge'):
+    #     # plot stats per 0.01 gini
+    #     assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
+    #     fingerprint = networks[0].fingerprint
+    #     for n in networks:
+    #         lbl = '{:d} % participation'.format(int(n.participation * 100))
+    #         stats = n.stats()
+    #         plt.plot(list(stats.keys())[::-1], [s['median_payment_amount'] for s in stats.values()][::-1],
+    #                  label=lbl, linewidth=3)
+    #         #plt.plot(list(stats.keys())[::-1], [s['median_payment_amount_std'] for s in stats.values()][::-1], label=lbl + ' st dev', linewidth=3)
+    #     plt.title("Comparing Network imbalance with possible payment size")
+    #     plt.xlabel("Network imbalance (G)")
+    #     plt.ylabel("Median possible payment size [satoshi]")
+    #     plt.legend(loc="upper right")
+    #     plt.grid()
+    #     Network.__store_chart(fingerprint, filename)
+    #
+    # @staticmethod
+    # def plot_successrate_vs_imbalance_merge(networks, filename='successrate_vs_imbalance_merge'):
+    #     assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
+    #     fingerprint = networks[0].fingerprint
+    #     for n in networks:
+    #         lbl = '{:d} % participation'.format(int(n.participation * 100))
+    #         stats = n.stats()
+    #         plt.plot(list(stats.keys())[::-1], [s['success_rate'] for s in stats.values()][::-1],
+    #                  label=lbl, linewidth=3)
+    #         #plt.plot(list(stats.keys())[::-1], [s['success_rate_std'] for s in stats.values()][::-1], label=lbl + ' st dev', linewidth=3)
+    #     plt.title("Comparing Network imbalance with success rate of random payments")
+    #     plt.xlabel("Network imbalance (G)")
+    #     plt.ylabel("Success rate of random payment")
+    #     plt.grid()
+    #     plt.legend(loc="lower left")
+    #     Network.__store_chart(fingerprint, filename)
+    #
+    # @staticmethod
+    # def plot_gini_vs_participation(networks, filename='gini_vs_participation'):
+    #     def byParticipation(n):
+    #         return n.participation
+    #     assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
+    #     fingerprint = networks[0].fingerprint
+    #     networks.sort(key=byParticipation)
+    #     data = [n.gini_distr_data() for n in networks]
+    #     lbl = [str(n.participation*100)+'%' for n in networks]
+    #     # Create a figure instance
+    #
+    #     plt.boxplot(data, labels=lbl)
+    #     Network.__store_chart(fingerprint, filename)
 
     @staticmethod
     def __store_chart(fingerprint, filename, types=('pdf', 'png')):
@@ -707,3 +722,6 @@ class Network:
             chart_file = os.path.join(path, fingerprint + '_' + filename + '.' + file_type)
             plt.savefig(chart_file)
         plt.close()
+
+    def debug(self):
+        print('nodes: {}. all pair short path #{}'.format(len(self.G.nodes), len(self.__compute_all_pair_shortest_paths())))
