@@ -19,6 +19,280 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{nakamoto_bitcoin_2008}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1977190f018b398e43ede3de043de8ea}{%
+           family={Nakamoto},
+           familyi={N\bibinitperiod},
+           given={Satoshi},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{1977190f018b398e43ede3de043de8ea}
+      \strng{fullhash}{1977190f018b398e43ede3de043de8ea}
+      \strng{bibnamehash}{1977190f018b398e43ede3de043de8ea}
+      \strng{authorbibnamehash}{1977190f018b398e43ede3de043de8ea}
+      \strng{authornamehash}{1977190f018b398e43ede3de043de8ea}
+      \strng{authorfullhash}{1977190f018b398e43ede3de043de8ea}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution. Digital signatures provide part of the solution, but the main benefits are lost if a trusted third party is still required to prevent double-spending. We propose a solution to the double-spending problem using a peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work. The longest chain not only serves as proof of the sequence of events witnessed, but proof that it came from the largest pool of {CPU} power. As long as a majority of {CPU} power is controlled by nodes that are not cooperating to attack the network, they'll generate the longest chain and outpace attackers. The network itself requires minimal structure. Messages are broadcast on a best effort basis, and nodes can leave and rejoin the network at will, accepting the longest proof-of-work chain as proof of what happened while they were gone.}
+      \field{langid}{english}
+      \field{title}{Bitcoin: A Peer-to-Peer Electronic Cash System}
+      \field{urlday}{7}
+      \field{urlmonth}{6}
+      \field{urlyear}{2020}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{9}
+      \range{pages}{1}
+      \verb{file}
+      \verb Nakamoto - Bitcoin A Peer-to-Peer Electronic Cash System.pdf:/home/tobias/Zotero/storage/Z6H95G9Q/Nakamoto - Bitcoin A Peer-to-Peer Electronic Cash System.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://bitcoin.org/bitcoin.pdf
+      \endverb
+      \verb{url}
+      \verb https://bitcoin.org/bitcoin.pdf
+      \endverb
+    \endentry
+    \entry{narayanan_bitcoin_2016}{book}{}
+      \name{author}{5}{}{%
+        {{hash=95dc795a2be14c50fb6a924acc135ff8}{%
+           family={Narayanan},
+           familyi={N\bibinitperiod},
+           given={Arvind},
+           giveni={A\bibinitperiod}}}%
+        {{hash=e6eb78ec5f92eaff4e9d4b944aff4c9c}{%
+           family={Bonneau},
+           familyi={B\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5f7a7ca8a5b79afabc956229bd08f9d5}{%
+           family={Felten},
+           familyi={F\bibinitperiod},
+           given={Edward},
+           giveni={E\bibinitperiod}}}%
+        {{hash=403caa7edb7a2770a6a678a46079869e}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=208ae2fb561a96b06fbdd96f6f18a33c}{%
+           family={Goldfeder},
+           familyi={G\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{1e27193b02d094e104860859daa9d014}
+      \strng{fullhash}{f512b13af32d34046a5ecb069096e94e}
+      \strng{bibnamehash}{f512b13af32d34046a5ecb069096e94e}
+      \strng{authorbibnamehash}{f512b13af32d34046a5ecb069096e94e}
+      \strng{authornamehash}{1e27193b02d094e104860859daa9d014}
+      \strng{authorfullhash}{f512b13af32d34046a5ecb069096e94e}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Bitcoin and Cryptocurrency Technologies}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb Narayanan et al. - Bitcoin and Cryptocurrency Technologies.pdf:/home/tobias/Zotero/storage/B7M8V8QQ/Narayanan et al. - Bitcoin and Cryptocurrency Technologies.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{chaum_blind_1983}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=615e97951d5e1c224ddda5bded8c9081}{%
+           family={Chaum},
+           familyi={C\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=615e97951d5e1c224ddda5bded8c9081}{%
+           family={Chaum},
+           familyi={C\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3a964821f97ee17f8bb285bc61c52899}{%
+           family={Rivest},
+           familyi={R\bibinitperiod},
+           given={Ronald\bibnamedelima L.},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=1a8a50c4c69b879caa03ffa069acbb67}{%
+           family={Sherman},
+           familyi={S\bibinitperiod},
+           given={Alan\bibnamedelima T.},
+           giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston, {MA}}%
+      }
+      \list{publisher}{1}{%
+        {Springer {US}}%
+      }
+      \strng{namehash}{615e97951d5e1c224ddda5bded8c9081}
+      \strng{fullhash}{615e97951d5e1c224ddda5bded8c9081}
+      \strng{bibnamehash}{615e97951d5e1c224ddda5bded8c9081}
+      \strng{authorbibnamehash}{615e97951d5e1c224ddda5bded8c9081}
+      \strng{authornamehash}{615e97951d5e1c224ddda5bded8c9081}
+      \strng{authorfullhash}{615e97951d5e1c224ddda5bded8c9081}
+      \strng{editorbibnamehash}{18464061a5995e1aaa1729a2eaad0ed4}
+      \strng{editornamehash}{18464061a5995e1aaa1729a2eaad0ed4}
+      \strng{editorfullhash}{18464061a5995e1aaa1729a2eaad0ed4}
+      \field{sortinit}{3}
+      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Automation of the way we pay for goods and services is already underway, as can be seen by the variety and growth of electronic banking services available to consumers. The ultimate structure of the new electronic payments system may have a substantial impact on personal privacy as well as on the nature and extent of criminal use of payments. Ideally a new payments system should address both of these seemingly conflicting sets of concerns.}
+      \field{booktitle}{Advances in Cryptology}
+      \field{isbn}{978-1-4757-0602-4}
+      \field{langid}{english}
+      \field{title}{Blind Signatures for Untraceable Payments}
+      \field{year}{1983}
+      \field{dateera}{ce}
+      \field{pages}{199\bibrangedash 203}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1007/978-1-4757-0602-4_18
+      \endverb
+      \verb{file}
+      \verb Chaum - 1983 - Blind Signatures for Untraceable Payments.pdf:/home/tobias/Zotero/storage/NJXGPIAB/Chaum - 1983 - Blind Signatures for Untraceable Payments.pdf:application/pdf
+      \endverb
+      \keyw{Black Market,Blind Signature,Carbon Paper,Payment System,Personal Privacy}
+    \endentry
+    \entry{haber_how_1991}{article}{}
+      \name{author}{2}{}{%
+        {{hash=dc54fe6ba19414afd96d107ec03015ee}{%
+           family={Haber},
+           familyi={H\bibinitperiod},
+           given={Stuart},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1f8fc1588cc66f34dd23ece8c0a20872}{%
+           family={Stornetta},
+           familyi={S\bibinitperiod},
+           given={W.\bibnamedelimi Scott},
+           giveni={W\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{a92bf7134bdc53455b2ec958cb3ee8b9}
+      \strng{fullhash}{a92bf7134bdc53455b2ec958cb3ee8b9}
+      \strng{bibnamehash}{a92bf7134bdc53455b2ec958cb3ee8b9}
+      \strng{authorbibnamehash}{a92bf7134bdc53455b2ec958cb3ee8b9}
+      \strng{authornamehash}{a92bf7134bdc53455b2ec958cb3ee8b9}
+      \strng{authorfullhash}{a92bf7134bdc53455b2ec958cb3ee8b9}
+      \field{sortinit}{6}
+      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The prospect of a world in which all text, audio, picture, and video documents are in digital form on easily modifiable media raises the issue of how to certify when a document was created or last changed. The problem is to time-stamp the data, not the medium. We propose computationally practical procedures for digital time-stamping of such documents so that it is infeasible for a user either to back-date or to forward-date his document, even with the collusion of a time-stamping service. Our procedures maintain complete privacy of the documents themselves, and require no record-keeping by the time-stamping service.}
+      \field{day}{1}
+      \field{issn}{1432-1378}
+      \field{journaltitle}{Journal of Cryptology}
+      \field{langid}{english}
+      \field{month}{1}
+      \field{number}{2}
+      \field{shortjournal}{J. Cryptology}
+      \field{title}{How to time-stamp a digital document}
+      \field{urlday}{6}
+      \field{urlmonth}{7}
+      \field{urlyear}{2020}
+      \field{volume}{3}
+      \field{year}{1991}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{99\bibrangedash 111}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1007/BF00196791
+      \endverb
+      \verb{file}
+      \verb Springer Full Text PDF:/home/tobias/Zotero/storage/978AGLMP/Haber and Stornetta - 1991 - How to time-stamp a digital document.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/BF00196791
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/BF00196791
+      \endverb
+    \endentry
+    \entry{back_hashcash_2002}{report}{}
+      \name{author}{1}{}{%
+        {{hash=56cdb816bf599f4f7f766374b2663310}{%
+           family={Back},
+           familyi={B\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{56cdb816bf599f4f7f766374b2663310}
+      \strng{fullhash}{56cdb816bf599f4f7f766374b2663310}
+      \strng{bibnamehash}{56cdb816bf599f4f7f766374b2663310}
+      \strng{authorbibnamehash}{56cdb816bf599f4f7f766374b2663310}
+      \strng{authornamehash}{56cdb816bf599f4f7f766374b2663310}
+      \strng{authorfullhash}{56cdb816bf599f4f7f766374b2663310}
+      \field{sortinit}{8}
+      \field{sortinithash}{1b24cab5087933ef0826a7cd3b99e994}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Hashcash was originally proposed as a mechanism to throttle systematic abuse of un-metered internet resources such as email, and anonymous remailers in May 1997. Five years on, this paper captures in one place the various applications, improvements suggested and related subsequent publications, and describes initial experience from experiments using hashcash.}
+      \field{day}{1}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{title}{Hashcash - A Denial of Service Counter-Measure}
+      \field{year}{2002}
+      \field{dateera}{ce}
+      \field{pages}{10}
+      \range{pages}{1}
+      \verb{file}
+      \verb Back - Hashcash - A Denial of Service Counter-Measure.pdf:/home/tobias/Zotero/storage/T4BGW5K6/Back - Hashcash - A Denial of Service Counter-Measure.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://cypherspace.org/hashcash/hashcash.pdf
+      \endverb
+      \verb{url}
+      \verb http://cypherspace.org/hashcash/hashcash.pdf
+      \endverb
+    \endentry
+    \entry{noauthor_blocks-size_nodate}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The total size of the blockchain minus database indexes in megabytes.}
+      \field{title}{blocks-size}
+      \field{titleaddon}{Blockchain.com}
+      \field{urlday}{6}
+      \field{urlmonth}{7}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:/home/tobias/Zotero/storage/H75Y2LW5/blocks-size.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.blockchain.com/charts/blocks-size
+      \endverb
+      \verb{url}
+      \verb https://www.blockchain.com/charts/blocks-size
+      \endverb
+    \endentry
+    \entry{noauthor_scalability_nodate}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labeltitlesource}{title}
+      \field{title}{Scalability - Bitcoin Wiki}
+      \field{urlday}{6}
+      \field{urlmonth}{7}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.bitcoin.it/wiki/Scalability
+      \endverb
+      \verb{url}
+      \verb https://en.bitcoin.it/wiki/Scalability
+      \endverb
+    \endentry
     \entry{pickhardt_imbalance_2019}{book}{}
       \name{author}{2}{}{%
         {{hash=dc85330d1565ef95ba5a108f80bd096e}{%

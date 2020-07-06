@@ -7,6 +7,11 @@
 \usepackage{silence}
 \WarningFilter{hyperref}{Draft mode on}
 
+% Load the package
+\usepackage[toc]{glossaries}
+% Generate the glossary
+\makeglossaries
+
 \input{header}                            %loads all packages, definitions and settings, except bibliography (otherwise vim-latex doesn't recognise for completion)
 
 %%---Bibliography------------------------------------------------------------------------
@@ -69,10 +74,11 @@ Expert                        &    René Pickhardt
 
 %%---GLOSSARY
 \section*{Glossary}
-\addcontentsline{toc}{section}{Glossary}
 \todo[inline]{Should be able to auto generate that thing}
+
+
 \begin{itemize}
-  \item Bitcoin
+  \item Bitcoid
   \item Bitcoin Node
   \item Lightning Node
   \item Routing
@@ -90,8 +96,35 @@ Also define here what does it mean if some text is:
 
 
 \pagenumbering{arabic}
-\section{Introduction}
-This section aims to give a basic understanding of the Bitcoin and Lightning technology. \todo[inline]{Define certain terms like, node, (block)chain, confirmation, channel, balance, capacity, source routing, forwarding}
+\section{Introduction} This section aims to give a basic understanding of the Bitcoin and Lightning technology. This is required to later formulate the problem in terms of the graph theory concepts. \todo[inline]{Define certain terms like, node, (block)chain, confirmation, channel, balance, capacity, source routing, forwarding}
+
+\subsection{Bitcoin: Peer to Peer Electronic Cash}\label{subsec:peertopeer}
+\cite{nakamoto_bitcoin_2008}
+Bitcoin is a peer-to-peer electronic cash system first introduced in a white paper by the individual or group behind the pseudonym Satoshi Nakamoto (further referenced as ``he''). This paper lines out the fundamental principles of the Bitcoin block chain that achieves digital transfer of value without a central third party. The next paragraphs give a brief overview of those principles and their historic evolution. 
+
+\subsubsection{History of digital cash}
+Before the digital age cash was the dominant form of payment. A bank note or a coin embodies the respective face value to the bearer of it. Economical transactions can be made by simply exchanging this physical token by which the transaction was immediately settled. However, with the advent of e-commerce this simple and transparent mechanism was no longer possible. New institutions formed to fulfill the need of online transactions. Credit card companies and payment processors filled the gap of trust needed between the sender and the receiver of a transaction made over the internet. This architecture came with significant drawbacks. Suddenly, the interacting parties are dependent on third parties which is additionally collecting fees. Use of such systems require identification and since the intermediary can track all transactions made, this reduces the user's privacy. \cite{narayanan_bitcoin_2016} 
+
+Bitcoin is by no means the first system introduced to allow for a digital cash system. Already in in 1983 \textcite{chaum_blind_1983} worked on new cryptographic primitives that should make electronic banking services more private and offer improved auditability. Although his technology still relied on a central ``bank'' server which issues electronic bills, blinded signatures allowed to anonymously transfer them. In 1989 the company \textbf{DigiCash} was found by Chaum to commercialise the idea and a few banks did implement it. Technological complexity, patents on the invention and the incapability of handling  user-to-user transactions prevented it from becoming a success \cite{narayanan_bitcoin_2016}. 
+
+An important problem in the evolution of digital cash has been the so called \textbf{\gls{doublespend}}. Digital information has the property of being easily duplicated. This poses a problem to digital cash as this behaviour is generally unwanted. How can a receiver of digital cash be certain that the cash has not been spent to someone else before, thus eliminating its value? Satoshi Nakamoto introduced the concept of a global distributed ledger, a data structure that is append only and where any change must be disseminated to all participants. In order to keep the history of the ledger immutable Satoshi utilizes the idea of a time stamping server first proposed by \textcite{haber_how_1991} in 1991. It works by calculating the hash of a piece of data and publishing it to all the participants. This serves as a proof that the data existed at this given time since otherwise the hash could not have been calculated. The next piece of data to be published also contains the previous hash, effectively linking them and forming a chain. If someone would now want to change the underlying data this would change its hash and since it is included in the next element in the chain also this hash would need to be changed up until the most recent element. 
+\todo[inline]{explain hash and add to glossary}
+
+Maintaining a global state of transactions in a constantly changing network of participants which can not be trusted is challenging. A single user could spin up hundreds of nodes to overcome the conses of the network. How can a consensus be formed without a central authority? A solution to a similar problem was proposed by \textcite{back_hashcash_2002} in 2002. To prevent e-mail spamming he introduced a mechanism that requires the sender to solve a puzzle that is computational heavy. This so called ``proof of work'' is requested by the receiver of the e-mail to trust that it is no spam. Since this computation can easily be done for one e-mail it becomes a big burden to do for thousand of e-mails therefore avoiding spammers. The puzzle simply involves finding a value whose hash starts with a certain amount of zero bits. Since the result of a hash function can not be predicted only brute force can be applied to find such a value. By selecting the number of leading zero bits one can change the difficulty of the puzzle. Each additional zero leads to the difficulty to be doubled. In order to add transactions to the Bitcoin ledger a participant constructs a block consisting of transactions, computes the proof of work and publishes it to the network. Only if all transactions are valid and the work done has been verified network participants append the transactions to their local copy of the ledger and further broadcast the block.  
+\todo[inline]{add pow to glossary}
+
+Combining proof of work with the chaining of hashes introduced in the last paragraph results in a strong security model. An attacker who wants to change the history of the ledger would need to recompute the proof of work of the changed and all subsequent blocks as they are linked by their hashes. Therefore, every new block makes it increasingly more difficult to change a transaction in the ledger. Number of blocks on top of a transaction in question is hence be referred to as \textbf{confirmations}.  
+
+\subsubsection{Scaling solutions}
+One of Bitcoin's value propositions is being decentralised. At the same time every transaction ever made must be distributed and stored among all network peers. It becomes obvious that some trade-off has to be made to maintain those two properties: scalability. This is often referred to as the scalability trilemma \todo{trillema in glossary} which states that in distributed systems the three objectives \textbf{security}, \textbf{decentralisation} and \textbf{scalability} can not be achieved in full extent at the same time. While two can often be achieved, there are certain trade-offs to be made in the third domain. This section is explaining why this is true for Bitcoin and what main categories of solution exist.
+
+While decentralisation can be described on many levels we focus here on the decentralisation of validating nodes. Those are network participants that verify the blocks published by miners. Decentralisation would be best achieved if  every user of Bitcoin would run its own fully validating node \todo{add full node to glossary}to receive information about the ledger independently. On the other hand the network would be centralised when only few nodes would validate and users would need to trust those to tell the truth about the ledger state. To keep decentralisation high it is crucial to keep the hardware and network requirements as low as possible. The Bitcoin protocol restricts the amount of data to be processed to one block of 1 megabyte per 10 minutes. A full node in the network must be able to download at least 1 MB / 10 minutes in order to keep up with the tip of the chain. Lower bandwidth would cause it to get left behind without every being able to catch up. Additionally, the full node must keep the full ledger on storage. This yields to approximately 286 GB \cite{noauthor_blocks-size_nodate} at time of writing, increasing linearly in the future. This upper limit block size results in a throughput of approximately 7 transactions per second (tps) \cite{noauthor_scalability_nodate}. Clearly by several orders of magnitude smaller than what it would require to become a world wide payments network. 
+
+Bitcoin, by design, promotes security and decentralisation while sacrificing scalability. However, to be usable by everyone the scalability issue needs to be addressed. As Bitcoin is not owned by anyone there is no one party to decide on the future design decisions. This lead to a scaling debate with two ideological camps on how to progress. Scaling on-chain or scaling off-chain.
+
+Scaling on-chain means lifting the cap of 1 MB per block, allowing for a higher transaction throughput. While this seems the most straight forward solution it can not be achieved without trade-off. As previously discussed decentralisation can only be maintained by keeping the hardware and network requirements low. Removing this restriction to allow worldwide usage would mean that nodes soon need to process hundreds of megabytes or even gigabytes per second, effectively reducing the number of nodes that can still keep up, leading to a more centralised network. 
+
+An off-chain scaling solution describes any system that acts outside of the Bitcoin protocol but is linked to it, therefore leveraging the amount of economical transactions that can be performed per on-chain transaction. These solutions build a second layer of abstraction. While still using functionality of the base layer they can reduce their dependency and make their own design decisions and trade-offs based on the scalability trilemma. The Lightning Network is only one possible off-chain solution and is described in the next section in more depth. 
 
 \subsection{Lightning technology}
 The Lightning Network is a network that utilizes Bitcoin as its underlying system. It can, therefore, be described as a ``second layer'' protocol building upon the Bitcoin ``base layer''. Bitcoin is a decentralized peer-to-peer money system with no central entities. The system was designed with security and robustness being the main objectives, sacrificing other properties such as transaction throughput (speed). 
@@ -112,15 +145,33 @@ René Pickhardt's and Mariusz Nowostawski's publication ``Imbalance measure and 
 Rebalancing is an activity where one node engages in a circular payment that pays itself. This is only possible when the node has at least two channels with different peers. The payment gets routed \textbf{out} through one channel and is \textbf{received back} over another. On the way, it can use one or more hops to find back to the sender node. This procedure enables a node to change the balances of the individual channels while the total node balance stays the same. In practice, there would be a fee collected by the intermediate nodes whose channels are used. In the proposed rebalancing protocol nodes would forego the fee and only participate in the rebalancing attempt if their balancedness improves as well.
 
 \subsection{Problem statement}
+\todo[inline]{Only give a brief informal overview of the problem but forward reference to the next chapter}
+
 These payment channel networks are decentralized by nature and no protocol change can be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure \footnote{Defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
 
 
-\section{Path finding problem}
+\section{Problems in graph theory}
+\todo[inline]{Go from general graph theory problems into more specific areas, 1 paragraph per topic}
 \todo[inline]{Explain why finding a path in the lightning network can be so difficult}
 
 Nodes trying to find a path in the Lightning Network work with limited information. While they know what channels are available and what their capacities are, they do not know about the balances and therefore whether the nodes can forward their payment or not. Hence, it is likely that a payment attempt fails because a node had insufficient balance. The paying node needs to find another route and retry the payment until it succeeds. If the payment fails repeatedly it can cause delays that are bad for the user experience. 
 
-\section{Methodology} \label{sec:method}
+\section{Experiment} \label{sec:method}
+\todo[inline]{explain all the performance measures}
+\todo[inline]{explain methodology}
+\todo[inline]{explain the experimental setup}
+\subsection{Preprocessing}
+\todo[inline]{explain which nodes and channels where selected}
+
+\subsection{Lightning properties}
+%% Dummy text
+
+\subsection{Implementing routing protocol}
+\todo[inline]{Describe how the proposed protocol change is impolemented in the \textbf{Network} class. }
+\todo[inline]{show illustrations with a dummy network}
+\todo[inline]{ask Rene to his dummy network}
+
+\subsection{Methodology}
 \todo[inline]{explain how to get the network information for a running node. quickly show how I extracted the data from the full node. Explain the structure of the python class \textbf{Network}}. And some more \textbf{bold text}.
 
 To model the network, public information from the Lightning Network is used. From a Lightning node, all the channel and node information can be extracted.
@@ -136,34 +187,30 @@ For all further manipulations and calculations, the programming language Python 
   \item Plot graphs to visualize the results.
 \end{itemize}
 
-\section{Routing measures}
-%% Dummy text
-\section{Experimental setup}
-%% Dummy text
 
-\subsection{Preprocessing}
-\todo[inline]{explain which nodes and channels where selected}
-
-\subsection{Lightning properties}
-%% Dummy text
-\subsection{Implementing routing protocol}
-\todo[inline]{Describe how the proposed protocol change is impolemented in the \textbf{Network} class. }
-\todo[inline]{show illustrations with a dummy network}
-\todo[inline]{ask Rene to his dummy network}
 \section{Results}
 %% Dummy text
-\section{Conclusion}
-%% Dummy text
-ksjdfskdj
-\section{Outlook}
+\section{Conclusion \& Outlook}
 %% Dummy text
 
 %%---BIBLIOGRAPHY------------------------------------------------------------------------
 \newpage
 {\sloppypar
+\addcontentsline{toc}{section}{Bibliography}
 \printbibliography
 \label{sec:lit}
 }
+
+
+%Print the glossary
+\newpage
+\newglossaryentry{doublespend}{name={double spend problem}, description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.}}
+\section*{Glossary}
+\printglossaries
+
+\appendix
+\section{Some appendix}
+maybe\ldots
 
 %%---TODO-OVERVIEW-------------------
 \ifdraft{%Do this only if mode=draft

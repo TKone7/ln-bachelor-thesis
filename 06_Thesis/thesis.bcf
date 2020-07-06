@@ -2130,8 +2130,19 @@
     <bcf:datasource type="file" datatype="bibtex">literature/bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">pickhardt_imbalance_2019</bcf:citekey>
-    <bcf:citekey order="2">pickhardt_imbalance_2019</bcf:citekey>
+    <bcf:citekey order="1">nakamoto_bitcoin_2008</bcf:citekey>
+    <bcf:citekey order="2">narayanan_bitcoin_2016</bcf:citekey>
+    <bcf:citekey order="3">chaum_blind_1983</bcf:citekey>
+    <bcf:citekey order="4">chaum_blind_1983</bcf:citekey>
+    <bcf:citekey order="5">narayanan_bitcoin_2016</bcf:citekey>
+    <bcf:citekey order="6">haber_how_1991</bcf:citekey>
+    <bcf:citekey order="7">haber_how_1991</bcf:citekey>
+    <bcf:citekey order="8">back_hashcash_2002</bcf:citekey>
+    <bcf:citekey order="9">back_hashcash_2002</bcf:citekey>
+    <bcf:citekey order="10">noauthor_blocks-size_nodate</bcf:citekey>
+    <bcf:citekey order="11">noauthor_scalability_nodate</bcf:citekey>
+    <bcf:citekey order="12">pickhardt_imbalance_2019</bcf:citekey>
+    <bcf:citekey order="13">pickhardt_imbalance_2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

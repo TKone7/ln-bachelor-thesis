@@ -1,0 +1,30 @@
+\ifglsentryexists{doublespend}{}%
+{%
+\gls@defglossaryentry{doublespend}%
+{%
+name={double spend problem},%
+sort={double spend problem},%
+type={main},%
+first={double spend problem},%
+firstplural={double spend problems},%
+text={double spend problem},%
+plural={double spend problems},%
+description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.},%
+descriptionplural={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

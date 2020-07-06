@@ -3,18 +3,20 @@
 \babel@toc {english}{}
 \contentsline {section}{Declaration of honor}{III}{section*.2}% 
 \contentsline {section}{Foreword}{IV}{section*.4}% 
-\contentsline {section}{Glossary}{V}{section*.6}% 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}% 
-\contentsline {subsection}{\numberline {1.1}Lightning technology}{1}{subsection.1.1}% 
-\contentsline {subsection}{\numberline {1.2}Previous work}{1}{subsection.1.2}% 
-\contentsline {subsection}{\numberline {1.3}Problem statement}{2}{subsection.1.3}% 
-\contentsline {section}{\numberline {2}Path finding problem}{2}{section.2}% 
-\contentsline {section}{\numberline {3}Methodology}{2}{section.3}% 
-\contentsline {section}{\numberline {4}Routing measures}{3}{section.4}% 
-\contentsline {section}{\numberline {5}Experimental setup}{3}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}Preprocessing}{3}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}Lightning properties}{3}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}Implementing routing protocol}{3}{subsection.5.3}% 
-\contentsline {section}{\numberline {6}Results}{3}{section.6}% 
-\contentsline {section}{\numberline {7}Conclusion}{3}{section.7}% 
-\contentsline {section}{\numberline {8}Outlook}{3}{section.8}% 
+\contentsline {subsection}{\numberline {1.1}Bitcoin: Peer to Peer Electronic Cash}{1}{subsection.1.1}% 
+\contentsline {subsubsection}{\numberline {1.1.1}History of digital cash}{1}{subsubsection.1.1.1}% 
+\contentsline {subsubsection}{\numberline {1.1.2}Scaling solutions}{2}{subsubsection.1.1.2}% 
+\contentsline {subsection}{\numberline {1.2}Lightning technology}{3}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}Previous work}{4}{subsection.1.3}% 
+\contentsline {subsection}{\numberline {1.4}Problem statement}{4}{subsection.1.4}% 
+\contentsline {section}{\numberline {2}Problems in graph theory}{4}{section.2}% 
+\contentsline {section}{\numberline {3}Experiment}{5}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Preprocessing}{5}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Lightning properties}{5}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Implementing routing protocol}{5}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Methodology}{5}{subsection.3.4}% 
+\contentsline {section}{\numberline {4}Results}{5}{section.4}% 
+\contentsline {section}{\numberline {5}Conclusion \& Outlook}{5}{section.5}% 
+\contentsline {section}{Bibliography}{6}{section.5}% 
+\contentsline {section}{\numberline {A}Some appendix}{7}{appendix.A}% 
