@@ -1,4 +1,7 @@
 # Effectivenes simulation of a rebalancing algorithm for the Lightning Network under partial participation
+## Latest Version
+I am in the process of writing the Thesis now. If you want to help me out you are free to read the current verstion here: https://github.com/TKone7/ln-bachelor-thesis/blob/master/06_Thesis/thesis.pdf
+Just send me your feedback either per email, Github issue or pull request. Thank you very much for your collaboration.
 
 ## Problem description
 
