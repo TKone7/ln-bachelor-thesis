@@ -1,17 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.13
 [0] Config.pm:307> INFO - Logfile is 'thesis.blg'
-[20] biber:315> INFO - === Mo Jul  6, 2020, 21:04:09
-[32] Biber.pm:375> INFO - Reading 'thesis.bcf'
-[85] Biber.pm:905> INFO - Found 8 citekeys in bib section 0
-[97] Biber.pm:4196> INFO - Processing section 0
-[97] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
-[97] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
-[106] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
-[107] bibtex.pm:1462> INFO - LaTeX decoding ...
-[123] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
-[175] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[175] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[175] Biber.pm:4024> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'de-DE'
-[175] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
-[183] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[189] bbl.pm:751> INFO - Output to thesis.bbl
+[25] biber:315> INFO - === Di Jul  7, 2020, 17:15:04
+[40] Biber.pm:375> INFO - Reading 'thesis.bcf'
+[151] Biber.pm:905> INFO - Found 8 citekeys in bib section 0
+[167] Biber.pm:4196> INFO - Processing section 0
+[167] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
+[167] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
+[178] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
+[180] bibtex.pm:1462> INFO - LaTeX decoding ...
+[207] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
+[306] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[306] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[306] Biber.pm:4024> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
+[306] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
+[317] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[323] bbl.pm:751> INFO - Output to thesis.bbl

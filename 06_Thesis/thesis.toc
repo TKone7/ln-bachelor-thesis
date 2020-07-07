@@ -1,22 +1,29 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {ngerman}{}
 \babel@toc {english}{}
-\contentsline {section}{Declaration of honor}{III}{section*.2}% 
-\contentsline {section}{Foreword}{IV}{section*.4}% 
+\contentsline {section}{Declaration of honor}{III}{section*.1}% 
+\contentsline {section}{Foreword}{IV}{section*.3}% 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}% 
 \contentsline {subsection}{\numberline {1.1}Bitcoin: Peer to Peer Electronic Cash}{1}{subsection.1.1}% 
 \contentsline {subsubsection}{\numberline {1.1.1}History of digital cash}{1}{subsubsection.1.1.1}% 
 \contentsline {subsubsection}{\numberline {1.1.2}Scaling solutions}{2}{subsubsection.1.1.2}% 
 \contentsline {subsection}{\numberline {1.2}Lightning technology}{3}{subsection.1.2}% 
-\contentsline {subsection}{\numberline {1.3}Previous work}{4}{subsection.1.3}% 
-\contentsline {subsection}{\numberline {1.4}Problem statement}{4}{subsection.1.4}% 
-\contentsline {section}{\numberline {2}Problems in graph theory}{4}{section.2}% 
-\contentsline {section}{\numberline {3}Experiment}{5}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Preprocessing}{5}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Lightning properties}{5}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Implementing routing protocol}{5}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Methodology}{5}{subsection.3.4}% 
-\contentsline {section}{\numberline {4}Results}{5}{section.4}% 
-\contentsline {section}{\numberline {5}Conclusion \& Outlook}{5}{section.5}% 
-\contentsline {section}{Bibliography}{6}{section.5}% 
-\contentsline {section}{\numberline {A}Some appendix}{7}{appendix.A}% 
+\contentsline {subsubsection}{\numberline {1.2.1}Payment channels}{3}{subsubsection.1.2.1}% 
+\contentsline {subsubsection}{\numberline {1.2.2}Source Routing}{4}{subsubsection.1.2.2}% 
+\contentsline {section}{\numberline {2}Problems in graph theory}{5}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Overview of broad problems}{5}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Route problems}{5}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Network flow}{5}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Application in the Lightning Network}{5}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Problem statement}{5}{subsection.2.5}% 
+\contentsline {subsection}{\numberline {2.6}Previous work}{6}{subsection.2.6}% 
+\contentsline {section}{\numberline {3}Experiment}{6}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Preprocessing}{6}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Lightning properties}{6}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Implementing routing protocol}{6}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Methodology}{6}{subsection.3.4}% 
+\contentsline {section}{\numberline {4}Results}{7}{section.4}% 
+\contentsline {section}{\numberline {5}Conclusion \& Outlook}{7}{section.5}% 
+\contentsline {section}{Bibliography}{8}{section.5}% 
+\contentsline {section}{Glossary}{9}{section*.27}% 
+\contentsline {section}{\numberline {A}Some appendix}{9}{appendix.A}% 

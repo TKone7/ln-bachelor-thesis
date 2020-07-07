@@ -1,10 +1,20 @@
-\contentsline {todo}{Add declaration of honor. I hereby confirm that: \ldots }{III}{section*.3}% 
-\contentsline {todo}{Some background}{IV}{section*.5}% 
-\contentsline {todo}{Should be able to auto generate that thing}{V}{section*.7}% 
-\contentsline {todo}{Define certain terms like, node, (block)chain, confirmation, channel, balance, capacity, source routing, forwarding}{1}{section*.8}% 
-\contentsline {todo}{Explain why finding a path in the lightning network can be so difficult}{2}{section*.9}% 
-\contentsline {todo}{explain how to get the network information for a running node. quickly show how I extracted the data from the full node. Explain the structure of the python class \textbf {Network}}{2}{section*.10}% 
-\contentsline {todo}{explain which nodes and channels where selected}{3}{section*.11}% 
-\contentsline {todo}{Describe how the proposed protocol change is impolemented in the \textbf {Network} class. }{3}{section*.12}% 
-\contentsline {todo}{show illustrations with a dummy network}{3}{section*.13}% 
-\contentsline {todo}{ask Rene to his dummy network}{3}{section*.14}% 
+\contentsline {todo}{Some background}{IV}{section*.4}% 
+\contentsline {todo}{glossary block chain}{1}{section*.5}% 
+\contentsline {todo}{explain hash and add to glossary}{1}{section*.6}% 
+\contentsline {todo}{add pow to glossary}{2}{section*.7}% 
+\contentsline {todo}{trillema in glossary}{2}{section*.8}% 
+\contentsline {todo}{add full node to glossary}{2}{section*.9}% 
+\contentsline {todo}{glossary second layer}{3}{section*.10}% 
+\contentsline {todo}{glossary base layer}{3}{section*.11}% 
+\contentsline {todo}{Go from general graph theory problems into more specific areas, 1 paragraph per topic}{5}{section*.13}% 
+\contentsline {todo}{Explain why finding a path in the lightning network can be so difficult}{5}{section*.14}% 
+\contentsline {todo}{problem to be solved in ln is network flow: find route that accommodates enough liquidity without knowing the balances. In experiment algorithm does rebalancing by trying to reallocate funds differently (greedy)}{5}{section*.15}% 
+\contentsline {todo}{Only give a brief informal overview of the problem but forward reference to the next chapter}{5}{section*.16}% 
+\contentsline {todo}{explain all the performance measures}{6}{section*.17}% 
+\contentsline {todo}{explain methodology}{6}{section*.18}% 
+\contentsline {todo}{explain the experimental setup}{6}{section*.19}% 
+\contentsline {todo}{explain which nodes and channels where selected}{6}{section*.20}% 
+\contentsline {todo}{Describe how the proposed protocol change is impolemented in the \textbf {Network} class. }{6}{section*.21}% 
+\contentsline {todo}{show illustrations with a dummy network}{6}{section*.22}% 
+\contentsline {todo}{ask Rene to his dummy network}{6}{section*.23}% 
+\contentsline {todo}{explain how to get the network information for a running node. quickly show how I extracted the data from the full node. Explain the structure of the python class \textbf {Network}}{6}{section*.24}% 
