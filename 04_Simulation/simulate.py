@@ -1,23 +1,16 @@
 """Lightning Network Simulation.
 
 Usage:
-  simulate.py run <filename> [--force]
   simulate.py parse <filename>
-  simulate.py runmulti (import|restore) <filename>
-  simulate.py randomexperiment <filename> <samplesize> [--charts]
-  simulate.py bysize <filename> [(asc|desc)] [--charts]
-  simulate.py groupedsize <filename> [--charts]
-  simulate.py spread <filename> <init> <spread> [--charts]
+  simulate.py randomexperiment <fingerprint> <samplesize> [--charts]
+  simulate.py bysize <fingerprint> [(asc|desc)] [--charts]
+  simulate.py groupedsize <fingerprint> [--charts]
+  simulate.py spread <fingerprint> <init> <spread> [--charts]
   simulate.py -h | --help
 
 Options:
   -h --help     Show this screen.
-  --version     Show version.
-  --speed=<kn>  Speed in knots [default: 10].
-  --force       Do not ask for every step.
-  --drifting    Drifting mine.
   --charts      Skips the experiment and creates only the charts
-
 
 """
 from docopt import docopt

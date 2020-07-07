@@ -50,10 +50,10 @@ class Experiment:
         self.participations = [(i + 1) * 10 for i in range(0, 10)][::-1]
 
     def setup_randomexperiment(self, samplesize=10):
-        # self.participations = [(i + 1) * 10 for i in range(0,10)][::-1] # 10-100
+        self.participations = [(i + 1) * 10 for i in range(0,10)][::-1] # 10-100
         self.type = 'random'
         self.samplesize = samplesize
-        self.participations = [100]
+        # self.participations = [100]
 
     def run_experiment(self):
         if self.type == 'random':

@@ -371,6 +371,11 @@ class Network:
         if self.__cycles4 != [] and not force:
             logger.info('There are already cycles. Abort recomputing them.')
             return
+        # calculate initial gini coefficients for all nodes
+        self.__update_all_ginis()
+        if not self.flow:
+            # in case the flow is not yet calculated do so
+            self.__compute_rebalance_network()
         # All possible circles to conduct rebalancing
         # Need to be calculated only once (per network) since there never will be more / others
         cycles4 = []

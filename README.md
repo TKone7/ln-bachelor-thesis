@@ -26,3 +26,61 @@ changes perform under a partial participation.
   - [ ] _Optional_: Measure Gini on participants, performance on total network
   - [ ] _Optional_: Measure Gini on participants, performance on participants
 - [ ] Analyze and visualize results
+
+## Run simulations yourself
+1. Setup virtual environment and install dependencies
+```bash
+$ git clone git@github.com:TKone7/ln-bachelor-thesis.git
+$ cd ln-bachelor-thesis/04_Simulation/
+$ python3 -v venv venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+```
+2. Use `channels.json` file from repo or use your own channel file to setup a network. You can use <a href="https://github.com/TKone7/clightning-plugins/tree/master/dumpgraph" target="_blank">this plugin</a> for creating the file with your c-lightning node.
+```bash
+$ python3 simulate.py parse channels.json
+> The network 3a65a961 can now be used for experiments.
+```
+Use this **fingerprint** `3a65a961` for all subsequent experiments. It is unique for your set of nodes, channels, capacities/**balances** and fees.
+
+3. You can now use this network to perform any experiment. **IMPORTANT**: The first experiment you will run pre-calculates a lot of things that might take a while. Subsequent experiments will run much faster.
+
+### Random node selection
+Selects the participating nodes at random. Executes all levels of participation from 100% to 10%.
+
+Parameter:
+- Fingerprint: Network fingerprint generated in previous step
+- Samplesize: Executes the experiment repeatedly to remove variance.
+- _Optional_ Charts: If selected, skips the experiment and plots charts from existing experiment results.
+
+_Example_:
+```bash
+$ python3 simulate.py randomexperiment 3a65a961 1
+$ python3 simulate.py randomexperiment 3a65a961 1 --charts
+```
+### Node selection by size
+Orders nodes by degree (channel count) and simulates participation levels from either or the other end of the list.
+Parameter:
+- Fingerprint: Network fingerprint generated in previous step
+- _Optional_: Direction (asc|__desc__): Participating nodes are chosen from the large end (desc) or the smaller end (asc)
+- _Optional_ Charts: If selected, skips the experiment and plots charts from existing experiment results.
+
+_Example_:
+```bash
+$ python3 simulate.py bysize 3a65a961 desc
+$ python3 simulate.py bysize 3a65a961 desc --charts
+```
+
+### Node selection network spread
+Defines a set of nodes that participate in iteration 1. With every iteration a certain percentage of adjacent nodes participate as well. Runs experiment until 99% of network is participating.
+Parameter:
+- Fingerprint: Network fingerprint generated in previous step
+- Init: % of nodes participating initially
+- Spread: % of adjacent nodes being added in every iteration
+- _Optional_ Charts: If selected, skips the experiment and plots charts from existing experiment results.
+
+_Example_:
+```bash
+$ python3 simulate.py spread 3a65a961 2 40
+$ python3 simulate.py spread 3a65a961 2 40 --charts
+```
