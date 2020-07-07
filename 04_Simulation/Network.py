@@ -1,10 +1,8 @@
-import sys
 import hashlib
 import json
 import logging
 import random
 import os
-
 import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
@@ -39,6 +37,11 @@ class Network:
         self.__cycles5 = cycles5 if cycles5 else []
         self.__all_pair_shortest_paths = None
         self.__all_pair_simple_paths = None
+        # self.__k_shortest_path = None
+        self.incl_capacity = None
+        self.total_capacity = None
+        self.nr_nodes = None
+        self.nr_participating_nodes = None
         self.fingerprint = self.__fingerprint()
         logger.info('Fingerprint is {}'.format(self.fingerprint))
 
@@ -149,6 +152,20 @@ class Network:
                     all_pair_shortest_paths.append(v)
         return all_pair_shortest_paths
 
+    # def __compute_k_shortest_path(self):
+    #     self.__k_shortest_path = 'bb'
+    #     C = self.G.copy()
+    #     cnt = 0
+    #     for nodepair in self.__all_pair_shortest_paths:
+    #         src = nodepair[0]
+    #         dest = nodepair[-1]
+    #         ksp = algo.ksp_yen(C, src, dest, 10, 'base')
+    #         cnt += 1
+    #         if max([p['cost'] for p in ksp]) > 2000:
+    #             logger.info('high cost detected between {} and {}'.format(src, dest))
+    #         if cnt % 1000 == 0:
+    #             logger.info('k-shortest path status: {}%'.format(100 / len(self.__all_pair_shortest_paths) * cnt))
+
     def __compute_all_pair_simple_paths(self):
         assert self.__all_pair_shortest_paths, 'Shortest paths between all pair must be calculated first'
         try:  # to load from file first
@@ -248,6 +265,20 @@ class Network:
                 f.write(" ".join(circle) + '\n')
                 f.flush()
             f.close()
+    def __meta_info(self):
+        info = {
+            'total_capacity': self.total_capacity,
+            'available_capacity': self.incl_capacity,
+            'total_nodes': len(self.G.nodes),
+            'participating_nodes': self.nr_participating_nodes
+        }
+        return info
+    def __set_meta_info(self, meta_info):
+        self.total_capacity = meta_info['total_capacity']
+        self.incl_capacity = meta_info['available_capacity']
+        self.nr_participating_nodes = meta_info['participating_nodes']
+        self.nr_nodes = meta_info['total_nodes']
+
 
     def exclude(self, excl_list):
         assert self.__cycles4, 'Cannot exclude nodes before the cycles are not calculated. Run "compute_circles()" first.'
@@ -255,7 +286,21 @@ class Network:
         self.__excluded = set(excl_list)
         cycles4 = [c for c in self.__cycles4 if not (set(c) & self.__excluded)]
         self.__cycles4 = cycles4
+        # calculate the capacity of all included channels
+        visited_edge = set()
+        incl_capacity = 0
+        total_capacity = 0
+        for u, v in self.G.edges:
+            if (v,u) not in visited_edge:
+                visited_edge.add((u, v))
+                curr_cap = self.G[u][v]['capacity']
+                total_capacity += curr_cap
+                if not set([u, v]) & self.__excluded:
+                    incl_capacity += curr_cap
 
+        self.incl_capacity = incl_capacity
+        self.total_capacity = total_capacity
+        self.nr_participating_nodes = len(set(self.G.nodes) - self.__excluded)
         # calculate initial gini coefficients for all nodes
         self.__update_all_ginis()
 
@@ -361,7 +406,7 @@ class Network:
         self.__all_pair_shortest_paths = self.__compute_all_pair_shortest_paths()
         # calculate (if not loaded) simple paths between all node pairs
         self.__all_pair_simple_paths = self.__compute_all_pair_simple_paths()
-
+        # self.__compute_k_shortest_path()
         nr_executed = 0
         executed_this_time = 0
         if len(self.__cycles4) <= 0:
@@ -414,6 +459,7 @@ class Network:
             logger.error('Folder {} is not available. Create snapshot first.'.format(self.fingerprint))
         stats_file = os.path.join(self.fingerprint, STATS + '_' + self.experiment_name) + '.json'
         ginis_file = os.path.join(self.fingerprint, STATS_GINIS + '_' + self.experiment_name) + '.json'
+        meta_file = os.path.join(self.fingerprint, 'META' + '_' + self.experiment_name) + '.json'
         graph_file = os.path.join(self.fingerprint, 'NETWORK' + '_' + self.experiment_name)
         flow_graph_file = os.path.join(self.fingerprint, 'FLOW' + '_' + self.experiment_name)
 
@@ -421,6 +467,9 @@ class Network:
             json.dump(self.stats(), f)
         with open(ginis_file, "w") as f:
             json.dump(self.gini_hist_data(), f)
+        with open(meta_file, "w") as f:
+            meta_info = self.__meta_info()
+            json.dump(meta_info, f)
         nx.write_gpickle(self.G, graph_file)
         nx.write_gpickle(self.flow, flow_graph_file)
 
@@ -517,15 +566,41 @@ class Network:
         assert fingerprint == N.fingerprint or is_file, 'Fingerprints of stored and restored network are not equal'
         return N
 
+    # @classmethod
+    # def restore_result(cls, fingerprint, participation, iteration=1, selection='random'):
+    #     if not os.path.isdir(fingerprint):
+    #         logger.error('Folder {} is not available. Create snapshot first.'.format(fingerprint))
+    #     part100 = str(int(participation * 100))
+    #     experiment_name = fingerprint + '_' + str(int(participation * 100)) + '_' + selection + '_' + str(iteration)
+    #     #        self.experiment_name = self.fingerprint + '_' + str(int(participation * 100)) + selection + '_' + iteration
+    #     stats_file = os.path.join(fingerprint, STATS + '_' + experiment_name) + '.json'
+    #     ginis_file = os.path.join(fingerprint, STATS_GINIS + '_' + experiment_name) + '.json'
+    #     meta_file = os.path.join(fingerprint, 'META' + '_' + experiment_name) + '.json'
+    #     graph_file = os.path.join(fingerprint, 'NETWORK' + '_' + experiment_name)
+    #     flow_graph_file = os.path.join(fingerprint, 'FLOW' + '_' + experiment_name)
+    #
+    #     G = nx.read_gpickle(graph_file)
+    #     N = cls(G)
+    #     N.fingerprint = fingerprint
+    #     N.flow = nx.read_gpickle(flow_graph_file)
+    #     with open(stats_file, "r") as f:
+    #         stats = json.load(f)
+    #         N.__stats = stats
+    #     with open(ginis_file, "r") as f:
+    #         ginis = json.load(f)
+    #         N.__history_gini = ginis
+    #     with open(meta_file, "r") as f:
+    #         meta_info = json.load(f)
+    #         N.__set_meta_info(meta_info)
+    #     return N
     @classmethod
-    def restore_result(cls, fingerprint, participation, iteration=1, selection='random'):
+    def restore_result_by_name(cls, fingerprint, experiment_name):
         if not os.path.isdir(fingerprint):
             logger.error('Folder {} is not available. Create snapshot first.'.format(fingerprint))
-        part100 = str(int(participation * 100))
-        experiment_name = fingerprint + '_' + str(int(participation * 100)) + '_' + selection + '_' + str(iteration)
         #        self.experiment_name = self.fingerprint + '_' + str(int(participation * 100)) + selection + '_' + iteration
         stats_file = os.path.join(fingerprint, STATS + '_' + experiment_name) + '.json'
         ginis_file = os.path.join(fingerprint, STATS_GINIS + '_' + experiment_name) + '.json'
+        meta_file = os.path.join(fingerprint, 'META' + '_' + experiment_name) + '.json'
         graph_file = os.path.join(fingerprint, 'NETWORK' + '_' + experiment_name)
         flow_graph_file = os.path.join(fingerprint, 'FLOW' + '_' + experiment_name)
 
@@ -539,6 +614,9 @@ class Network:
         with open(ginis_file, "r") as f:
             ginis = json.load(f)
             N.__history_gini = ginis
+        with open(meta_file, "r") as f:
+            meta_info = json.load(f)
+            N.__set_meta_info(meta_info)
         return N
 
     @classmethod

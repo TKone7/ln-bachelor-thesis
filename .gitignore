@@ -1,3 +1,4 @@
 /05_Communication/Questions_ExistingPythonImplementation.pdf
 /04_Simulation/*/
 *.png
+/04_Simulation/venv/

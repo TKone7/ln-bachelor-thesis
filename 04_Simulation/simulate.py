@@ -4,7 +4,10 @@ Usage:
   simulate.py run <filename> [--force]
   simulate.py parse <filename>
   simulate.py runmulti (import|restore) <filename>
-  simulate.py randomexperiment <filename> <samplesize>
+  simulate.py randomexperiment <filename> <samplesize> [--charts]
+  simulate.py bysize <filename> [(asc|desc)] [--charts]
+  simulate.py groupedsize <filename> [--charts]
+  simulate.py spread <filename> <init> <spread> [--charts]
   simulate.py -h | --help
 
 Options:
@@ -13,10 +16,10 @@ Options:
   --speed=<kn>  Speed in knots [default: 10].
   --force       Do not ask for every step.
   --drifting    Drifting mine.
+  --charts      Skips the experiment and creates only the charts
 
 
 """
-import sys
 from docopt import docopt
 import logging
 # disable matplotlib logging
@@ -93,7 +96,29 @@ def main(arguments):
     if arguments["randomexperiment"]:
         e = Experiment(arguments["<filename>"])
         e.setup_randomexperiment(int(arguments["<samplesize>"]))
-        e.run_experiment()
+        if not arguments["--charts"]:
+            e.run_experiment()
+        e.plot_experiment()
+    if arguments["bysize"]:
+        e = Experiment(arguments["<filename>"])
+        if arguments["asc"]:
+            e.setup_experiment_by_size('asc')
+        else:
+            e.setup_experiment_by_size('desc')
+        if not arguments["--charts"]:
+            e.run_experiment()
+        e.plot_experiment()
+    if arguments["groupedsize"]:
+        e = Experiment(arguments["<filename>"])
+        e.setup_experiment_by_size_grouped()
+        if not arguments["--charts"]:
+            e.run_experiment()
+        e.plot_experiment()
+    if arguments["spread"]:
+        e = Experiment(arguments["<filename>"])
+        e.setup_experiment_netw_spread(int(arguments["<init>"]),int(arguments["<spread>"]))
+        if not arguments["--charts"]:
+            e.run_experiment()
         e.plot_experiment()
 
     if arguments["runmulti"]:
