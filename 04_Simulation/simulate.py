@@ -37,7 +37,7 @@ def cont(question):
 
 def init_network():
     start = time.time()
-    n = Network.restore_snapshot(arguments["<filename>"])
+    n = Network.restore_snapshot(arguments["<fingerprint>"])
     end = time.time()
     logger.info("Time to init network {0:.2f} seconds".format(end - start))
     return n
@@ -62,7 +62,6 @@ def create_charts(n):
     n.plot_successrate_vs_imbalance()
 
 def main(arguments):
-    force = arguments["--force"]
     if arguments["parse"]:
         start = time.time()
         n = Network.parse_clightning(arguments["<filename>"])
@@ -71,29 +70,29 @@ def main(arguments):
         logger.info("Time to init network {0:.2f} seconds".format(end - start))
         logger.info("The network {} can now be used for experiments.".format(n.fingerprint))
 
-    if arguments["run"]:
-        n = init_network()
-        n.set_experiment_name(str(100) + '_' + 'random' + '_' + str(0))
-        n.plot_gini_distr_hist('initial_gini_distr_hist')
-        logger.info(n)
-        if not force and not cont('Next step: Compute rebalancing circles.'):
-            exit()
-        compute_circles(n)
-        if not force and not cont('Next step: Rebalance the network.'):
-            exit()
-        rebalance(n)
-        if not force and not cont('Next step: Create charts from the previous rebalancing operations.'):
-            exit()
-        create_charts(n)
+    # if arguments["run"]:
+    #     n = init_network()
+    #     n.set_experiment_name(str(100) + '_' + 'random' + '_' + str(0))
+    #     n.plot_gini_distr_hist('initial_gini_distr_hist')
+    #     logger.info(n)
+    #     if not cont('Next step: Compute rebalancing circles.'):
+    #         exit()
+    #     compute_circles(n)
+    #     if not cont('Next step: Rebalance the network.'):
+    #         exit()
+    #     rebalance(n)
+    #     if not cont('Next step: Create charts from the previous rebalancing operations.'):
+    #         exit()
+    #     create_charts(n)
 
     if arguments["randomexperiment"]:
-        e = Experiment(arguments["<filename>"])
+        e = Experiment(arguments["<fingerprint>"])
         e.setup_randomexperiment(int(arguments["<samplesize>"]))
         if not arguments["--charts"]:
             e.run_experiment()
         e.plot_experiment()
     if arguments["bysize"]:
-        e = Experiment(arguments["<filename>"])
+        e = Experiment(arguments["<fingerprint>"])
         if arguments["asc"]:
             e.setup_experiment_by_size('asc')
         else:
@@ -102,13 +101,13 @@ def main(arguments):
             e.run_experiment()
         e.plot_experiment()
     if arguments["groupedsize"]:
-        e = Experiment(arguments["<filename>"])
+        e = Experiment(arguments["<fingerprint>"])
         e.setup_experiment_by_size_grouped()
         if not arguments["--charts"]:
             e.run_experiment()
         e.plot_experiment()
     if arguments["spread"]:
-        e = Experiment(arguments["<filename>"])
+        e = Experiment(arguments["<fingerprint>"])
         e.setup_experiment_netw_spread(int(arguments["<init>"]),int(arguments["<spread>"]))
         if not arguments["--charts"]:
             e.run_experiment()
@@ -123,11 +122,11 @@ def main(arguments):
         for exp in experiments:
             for i in range(sample_size):
                 try:
-                    n = Network.restore_result(arguments["<filename>"], exp / 100, iteration=i+1, selection='random')
+                    n = Network.restore_result(arguments["<fingerprint>"], exp / 100, iteration=i+1, selection='random')
                     print('Existing result found for experiment {}, iteration {}'.format(exp, i+1))
                 except:
                     print('No result found for experiment {}, iteration {}. Execute experiment now.'.format(exp, i+1))
-                    n = Network.restore_snapshot(arguments["<filename>"], exp / 100, iteration=i+1, selection='random')
+                    n = Network.restore_snapshot(arguments["<fingerprint>"], exp / 100, iteration=i+1, selection='random')
                     n.plot_gini_distr_hist('initial_gini_distr_hist')
                     compute_circles(n)
                     rebalance(n)
