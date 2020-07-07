@@ -14,8 +14,8 @@ SIMPLE_PATH = BASE_FILE + '_simple_path'
 STATS_GINIS = BASE_FILE + '_stats_ginis'
 STATS = BASE_FILE + '_stats'
 
-MICRO_PAYMENT_SIZE = 1000
-NORMAL_PAYMENT_SIZE = 50000
+MICRO_PAYMENT_SIZE = 10000
+NORMAL_PAYMENT_SIZE = 100000
 
 FORMAT = '%(asctime)s - %(levelname)-8s: %(message)s'
 logging.basicConfig(level=logging.DEBUG, format=FORMAT)
