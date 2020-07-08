@@ -131,7 +131,6 @@ An off-chain scaling solution describes any system that acts outside of the Bitc
 \subsection{Lightning technology}
 The Lightning Network is a network protocol that utilizes Bitcoin as its underlying trust system. It can, therefore, be described as a ``second layer'' protocol building upon the Bitcoin ``base layer''. Bitcoin does not scale on the base layer since it was designed with security and decentralisation in mind. Off-chain solutions like Lightning are developed to facilitate more transactions on a different layer without compromising the properties of the base layer \citep{poon_bitcoin_2016}.
 
-% The Bitcoin system consists of nodes each maintaining a ledger of historic transactions. All new transactions must be distributed to all nodes and validated by them. Transactions are therefore public information and must be stored by all nodes. To allow many people to run a node, therefore promoting a decentralized network, the hardware requirements must be as low as possible. This is why there is a limitation of new transactions that can be recorded in the network causing this low transaction throughput.
 \subsubsection{Payment channels}
 The transaction bottleneck in Bitcoin is imposed since every network participant needs to be updated about every transaction. This is required to ensure the integrity of the system and not because the transactions are of interest to the nodes. In fact they can learn very little about the parties involved in a transaction as pseudonymous public keys are used as identifiers. \citeauthor{poon_bitcoin_2016} mention in the Lightning Network Paper that as long as only two participants care about a recurring transaction there is no need to inform the entire network about it \citep{poon_bitcoin_2016}. They therefore propose that those two participants do not sent the transaction to the network but instead hold on to it and agree on their balances bilaterally. \textquote[{\cite{poon_bitcoin_2016}}, p. 4]{Micropayment channels create a relationship between two parties to perpetually update balances, deferring what is broadcast to the block chain in a single transaction netting out the total balance between those two parties.}
 
@@ -146,16 +145,48 @@ Opening such a payment channel requires the two parties to create an on-chain Bi
 \label{fig:ChannelCycle}
 \end{figure}
 
-Transactions within these channels are only visible to the two partners but stay invisible to the rest of the network. While opening and closing a channel each requires one transaction in the base layer (Bitcoin) unlimited transactions with almost no throughput restriction can be facilitated within a channel during its lifetime. 
+Whenever the parties decide to end there collaboration they can close the channel by broadcasting a closing transaction to the block chain which pays out each party its respective balance. While beneficial, collaborative channel closure is not required, each party can close the channel at any given time by broadcasting the latest transaction agreed upon. 
 
-It is important to note the difference between a Lightning node and a Bitcoin node. While they can run on the same system, they operate in two different networks. A Bitcoin node works well individually but a Lightning node needs to have access to a Bitcoin node.
+Participants in such channels are referred to as Lightning nodes, a computer system that runs an implementation of the Lightning Network protocol. Those nodes are not to be confused with Bitcoin nodes. However, since most Lightning nodes need direct access to the Bitcoin block chain most Lightning nodes are Bitcoin nodes at the same time.
 
-For a node to pay another node that it has no direct channel open with, he can simply route the transaction via other nodes and their channels. Since the network graph is public, the path can be chosen by the initiator of a transaction. This is called source routing. 
+\subsubsection{Using other channels for payments}
+Since a payment channel is a biparty relationship an update of channel balance can only ever represent a transaction between those parties. Instead of opening a channel to each participant a node wants to transact with there is the opportunity to route payments through multiple channels.
+
+Often economical transactions \todo{glossary econ. tx} to a specific recipient are made only once. It would therefore, defeat the purpose of Lightning to open a channel for this unique payment because both opening and closing of a channel takes each one transaction on the base block chain. Using Lightning would not use the load on-chain but rather increase it by a factor of two. This demonstrates that a payment channel should only be opened if the cost of doing so can be amortised over many transactions. This is either the case if the channel parties are expected to repeatedly transact with each other or if they can facilitate transactions between other nodes in the network through routing. 
+
+Handling payments off-chain so far only worked between two parties that update Bitcoin transactions off-chain with the security of claiming their balance at any time on-chain. How can payments through multiple channels be accomplished without introducing trust into the system? If Alice wants to pay Carol through Bob, how can she be ensured that Bob will not keep the money and refuse to pay Carol? The solution are so called \textbf{Hash Time Locked Contracts} or short ``HTLC'' \todo{define htlc in glossary}. 
+
+First Alice asks the payee, Carol, to create and keep a secret \textbf{R} and only share the hash of it, $hash(R)$. Alice then uses this, so called \textit{preimage} \todo{glossary preimage}, to create a special HTLC transaction that promises Bob to receive the payment amount if he has knowledge of $R$. Bob also gets informed by Alice who is next in the path to find out this secret. Bob then himself creates an HTLC with the same preimage to Carol offering her the same amount upon disclosure of $R$. Carol is the payee in the transaction and has knowledge of $R$ so she could technically claim the funds on-chain. There is however an easier solution than this. After she releases $R$, Carol and Bob can simply agree to update their channel to reflect this payment. The same is done between Alice and Bob leading to the state where all channel balances are updated and the HTLCs is rendered useless. This mechanism is called ``time locked'' because the offer of payment to the knowing $R$ is only valid for a certain timespan. If $R$ does not get released until the defined expiry the HTLC turns invalid. Therefore, it is important that each successive HTLC has a lower timespan.
+
+\subsubsection{Routing}
+The previous chapter explained how a payment can utilize multiple channels to reach its destination without the introduction of trust between participants. This section describes how routing takes place and what trade-off needs to be made.
+
+To ensure privacy of payments the routing protocol uses onion routing \todo{define onion routing in glossary}. The sender of the payment encrypts the information in multiple layers so that each hop only learns about the next hop in the path. Each intermediary node only knows where the payment comes from and where it goes next. Who is the payer and the payee remains secret. Only the last node in the path finds out that it is the actual receiver of a payment.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{htlc.pdf}
+\caption{Onion routing preserves privacy over the chose path.}
+\label{fig:onion}
+\end{figure}
+
+Figure~\ref{fig:onion} color codes the information which is only readable by the respective node with the same color. In each step the outermost layer is decrypted and the next hop gets revealed. The remaining encrypted data is passed on down the line. This ensures that each node only has a local view of the path knowing only about its predecessor and successor. Thus follows, the source of the payment needs to determine the complete path before sending a payment.
+
+Sending a payment requires the sender to find a viable path to the recipient. This is called source routing \todo{glossary source routing} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the total channel balance. This information however is only known to Bob and Carol, not to Alice. Alice only knows the public information which tells her that the channel has 1 BTC in capacity.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{nopayment.pdf}
+\caption{Payment fails when channel balances cannot accommodate the required transfer.}
+\label{fig:nopayment}
+\end{figure}
 
 A payment channel is always opened between two nodes. One of the participants acts as the initiator and provides funds for the channel in the form of bitcoin. This leads to the total capacity being allocated to his or her balance within the channel. As soon as he starts to make payments towards the other node, his or her balance decreases, and the partner's balance increases (total capacity remains constant). Transactions can only be executed if the amount is smaller or equal than the channel's capacity and if the sending node has enough local balance. Channels and their capacities are announced to the network but the distribution of balances remains private to the channel partners.
 
 \subsubsection{Source Routing}
 explain source routing
+privacy implications. onion routed. no knowledge of full route.
 
 \newpage
 \section{Problems in graph theory}
