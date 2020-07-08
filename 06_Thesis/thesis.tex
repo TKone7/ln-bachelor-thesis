@@ -172,24 +172,28 @@ To ensure privacy of payments the routing protocol uses onion routing \todo{defi
 
 Figure~\ref{fig:onion} color codes the information which is only readable by the respective node with the same color. In each step the outermost layer is decrypted and the next hop gets revealed. The remaining encrypted data is passed on down the line. This ensures that each node only has a local view of the path knowing only about its predecessor and successor. Thus follows, the source of the payment needs to determine the complete path before sending a payment.
 
-Sending a payment requires the sender to find a viable path to the recipient. This is called source routing \todo{glossary source routing} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the total channel balance. This information however is only known to Bob and Carol, not to Alice. Alice only knows the public information which tells her that the channel has 1 BTC in capacity.
+Sending a payment requires the sender to find a viable path to the recipient. This is called source routing \todo{glossary source routing} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the $1$ BTC channel between him and Carol. This information however is only known to Bob and Carol, not to Alice. Alice only sees the public information which tells her that the channel has 1 BTC capacity. Local channel balances are kept private for two reasons. Every payment over a channel makes its balances to move. Keeping all nodes updated about all channel balances would necessitate to update them about every transaction. This is exactly how Bitcoin on the base layer work and the reason it does not scale. Secondly, informing the Network about every transaction is very bad for privacy, as an observer could easily determine who pays to whom over what path.
 
+Not knowing local balance distribution of channels makes it hard for source nodes to construct a reliable path. When a payment fails along the path a new route can be calculated and tried. This however is coupled with time delays that can cause a negative user experience.
 
-\begin{figure}[H]
+\begin{figure}[b]
 \centering
 \includegraphics[width=1.0\linewidth]{nopayment.pdf}
 \caption{Payment fails when channel balances cannot accommodate the required transfer.}
 \label{fig:nopayment}
 \end{figure}
 
-A payment channel is always opened between two nodes. One of the participants acts as the initiator and provides funds for the channel in the form of bitcoin. This leads to the total capacity being allocated to his or her balance within the channel. As soon as he starts to make payments towards the other node, his or her balance decreases, and the partner's balance increases (total capacity remains constant). Transactions can only be executed if the amount is smaller or equal than the channel's capacity and if the sending node has enough local balance. Channels and their capacities are announced to the network but the distribution of balances remains private to the channel partners.
-
-\subsubsection{Source Routing}
-explain source routing
-privacy implications. onion routed. no knowledge of full route.
-
-\newpage
+%\newpage
 \section{Problems in graph theory}
+Graph theory is an old discipline which can be used to solve multifaceted problems in the real world. The following chapter contains an introduction to the basic principles and terminologies. It then defines different problems for which graph theory can be used to find solutions. More emphasis is given to the topics which are applicable to the Lightning Network.
+
+\subsection{Formal definition}
+The following paragraph defines the fundamentals of graph theory as described by \citet{rosen_discrete_2012}.
+A graph $G=(V,E)$ consists of a set of vertices $V$ and edges $E$. An edge consists of two vertices which are called its endpoints. In an undirected graph the endpoints are unordered, whereas the pair of vertices in a directed graph are ordered. The edge $(u, v)$ of a directed graph starts at $u$ and ends in $v$. In a \textbf{simple directed} graph each directed edge can appear only once. When multiple edges go from one start vertex to the same end vertex the graph is named \textbf{directed multigraph}. An edge that connect a vertex to itself is called a loop\citep{rosen_discrete_2012}.
+
+\subsection{Application on the Lightning Network}
+Define v, e, directed\ldots on the lightning network
+
 \todo[inline]{Go from general graph theory problems into more specific areas, 1 paragraph per topic}
 \todo[inline]{Explain why finding a path in the lightning network can be so difficult}
 \subsection{Overview of broad problems}

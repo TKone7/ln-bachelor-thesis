@@ -11,14 +11,15 @@
 \contentsline {subsubsection}{\numberline {1.2.1}Payment channels}{3}{subsubsection.1.2.1}% 
 \contentsline {subsubsection}{\numberline {1.2.2}Using other channels for payments}{4}{subsubsection.1.2.2}% 
 \contentsline {subsubsection}{\numberline {1.2.3}Routing}{5}{subsubsection.1.2.3}% 
-\contentsline {subsubsection}{\numberline {1.2.4}Source Routing}{6}{subsubsection.1.2.4}% 
-\contentsline {section}{\numberline {2}Problems in graph theory}{7}{section.2}% 
-\contentsline {subsection}{\numberline {2.1}Overview of broad problems}{7}{subsection.2.1}% 
-\contentsline {subsection}{\numberline {2.2}Route problems}{7}{subsection.2.2}% 
-\contentsline {subsection}{\numberline {2.3}Network flow}{7}{subsection.2.3}% 
-\contentsline {subsection}{\numberline {2.4}Application in the Lightning Network}{7}{subsection.2.4}% 
-\contentsline {subsection}{\numberline {2.5}Problem statement}{7}{subsection.2.5}% 
-\contentsline {subsection}{\numberline {2.6}Previous work}{8}{subsection.2.6}% 
+\contentsline {section}{\numberline {2}Problems in graph theory}{6}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Formal definition}{6}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Application on the Lightning Network}{6}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Overview of broad problems}{7}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Route problems}{7}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Network flow}{7}{subsection.2.5}% 
+\contentsline {subsection}{\numberline {2.6}Application in the Lightning Network}{7}{subsection.2.6}% 
+\contentsline {subsection}{\numberline {2.7}Problem statement}{7}{subsection.2.7}% 
+\contentsline {subsection}{\numberline {2.8}Previous work}{7}{subsection.2.8}% 
 \contentsline {section}{\numberline {3}Experiment}{8}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}Preprocessing}{8}{subsection.3.1}% 
 \contentsline {subsection}{\numberline {3.2}Lightning properties}{8}{subsection.3.2}% 

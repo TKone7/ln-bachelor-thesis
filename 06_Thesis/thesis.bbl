@@ -376,6 +376,42 @@
       \verb Poon and Dryja - The Bitcoin Lightning Network.pdf:/home/tobias/Zotero/storage/TF7BZAT8/Poon and Dryja - The Bitcoin Lightning Network.pdf:application/pdf
       \endverb
     \endentry
+    \entry{rosen_discrete_2012}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d7c5a2525564580a8aa04190ae2b822}{%
+           family={Rosen},
+           familyi={R\bibinitperiod},
+           given={Kenneth\bibnamedelima H.},
+           giveni={K\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {{McGraw}-Hill}%
+      }
+      \strng{namehash}{5d7c5a2525564580a8aa04190ae2b822}
+      \strng{fullhash}{5d7c5a2525564580a8aa04190ae2b822}
+      \strng{bibnamehash}{5d7c5a2525564580a8aa04190ae2b822}
+      \strng{authorbibnamehash}{5d7c5a2525564580a8aa04190ae2b822}
+      \strng{authornamehash}{5d7c5a2525564580a8aa04190ae2b822}
+      \strng{authorfullhash}{5d7c5a2525564580a8aa04190ae2b822}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{7th ed}
+      \field{isbn}{978-0-07-338309-5}
+      \field{pagetotal}{1}
+      \field{title}{Discrete mathematics and its applications}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \keyw{Computer science,Mathematics}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
