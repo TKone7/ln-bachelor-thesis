@@ -158,7 +158,7 @@ Handling payments off-chain so far only worked between two parties that update B
 
 First Alice asks the payee, Carol, to create and keep a secret \textbf{R} and only share the hash of it, $hash(R)$. Alice then uses this, so called \textit{preimage} \todo{glossary preimage}, to create a special HTLC transaction that promises Bob to receive the payment amount if he has knowledge of $R$. Bob also gets informed by Alice who is next in the path to find out this secret. Bob then himself creates an HTLC with the same preimage to Carol offering her the same amount upon disclosure of $R$. Carol is the payee in the transaction and has knowledge of $R$ so she could technically claim the funds on-chain. There is however an easier solution than this. After she releases $R$, Carol and Bob can simply agree to update their channel to reflect this payment. The same is done between Alice and Bob leading to the state where all channel balances are updated and the HTLCs is rendered useless. This mechanism is called ``time locked'' because the offer of payment to the knowing $R$ is only valid for a certain timespan. If $R$ does not get released until the defined expiry the HTLC turns invalid. Therefore, it is important that each successive HTLC has a lower timespan.
 
-\subsubsection{Routing}
+\subsubsection{Routing}\label{subsec:routing}
 The previous chapter explained how a payment can utilize multiple channels to reach its destination without the introduction of trust between participants. This section describes how routing takes place and what trade-off needs to be made.
 
 To ensure privacy of payments the routing protocol uses onion routing \todo{define onion routing in glossary}. The sender of the payment encrypts the information in multiple layers so that each hop only learns about the next hop in the path. Each intermediary node only knows where the payment comes from and where it goes next. Who is the payer and the payee remains secret. Only the last node in the path finds out that it is the actual receiver of a payment.
@@ -176,7 +176,7 @@ Sending a payment requires the sender to find a viable path to the recipient. Th
 
 Not knowing local balance distribution of channels makes it hard for source nodes to construct a reliable path. When a payment fails along the path a new route can be calculated and tried. This however is coupled with time delays that can cause a negative user experience.
 
-\begin{figure}[b]
+\begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{nopayment.pdf}
 \caption{Payment fails when channel balances cannot accommodate the required transfer.}
@@ -187,49 +187,64 @@ Not knowing local balance distribution of channels makes it hard for source node
 \section{Problems in graph theory}
 Graph theory is an old discipline which can be used to solve multifaceted problems in the real world. The following chapter contains an introduction to the basic principles and terminologies. It then defines different problems for which graph theory can be used to find solutions. More emphasis is given to the topics which are applicable to the Lightning Network.
 
-\subsection{Formal definition}
+\subsection{Formal definition}\label{subsec:formal}
 The following paragraph defines the fundamentals of graph theory as described by \citet{rosen_discrete_2012}.
-A graph $G=(V,E)$ consists of a set of vertices $V$ and edges $E$. An edge consists of two vertices which are called its endpoints. In an undirected graph the endpoints are unordered, whereas the pair of vertices in a directed graph are ordered. The edge $(u, v)$ of a directed graph starts at $u$ and ends in $v$. In a \textbf{simple directed} graph each directed edge can appear only once. When multiple edges go from one start vertex to the same end vertex the graph is named \textbf{directed multigraph}. An edge that connect a vertex to itself is called a loop\citep{rosen_discrete_2012}.
-
-\subsection{Application on the Lightning Network}
-Define v, e, directed\ldots on the lightning network
+A graph $G=(V,E)$ consists of a set of vertices $V$ and edges $E$. An edge consists of two vertices which are called its endpoints. In an undirected graph the endpoints are unordered, whereas the pair of vertices in a directed graph are ordered. The edge $(u, v)$ of a directed graph starts at $u$ and ends in $v$. In a \textbf{simple directed} graph each directed edge can appear only once. When multiple edges go from one start vertex to the same end vertex the graph is named \textbf{directed multigraph}. An edge that connects a vertex to itself is called a loop. Assigning weights to edges allows for more complex representations mere connection and is useful if the real world representation of a connection has certain \textbf{cost} or \textbf{distance} that one might want to minimise (maximise). 
 
 \todo[inline]{Go from general graph theory problems into more specific areas, 1 paragraph per topic}
 \todo[inline]{Explain why finding a path in the lightning network can be so difficult}
 \subsection{Overview of broad problems}
-one paragraph per
-\begin{itemize}
-  \item coloring
-  \item enumeration
-  \item subgraphs
-  \item route problems (explained more depth)
-  \item network flow (explained more depth)
-\end{itemize}
+Per problem  one paragraph per
 
-\subsection{Route problems}
-kd
-\subsection{Network flow}
-kdf
+In \textbf{graph coloring problems} vertices can be thought of areas on a map. Areas that share a border are connected with an edge. The goal is to use as little colors as possible to color each area / vertex in such a way that adjacent areas have different colors. This minimum number is called the \textit{chromatic number} $\chi(G)$. 
+
+Certain properties of graphs can only be proven if they are fulfilled in all their \textbf{subgraphs}. Hence, it is important to find those. A graph $H = (W, F)$ is a subgraph of $G = (V, E)$ when $W \subseteq V$ and $F \subseteq E$. A subgraph can be \textbf{induced} by $W \subseteq V$ which means the edge set $F$ contains only edges of $E$ for which both endpoints are contained in $W$. Similarly the union can be built of two graphs $G_1$ and $G_2$ where $G = G_1 \cup G_2$ and $V = V_1 \cup V_2$. 
+
+Another area of graph theory aims to determine whether two graphs are \textbf{isomorphic}. This means \textquote[{\cite{rosen_discrete_2012}}, p. 668]{there is a one-to-one correspondence between their vertex sets that preserves edges.} Different algorithms are being developed that can determine isomorphism of two graphs, however with exponential worst-case time complexity. These algorithms mainly find application in chemistry and bioinformatics.  
+
+Different \textbf{route problems} exist where the solution tries to find a path with certain properties within the graph. In the ``seven bridges of Königsberg'' the four sections of land are separated by a river and seven bridges are connecting them. The problem of passing every bridge exactly once and returning to the start can be formulated in terms of a graph with sections as vertices and bridges as edges. It is the question whether a graph has an Euler circuit or not. Many real-world applications exist where each edge needs to be visited once.
+
+When edges have a weight assigned different problems can be modelled and optimised by finding a shortest path. A famous algorithm to find such a path is ``Dijkstra’s Algorithm''. Similarly, in the Traveling Salesperson Problem each vertex needs to be visited exactly one before returning to the starting point. Algorithms finding a path with low cost often use approximation since no algorithm with polynomial worst-case complexity exists. 
+
+Different problems deal with the \textbf{flow} in a network. Such networks have a capacity assigned to each directed edge. Often the goal is to find the maximum flow between a source and a sink node such that all intermediary nodes have equal in and outflow \citep{even_network_1975}.
 
 \subsection{Application in the Lightning Network}
+\subsubsection{Graph theory in Lightning}
 \todo[inline]{problem to be solved in ln is network flow: find route that accommodates enough liquidity without knowing the balances. In experiment algorithm does rebalancing by trying to reallocate funds differently (greedy)}
+The Lightning network can best be described by a \textbf{simple directed graph}. That is a graph with directed edges without loops and multiple directed edges. Since a payment channel between $u$ and $v$ allows payments to flow in both direction it can be modelled by use of two edges $(u, v)$ and $(v, u)$. In terms of network flow theory the capacity is the amount that can flow from $u$ to $v$ which in Lightning is defined as the local channel balance of $u$. Figure~\ref{fig:channel_graph} visualises a channel between Alice and Bob with 1 BTC capacity of which Alice holds 0.2 BTC and Bob holds 0.8 BTC.
 
-Nodes trying to find a path in the Lightning Network work with limited information. While they know what channels are available and what their capacities are, they do not know about the balances and therefore whether the nodes can forward their payment or not. Hence, it is likely that a payment attempt fails because a node had insufficient balance. The paying node needs to find another route and retry the payment until it succeeds. If the payment fails repeatedly it can cause delays that are bad for the user experience. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{simple_channel.pdf}
+\caption{Lightning channel represented as simple directed graph..}
+\label{fig:channel_graph}
+\end{figure}
 
-\subsection{Problem statement}
-\todo[inline]{Only give a brief informal overview of the problem but forward reference to the next chapter}
+\subsubsection{Fees}
+So far the properties of a network graph could be mapped to a Lightning payment channel. There is another concept within lightning that need to be accounted for. When payment channels get used by other nodes than the two channel partners they can ask for fee to be paid. This can be compared to a bridge toll that needs to be paid by everyone crossing the bridge. It is a compensation for the capital that the channel owner has ``locked''. The fee consists of two parts, a fixed fee and a variable fee. While the fixed fee is the same for every payment, the variable increases linearly with the amount being transferred.
 
-These payment channel networks are decentralized by nature and no protocol change can be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure \footnote{Defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
+\subsubsection{Path finding problem}
+As laid out in section~\ref{subsec:routing} the initiator of a payment needs to construct the path before sending the payment. Nodes trying to find such a path work with limited information. While they know what channels are available and what their capacities are, they do not know about the balances and therefore whether the nodes can forward their payment or not. Hence, it is likely that a payment attempt fails because a node had insufficient balance. The paying node needs to find another route and retry the payment until it succeeds. If the payment fails repeatedly it can cause delays that are bad for the user experience.
+
+This problem gets amplified because in the current protocol channels are single funded. This means one party provides 100\% of the channel capacity. A collaborative approach to funding a channel might be possible in the future. As a consequence the funder of the channel owns initially 100\% of the channel balance and the other side 0\% which means the channel can only be used to route into \textbf{one direction}. A third party trying to route through this channel has a 50:50 chance that he or she can not even route a minimal amount of 1 satoshi \todo{define satoshi and other units of btc}. 
 
 \subsection{Previous work}
-René Pickhardt's and Mariusz Nowostawski's publication ``Imbalance measure and proactive channel rebalancing algorithm for the Lightning Network'' \cite{pickhardt_imbalance_2019} serves as a base to formulate the question for this thesis. In their work, they present a solution for the pathfinding problem in a privacy-aware payment channel network. The proposed solution includes a rebalancing protocol which the nodes of the network should follow to achieve a higher balancedness (for itself but also the entire network). It consists of instructions to proactively rebalance their channels within their friend of a friend's network, redistributing the relative funds owned in a channel but leaving total funds owned unchanged.
+Pickhardt's and Nowostawski's publication ``Imbalance measure and proactive channel rebalancing algorithm for the Lightning Network'' \citep{pickhardt_imbalance_2019} serves as a base to formulate the question for this thesis. In their work, they present a solution for the pathfinding problem in a privacy-aware payment channel network. The proposed solution includes a rebalancing protocol which the nodes of the network should follow to achieve a higher balancedness (for itself but also the entire network). It consists of instructions to proactively rebalance their channels within their friend of a friend's network, redistributing the relative funds owned in a channel but leaving total funds owned unchanged.
 
-Rebalancing is an activity where one node engages in a circular payment that pays itself. This is only possible when the node has at least two channels with different peers. The payment gets routed \textbf{out} through one channel and is \textbf{received back} over another. On the way, it can use one or more hops to find back to the sender node. This procedure enables a node to change the balances of the individual channels while the total node balance stays the same. In practice, there would be a fee collected by the intermediate nodes whose channels are used. In the proposed rebalancing protocol nodes would forego the fee and only participate in the rebalancing attempt if their balancedness improves as well.
+Rebalancing is an activity where one node engages in a circular payment that pays itself. This is only possible when the node has at least two channels with different peers. The payment gets routed \textbf{out} through one channel and is \textbf{received back} over another. On the way, it can use one or more hops to find back to the sender node. This procedure enables a node to change the balances of the individual channels while the total node balance stays the same. In practice, there would be a fee collected by the intermediate nodes whose channels are used. In the proposed rebalancing protocol nodes would forego the fee and only participate in the rebalancing attempt if their balancedness improves as well. The rebalancing algorithm is described in more detail in the section \todo{include ref to experiment}. 
+
+
+\subsection{Problem statement}
+These payment channel networks are decentralized by nature and protocol changes can not be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure \footnote{Defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
+
+The next part of the paper defines the rebalancing algorithm proposed in a protocol change. Then an experiment is constructed which mimics the real Lightning Network with all its participants and payment channels. I formally define multiple performance measurements which are later used to measure the improvement of the network's ability to route payments. Different scenarios are then simulated under different levels of participation also testing different ways to select the participating nodes.
 
 \section{Experiment} \label{sec:method}
 \todo[inline]{explain all the performance measures}
 \todo[inline]{explain methodology}
 \todo[inline]{explain the experimental setup}
+\subsection{Graph concepts in the LN}
+explain the concepts from formal definition with lightning \ref{subsec:formal}
 \subsection{Preprocessing}
 \todo[inline]{explain which nodes and channels where selected}
 
@@ -266,8 +281,7 @@ For all further manipulations and calculations, the programming language Python 
 %%---BIBLIOGRAPHY------------------------------------------------------------------------
 \newpage
 {\sloppypar
-\addcontentsline{toc}{section}{Bibliography}
-\printbibliography
+\printbibliography[heading=bibintoc]
 \label{sec:lit}
 }
 

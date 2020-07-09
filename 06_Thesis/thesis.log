@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.13)  8 JUL 2020 15:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.13)  9 JUL 2020 15:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2042,7 +2042,7 @@ Package epstopdf Info: Source file: <fhnw_hw_e_10mm.eps>
 ed-to.pdf fhnw_hw_e_10mm.eps>
 (epstopdf)             \includegraphics on input line 35.
 Package epstopdf Info: Output file is already uptodate.
-<fhnw_hw_e_10mm-eps-converted-to.pdf, id=146, 298.11375pt x 29.10875pt>
+<fhnw_hw_e_10mm-eps-converted-to.pdf, id=151, 298.11375pt x 29.10875pt>
 File: fhnw_hw_e_10mm-eps-converted-to.pdf Graphic file (type pdf)
 <use fhnw_hw_e_10mm-eps-converted-to.pdf>
 Package pdftex.def Info: fhnw_hw_e_10mm-eps-converted-to.pdf  used on input lin
@@ -2085,80 +2085,89 @@ l.115 M
 
 
 ] [2] [3]
-<./graphics/channel_lifecycle.pdf, id=249, 597.63278pt x 180.675pt>
+<./graphics/channel_lifecycle.pdf, id=255, 597.63278pt x 180.675pt>
 File: ./graphics/channel_lifecycle.pdf Graphic file (type pdf)
 <use ./graphics/channel_lifecycle.pdf>
 Package pdftex.def Info: ./graphics/channel_lifecycle.pdf  used on input line 1
 43.
 (pdftex.def)             Requested size: 409.71689pt x 123.86362pt.
  [4 <./graphics/channel_lifecycle.pdf>]
-<./graphics/htlc.pdf, id=307, 827.49153pt x 144.54pt>
+<./graphics/htlc.pdf, id=313, 827.49153pt x 144.54pt>
 File: ./graphics/htlc.pdf Graphic file (type pdf)
 <use ./graphics/htlc.pdf>
 Package pdftex.def Info: ./graphics/htlc.pdf  used on input line 168.
 (pdftex.def)             Requested size: 455.24408pt x 79.51929pt.
  [5 <./graphics/htlc.pdf>]
-<./graphics/nopayment.pdf, id=346, 621.57219pt x 144.54pt>
+<./graphics/nopayment.pdf, id=352, 621.57219pt x 144.54pt>
 File: ./graphics/nopayment.pdf Graphic file (type pdf)
 <use ./graphics/nopayment.pdf>
 Package pdftex.def Info: ./graphics/nopayment.pdf  used on input line 181.
 (pdftex.def)             Requested size: 455.24408pt x 105.86177pt.
 
 [6 <./graphics/nopayment.pdf>]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-02.
- (/usr/share/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 222.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 222.
+<./graphics/simple_channel.pdf, id=380, 462.52798pt x 346.89601pt>
+File: ./graphics/simple_channel.pdf Graphic file (type pdf)
+<use ./graphics/simple_channel.pdf>
+Package pdftex.def Info: ./graphics/simple_channel.pdf  used on input line 218.
 
-[7] [8] [9] [10]
+(pdftex.def)             Requested size: 409.71689pt x 307.30202pt.
+ [7] [8 <./graphics/simple_channel.pdf>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 238.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 238.
+ [9]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+66.
+
+(/usr/share/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [10] [11]
 \@gls@deffile=\write9
 \openout9 = `thesis.glsdefs'.
 
- (./thesis.gls) [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
+ (./thesis.gls)
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 308.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 308.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 294.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 308.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 308.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 1D2CCF6DE0B8508F5BA4C2D11B997825;1988.
+(rerunfilecheck)             Checksum: CAED8A467E0937FB44EB390A5AAEC07E;2089.
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 294.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 308.
  ) 
 Here is how much of TeX's memory you used:
- 49327 strings out of 492167
- 941754 string characters out of 6131558
- 1618979 words of memory out of 5000000
- 52788 multiletter control sequences out of 15000+600000
+ 49363 strings out of 492167
+ 942629 string characters out of 6131558
+ 1620479 words of memory out of 5000000
+ 52818 multiletter control sequences out of 15000+600000
  622118 words of font info for 74 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  81i,9n,131p,1986b,5514s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
 
-{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/font
-s/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.e
-nc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dist/f
-onts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lm
-bx9.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/tex
-mf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf-dist/fonts/type
-1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr9.pfb></us
-r/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf-dist/font
-s/type1/public/lm/lmro10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssb
-x10.pfb>
-Output written on thesis.pdf (16 pages, 796246 bytes).
+{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf-dist/fon
+ts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{
+/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf-dist/f
+onts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lm
+bx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/share/tex
+mf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/lm/lmr6.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></
+usr/share/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf-dist/font
+s/type1/public/lm/lmri10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmro1
+0.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on thesis.pdf (17 pages, 819146 bytes).
 PDF statistics:
- 490 PDF objects out of 1000 (max. 8388607)
- 418 compressed objects within 5 object streams
- 87 named destinations out of 1000 (max. 500000)
- 361 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 447 compressed objects within 5 object streams
+ 92 named destinations out of 1000 (max. 500000)
+ 374 words of extra memory for PDF output out of 10000 (max. 10000000)
 

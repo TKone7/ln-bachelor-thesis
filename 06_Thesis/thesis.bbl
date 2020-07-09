@@ -147,6 +147,60 @@
       \endverb
       \keyw{Black Market,Blind Signature,Carbon Paper,Payment System,Personal Privacy}
     \endentry
+    \entry{even_network_1975}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1df6d440bdcf5ce3d3ad82d370770f54}{%
+           family={Even},
+           familyi={E\bibinitperiod},
+           given={Shimon},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9c86ec9185a2c33ec8e471c926956593}{%
+           family={Tarjan},
+           familyi={T\bibinitperiod},
+           given={R.\bibnamedelimi Endre},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{13185682d4ba9b64ac2b046544c90768}
+      \strng{fullhash}{13185682d4ba9b64ac2b046544c90768}
+      \strng{bibnamehash}{13185682d4ba9b64ac2b046544c90768}
+      \strng{authorbibnamehash}{13185682d4ba9b64ac2b046544c90768}
+      \strng{authornamehash}{13185682d4ba9b64ac2b046544c90768}
+      \strng{authorfullhash}{13185682d4ba9b64ac2b046544c90768}
+      \field{sortinit}{E}
+      \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0097-5397, 1095-7111}
+      \field{journaltitle}{{SIAM} Journal on Computing}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{4}
+      \field{shortjournal}{{SIAM} J. Comput.}
+      \field{title}{Network Flow and Testing Graph Connectivity}
+      \field{urlday}{8}
+      \field{urlmonth}{7}
+      \field{urlyear}{2020}
+      \field{volume}{4}
+      \field{year}{1975}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{507\bibrangedash 518}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1137/0204043
+      \endverb
+      \verb{urlraw}
+      \verb http://epubs.siam.org/doi/10.1137/0204043
+      \endverb
+      \verb{url}
+      \verb http://epubs.siam.org/doi/10.1137/0204043
+      \endverb
+    \endentry
     \entry{haber_how_1991}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=dc54fe6ba19414afd96d107ec03015ee}{%

@@ -2292,8 +2292,9 @@
     <bcf:citekey order="13">poon_bitcoin_2016</bcf:citekey>
     <bcf:citekey order="14">rosen_discrete_2012</bcf:citekey>
     <bcf:citekey order="15">rosen_discrete_2012</bcf:citekey>
-    <bcf:citekey order="16">pickhardt_imbalance_2019</bcf:citekey>
+    <bcf:citekey order="16">even_network_1975</bcf:citekey>
     <bcf:citekey order="17">pickhardt_imbalance_2019</bcf:citekey>
+    <bcf:citekey order="18">pickhardt_imbalance_2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">
