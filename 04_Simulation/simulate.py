@@ -113,34 +113,34 @@ def main(arguments):
             e.run_experiment()
         e.plot_experiment()
 
-    if arguments["runmulti"]:
-        experiments = [(i+1) * 10 for i in range(10)][::-1]
-        #experiments = [100,50]
-        sample_size = 1
-        networks = dict()
-        samples = dict()
-        for exp in experiments:
-            for i in range(sample_size):
-                try:
-                    n = Network.restore_result(arguments["<fingerprint>"], exp / 100, iteration=i+1, selection='random')
-                    print('Existing result found for experiment {}, iteration {}'.format(exp, i+1))
-                except:
-                    print('No result found for experiment {}, iteration {}. Execute experiment now.'.format(exp, i+1))
-                    n = Network.restore_snapshot(arguments["<fingerprint>"], exp / 100, iteration=i+1, selection='random')
-                    n.plot_gini_distr_hist('initial_gini_distr_hist')
-                    compute_circles(n)
-                    rebalance(n)
-                samples[i] = n
-            # condense the networks
-            cond = Network.condense_networks(list(samples.values()))
-            networks[exp] = cond
-        # some plots only use a subset of participating networks
-        subset = [n for n in networks.values()]# [networks[100], networks[90], networks[80], networks[50]] #
-
-        Network.plot_gini_vs_rebalops_merge(subset)
-        Network.plot_paymentsize_vs_imbalance_merge(subset)
-        Network.plot_successrate_vs_imbalance_merge(subset)
-        Network.plot_gini_vs_participation(subset)
+    # if arguments["runmulti"]:
+    #     experiments = [(i+1) * 10 for i in range(10)][::-1]
+    #     #experiments = [100,50]
+    #     sample_size = 1
+    #     networks = dict()
+    #     samples = dict()
+    #     for exp in experiments:
+    #         for i in range(sample_size):
+    #             try:
+    #                 n = Network.restore_result(arguments["<fingerprint>"], exp / 100, iteration=i+1, selection='random')
+    #                 print('Existing result found for experiment {}, iteration {}'.format(exp, i+1))
+    #             except:
+    #                 print('No result found for experiment {}, iteration {}. Execute experiment now.'.format(exp, i+1))
+    #                 n = Network.restore_snapshot(arguments["<fingerprint>"], exp / 100, iteration=i+1, selection='random')
+    #                 n.plot_gini_distr_hist('initial_gini_distr_hist')
+    #                 compute_circles(n)
+    #                 rebalance(n)
+    #             samples[i] = n
+    #         # condense the networks
+    #         cond = Network.condense_networks(list(samples.values()))
+    #         networks[exp] = cond
+    #     # some plots only use a subset of participating networks
+    #     subset = [n for n in networks.values()]# [networks[100], networks[90], networks[80], networks[50]] #
+    #
+    #     Network.plot_gini_vs_rebalops_merge(subset)
+    #     Network.plot_paymentsize_vs_imbalance_merge(subset)
+    #     Network.plot_successrate_vs_imbalance_merge(subset)
+    #     Network.plot_gini_vs_participation(subset)
 
 if __name__ == '__main__':
     # print('correct args', sys.argv)
