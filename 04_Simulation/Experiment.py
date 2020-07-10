@@ -71,9 +71,9 @@ class Experiment:
         elif self.type.startswith('netw_spread_'):
             self.__plot_spread()
         elif self.type.startswith('size_linear'):
-            pass
+            self.__plot_size_linear()
         elif self.type.startswith('size_category'):
-            pass
+            self.__plot_size_category()
         else:
             raise NotImplementedError
 
@@ -85,6 +85,8 @@ class Experiment:
                 si = (d + 1) * (i if i < r else r) + d * (0 if i < r else i - r)
                 yield l[si:si + (d + 1 if i < r else d)]
         for i, bin in enumerate(self.bins):
+            # if i != 1:
+            #     continue
             repeated_empty = 0
             for exp in self.participations:
                 try:
@@ -208,6 +210,43 @@ class Experiment:
                     n.rebalance(max_ops=100000, amount_coeff=1)
                     n.store_experiment_result()
 
+    def __plot_size_linear(self):
+        networks = dict()
+        for exp in self.participations:
+            try:
+                n = self.__load_existing_experiment(exp)
+                networks[exp] = n
+            except OSError as e:
+                logger.error('Cannot plot the defined experiment, as results are not there.')
+        net = list(networks.values())
+        if self.direction == 'desc':
+            subset = [value for key, value in networks.items() if key in (100, 80, 70, 50, 40)]
+        else:
+            subset = [value for key, value in networks.items() if key in (95, 90, 80, 70)]
+        self.__plot_all(subset)
+        self.__plot_vs_participation(net)
+
+    def __plot_size_category(self):
+        size = dict()
+        for i, bin in enumerate(self.bins):
+            networks = dict()
+            for exp in self.participations:
+                try:
+                    n = self.__load_existing_experiment(exp, i + 1)
+                    networks[exp] = n
+                except OSError as e:
+                    random.seed(100)
+                    logger.error('Cannot plot the defined experiment, as results are not there.')
+            size[bin] = networks
+
+
+        net = size['large']
+        subset = [value for key, value in net.items() if key in (100, 90, 80, 70)]
+        all = list(net.values())
+        self.__plot_all(subset)
+        self.__plot_vs_participation(all)
+
+
     def __plot_spread(self):
         networks = dict()
         all_participating = False
@@ -224,15 +263,13 @@ class Experiment:
             iter += 1
         # IMPORTANT reverse the order to go from largest to smalles participation
         net = list(networks.values())
-        self.plot_paymentsize_vs_participation(net)
-        self.plot_payments_vs_participation(net)
-        self.plot_successrate_vs_participation(net)
+        self.__plot_vs_participation(net)
         # change order for certain polots
         net = net[::-1]
 
         # for these plots reduce the set
         net_small = net[0::2]
-        self.__plot_all(net_small)
+        self.__plot_all(net)
 
     def __plot_random(self):
         networks = dict()
@@ -253,9 +290,10 @@ class Experiment:
         # subset = [n for n in networks.values()]
         for n in networks.values():
             n.plot_payments_vs_imbalance()
-
-        subset = [value for key, value in networks.items() if key in (100, 90, 80, 60, 50)]
+        all = [value for key, value in networks.items()]
+        subset = [value for key, value in networks.items() if key in (100, 90, 80, 70, 60, 50)]
         self.__plot_all(subset)
+        self.__plot_vs_participation(all)
 
     def __plot(self):
         networks = dict()
@@ -272,22 +310,23 @@ class Experiment:
         self.plot_gini_vs_rebalops(networks)
         self.plot_paymentsize_vs_imbalance(networks)
         self.plot_successrate_vs_imbalance(networks)
-        # self.plot_gini_vs_participation(subset)
         self.plot_payments_vs_imbalance_one(networks)
         self.plot_payments_vs_imbalance_micro(networks)
         self.plot_payments_vs_imbalance_normal(networks)
 
+    def __plot_vs_participation(self, networks):
         # new against participation in percent
         self.plot_paymentsize_vs_participation(networks)
         self.plot_successrate_vs_participation(networks)
         self.plot_payments_vs_participation(networks)
+        self.plot_gini_vs_participation(networks)
 
     def __load_existing_experiment(self, participation, iteration=1):
         experiment_name = self.fingerprint + '_' + str(int(participation)) + '_' + self.type + '_' + str(iteration)
         n = Network.restore_result_by_name(self.fingerprint, experiment_name)
         n.set_experiment_name(str(participation) + '_' + self.type + '_' + str(iteration))
         n.set_participation(participation)
-        if self.type == 'random' or self.type.startswith('size_linear'):
+        if self.type == 'random' or self.type.startswith('size_'):
             n.set_participation(participation / 100)
         else:
             n.set_participation((participation))
@@ -314,7 +353,11 @@ class Experiment:
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         for n in networks:
-            lbl = '{:d} % participation'.format(int(n.participation * 100))
+            if self.type.startswith('netw_spread_'):
+                lbl = 'iteration {:d}'.format(int(n.participation))
+            else:
+                lbl = '{:d} % participation'.format(int(n.participation * 100))
+
             stats = n.stats()
             keys = list(stats.keys())
             k = keys[::-1]
@@ -392,17 +435,53 @@ class Experiment:
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
     def plot_gini_vs_participation(self, networks, filename='gini_vs_participation'):
-        def byParticipation(n):
-            return n.participation
 
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
-        networks.sort(key=byParticipation)
-        data = [n.gini_distr_data() for n in networks]
-        lbl = [str(n.participation * 100) + '%' for n in networks]
-        # Create a figure instance
+        k = []
+        v = []
+        error_up = []
+        error_down = []
+        node_participation = []
+        capacity_participation = []
+        for n in networks:
+            participation = int(n.participation) if self.type.startswith('netw_spread_') else n.participation*100
+            k.append(participation)
 
-        plt.boxplot(data, labels=lbl)
+            if self.type == 'random':
+                v.append(n.end_mean_gini)
+                error_up.append(n.end_mean_gini + n.end_std_mean_gini)
+                error_down.append(n.end_mean_gini - n.end_std_mean_gini)
+            else:
+                v.append(n.mean_gini)
+            part_node = (n.nr_participating_nodes / n.nr_nodes) * 100
+            part_capa = (n.incl_capacity / n.total_capacity) * 100
+            node_participation.append(part_node)
+            capacity_participation.append(part_capa)
+
+        plt.plot(k, v, label='Mean Gini', linewidth=3)
+        if self.type == 'random':
+            plt.fill_between(k, error_down, error_up, color='moccasin')
+        if self.type.startswith('netw_spread_'):
+            plt.title("Comparing participation with mean gini\nInit: {}%, spread: {}%".format(self.init, self.spread))
+            plt.xlabel("Iterations of spread")
+            plt.xlim(1, 11)
+        else:
+            plt.title("Comparing participation with mean gini")
+            plt.xlabel("Participation")
+            plt.xlim(10, 100)
+
+        plt.ylabel("Gini")
+        plt.legend(loc='upper left')
+        plt.grid(axis='y')
+
+        ax2 = plt.twinx()
+        if self.type.startswith('netw_spread_'):
+            ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
+        ax2.set_ylabel("Participation [%]")
+        ax2.plot(k, capacity_participation, label='Capacity participation', linewidth=2, color='tab:cyan', linestyle='dotted', marker='o')
+        ax2.legend(loc='lower left')
+
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
     def plot_paymentsize_vs_participation(self, networks, filename='median_paymnet_size_vs_participation'):
@@ -428,6 +507,7 @@ class Experiment:
         if self.type.startswith('netw_spread_'):
             plt.title("Comparing participation with possible payment size\nInit: {}%, spread: {}%".format(self.init, self.spread))
             plt.xlabel("Iterations of spread")
+            plt.xlim(1, 11)
         else:
             plt.title("Comparing participation with possible payment size")
             plt.xlabel("Participation")
@@ -438,10 +518,10 @@ class Experiment:
         plt.grid(axis='y')
 
         ax2 = plt.twinx()
-        ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
+        if self.type.startswith('netw_spread_'):
+            ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
         ax2.set_ylabel("Participation [%]")
         ax2.plot(k, capacity_participation, label='Capacity participation', linewidth=2, color='tab:cyan', linestyle='dotted', marker='o')
-        ax2.set_ylabel("Participation [%]")
         ax2.legend(loc='lower left')
 
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
@@ -468,6 +548,7 @@ class Experiment:
         if self.type.startswith('netw_spread_'):
             plt.title("Comparing participation with success rate of random payments\nInit: {}%, spread: {}%".format(self.init, self.spread))
             plt.xlabel("Iterations of spread")
+            plt.xlim(1, 11)
         else:
             plt.title("Comparing participation with success rate of random payments")
             plt.xlabel("Participation")
@@ -479,7 +560,8 @@ class Experiment:
         plt.grid(axis='y')
 
         ax2 = plt.twinx()
-        ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
+        if self.type.startswith('netw_spread_'):
+            ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
         ax2.set_ylabel("Participation [%]")
         ax2.plot(k, capacity_participation, label='Capacity participation', linewidth=2, color='tab:cyan', linestyle='dotted', marker='o')
         ax2.set_ylabel("Participation [%]")
@@ -515,6 +597,7 @@ class Experiment:
         if self.type.startswith('netw_spread_'):
             plt.title("Comparing participation with possible payment size\nInit: {}%, spread: {}%".format(self.init, self.spread))
             plt.xlabel("Iterations of spread")
+            plt.xlim(1, 11)
         else:
             plt.title("Comparing participation with possible payment size")
             plt.xlabel("Participation")
@@ -528,7 +611,8 @@ class Experiment:
         plt.grid(axis='y')
 
         ax2 = plt.twinx()
-        ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
+        if self.type.startswith('netw_spread_'):
+            ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
         ax2.set_ylabel("Participation [%]")
         ax2.plot(k, capacity_participation, label='Capacity participation', linewidth=2, color='tab:cyan', linestyle='dotted', marker='o')
         ax2.set_ylabel("Participation [%]")
@@ -607,6 +691,22 @@ class Experiment:
         entries = min([len(n.gini_hist_data()) for n in networks])
         avg_gini_hist = [np.average([n.gini_hist_data()[e] for n in networks]) for e in range(entries)]
         N.set_history_gini(avg_gini_hist)
+
+        # combine node / capacity statistics
+        nr_participating_nodes = np.average([n.nr_participating_nodes for n in networks])
+        nr_nodes = np.average([n.nr_nodes for n in networks])
+        incl_capacity = np.average([n.incl_capacity for n in networks])
+        total_capacity = np.average([n.total_capacity for n in networks])
+
+        N.total_capacity = total_capacity
+        N.incl_capacity = incl_capacity
+        N.nr_participating_nodes = nr_participating_nodes
+        N.nr_nodes = nr_nodes
+        # Ginis
+
+        N.end_mean_gini = np.average([n.mean_gini for n in networks])
+        # N.end_std_mean_gini = np.average([np.std(n.gini_distr_data()) for n in networks])
+        N.end_std_mean_gini = np.std([n.mean_gini for n in networks])
         return N
 
 # e = Experiment('3a65a961')

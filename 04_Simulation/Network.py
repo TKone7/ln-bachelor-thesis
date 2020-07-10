@@ -42,6 +42,8 @@ class Network:
         self.total_capacity = None
         self.nr_nodes = None
         self.nr_participating_nodes = None
+        self.end_mean_gini = None
+        self.end_std_mean_gini = None
         self.fingerprint = self.__fingerprint()
         logger.info('Fingerprint is {}'.format(self.fingerprint))
 
