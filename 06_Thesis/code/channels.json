@@ -1,0 +1,20 @@
+{
+    "channels": [
+        {
+            "source": "02ad6fb8d693dc1e4569bcedefadf5f72a931ae027dc0f0c544b34c1c6f3b9a02b",
+            "destination": "03fab7f8655169ea77d9691d4bd359e97782cb6177a6f76383994ed9c262af97a5",
+            "short_channel_id": "513909x1248x0",
+            "satoshis": 20000,
+            "base_fee_millisatoshi": 0,
+            "fee_per_millionth": 1
+        },
+        {
+            "source": "03fab7f8655169ea77d9691d4bd359e97782cb6177a6f76383994ed9c262af97a5",
+            "destination": "02ad6fb8d693dc1e4569bcedefadf5f72a931ae027dc0f0c544b34c1c6f3b9a02b",
+            "short_channel_id": "513909x1248x0",
+            "satoshis": 20000,
+            "base_fee_millisatoshi": 1000,
+            "fee_per_millionth": 1
+        }
+    ]
+}

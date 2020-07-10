@@ -212,7 +212,7 @@
 \usepackage[numbib,nottoc]{tocbibind}
 
 
-\RequirePackage{hyperref,color}
+\RequirePackage{hyperref}
 \hypersetup{bookmarksnumbered={true},hidelinks}
 \RequirePackage{caption}
 \captionsetup{margin=10pt,font=small,labelfont=bf}

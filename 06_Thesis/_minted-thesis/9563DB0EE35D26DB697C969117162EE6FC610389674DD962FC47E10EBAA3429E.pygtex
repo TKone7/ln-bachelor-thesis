@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+   \PYG{l+s+s2}{\PYGZdq{}channels\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+      \PYG{p}{\PYGZob{}}
+         \PYG{l+s+s2}{\PYGZdq{}source\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}02ad6fb8d693dc1e4569bcedefadf5f72a931ae027dc0f0c544b34c1c6f3b9a02b\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}destination\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}03fab7f8655169ea77d9691d4bd359e97782cb6177a6f76383994ed9c262af97a5\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}short\PYGZus{}channel\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}513909x1248x0\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}public\PYGZdq{}}\PYG{o}{:} \PYG{k+kc}{true}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}satoshis\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{20000}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}amount\PYGZus{}msat\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}20000000msat\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}message\PYGZus{}flags\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{1}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}channel\PYGZus{}flags\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}active\PYGZdq{}}\PYG{o}{:} \PYG{k+kc}{true}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}last\PYGZus{}update\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{1594283842}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}base\PYGZus{}fee\PYGZus{}millisatoshi\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}fee\PYGZus{}per\PYGZus{}millionth\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{1}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}delay\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{144}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}htlc\PYGZus{}minimum\PYGZus{}msat\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}1000msat\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}htlc\PYGZus{}maximum\PYGZus{}msat\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}20000000msat\PYGZdq{}}
+      \PYG{p}{\PYGZcb{},}
+	 \PYG{p}{...}
+   \PYG{p}{]}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

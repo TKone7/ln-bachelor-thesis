@@ -1,8 +1,8 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {ngerman}{}
 \babel@toc {english}{}
-\contentsline {section}{Declaration of honor}{III}{section*.1}% 
-\contentsline {section}{Foreword}{IV}{section*.3}% 
+\contentsline {section}{Declaration of honor}{IV}{section*.1}% 
+\contentsline {section}{Foreword}{V}{section*.3}% 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}% 
 \contentsline {subsection}{\numberline {1.1}Bitcoin: Peer to Peer Electronic Cash}{1}{subsection.1.1}% 
 \contentsline {subsubsection}{\numberline {1.1.1}History of digital cash}{1}{subsubsection.1.1.1}% 
@@ -19,14 +19,18 @@
 \contentsline {subsubsection}{\numberline {2.3.2}Path finding problem}{8}{subsubsection.2.3.2}% 
 \contentsline {subsection}{\numberline {2.4}Previous work}{9}{subsection.2.4}% 
 \contentsline {subsection}{\numberline {2.5}Problem statement}{9}{subsection.2.5}% 
-\contentsline {section}{\numberline {3}Experiment}{10}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Graph concepts in the LN}{10}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Preprocessing}{10}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Lightning properties}{10}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Implementing routing protocol}{10}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}Methodology}{10}{subsection.3.5}% 
-\contentsline {section}{\numberline {4}Results}{10}{section.4}% 
-\contentsline {section}{\numberline {5}Conclusion \& Outlook}{15}{section.5}% 
-\contentsline {section}{References}{16}{section*.38}% 
-\contentsline {section}{Glossary}{17}{section*.40}% 
-\contentsline {section}{\numberline {A}Some appendix}{17}{appendix.A}% 
+\contentsline {section}{\numberline {3}Experiment}{11}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Data collection \& Preprocessing}{11}{subsection.3.1}% 
+\contentsline {subsubsection}{\numberline {3.1.1}Retrieve data from Lightning node}{11}{subsubsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.2}Simulating Lightning Network}{12}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Routing protocol}{12}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Performance Measures}{12}{subsection.3.4}% 
+\contentsline {subsubsection}{\numberline {3.4.1}Success rate on shortest path}{12}{subsubsection.3.4.1}% 
+\contentsline {subsubsection}{\numberline {3.4.2}Payment size on shortest path}{12}{subsubsection.3.4.2}% 
+\contentsline {subsubsection}{\numberline {3.4.3}Ability to route different payment sizes}{13}{subsubsection.3.4.3}% 
+\contentsline {subsection}{\numberline {3.5}Methodology}{13}{subsection.3.5}% 
+\contentsline {section}{\numberline {4}Results}{13}{section.4}% 
+\contentsline {section}{\numberline {5}Conclusion \& Outlook}{18}{section.5}% 
+\contentsline {section}{References}{19}{section*.36}% 
+\contentsline {section}{Glossary}{20}{section*.38}% 
+\contentsline {section}{\numberline {A}Some appendix}{20}{appendix.A}% 

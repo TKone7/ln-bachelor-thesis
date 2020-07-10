@@ -1,15 +1,17 @@
 \documentclass[final]{fhnwreport}       %[mode] = draft or final
                                         %{class} = fhnwreport, article, 
                                         %          report, book, beamer, standalone
-\usepackage{hyperref}
-\usepackage{longtable} % To display tables on several pages
+%\usepackage{hyperref}
+%\usepackage{graphicx}
+%\usepackage{longtable} % To display tables on several pages
+%\usepackage{geometry}
+%\usepackage{listings}
 \usepackage{lipsum}
 \usepackage{silence}
+\usepackage{subfig}
+\usepackage{minted}
 \WarningFilter{hyperref}{Draft mode on}
 \WarningFilter{latex}{Marginpar}
-\usepackage{graphicx}
-\usepackage{subfig}
-\usepackage{geometry}
 
 % Load the package
 \usepackage[toc]{glossaries}
@@ -17,6 +19,9 @@
 \makeglossaries
 
 \input{header}                            %loads all packages, definitions and settings, except bibliography (otherwise vim-latex doesn't recognise for completion)
+% Some definitions
+\definecolor{highlightyellow}{RGB}{250,237,39}
+\urldef{\gitpluginurl}\url{https://github.com/TKone7/clightning-plugins/tree/3b47ab992413d7bf9747be1320654b3478c60d37/dumpgraph}
 
 %%---Bibliography------------------------------------------------------------------------
 %% \usepackage[style=ieee,urldate=comp,backend=biber]{biblatex}
@@ -243,23 +248,61 @@ These payment channel networks are decentralized by nature and protocol changes 
 
 The next part of the paper defines the rebalancing algorithm proposed in a protocol change. Then an experiment is constructed which mimics the real Lightning Network with all its participants and payment channels. I formally define multiple performance measurements which are later used to measure the improvement of the network's ability to route payments. Different scenarios are then simulated under different levels of participation also testing different ways to select the participating nodes.
 
+\newpage
 \section{Experiment}\label{sec:method}
-\todo[inline]{explain all the performance measures}
-\todo[inline]{explain methodology}
-\todo[inline]{explain the experimental setup}
-\subsection{Graph concepts in the LN}
-explain the concepts from formal definition with lightning \ref{subsec:formal}
-\subsection{Preprocessing}
-\todo[inline]{explain which nodes and channels where selected}
+\subsection{Data collection \& Preprocessing}
+Data for the simulation was first collected from a Lightning node, the required features were extracted and multiple cleaning and preprocessing steps were performed. 
 
-\subsection{Lightning properties}
-%% Dummy text
+\subsubsection{Retrieve data from Lightning node}
+In order to run a simulation that resembles the real network closely data from a productive Lightning node are best fitted to construct the model. Lightning is an open network which means it is easy to setup a node and download all the channel information. One implementationi of a Lightning Network node is C-Lightning and they offer a flexible interface to write own plugins which can interact with the node over Remote Procedure Calls. I wrote a plugin \footnote{\gitpluginurl} in Python that writes all known channels to a json file. The JSON code snippet~\ref{code:rawchannel} shows what is returned by C-Lightning as result. The plugin extracts the  highlighted parts and writes them into a file.
 
-\subsection{Implementing routing protocol}
+\begin{listing}[H]
+  \inputminted[
+    frame=single,
+    framesep=3mm,
+    linenos=true,
+    xleftmargin=21pt,
+    tabsize=4,
+    breaklines=true,
+    breakanywhere=true,
+    highlightlines={4-6,8,14-15},
+    highlightcolor=highlightyellow,
+  ]{js}{code/raw.json}
+  \caption{Raw channels provided by C-Lightning.}
+  \label{code:rawchannel}
+\end{listing}
+
+
+
+\begin{listing}[H]
+  \inputminted[
+    frame=single,
+    framesep=3mm,
+    linenos=true,
+    xleftmargin=21pt,
+    tabsize=4,
+    breaklines=true,
+    breakanywhere=true
+  ]{js}{code/channels.json}
+  \caption{Sample channels file with only one channel.}
+\end{listing}
+
+\subsection{Simulating Lightning Network}
+\todo[inline]{Define everything in the network.py class that mimics the ln network (balances, capacities, fees, routing)}
+
+\subsection{Routing protocol}
 \todo[inline]{Describe how the proposed protocol change is impolemented in the \textbf{Network} class. }
 \todo[inline]{show illustrations with a dummy network}
 \todo[inline]{ask Rene to his dummy network}
 
+\subsection{Performance Measures}
+\todo[inline]{list the two existing and the third new performance measurement}
+\subsubsection{Success rate on shortest path}
+bla
+\subsubsection{Payment size on shortest path}
+dl
+\subsubsection{Ability to route different payment sizes}
+bla
 \subsection{Methodology}
 \todo[inline]{explain how to get the network information for a running node. quickly show how I extracted the data from the full node. Explain the structure of the python class \textbf{Network}}. And some more \textbf{bold text}.
 

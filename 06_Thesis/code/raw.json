@@ -1,0 +1,22 @@
+{
+   "channels": [
+      {
+         "source": "02ad6fb8d693dc1e4569bcedefadf5f72a931ae027dc0f0c544b34c1c6f3b9a02b",
+         "destination": "03fab7f8655169ea77d9691d4bd359e97782cb6177a6f76383994ed9c262af97a5",
+         "short_channel_id": "513909x1248x0",
+         "public": true,
+         "satoshis": 20000,
+         "amount_msat": "20000000msat",
+         "message_flags": 1,
+         "channel_flags": 0,
+         "active": true,
+         "last_update": 1594283842,
+         "base_fee_millisatoshi": 0,
+         "fee_per_millionth": 1,
+         "delay": 144,
+         "htlc_minimum_msat": "1000msat",
+         "htlc_maximum_msat": "20000000msat"
+      },
+	 ...
+   ]
+}
