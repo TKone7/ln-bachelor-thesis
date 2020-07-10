@@ -15,19 +15,18 @@
 \contentsline {subsection}{\numberline {2.1}Formal definition}{6}{subsection.2.1}% 
 \contentsline {subsection}{\numberline {2.2}Overview of broad problems}{6}{subsection.2.2}% 
 \contentsline {subsection}{\numberline {2.3}Application in the Lightning Network}{7}{subsection.2.3}% 
-\contentsline {subsubsection}{\numberline {2.3.1}Graph theory in Lightning}{7}{subsubsection.2.3.1}% 
-\contentsline {subsubsection}{\numberline {2.3.2}Fees}{8}{subsubsection.2.3.2}% 
-\contentsline {subsubsection}{\numberline {2.3.3}Path finding problem}{8}{subsubsection.2.3.3}% 
+\contentsline {subsubsection}{\numberline {2.3.1}Fees}{8}{subsubsection.2.3.1}% 
+\contentsline {subsubsection}{\numberline {2.3.2}Path finding problem}{8}{subsubsection.2.3.2}% 
 \contentsline {subsection}{\numberline {2.4}Previous work}{9}{subsection.2.4}% 
 \contentsline {subsection}{\numberline {2.5}Problem statement}{9}{subsection.2.5}% 
-\contentsline {section}{\numberline {3}Experiment}{9}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Graph concepts in the LN}{9}{subsection.3.1}% 
+\contentsline {section}{\numberline {3}Experiment}{10}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Graph concepts in the LN}{10}{subsection.3.1}% 
 \contentsline {subsection}{\numberline {3.2}Preprocessing}{10}{subsection.3.2}% 
 \contentsline {subsection}{\numberline {3.3}Lightning properties}{10}{subsection.3.3}% 
 \contentsline {subsection}{\numberline {3.4}Implementing routing protocol}{10}{subsection.3.4}% 
 \contentsline {subsection}{\numberline {3.5}Methodology}{10}{subsection.3.5}% 
 \contentsline {section}{\numberline {4}Results}{10}{section.4}% 
-\contentsline {section}{\numberline {5}Conclusion \& Outlook}{10}{section.5}% 
-\contentsline {section}{References}{11}{section*.34}% 
-\contentsline {section}{Glossary}{12}{section*.36}% 
-\contentsline {section}{\numberline {A}Some appendix}{12}{appendix.A}% 
+\contentsline {section}{\numberline {5}Conclusion \& Outlook}{15}{section.5}% 
+\contentsline {section}{References}{16}{section*.38}% 
+\contentsline {section}{Glossary}{17}{section*.40}% 
+\contentsline {section}{\numberline {A}Some appendix}{17}{appendix.A}% 
