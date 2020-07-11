@@ -569,33 +569,6 @@ class Network:
         assert fingerprint == N.fingerprint or is_file, 'Fingerprints of stored and restored network are not equal'
         return N
 
-    # @classmethod
-    # def restore_result(cls, fingerprint, participation, iteration=1, selection='random'):
-    #     if not os.path.isdir(fingerprint):
-    #         logger.error('Folder {} is not available. Create snapshot first.'.format(fingerprint))
-    #     part100 = str(int(participation * 100))
-    #     experiment_name = fingerprint + '_' + str(int(participation * 100)) + '_' + selection + '_' + str(iteration)
-    #     #        self.experiment_name = self.fingerprint + '_' + str(int(participation * 100)) + selection + '_' + iteration
-    #     stats_file = os.path.join(fingerprint, STATS + '_' + experiment_name) + '.json'
-    #     ginis_file = os.path.join(fingerprint, STATS_GINIS + '_' + experiment_name) + '.json'
-    #     meta_file = os.path.join(fingerprint, 'META' + '_' + experiment_name) + '.json'
-    #     graph_file = os.path.join(fingerprint, 'NETWORK' + '_' + experiment_name)
-    #     flow_graph_file = os.path.join(fingerprint, 'FLOW' + '_' + experiment_name)
-    #
-    #     G = nx.read_gpickle(graph_file)
-    #     N = cls(G)
-    #     N.fingerprint = fingerprint
-    #     N.flow = nx.read_gpickle(flow_graph_file)
-    #     with open(stats_file, "r") as f:
-    #         stats = json.load(f)
-    #         N.__stats = stats
-    #     with open(ginis_file, "r") as f:
-    #         ginis = json.load(f)
-    #         N.__history_gini = ginis
-    #     with open(meta_file, "r") as f:
-    #         meta_info = json.load(f)
-    #         N.__set_meta_info(meta_info)
-    #     return N
     @classmethod
     def restore_result_by_name(cls, fingerprint, experiment_name):
         if not os.path.isdir(fingerprint):

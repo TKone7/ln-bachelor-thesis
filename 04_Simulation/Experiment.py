@@ -708,8 +708,3 @@ class Experiment:
         # N.end_std_mean_gini = np.average([np.std(n.gini_distr_data()) for n in networks])
         N.end_std_mean_gini = np.std([n.mean_gini for n in networks])
         return N
-
-# e = Experiment('3a65a961')
-# e.setup_randomexperiment(1)
-# e.run_experiment()
-# e.plot_experiment()
