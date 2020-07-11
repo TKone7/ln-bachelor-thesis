@@ -668,6 +668,9 @@ class Network:
         assert strong_conn == max(nx.strongly_connected_components(T),
                                   key=len), 'T should now be the strongly connected graph'
         nx.set_edge_attributes(T, cap_attr, 'balance')
+        diam = nx.diameter(T)
+        logger.info('Max strongly connected component has diameter {}'.format(diam))
+
 
         # Reverse the whole graph to replicate channels, set balance to zero
         R = T.reverse(copy=True)
