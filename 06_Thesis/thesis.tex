@@ -201,7 +201,7 @@ A graph $G=(V,E)$ consists of a set of vertices $V$ and edges $E$. An edge consi
 \todo[inline]{Go from general graph theory problems into more specific areas, 1 paragraph per topic}
 \todo[inline]{Explain why finding a path in the lightning network can be so difficult}
 \subsection{Overview of broad problems}
-Per problem  one paragraph per
+\todo[inline]{write an introduction to this section}
 
 In \textbf{graph coloring problems} vertices can be thought of areas on a map. Areas that share a border are connected with an edge. The goal is to use as little colors as possible to color each area / vertex in such a way that adjacent areas have different colors. This minimum number is called the \textit{chromatic number} $\chi(G)$. 
 
@@ -250,11 +250,10 @@ The next part of the paper defines the rebalancing algorithm proposed in a proto
 
 \newpage
 \section{Experiment}\label{sec:method}
-\subsection{Data collection \& Preprocessing}
-Data for the simulation was first collected from a Lightning node, the required features were extracted and multiple cleaning and preprocessing steps were performed. 
+\subsection{Data collection}
+Data for the simulation was first collected from a Lightning node. This section describes the datastructure obtained and what features were selected for the next step, the preprocessing. 
 
-\subsubsection{Retrieve data from Lightning node}
-In order to run a simulation that resembles the real network closely data from a productive Lightning node are best fitted to construct the model. Lightning is an open network which means it is easy to setup a node and download all the channel information. One implementationi of a Lightning Network node is C-Lightning and they offer a flexible interface to write own plugins which can interact with the node over Remote Procedure Calls. I wrote a plugin \footnote{\gitpluginurl} in Python that writes all known channels to a json file. The JSON code snippet~\ref{code:rawchannel} shows what is returned by C-Lightning as result. The plugin extracts the  highlighted parts and writes them into a file.
+In order to run a simulation that resembles the real network closely, data from a productive Lightning node are best fitted to construct the model. Lightning is an open network which means it is easy to setup a node and download all the channel information. There are three mayjor implementation of a Lightning node which technically could deliver the data. The implementation C-Lightning offers a flexible interface to write own plugins which can interact with the node over Remote Procedure Calls \todo{rpc in glossary}. I wrote a plugin \footnote{\gitpluginurl} in Python that writes all known channels to a JSON file. The JSON code snippet~\ref{code:rawchannel} shows the raw data which is returned by C-Lightning. 
 
 \begin{listing}[H]
   \inputminted[
@@ -272,7 +271,9 @@ In order to run a simulation that resembles the real network closely data from a
   \label{code:rawchannel}
 \end{listing}
 
+The raw data contains one key \textbf{channels} that consists of an array. At the time of data extraction this array contained 58934 objects. Nodes can open new channels and close existing ones at any point. The state of the network is therefore not static. All experiments conducted in this thesis are based on the local view of my node at 30.07.2020. Each object represents one directed edge. Keys \textbf{source} and \textbf{destination} refer to the involved node's public key. This public key is used as a pseudonym to preserve the node operator's privacy. Furthermore, private public key pairs are used to encrypt (see onion routing \ref{subsec:routing}) and sign messages. Since one entry only represents one directed edge there shoud be a second entry with the same \textbf{\texttt{short\_channel\_id}} with reversed source destination nodes to make the bidirectional channel complete. Field \textbf{\texttt{sathoshis}} tells the total channel capacity in the unit ``sathoshi'' \todo{define units}. The field \textbf{\texttt{base\_fee\_millisatoshi}} is the fixed fee each payment has to pay when routing through the channel. The variable fee to pay for each million satoshis is defined by \textbf{\texttt{fee\_per\_millionth}}. All ofther fields are not important for the simulation and will be ignored. The plugin extracts the highlighted parts and writes them into a file as shown in listing~\ref{code:channelbyplugin}. 
 
+Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_channel\_id} which means they represent the same channel but in opposite directions. Source and destination of both entries confirm this and also the capacity must match. It is also an example for a channel with different fee plicies in direction. An example payment of $200000$ satoshis routed from \textbf{02ad6f} to \textbf{03fab7} would charge no fixed fee but $\frac{200000}{1000000}*1 = 0.2$ sathoshi in variable fee. The same payment routed in the other direction would charge the same variable fee but additionally $1000$ millisatoshi (equals 1 satoshi) in fixed fee. So a total of $1,2$ satoshi.
 
 \begin{listing}[H]
   \inputminted[
@@ -284,9 +285,11 @@ In order to run a simulation that resembles the real network closely data from a
     breaklines=true,
     breakanywhere=true
   ]{js}{code/channels.json}
-  \caption{Sample channels file with only one channel.}
+  \caption{Sample channels file produced by the plugin.}
+  \label{code:channelbyplugin}
 \end{listing}
-
+\subsection{Preprocessing}
+d
 \subsection{Simulating Lightning Network}
 \todo[inline]{Define everything in the network.py class that mimics the ln network (balances, capacities, fees, routing)}
 

@@ -20,17 +20,17 @@
 \contentsline {subsection}{\numberline {2.4}Previous work}{9}{subsection.2.4}% 
 \contentsline {subsection}{\numberline {2.5}Problem statement}{9}{subsection.2.5}% 
 \contentsline {section}{\numberline {3}Experiment}{11}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Data collection \& Preprocessing}{11}{subsection.3.1}% 
-\contentsline {subsubsection}{\numberline {3.1.1}Retrieve data from Lightning node}{11}{subsubsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.2}Simulating Lightning Network}{12}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Routing protocol}{12}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Performance Measures}{12}{subsection.3.4}% 
-\contentsline {subsubsection}{\numberline {3.4.1}Success rate on shortest path}{12}{subsubsection.3.4.1}% 
-\contentsline {subsubsection}{\numberline {3.4.2}Payment size on shortest path}{12}{subsubsection.3.4.2}% 
-\contentsline {subsubsection}{\numberline {3.4.3}Ability to route different payment sizes}{13}{subsubsection.3.4.3}% 
-\contentsline {subsection}{\numberline {3.5}Methodology}{13}{subsection.3.5}% 
+\contentsline {subsection}{\numberline {3.1}Data collection}{11}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Preprocessing}{12}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Simulating Lightning Network}{13}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Routing protocol}{13}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}Performance Measures}{13}{subsection.3.5}% 
+\contentsline {subsubsection}{\numberline {3.5.1}Success rate on shortest path}{13}{subsubsection.3.5.1}% 
+\contentsline {subsubsection}{\numberline {3.5.2}Payment size on shortest path}{13}{subsubsection.3.5.2}% 
+\contentsline {subsubsection}{\numberline {3.5.3}Ability to route different payment sizes}{13}{subsubsection.3.5.3}% 
+\contentsline {subsection}{\numberline {3.6}Methodology}{13}{subsection.3.6}% 
 \contentsline {section}{\numberline {4}Results}{13}{section.4}% 
 \contentsline {section}{\numberline {5}Conclusion \& Outlook}{18}{section.5}% 
-\contentsline {section}{References}{19}{section*.36}% 
-\contentsline {section}{Glossary}{20}{section*.38}% 
+\contentsline {section}{References}{19}{section*.39}% 
+\contentsline {section}{Glossary}{20}{section*.41}% 
 \contentsline {section}{\numberline {A}Some appendix}{20}{appendix.A}% 
