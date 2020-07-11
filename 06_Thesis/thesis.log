@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.13)  11 JUL 2020 15:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.13)  11 JUL 2020 17:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2137,7 +2137,7 @@ Package epstopdf Info: Source file: <fhnw_hw_e_10mm.eps>
 d-to.pdf fhnw_hw_e_10mm.eps>
 (epstopdf)             \includegraphics on input line 43.
 Package epstopdf Info: Output file is already uptodate.
-<fhnw_hw_e_10mm-eps-converted-to.pdf, id=179, 298.11375pt x 29.10875pt>
+<fhnw_hw_e_10mm-eps-converted-to.pdf, id=191, 298.11375pt x 29.10875pt>
 File: fhnw_hw_e_10mm-eps-converted-to.pdf Graphic file (type pdf)
 <use fhnw_hw_e_10mm-eps-converted-to.pdf>
 Package pdftex.def Info: fhnw_hw_e_10mm-eps-converted-to.pdf  used on input lin
@@ -2180,27 +2180,27 @@ l.123 M
 
 
 ] [2] [3]
-<./graphics/channel_lifecycle.pdf, id=294, 597.63278pt x 180.675pt>
+<./graphics/channel_lifecycle.pdf, id=309, 597.63278pt x 180.675pt>
 File: ./graphics/channel_lifecycle.pdf Graphic file (type pdf)
 <use ./graphics/channel_lifecycle.pdf>
 Package pdftex.def Info: ./graphics/channel_lifecycle.pdf  used on input line 1
 51.
 (pdftex.def)             Requested size: 409.71689pt x 123.86362pt.
  [4 <./graphics/channel_lifecycle.pdf>]
-<./graphics/htlc.pdf, id=353, 827.49153pt x 144.54pt>
+<./graphics/htlc.pdf, id=368, 827.49153pt x 144.54pt>
 File: ./graphics/htlc.pdf Graphic file (type pdf)
 <use ./graphics/htlc.pdf>
 Package pdftex.def Info: ./graphics/htlc.pdf  used on input line 176.
 (pdftex.def)             Requested size: 455.24408pt x 79.51929pt.
  [5 <./graphics/htlc.pdf>]
-<./graphics/nopayment.pdf, id=391, 621.57219pt x 144.54pt>
+<./graphics/nopayment.pdf, id=406, 621.57219pt x 144.54pt>
 File: ./graphics/nopayment.pdf Graphic file (type pdf)
 <use ./graphics/nopayment.pdf>
 Package pdftex.def Info: ./graphics/nopayment.pdf  used on input line 189.
 (pdftex.def)             Requested size: 455.24408pt x 105.86177pt.
 
 [6 <./graphics/nopayment.pdf>]
-<./graphics/simple_channel.pdf, id=420, 462.52798pt x 346.89601pt>
+<./graphics/simple_channel.pdf, id=435, 462.52798pt x 346.89601pt>
 File: ./graphics/simple_channel.pdf Graphic file (type pdf)
 <use ./graphics/simple_channel.pdf>
 Package pdftex.def Info: ./graphics/simple_channel.pdf  used on input line 224.
@@ -2233,7 +2233,7 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \openout3 = `thesis.pyg'.
 
 
-(./_minted-thesis/B7E4147921A7EC6402CA1340F320D44B0102E502927AACB428B4F294F23E2
+(./_minted-thesis/6F5AC13FB8AFF4ED8E7A92D5C27D42D20102E502927AACB428B4F294F23E2
 359.pygtex
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2.
@@ -2241,11 +2241,11 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2.
 )
 Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 286.
+t line 287.
 \openout4 = `thesis.pyg'.
 
 
-(./_minted-thesis/8E8E68601BC5B195D252EBE677D91CD00102E502927AACB428B4F294F23E2
+(./_minted-thesis/935456895FE9371E06948BCE0C4136170102E502927AACB428B4F294F23E2
 359.pygtex)
 \openout4 = `thesis.pyg'.
 
@@ -2265,13 +2265,13 @@ t line 286.
 \openout4 = `thesis.pyg'.
 
 
-(./_minted-thesis/9DBBFBFEB9FD51A13915F044E0EB6CB60102E502927AACB428B4F294F23E2
+(./_minted-thesis/A0EF369520F60CB784F9E80F38A2E0140102E502927AACB428B4F294F23E2
 359.pygtex)
-<./graphics/state_diagram_network.pdf, id=494, 516.97137pt x 356.29109pt>
+<./graphics/state_diagram_network.pdf, id=509, 516.97137pt x 356.29109pt>
 File: ./graphics/state_diagram_network.pdf Graphic file (type pdf)
 <use ./graphics/state_diagram_network.pdf>
 Package pdftex.def Info: ./graphics/state_diagram_network.pdf  used on input li
-ne 298.
+ne 299.
 (pdftex.def)             Requested size: 409.71689pt x 282.36934pt.
 \openout4 = `thesis.pyg'.
 
@@ -2283,23 +2283,28 @@ ne 298.
 
 (./_minted-thesis/1BE10D0A7B981EED645F9D2ED7B9EE350102E502927AACB428B4F294F23E2
 359.pygtex)
-<./graphics/experiment_network_class.pdf, id=496, 441.56969pt x 155.6214pt>
+<./graphics/experiment_network_class.pdf, id=511, 441.56969pt x 155.6214pt>
 File: ./graphics/experiment_network_class.pdf Graphic file (type pdf)
 <use ./graphics/experiment_network_class.pdf>
 Package pdftex.def Info: ./graphics/experiment_network_class.pdf  used on input
- line 308.
+ line 309.
 (pdftex.def)             Requested size: 318.66946pt x 112.3085pt.
  [12 <./graphics/state_diagram_network.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 319--319
+\openout3 = `thesis.pyg'.
+
+
+(./_minted-thesis/7C73086C28896089D5CD7F9018EAA7779F014CDCC252D787938A66F94A2C2
+8CF.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 349--349
 [][][]$\T1/lmr/m/n/9 https : / / github . com / TKone7 / clightning-[]plugins /
  tree / 3b47ab992413d7bf9747be1320654b3478c60d37 /
  []
 
-
+[13 <./graphics/experiment_network_class.pdf>]
 (./_minted-thesis/9563DB0EE35D26DB697C969117162EE6FC610389674DD962FC47E10EBAA34
-29E.pygtex) [13 <./graphics/experiment_network_class.pdf>]
+29E.pygtex) [14]
 (./_minted-thesis/C2508D58DCF2E9C3D23328FAA05B97704F5CC42A0211E53E346D8C9DEA04E
-60E.pygtex) [14] [15] [16]
+60E.pygtex) [15] [16]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: a4paper
@@ -2332,311 +2337,311 @@ Underfull \hbox (badness 10000) in paragraph at lines 319--319
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf, id=576
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf, id=595
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_02_40.pdf  used on input line 379.
+spread_02_40.pdf  used on input line 417.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf, id=577
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf, id=596
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_10_40.pdf  used on input line 379.
+spread_10_40.pdf  used on input line 417.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_15_40.pdf, id=578
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_15_40.pdf, id=597
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_15_40.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_15_40.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_15_40.pdf  used on input line 379.
+spread_15_40.pdf  used on input line 417.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_02_50.pdf, id=579
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_02_50.pdf, id=598
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_02_50.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_02_50.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_02_50.pdf  used on input line 381.
+spread_02_50.pdf  used on input line 419.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_10_50.pdf, id=580
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_10_50.pdf, id=599
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_10_50.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_10_50.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_10_50.pdf  used on input line 381.
+spread_10_50.pdf  used on input line 419.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_15_50.pdf, id=581
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_15_50.pdf, id=600
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_15_50.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_15_50.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_15_50.pdf  used on input line 381.
+spread_15_50.pdf  used on input line 419.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf, id=582
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf, id=601
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_02_60.pdf  used on input line 383.
+spread_02_60.pdf  used on input line 421.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_10_60.pdf, id=583
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_10_60.pdf, id=602
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_10_60.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_10_60.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_10_60.pdf  used on input line 383.
+spread_10_60.pdf  used on input line 421.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_successrate_vs_participation_netw_spread_15_60.pdf, id=584
+<./graphics/3a65a961_successrate_vs_participation_netw_spread_15_60.pdf, id=603
 , 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_successrate_vs_participation_netw_spread_15_60.pdf Gr
 aphic file (type pdf)
 <use ./graphics/3a65a961_successrate_vs_participation_netw_spread_15_60.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_successrate_vs_participation_netw_
-spread_15_60.pdf  used on input line 383.
+spread_15_60.pdf  used on input line 421.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_40.pdf
-, id=585, 462.52798pt x 346.89601pt>
+, id=604, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_4
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_40
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_02_40.pdf  used on input line 392.
+on_netw_spread_02_40.pdf  used on input line 430.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_40.pdf
-, id=586, 462.52798pt x 346.89601pt>
+, id=605, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_4
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_40
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_10_40.pdf  used on input line 392.
+on_netw_spread_10_40.pdf  used on input line 430.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_40.pdf
-, id=587, 462.52798pt x 346.89601pt>
+, id=606, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_4
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_40
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_15_40.pdf  used on input line 392.
+on_netw_spread_15_40.pdf  used on input line 430.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_50.pdf
-, id=588, 462.52798pt x 346.89601pt>
+, id=607, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_5
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_50
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_02_50.pdf  used on input line 394.
+on_netw_spread_02_50.pdf  used on input line 432.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_50.pdf
-, id=589, 462.52798pt x 346.89601pt>
+, id=608, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_5
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_50
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_10_50.pdf  used on input line 394.
+on_netw_spread_10_50.pdf  used on input line 432.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_50.pdf
-, id=590, 462.52798pt x 346.89601pt>
+, id=609, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_5
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_50
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_15_50.pdf  used on input line 394.
+on_netw_spread_15_50.pdf  used on input line 432.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_60.pdf
-, id=591, 462.52798pt x 346.89601pt>
+, id=610, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_6
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_60
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_02_60.pdf  used on input line 396.
+on_netw_spread_02_60.pdf  used on input line 434.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_60.pdf
-, id=592, 462.52798pt x 346.89601pt>
+, id=611, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_6
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_60
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_10_60.pdf  used on input line 396.
+on_netw_spread_10_60.pdf  used on input line 434.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_60.pdf
-, id=593, 462.52798pt x 346.89601pt>
+, id=612, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_6
 0.pdf Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_60
 .pdf>
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnet_size_vs_participati
-on_netw_spread_15_60.pdf  used on input line 396.
+on_netw_spread_15_60.pdf  used on input line 434.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_40.pdf, id
-=594, 462.52798pt x 346.89601pt>
+=613, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_40.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_40.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_02_40.pdf  used on input line 405.
+etw_spread_02_40.pdf  used on input line 443.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_40.pdf, id
-=595, 462.52798pt x 346.89601pt>
+=614, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_40.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_40.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_10_40.pdf  used on input line 405.
+etw_spread_10_40.pdf  used on input line 443.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_40.pdf, id
-=596, 462.52798pt x 346.89601pt>
+=615, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_40.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_40.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_15_40.pdf  used on input line 405.
+etw_spread_15_40.pdf  used on input line 443.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_50.pdf, id
-=597, 462.52798pt x 346.89601pt>
+=616, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_50.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_50.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_02_50.pdf  used on input line 407.
+etw_spread_02_50.pdf  used on input line 445.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_50.pdf, id
-=598, 462.52798pt x 346.89601pt>
+=617, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_50.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_50.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_10_50.pdf  used on input line 407.
+etw_spread_10_50.pdf  used on input line 445.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_50.pdf, id
-=599, 462.52798pt x 346.89601pt>
+=618, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_50.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_50.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_15_50.pdf  used on input line 407.
+etw_spread_15_50.pdf  used on input line 445.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_60.pdf, id
-=600, 462.52798pt x 346.89601pt>
+=619, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_60.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_02_60.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_02_60.pdf  used on input line 409.
+etw_spread_02_60.pdf  used on input line 447.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_60.pdf, id
-=601, 462.52798pt x 346.89601pt>
+=620, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_60.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_10_60.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_10_60.pdf  used on input line 409.
+etw_spread_10_60.pdf  used on input line 447.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_60.pdf, id
-=602, 462.52798pt x 346.89601pt>
+=621, 462.52798pt x 346.89601pt>
 File: ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_60.pd
 f Graphic file (type pdf)
 <use ./graphics/3a65a961_median_paymnets_vs_participation_netw_spread_15_60.pdf
 >
 Package pdftex.def Info: ./graphics/3a65a961_median_paymnets_vs_participation_n
-etw_spread_15_60.pdf  used on input line 409.
+etw_spread_15_60.pdf  used on input line 447.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_02_40.pdf, id=603, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_02_40.pdf, id=622, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_02_40.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_02_40.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-02_40.pdf  used on input line 418.
+02_40.pdf  used on input line 456.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_10_40.pdf, id=604, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_10_40.pdf, id=623, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_10_40.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_10_40.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-10_40.pdf  used on input line 418.
+10_40.pdf  used on input line 456.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_15_40.pdf, id=605, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_15_40.pdf, id=624, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_15_40.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_15_40.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-15_40.pdf  used on input line 418.
+15_40.pdf  used on input line 456.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_02_50.pdf, id=606, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_02_50.pdf, id=625, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_02_50.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_02_50.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-02_50.pdf  used on input line 420.
+02_50.pdf  used on input line 458.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_10_50.pdf, id=607, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_10_50.pdf, id=626, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_10_50.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_10_50.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-10_50.pdf  used on input line 420.
+10_50.pdf  used on input line 458.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_15_50.pdf, id=608, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_15_50.pdf, id=627, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_15_50.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_15_50.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-15_50.pdf  used on input line 420.
+15_50.pdf  used on input line 458.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_02_60.pdf, id=609, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_02_60.pdf, id=628, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_02_60.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_02_60.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-02_60.pdf  used on input line 422.
+02_60.pdf  used on input line 460.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_10_60.pdf, id=610, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_10_60.pdf, id=629, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_10_60.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_10_60.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-10_60.pdf  used on input line 422.
+10_60.pdf  used on input line 460.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
-<./graphics/3a65a961_gini_vs_participation_netw_spread_15_60.pdf, id=611, 462.5
+<./graphics/3a65a961_gini_vs_participation_netw_spread_15_60.pdf, id=630, 462.5
 2798pt x 346.89601pt>
 File: ./graphics/3a65a961_gini_vs_participation_netw_spread_15_60.pdf Graphic f
 ile (type pdf)
 <use ./graphics/3a65a961_gini_vs_participation_netw_spread_15_60.pdf>
 Package pdftex.def Info: ./graphics/3a65a961_gini_vs_participation_netw_spread_
-15_60.pdf  used on input line 422.
+15_60.pdf  used on input line 460.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
  [17 <./graphics/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf> <
 ./graphics/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf
@@ -2819,25 +2824,25 @@ ngle page
 \openout11 = `thesis.glsdefs'.
 
  (./thesis.gls) [23]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 461.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 461.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 499.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 499.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 461.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 461.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 499.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 499.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: DB319CE4158C60E6A29BA5288DC520AF;2699.
+(rerunfilecheck)             Checksum: 0A6471781438E8B06830A56E7DAA8E1F;2942.
 runsystem(rm thesis.pyg)...executed.
 
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 461.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 499.
  ) 
 Here is how much of TeX's memory you used:
- 52417 strings out of 492167
- 1024443 string characters out of 6131558
- 1769487 words of memory out of 5000000
- 55717 multiletter control sequences out of 15000+600000
+ 52434 strings out of 492167
+ 1025095 string characters out of 6131558
+ 1744633 words of memory out of 5000000
+ 55727 multiletter control sequences out of 15000+600000
  623348 words of font info for 78 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  81i,12n,131p,1986b,5514s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2865,10 +2870,10 @@ o10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/t
 exmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/p
 ublic/lm/lmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></us
 r/share/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on thesis.pdf (29 pages, 1438882 bytes).
+Output written on thesis.pdf (29 pages, 1444600 bytes).
 PDF statistics:
- 2411 PDF objects out of 2487 (max. 8388607)
- 773 compressed objects within 8 object streams
- 123 named destinations out of 1000 (max. 500000)
- 620 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2430 PDF objects out of 2487 (max. 8388607)
+ 792 compressed objects within 8 object streams
+ 127 named destinations out of 1000 (max. 500000)
+ 644 words of extra memory for PDF output out of 10000 (max. 10000000)
 

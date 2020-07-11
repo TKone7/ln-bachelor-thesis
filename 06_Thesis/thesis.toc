@@ -27,9 +27,12 @@
 \contentsline {subsubsection}{\numberline {3.1.4}Command line interface}{13}{subsubsection.3.1.4}% 
 \contentsline {subsection}{\numberline {3.2}Data collection}{13}{subsection.3.2}% 
 \contentsline {subsection}{\numberline {3.3}Preprocessing}{15}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Simulating Lightning Network}{15}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}Proactive Rebalancing Protocol}{15}{subsection.3.5}% 
-\contentsline {subsection}{\numberline {3.6}Performance Measures}{15}{subsection.3.6}% 
+\contentsline {subsubsection}{\numberline {3.3.1}Remove incomplete data}{15}{subsubsection.3.3.1}% 
+\contentsline {subsubsection}{\numberline {3.3.2}Allocate local balances}{15}{subsubsection.3.3.2}% 
+\contentsline {subsubsection}{\numberline {3.3.3}}{16}{subsubsection.3.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Simulating Lightning Network}{16}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}Proactive Rebalancing Protocol}{16}{subsection.3.5}% 
+\contentsline {subsection}{\numberline {3.6}Performance Measures}{16}{subsection.3.6}% 
 \contentsline {subsubsection}{\numberline {3.6.1}Success rate on shortest path}{16}{subsubsection.3.6.1}% 
 \contentsline {subsubsection}{\numberline {3.6.2}Payment size on shortest path}{16}{subsubsection.3.6.2}% 
 \contentsline {subsubsection}{\numberline {3.6.3}Ability to route different payment sizes}{16}{subsubsection.3.6.3}% 

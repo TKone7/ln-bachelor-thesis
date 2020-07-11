@@ -3,4 +3,5 @@
     \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{G}\PYG{p}{,} \PYG{n}{cycles4}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{):}
         \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{G} \PYG{o}{=} \PYG{n}{G}
         \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow} \PYG{o}{=} \PYG{k+kc}{None}
+	\PYG{o}{...}
 \end{Verbatim}

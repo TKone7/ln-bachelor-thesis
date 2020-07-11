@@ -261,7 +261,7 @@ For all kinds of visualisation the package Matplotlib is used. It offers broad f
 
 Numerical computation and statistical calculations are performed using the software packages NumPy and SciPy. 
 
-In order to reproduce the results presented in this work all Python dependencies are written down in the file \texttt{04\_Simulation/requirements.txt} on the Github repository \footnote{\github} and the README file demonstrates how to set up the execution environment.
+In order to reproduce the results presented in this work all Python dependencies are written down in the file \texttt{04\_Simulation/requirements.txt} on the Github repository \footnote{\github} and the \texttt{README.md} file demonstrates how to set up the execution environment.
 
 \subsubsection{Network class}
 While NetworkX provides the basic graph functionality, I need more logic to build all the Lightning specific functions. The \textbf{Network} Python class holds all these features of which I give rough overview here. All mentions of \textbf{Network} in this section refer to the Python class named like this.
@@ -282,16 +282,17 @@ class Network:
     def __init__(self, G, cycles4=None):
         self.G = G
         self.flow = None
+	...
   \end{minted}
   \caption{Part of Network's init method.}
   \label{code:init}
 \end{listing}
 
-Figure~\ref{fig:state_network} visualises the states a Network can be in and how a Network can be exported and restored from file. The first state is a Network that went through all the preprocessing and is ready to start with an experiment of any kind. It serves as starting point for all further modifications. To ensure reproducibility of the results it is important that the same initial state is used all the time. For the very first time, this state can only be reached by parsing a channel file (\mintinline{python}{parce_clightning()}) and going through the preprocessing. The content of such a channel file and all the preprocessing steps are explained in sections~\ref{subsec:datacol} and \ref{subsec:preproc}. After this state is reached one can create a snapshot (\mintinline{python}{create_snapshot()}) which is stored to a file. In addition a fingerprint is generated and used as identifier for this specific network state. The fingerprint is calculated by hashing all the networks nodes, edges and attributes and prevents accidental load of any altered state.
+Figure~\ref{fig:state_network} visualises the states a Network can be in and how a Network can be exported and restored from file. The first state is a Network that went through all the preprocessing and is ready to start with an experiment of any kind. It serves as starting point for all further modifications. To ensure reproducibility of the results it is important that the same initial state is used all the time. For the very first time, this state can only be reached by parsing a channel file (\mintinline{python}{parse_clightning()}) and going through the preprocessing. The content of such a channel file and all the preprocessing steps are explained in sections~\ref{subsec:datacol} and \ref{subsec:preproc}. After this state is reached one can create a snapshot (\mintinline{python}{create_snapshot()}) which is stored to a file. In addition a fingerprint is generated and used as identifier for this specific network state. The fingerprint is calculated by hashing all the networks nodes, edges and attributes and prevents accidental load of any altered state.
 
 Once a snapshot is generated the Network object can be recreated from there without going through the preprocessing again. The \mintinline{python}{restore_snapshot()} function takes the fingerprint as parameter and looks for the corresponding file to reload the state. 
 
-From the initial state one experiment can be executed. Such an experiment changes the underlying network graph and stores results within the Network object. The results should then also be exported with the \mintinline{python}{store_experiment_result()} function. It allows to later restore this specific experiment by calling the \mintinline{python}{restore_results_by_name} class method. This setup allows to run an time intensive experiment once and then create many evaluations of the result without recomputing the experiment. 
+From the initial state one experiment can be executed. Such an experiment changes the underlying network graph and stores results within the Network object. The results should then also be exported with the \mintinline{python}{store_experiment_result()} function. It allows to later restore this specific experiment by calling the \mintinline{python}{restore_results_by_name()} class method. This setup allows to run an time intensive experiment once and then create many evaluations of the result without recomputing the experiment. 
 
 \begin{figure}[H]
 \centering
@@ -311,32 +312,61 @@ Many of the experiments actually need several Networks to perform experiments wi
 \end{figure}
 
 \subsubsection{Command line interface}
-usability through cli
-
-\subsection{Data collection}\label{subsec:datacol}
-Data for the simulation was first collected from a Lightning node. This section describes the datastructure obtained and what features were selected for the next step, the preprocessing. 
-
-In order to run a simulation that resembles the real network closely, data from a productive Lightning node are best fitted to construct the model. Lightning is an open network which means it is easy to setup a node and download all the channel information. There are three mayjor implementation of a Lightning node which technically could deliver the data. The implementation C-Lightning offers a flexible interface to write own plugins which can interact with the node over Remote Procedure Calls \todo{rpc in glossary}. I wrote a plugin \footnote{\gitpluginurl} in Python that writes all known channels to a JSON file. The JSON code snippet~\ref{code:rawchannel} shows the raw data which is returned by C-Lightning. 
+To simplify the interaction with the simulation software to facilitate execution of different experiment parameters without the need of changing the source code a simple command line interface can be used. The file is called \texttt{simulate.py} and uses the package \textbf{docopt} to create the interface and the parser. The interface is defines as shown in listing~\ref{code:cli}. While \texttt{parse} starts the preprocessing from a channel file all other commands execute different types of experiments and take respective parameters. The optional \texttt{---charts} flag skips the experiment and only generates the resulting charts.
 
 \begin{listing}[H]
-  \inputminted[
-    frame=single,
-    framesep=3mm,
-    linenos=true,
-    xleftmargin=21pt,
-    tabsize=4,
-    breaklines=true,
-    breakanywhere=true,
-    highlightlines={4-6,8,14-15},
-    highlightcolor=highlightyellow,
-  ]{js}{code/raw.json}
-  \caption{Raw channels provided by C-Lightning.}
-  \label{code:rawchannel}
+  \begin{minted}[
+  frame=single,
+  framesep=3mm,
+  linenos=false,
+  xleftmargin=21pt,
+  tabsize=4,
+  breaklines=true,
+  breakanywhere=true,
+]{bash}
+Usage:
+  simulate.py parse <filename>
+  simulate.py randomexperiment <fingerprint> <samplesize> [--charts]
+  simulate.py bysize <fingerprint> [(asc|desc)] [--charts]
+  simulate.py groupedsize <fingerprint> [--charts]
+  simulate.py spread <fingerprint> <init> <spread> [--charts]
+  simulate.py -h | --help
+  simulate.py --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+  --charts      Skips the experiment and creates only the charts.
+
+\end{minted}
+\caption{Description of the command line interface}
+\label{code:cli}
 \end{listing}
 
-The raw data contains one key \textbf{channels} that consists of an array. At the time of data extraction this array contained 58934 objects. Nodes can open new channels and close existing ones at any point. The state of the network is therefore not static. All experiments conducted in this thesis are based on the local view of my node at 30.07.2020. Each object represents one directed edge. Keys \textbf{source} and \textbf{destination} refer to the involved node's public key. This public key is used as a pseudonym to preserve the node operator's privacy. Furthermore, private public key pairs are used to encrypt (see onion routing \ref{subsec:routing}) and sign messages. Since one entry only represents one directed edge there shoud be a second entry with the same \textbf{\texttt{short\_channel\_id}} with reversed source destination nodes to make the bidirectional channel complete. Field \textbf{\texttt{sathoshis}} tells the total channel capacity in the unit ``sathoshi'' \todo{define units}. The field \textbf{\texttt{base\_fee\_millisatoshi}} is the fixed fee each payment has to pay when routing through the channel. The variable fee to pay for each million satoshis is defined by \textbf{\texttt{fee\_per\_millionth}}. All ofther fields are not important for the simulation and will be ignored. The plugin extracts the highlighted parts and writes them into a file as shown in listing~\ref{code:channelbyplugin}. 
+\subsection{Data collection}\label{subsec:datacol}
+Data for the simulation was first collected from a Lightning node. This section describes the data structure obtained and what features were selected as input for the next step, the preprocessing. 
 
-Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_channel\_id} which means they represent the same channel but in opposite directions. Source and destination of both entries confirm this and also the capacity must match. It is also an example for a channel with different fee plicies in direction. An example payment of $200000$ satoshis routed from \textbf{02ad6f} to \textbf{03fab7} would charge no fixed fee but $\frac{200000}{1000000}*1 = 0.2$ sathoshi in variable fee. The same payment routed in the other direction would charge the same variable fee but additionally $1000$ millisatoshi (equals 1 satoshi) in fixed fee. So a total of $1,2$ satoshi.
+In order to run a simulation that resembles the real network closely, data from a productive Lightning node are best fitted to construct the model. Lightning is an open network which means it is easy to setup a node and download all the channel information. There are three major implementations of Lightning which technically could deliver the data. The implementation C-Lightning offers a flexible interface to write own plugins which can interact with the node over Remote Procedure Calls \todo{rpc in glossary}. I wrote a plugin \footnote{\gitpluginurl} in Python that writes all known channels to a JSON file. The code snippet~\ref{code:rawchannel} shows the raw data which is returned by C-Lightning. 
+
+\begin{listing}[H]
+\inputminted[
+  frame=single,
+  framesep=3mm,
+  linenos=true,
+  xleftmargin=21pt,
+  tabsize=4,
+  breaklines=true,
+  breakanywhere=true,
+  highlightlines={4-6,8,14-15},
+  highlightcolor=highlightyellow,
+]{js}{code/raw.json}
+\caption{Raw channels provided by C-Lightning.}
+\label{code:rawchannel}
+\end{listing}
+
+The raw data contains one key named \textbf{channels} that consists of an array. At the time of data extraction this array contained 58934 objects. Nodes can open new channels and close existing ones at any point in time. The state of the network is therefore not static. All experiments conducted in this thesis are based on the local view of my node at 30.07.2020. Each object represents one directed edge. Keys \textbf{source} and \textbf{destination} refer to the involved node's public key. This public key is used as a pseudonym to preserve the node operator's privacy. Furthermore, private public key pairs are used to encrypt (see onion routing \ref{subsec:routing}) and sign messages. Since one entry only represents one directed edge there shoud be a second entry with the same \textbf{\texttt{short\_channel\_id}} with reversed source destination nodes to make the bidirectional channel complete. Field \textbf{\texttt{sathoshis}} tells the total channel capacity in the unit ``sathoshi'' \todo{define units}. The field \textbf{\texttt{base\_fee\_millisatoshi}} is the fixed fee each payment has to pay when routing through the channel. The variable fee to pay for each million satoshis is defined by \textbf{\texttt{fee\_per\_millionth}}. All ofther fields are not important for the simulation and will be ignored. The plugin extracts the highlighted parts and writes them into a file as shown in listing~\ref{code:channelbyplugin}. 
+
+Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_channel\_id} which means they represent the same channel but in opposite directions. Source and destination of both entries confirm this and also the capacity does match. It is also an example for a channel with different fee policies in each direction. For example a payment of $200000$ satoshis routed from \textbf{02ad6f} to \textbf{03fab7} would charge no fixed fee but $\frac{200000}{1000000}*1 = 0.2$ sathoshi in variable fee. The same payment routed in the opposite direction would charge the same variable fee but additionally $1000$ millisatoshi (equals 1 satoshi) in fixed fee. So a total of $1,2$ satoshi. The complete \texttt{channels.json} file can be downloaded from the Github repository. 
 
 \begin{listing}[H]
   \inputminted[
@@ -352,7 +382,15 @@ Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_
   \label{code:channelbyplugin}
 \end{listing}
 \subsection{Preprocessing}\label{subsec:preproc}
-d
+The date obtained in section~\ref{subsec:datacol} is not yet ready to be used to construct a network. There exist channels in the dataset for which only one of the two edges is known. Furthermore the information about the distribution of the channel balance is not known. These two issues are being addressed in the preprocessing which only has to be executed once.
+
+\subsubsection{Remove incomplete data}
+
+\subsubsection{Allocate local balances}
+now that there are balances allocated there might be nodes which can not act in the rebalancing at all. (only incoming/outgoing balance or only one channel). Refer to next subsection.
+
+\subsubsection{}<++>
+
 \subsection{Simulating Lightning Network}
 \todo[inline]{Define everything in the network.py class that mimics the ln network (balances, capacities, fees, routing)}
 

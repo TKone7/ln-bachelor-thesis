@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+Usage:
+  simulate.py parse \PYGZlt{}filename\PYGZgt{}
+  simulate.py randomexperiment \PYGZlt{}fingerprint\PYGZgt{} \PYGZlt{}samplesize\PYGZgt{} \PYG{o}{[}\PYGZhy{}\PYGZhy{}charts\PYG{o}{]}
+  simulate.py bysize \PYGZlt{}fingerprint\PYGZgt{} \PYG{o}{[(}asc\PYG{p}{|}desc\PYG{o}{)]} \PYG{o}{[}\PYGZhy{}\PYGZhy{}charts\PYG{o}{]}
+  simulate.py groupedsize \PYGZlt{}fingerprint\PYGZgt{} \PYG{o}{[}\PYGZhy{}\PYGZhy{}charts\PYG{o}{]}
+  simulate.py spread \PYGZlt{}fingerprint\PYGZgt{} \PYGZlt{}init\PYGZgt{} \PYGZlt{}spread\PYGZgt{} \PYG{o}{[}\PYGZhy{}\PYGZhy{}charts\PYG{o}{]}
+  simulate.py \PYGZhy{}h \PYG{p}{|} \PYGZhy{}\PYGZhy{}help
+  simulate.py \PYGZhy{}\PYGZhy{}version
+
+Options:
+  \PYGZhy{}h \PYGZhy{}\PYGZhy{}help     Show this screen.
+  \PYGZhy{}\PYGZhy{}version     Show version.
+  \PYGZhy{}\PYGZhy{}charts      Skips the experiment and creates only the charts.
+\end{Verbatim}
