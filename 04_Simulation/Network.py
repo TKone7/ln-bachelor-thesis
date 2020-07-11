@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 
 class Network:
-    def __init__(self, G, cycles4=None, cycles5=None):
+    def __init__(self, G, cycles4=None):
         self.G = G
         self.flow = None
         self.participation = None
@@ -34,7 +34,6 @@ class Network:
         self.__all_pair_max_flow = dict()
         self.__excluded = []
         self.__cycles4 = cycles4 if cycles4 else []
-        self.__cycles5 = cycles5 if cycles5 else []
         self.__all_pair_shortest_paths = None
         self.__all_pair_simple_paths = None
         # self.__k_shortest_path = None
@@ -382,7 +381,6 @@ class Network:
         # Need to be calculated only once (per network) since there never will be more / others
         cycles4 = []
         # seen = set()
-        # cycles5 = []
         pos_edges = [e for e in self.flow.edges(data=True) if e[2]['liquidity'] > 0]
         pos_flow = nx.DiGraph()
         pos_flow.add_edges_from(pos_edges)
@@ -401,7 +399,6 @@ class Network:
         logger.debug('There are {} circles of length 4 or less'.format(len(cycles4)))
         # logger.debug('There are {} circles of length 5 or less'.format(len(cycles4)))
         self.__cycles4 = cycles4
-        # self.__cycles5 = cycles4
         random.seed(10)
         self.__cycles4.sort()
         random.shuffle(self.__cycles4)
@@ -547,7 +544,6 @@ class Network:
         # should be able to store and restore from any intermediate network state
         G = nx.DiGraph()
         cycles4 = None
-        cycles5 = None
         if is_file:
             f = open(fingerprint, "r")
         else:
@@ -569,7 +565,7 @@ class Network:
                 s, d, c, a, base, rate = fields
                 G.add_edge(s, d, capacity=int(c), balance=int(a), base=int(base), rate=int(rate))
 
-        N = cls(G, cycles4, cycles5)
+        N = cls(G, cycles4)
         assert fingerprint == N.fingerprint or is_file, 'Fingerprints of stored and restored network are not equal'
         return N
 
