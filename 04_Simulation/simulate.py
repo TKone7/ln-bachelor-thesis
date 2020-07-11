@@ -7,10 +7,12 @@ Usage:
   simulate.py groupedsize <fingerprint> [--charts]
   simulate.py spread <fingerprint> <init> <spread> [--charts]
   simulate.py -h | --help
+  simulate.py --version
 
 Options:
   -h --help     Show this screen.
-  --charts      Skips the experiment and creates only the charts
+  --version     Show version.
+  --charts      Skips the experiment and creates only the charts.
 
 """
 from Network import Network, CYCLES_FILE
