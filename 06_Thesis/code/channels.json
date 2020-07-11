@@ -15,6 +15,7 @@
             "satoshis": 20000,
             "base_fee_millisatoshi": 1000,
             "fee_per_millionth": 1
-        }
+        },
+	...
     ]
 }

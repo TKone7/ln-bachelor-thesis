@@ -2294,7 +2294,10 @@
     <bcf:citekey order="15">rosen_discrete_2012</bcf:citekey>
     <bcf:citekey order="16">even_network_1975</bcf:citekey>
     <bcf:citekey order="17">pickhardt_imbalance_2019</bcf:citekey>
-    <bcf:citekey order="18">pickhardt_imbalance_2019</bcf:citekey>
+    <bcf:citekey order="18">al-taie_python_2017</bcf:citekey>
+    <bcf:citekey order="19">al-taie_python_2017</bcf:citekey>
+    <bcf:citekey order="20">al-taie_python_2017</bcf:citekey>
+    <bcf:citekey order="21">al-taie_python_2017</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

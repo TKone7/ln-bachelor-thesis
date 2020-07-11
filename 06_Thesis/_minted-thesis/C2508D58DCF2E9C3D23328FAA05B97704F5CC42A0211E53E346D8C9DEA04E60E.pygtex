@@ -16,7 +16,8 @@
             \PYG{l+s+s2}{\PYGZdq{}satoshis\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{20000}\PYG{p}{,}
             \PYG{l+s+s2}{\PYGZdq{}base\PYGZus{}fee\PYGZus{}millisatoshi\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{1000}\PYG{p}{,}
             \PYG{l+s+s2}{\PYGZdq{}fee\PYGZus{}per\PYGZus{}millionth\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{1}
-        \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{},}
+	\PYG{p}{...}
     \PYG{p}{]}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
