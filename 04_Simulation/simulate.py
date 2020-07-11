@@ -10,7 +10,8 @@ Usage:
 
 Options:
   -h --help     Show this screen.
-  --charts      Skips the experiment and creates only the charts
+  --version     Show version.
+  --charts      Skips the experiment and creates only the charts.
 
 """
 from Network import Network, CYCLES_FILE
