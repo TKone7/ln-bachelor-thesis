@@ -382,14 +382,41 @@ Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_
   \label{code:channelbyplugin}
 \end{listing}
 \subsection{Preprocessing}\label{subsec:preproc}
-The date obtained in section~\ref{subsec:datacol} is not yet ready to be used to construct a network. There exist channels in the dataset for which only one of the two edges is known. Furthermore the information about the distribution of the channel balance is not known. These two issues are being addressed in the preprocessing which only has to be executed once.
+The date obtained in section~\ref{subsec:datacol} is not yet ready to be used to construct a network. There exist channels in the dataset for which only one of the two edges is known. Furthermore the information about the distribution of the channel balance is unknown but must be allocated somehow. These two issues are being addressed in the preprocessing which only has to be executed once. The result from the preprocessing is a \mintinline{python}{networkx.DiGraph} which is then passed to the constructor of the Network. It is then accessible through the attribute \mintinline{python}{self.G} of the Network object.
 
 \subsubsection{Remove incomplete data}
+The data sample presented in listing~\ref{code:channelbyplugin} shows that each Lightning channel is represented by two entries with opposite source-destination node pairs. In the obtained dataset not every entry has its matching counterpart. The experiments should only deal with channels that can be used in both direction (normal case), therefore, these data objects are simply deleted from the dataset. This reduced the dataset from a total of 58934 to 46366 (-6172) data objects, representing $frac{46366}{2}=23183$ channels.  
+
+I use a \textbf{simple directed graph} to represent the Lightning network. Multiple edges with the same source and destination node are not permitted. The Lightning protocol does not prevent nodes to open multiple channels with the partner. Therefore, multiple channels are reduced to one single channel.
 
 \subsubsection{Allocate local balances}
-now that there are balances allocated there might be nodes which can not act in the rebalancing at all. (only incoming/outgoing balance or only one channel). Refer to next subsection.
+The public data only contains information about the total channel capacity, the local distribution between the two channel partners is unknown. To run a simulation some distribution must be assumed. As all channels are single funded this means the capacity was all on one side initially. The best guess to distribute channel balances is therefore to assume all channels were just opened and therefore only one party hold the full capacity in its balance. However, there is no hint on who opened the channel. This is why the preprocessing allocates 100\% of the capacity to one of the parties \textbf{randomly}. To ensure reproducibility of the preprocessing the allocation of the balance should be random but deterministic. Meaning the same channel distributes the capacity to the same node in consecutive runs. Based of the evenness of the result of a hash function \todo{explain hash function} the node holding the balance is selected (see listing~\ref{code:random_alloc}).
 
-\subsubsection{}<++>
+\begin{listing}[H]
+  \begin{minted}[
+    frame=single,
+    framesep=3mm,
+    linenos=true,
+    xleftmargin=21pt,
+    tabsize=4,
+    breaklines=true,
+    breakanywhere=true,
+  ]{python}
+# shuffle source<->destination randomly
+shuffled = set()
+for channel in reduced:
+    input = bytearray(channel[0] + channel[1], 'utf-8')
+    hash_object = hashlib.sha256(input)
+    if hash_object.digest()[0] % 2 == 0:
+        shuffled.add(tuple([channel[1], channel[0]]))
+    else:
+        shuffled.add(channel) 
+  \end{minted}
+  \caption{Random allocation of channel balance.}
+  \label{code:random_alloc}
+\end{listing}
+
+Depending on the allocation of the balances some nodes are not able to rebalance payments with the rest of the network. To find a network in which each node can reach each other node a NetworkX graph is created with only \textbf{one} edge pointing from the node with balance to the node without balance. From this graph the \textbf{strongly connected component} is selected. This is the directed graph in which a sequence of edges form a path from every vertex to every other vertex \citep{even_network_1975}. The resulting strongly connected component consists of 21147 channels (-2036) and has a diameter of 8. This means the longest path between any two nodes is 8.
 
 \subsection{Simulating Lightning Network}
 \todo[inline]{Define everything in the network.py class that mimics the ln network (balances, capacities, fees, routing)}
@@ -479,7 +506,10 @@ Show a lot of charts :-)
 
 %Print the glossary
 \newpage
-\newglossaryentry{doublespend}{name={double spend problem}, description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.}}
+\newglossaryentry{doublespend}{
+	name={double spend problem},
+	description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.}
+}
 \section*{Glossary}
 \printglossaries
 
