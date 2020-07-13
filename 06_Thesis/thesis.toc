@@ -29,14 +29,16 @@
 \contentsline {subsection}{\numberline {3.3}Preprocessing}{15}{subsection.3.3}% 
 \contentsline {subsubsection}{\numberline {3.3.1}Remove incomplete data}{15}{subsubsection.3.3.1}% 
 \contentsline {subsubsection}{\numberline {3.3.2}Allocate local balances}{16}{subsubsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.4}Simulating Lightning Network}{16}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}Proactive Rebalancing Protocol}{17}{subsection.3.5}% 
-\contentsline {subsection}{\numberline {3.6}Performance Measures}{17}{subsection.3.6}% 
-\contentsline {subsubsection}{\numberline {3.6.1}Success rate on shortest path}{17}{subsubsection.3.6.1}% 
-\contentsline {subsubsection}{\numberline {3.6.2}Payment size on shortest path}{17}{subsubsection.3.6.2}% 
-\contentsline {subsubsection}{\numberline {3.6.3}Ability to route different payment sizes}{17}{subsubsection.3.6.3}% 
-\contentsline {section}{\numberline {4}Results}{17}{section.4}% 
-\contentsline {section}{\numberline {5}Conclusion \& Outlook}{22}{section.5}% 
-\contentsline {section}{References}{23}{section*.41}% 
-\contentsline {section}{Glossary}{24}{section*.43}% 
-\contentsline {section}{\numberline {A}Some appendix}{24}{appendix.A}% 
+\contentsline {subsection}{\numberline {3.4}Proactive Rebalancing Protocol}{16}{subsection.3.4}% 
+\contentsline {subsubsection}{\numberline {3.4.1}Rebalancing}{17}{subsubsection.3.4.1}% 
+\contentsline {subsubsection}{\numberline {3.4.2}Rebalancing algorithm}{18}{subsubsection.3.4.2}% 
+\contentsline {subsubsection}{\numberline {3.4.3}Protocol change}{18}{subsubsection.3.4.3}% 
+\contentsline {subsection}{\numberline {3.5}Performance Measures}{19}{subsection.3.5}% 
+\contentsline {subsubsection}{\numberline {3.5.1}Success rate on shortest path}{19}{subsubsection.3.5.1}% 
+\contentsline {subsubsection}{\numberline {3.5.2}Payment size on shortest path}{19}{subsubsection.3.5.2}% 
+\contentsline {subsubsection}{\numberline {3.5.3}Ability to route different payment sizes}{19}{subsubsection.3.5.3}% 
+\contentsline {section}{\numberline {4}Results}{19}{section.4}% 
+\contentsline {section}{\numberline {5}Conclusion \& Outlook}{24}{section.5}% 
+\contentsline {section}{References}{25}{section*.43}% 
+\contentsline {section}{Glossary}{26}{section*.45}% 
+\contentsline {section}{\numberline {A}Some appendix}{26}{appendix.A}% 

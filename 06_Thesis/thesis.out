@@ -26,14 +26,16 @@
 \BOOKMARK [2][-]{subsection.3.3}{3.3 Preprocessing}{section.3}% 26
 \BOOKMARK [3][-]{subsubsection.3.3.1}{3.3.1 Remove incomplete data}{subsection.3.3}% 27
 \BOOKMARK [3][-]{subsubsection.3.3.2}{3.3.2 Allocate local balances}{subsection.3.3}% 28
-\BOOKMARK [2][-]{subsection.3.4}{3.4 Simulating Lightning Network}{section.3}% 29
-\BOOKMARK [2][-]{subsection.3.5}{3.5 Proactive Rebalancing Protocol}{section.3}% 30
-\BOOKMARK [2][-]{subsection.3.6}{3.6 Performance Measures}{section.3}% 31
-\BOOKMARK [3][-]{subsubsection.3.6.1}{3.6.1 Success rate on shortest path}{subsection.3.6}% 32
-\BOOKMARK [3][-]{subsubsection.3.6.2}{3.6.2 Payment size on shortest path}{subsection.3.6}% 33
-\BOOKMARK [3][-]{subsubsection.3.6.3}{3.6.3 Ability to route different payment sizes}{subsection.3.6}% 34
-\BOOKMARK [1][-]{section.4}{4 Results}{}% 35
-\BOOKMARK [1][-]{section.5}{5 Conclusion \046 Outlook}{}% 36
-\BOOKMARK [1][-]{section*.41}{References}{}% 37
-\BOOKMARK [1][-]{section*.43}{Glossary}{}% 38
-\BOOKMARK [1][-]{appendix.A}{A Some appendix}{}% 39
+\BOOKMARK [2][-]{subsection.3.4}{3.4 Proactive Rebalancing Protocol}{section.3}% 29
+\BOOKMARK [3][-]{subsubsection.3.4.1}{3.4.1 Rebalancing}{subsection.3.4}% 30
+\BOOKMARK [3][-]{subsubsection.3.4.2}{3.4.2 Rebalancing algorithm}{subsection.3.4}% 31
+\BOOKMARK [3][-]{subsubsection.3.4.3}{3.4.3 Protocol change}{subsection.3.4}% 32
+\BOOKMARK [2][-]{subsection.3.5}{3.5 Performance Measures}{section.3}% 33
+\BOOKMARK [3][-]{subsubsection.3.5.1}{3.5.1 Success rate on shortest path}{subsection.3.5}% 34
+\BOOKMARK [3][-]{subsubsection.3.5.2}{3.5.2 Payment size on shortest path}{subsection.3.5}% 35
+\BOOKMARK [3][-]{subsubsection.3.5.3}{3.5.3 Ability to route different payment sizes}{subsection.3.5}% 36
+\BOOKMARK [1][-]{section.4}{4 Results}{}% 37
+\BOOKMARK [1][-]{section.5}{5 Conclusion \046 Outlook}{}% 38
+\BOOKMARK [1][-]{section*.43}{References}{}% 39
+\BOOKMARK [1][-]{section*.45}{Glossary}{}% 40
+\BOOKMARK [1][-]{appendix.A}{A Some appendix}{}% 41

@@ -387,7 +387,7 @@ The date obtained in section~\ref{subsec:datacol} is not yet ready to be used to
 \subsubsection{Remove incomplete data}
 The data sample presented in listing~\ref{code:channelbyplugin} shows that each Lightning channel is represented by two entries with opposite source-destination node pairs. In the obtained dataset not every entry has its matching counterpart. The experiments should only deal with channels that can be used in both direction (normal case), therefore, these data objects are simply deleted from the dataset. This reduced the dataset from a total of 58934 to 46366 (-6172) data objects, representing $frac{46366}{2}=23183$ channels.  
 
-I use a \textbf{simple directed graph} to represent the Lightning network. Multiple edges with the same source and destination node are not permitted. The Lightning protocol does not prevent nodes to open multiple channels with the partner. Therefore, multiple channels are reduced to one single channel.
+I use a \textbf{simple directed graph} to represent the Lightning network. Multiple edges with the same source and destination node are not permitted. The Lightning protocol does not prevent nodes to open multiple channels with the same partner. Therefore, multiple channels are reduced to one single channel.
 
 \subsubsection{Allocate local balances}
 The public data only contains information about the total channel capacity, the local distribution between the two channel partners is unknown. To run a simulation some distribution must be assumed. As all channels are single funded this means the capacity was all on one side initially. The best guess to distribute channel balances is therefore to assume all channels were just opened and therefore only one party hold the full capacity in its balance. However, there is no hint on who opened the channel. This is why the preprocessing allocates 100\% of the capacity to one of the parties \textbf{randomly}. To ensure reproducibility of the preprocessing the allocation of the balance should be random but deterministic. Meaning the same channel distributes the capacity to the same node in consecutive runs. Based of the evenness of the result of a hash function \todo{explain hash function} the node holding the balance is selected (see listing~\ref{code:random_alloc}).
@@ -418,10 +418,42 @@ for channel in reduced:
 
 Depending on the allocation of the balances some nodes are not able to rebalance payments with the rest of the network. To find a network in which each node can reach each other node a NetworkX graph is created with only \textbf{one} edge pointing from the node with balance to the node without balance. From this graph the \textbf{strongly connected component} is selected. This is the directed graph in which a sequence of edges form a path from every vertex to every other vertex \citep{even_network_1975}. The resulting strongly connected component consists of 21147 channels (-2036) and has a diameter of 8. This means the longest path between any two nodes is 8.
 
-\subsection{Simulating Lightning Network}
-\todo[inline]{Define everything in the network.py class that mimics the ln network (balances, capacities, fees, routing)}
-
 \subsection{Proactive Rebalancing Protocol}
+\citeauthor{pickhardt_imbalance_2019} proposed in their paper a rebalancing algorithm which when proactively executed would improve the overall networks ability to route payments \citep{pickhardt_imbalance_2019}. The next sections define the algorithm in more detail and show how it is implemented in the Network class.
+
+\subsubsection{Rebalancing}
+Figure~\ref{fig:rebal} shows an example network with four nodes and four channels that are recently opened. The capacities are hence all on one side of the channel. Such an allocation of balances limits the use of the channels severely as they can only be used into one direction. If Alice wants to have a better balance among her channels she can start a process called rebalancing. This is a self-payment which routes an amount from one of her channels through the Lightning network to another of her channels. In this example Alice decides she has excess balance in the channel with Bob and insufficient balance in the one with David.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{rebalancing.pdf}
+\caption{Initial state of newly opened channels.}
+\label{fig:rebal}
+\end{figure}
+
+She can now construct a payment of e.g. 40 with the path [Alice, Bob, Charli, David, Alice]. This reduces her balance in the channel with Bob by 40 (new 60) and increases her balance in the channel with David by 40 (new 40). Both of her channels are now better balanced and allow for more payments to be routed. The resulting state is shown in figure~\ref{fig:rebal2}. 
+
+This action performed by Alice did of course not only change the balances of the channels she is involved but also the ones she used to route her self-payment. In this case the channels between Bob and Charli as well as Charli and David are also more balanced. While this was the case in this example it is not guaranteed to be true in all cases, it might well be that some channels end up less balanced. The reason why all the nodes are incentivised to participate are fees that they can collect on each payment they forward. In fact they do not even know that this payment is a rebalancing transaction. Hence, Alice has to pay fees for this rebalancing operation. 
+
+Rebalancing can be summarised as an activity performed by a single node attempting to improve the local balances of its channels by sending a payment out through one channel with excess balance and receiving it through a channel with too little balance, effectively paying itself. For all the nodes in the routing path this payment looks no different to any other payment, so they charge their normal routing fees. While the balances within the channel change a node's total balance remains constant. Alice still has a total balance of 100 allocated differently among her two channels. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{rebalancing2.pdf}
+\caption{Rebalancing from Alice through Bob, Charli and David.}
+\label{fig:rebal2}
+\end{figure}
+
+\subsubsection{Rebalancing algorithm}
+The previous section was about how nodes can \textit{improve} their channel balances. While the improvement in the example was quite clear it has to be stated what the ultimate goal is towards which the nodes try to improve. Intuitively, a distribution of 50:50 could be thought of as an appropriate goal. 
+
+\subsubsection{Protocol change}
+Such rebalancing operations as described before are nothing new and can be performed by each node already. However, the incentive to do so is very small. The initiating node is the one who pays the fee for the payment. A node would only do such transactions if it can expect to earn fees on the rebalanced channels that exceed the amount of fees payed for the rebalancing. 
+
+\citeauthor{pickhardt_imbalance_2019} propose a change in the protocol to make rebalancing more explicit \citep{pickhardt_imbalance_2019}. This means a node initiating a rebalancing would label the payment as such and ask only nodes to participate that also benefit from the rebalancing. As this would be a win-win-situation for all participating nodes they could agree to forego the fees. 
+
+\todo{why would nodes participate and why not}
+
 \todo[inline]{Describe how the proposed protocol change is impolemented in the \textbf{Network} class. }
 \todo[inline]{show illustrations with a dummy network}
 \todo[inline]{ask Rene to his dummy network}
