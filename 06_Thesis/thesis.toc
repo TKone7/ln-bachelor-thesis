@@ -19,26 +19,31 @@
 \contentsline {subsubsection}{\numberline {2.3.2}Path finding problem}{8}{subsubsection.2.3.2}% 
 \contentsline {subsection}{\numberline {2.4}Previous work}{9}{subsection.2.4}% 
 \contentsline {subsection}{\numberline {2.5}Problem statement}{9}{subsection.2.5}% 
-\contentsline {section}{\numberline {3}Experiment}{11}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Methodology}{11}{subsection.3.1}% 
-\contentsline {subsubsection}{\numberline {3.1.1}Python libraries}{11}{subsubsection.3.1.1}% 
-\contentsline {subsubsection}{\numberline {3.1.2}Network class}{11}{subsubsection.3.1.2}% 
-\contentsline {subsubsection}{\numberline {3.1.3}Experiment class}{12}{subsubsection.3.1.3}% 
-\contentsline {subsubsection}{\numberline {3.1.4}Command line interface}{13}{subsubsection.3.1.4}% 
-\contentsline {subsection}{\numberline {3.2}Data collection}{13}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Preprocessing}{15}{subsection.3.3}% 
-\contentsline {subsubsection}{\numberline {3.3.1}Remove incomplete data}{15}{subsubsection.3.3.1}% 
-\contentsline {subsubsection}{\numberline {3.3.2}Allocate local balances}{16}{subsubsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.4}Proactive Rebalancing Protocol}{16}{subsection.3.4}% 
-\contentsline {subsubsection}{\numberline {3.4.1}Rebalancing}{17}{subsubsection.3.4.1}% 
-\contentsline {subsubsection}{\numberline {3.4.2}Rebalancing algorithm}{18}{subsubsection.3.4.2}% 
-\contentsline {subsubsection}{\numberline {3.4.3}Protocol change}{18}{subsubsection.3.4.3}% 
-\contentsline {subsection}{\numberline {3.5}Performance Measures}{19}{subsection.3.5}% 
-\contentsline {subsubsection}{\numberline {3.5.1}Success rate on shortest path}{19}{subsubsection.3.5.1}% 
-\contentsline {subsubsection}{\numberline {3.5.2}Payment size on shortest path}{19}{subsubsection.3.5.2}% 
-\contentsline {subsubsection}{\numberline {3.5.3}Ability to route different payment sizes}{19}{subsubsection.3.5.3}% 
-\contentsline {section}{\numberline {4}Results}{19}{section.4}% 
-\contentsline {section}{\numberline {5}Conclusion \& Outlook}{24}{section.5}% 
-\contentsline {section}{References}{25}{section*.43}% 
-\contentsline {section}{Glossary}{26}{section*.45}% 
-\contentsline {section}{\numberline {A}Some appendix}{26}{appendix.A}% 
+\contentsline {section}{\numberline {3}Proactive Rebalancing Protocol}{11}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Rebalancing}{11}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Rebalancing algorithm}{12}{subsection.3.2}% 
+\contentsline {subsubsection}{\numberline {3.2.1}Imbalance definition}{12}{subsubsection.3.2.1}% 
+\contentsline {subsubsection}{\numberline {3.2.2}Proposed algorithm}{13}{subsubsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.3}Protocol change}{14}{subsection.3.3}% 
+\contentsline {subsubsection}{\numberline {3.3.1}Reasons to not participate}{14}{subsubsection.3.3.1}% 
+\contentsline {section}{\numberline {4}Experiment}{14}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Methodology}{14}{subsection.4.1}% 
+\contentsline {subsubsection}{\numberline {4.1.1}Python libraries}{14}{subsubsection.4.1.1}% 
+\contentsline {subsubsection}{\numberline {4.1.2}Network class}{15}{subsubsection.4.1.2}% 
+\contentsline {subsubsection}{\numberline {4.1.3}Experiment class}{16}{subsubsection.4.1.3}% 
+\contentsline {subsubsection}{\numberline {4.1.4}Command line interface}{17}{subsubsection.4.1.4}% 
+\contentsline {subsection}{\numberline {4.2}Data collection}{17}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Preprocessing}{19}{subsection.4.3}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Remove incomplete data}{19}{subsubsection.4.3.1}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Allocate local balances}{20}{subsubsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.4}Simulate rebalancing}{20}{subsection.4.4}% 
+\contentsline {subsubsection}{\numberline {4.4.1}Determine the desired flow}{22}{subsubsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.5}Performance Measures}{23}{subsection.4.5}% 
+\contentsline {subsubsection}{\numberline {4.5.1}Success rate on shortest path}{23}{subsubsection.4.5.1}% 
+\contentsline {subsubsection}{\numberline {4.5.2}Payment size on shortest path}{23}{subsubsection.4.5.2}% 
+\contentsline {subsubsection}{\numberline {4.5.3}Ability to route different payment sizes}{23}{subsubsection.4.5.3}% 
+\contentsline {section}{\numberline {5}Results}{23}{section.5}% 
+\contentsline {section}{\numberline {6}Conclusion \& Outlook}{28}{section.6}% 
+\contentsline {section}{References}{29}{section*.41}% 
+\contentsline {section}{Glossary}{30}{section*.43}% 
+\contentsline {section}{\numberline {A}Some appendix}{30}{appendix.A}% 

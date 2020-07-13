@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}compute\PYGZus{}rebalance\PYGZus{}network}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow} \PYG{o}{=} \PYG{n}{nx}\PYG{o}{.}\PYG{n}{DiGraph}\PYG{p}{()}
+        \PYG{n}{delete\PYGZus{}edges} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{k}{for} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{G}\PYG{o}{.}\PYG{n}{edges}\PYG{p}{():}
+            \PYG{k}{if} \PYG{n}{u} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}excluded} \PYG{o+ow}{or} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}excluded}\PYG{p}{:}
+                \PYG{k}{continue}
+            \PYG{n}{nbc} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{G}\PYG{o}{.}\PYG{n}{nodes}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}nbc\PYGZsq{}}\PYG{p}{]}
+            \PYG{n}{balance} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{G}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}balance\PYGZsq{}}\PYG{p}{]}
+            \PYG{n}{capacity} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{G}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}capacity\PYGZsq{}}\PYG{p}{]}
+            \PYG{n}{cbc} \PYG{o}{=} \PYG{n}{balance} \PYG{o}{/} \PYG{n}{capacity}
+            \PYG{n}{amt} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{capacity} \PYG{o}{*} \PYG{p}{(}\PYG{n}{cbc} \PYG{o}{\PYGZhy{}} \PYG{n}{nbc}\PYG{p}{))}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{v}\PYG{p}{,} \PYG{n}{u}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow}\PYG{o}{.}\PYG{n}{edges}\PYG{p}{():}
+                \PYG{n}{amt\PYGZus{}cp} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow}\PYG{p}{[}\PYG{n}{v}\PYG{p}{][}\PYG{n}{u}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}liquidity\PYGZsq{}}\PYG{p}{]}
+                \PYG{k}{if} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{amt}\PYG{p}{)} \PYG{o}{==} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{amt\PYGZus{}cp}\PYG{p}{):}
+                    \PYG{o}{...}
+                \PYG{n}{common} \PYG{o}{=} \PYG{n+nb}{min}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{amt}\PYG{p}{),} \PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{amt\PYGZus{}cp}\PYG{p}{))}
+                \PYG{n}{amt\PYGZus{}cp} \PYG{o}{=} \PYG{n}{common} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{amt\PYGZus{}cp}\PYG{p}{)}
+                \PYG{n}{amt} \PYG{o}{=} \PYG{n}{common} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{amt}\PYG{p}{)}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow}\PYG{p}{[}\PYG{n}{v}\PYG{p}{][}\PYG{n}{u}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}liquidity\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{amt\PYGZus{}cp}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow}\PYG{o}{.}\PYG{n}{add\PYGZus{}edge}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{liquidity}\PYG{o}{=}\PYG{n}{amt}\PYG{p}{)}
+\end{Verbatim}

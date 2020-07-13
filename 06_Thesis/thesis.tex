@@ -250,6 +250,67 @@ These payment channel networks are decentralized by nature and protocol changes 
 The next part of the paper defines the rebalancing algorithm proposed in a protocol change. Then an experiment is constructed which mimics the real Lightning Network with all its participants and payment channels. I formally define multiple performance measurements which are later used to measure the improvement of the network's ability to route payments. Different scenarios are then simulated under different levels of participation also testing different ways to select the participating nodes.
 
 \newpage
+\section{Proactive Rebalancing Protocol}
+\citeauthor{pickhardt_imbalance_2019} proposed in their paper a rebalancing algorithm which when proactively executed would improve the overall networks ability to route payments \citep{pickhardt_imbalance_2019}. The next sections define the algorithm in more detail and formally defines the protocol change. In later section~\ref{subsec:sim_rebal} we show how it is implemented as part of the simulation.
+
+\subsection{Rebalancing}
+Figure~\ref{fig:rebal} shows an example network with four nodes and four channels that are recently opened. The capacities are hence all on one side of the channel. Such an allocation of balances limits the use of the channels severely as they can only send payments into one direction. If Alice wants to have a better balance among her channels she can start a process called \textbf{rebalancing}. This is a self-payment which routes an amount from one of her channels through the Lightning network to another of her channels. In this example Alice decides she has excess balance in the channel with Bob and insufficient balance in the one with David.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{rebalancing.pdf}
+\caption{Initial state of newly opened channels.}
+\label{fig:rebal}
+\end{figure}
+
+She can now construct a payment of e.g. 40 with the path [Alice, Bob, Charli, David, Alice]. This reduces her balance in the channel with Bob by 40 (new 60) and increases her balance in the channel with David by 40 (new 40). Both of her channels are now better balanced and allow for more payments to be routed. The resulting state is shown in figure~\ref{fig:rebal2} and the path of the rebalancing payment is indicated in red. 
+
+This action performed by Alice did of course not only change the balances of the channels she is involved but also the ones she used to route the self-payment. In this case the channels between Bob-Charli as well as Charli-David are also more balanced. While this was the case in this example it is not guaranteed to be true in all cases, it might well be that some channels end up less balanced. The reason why all the nodes are incentivised to participate are fees that they can collect on each payment they forward. In fact they do not even know that this payment is a rebalancing transaction. Hence, Alice has to pay fees for this rebalancing operation. 
+
+Rebalancing can be summarised as an activity performed by a single node attempting to improve the local balances of its channels by sending a payment out through one channel with excess balance and receiving it through a channel with too little balance, effectively paying itself. For all the nodes in the routing path this payment looks no different to any other payment, so they charge their normal routing fees. While the balances within the channel change a node's total balance remains constant. Alice still has a total balance of 100 allocated differently among her two channels. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{rebalancing2.pdf}
+\caption{Rebalancing from Alice through Bob, Charli and David.}
+\label{fig:rebal2}
+\end{figure}
+
+\subsection{Rebalancing algorithm}
+The previous section was about how nodes can \textit{improve} their channel balances. While the improvement in the example was quite clear it has to be stated what the ultimate goal is towards which the nodes try to improve. Intuitively, a distribution of 50:50 in each channel could be thought of as an appropriate goal. In reality this is not a feasible target.
+
+\subsubsection{Imbalance definition}
+The following terms will first be defined to better understand the problem. The two nodes in a payment channel $e=(u,v)$ are denoted as $e_u$ and $e_v$. The capacity of $e=(u,v)$ is privately split among the two nodes channel balance $b(e_u)$ and $b(e_v)$. Therefore, the capacity of the channel $c(e)=b(e_u)+b(e_v)$. The \textbf{channel balance coefficient } for $u$ represents the ratio a node $u$ has in a channel $e=(u,v)$ and is defined as $\zeta{(u,v)}=\frac{b(e_u)}{c(e)}$. Respectively, for the node $v$ the coefficient is $\zeta{(v,u)}=\frac{b(e_v)}{c(e)}$. As both balances make up the total capacity it follows  $\zeta{(u,v)} + \zeta{(v,u)}=1$. Let us define all the channels node $u$ is part of as $U=n(u)$. The \textbf{total funds} the node $u$ owns can be denoted by $\tau_u:=\displaystyle{\sum_{e\in U}b(e_u)}$. The \textbf{total capacity} of the node's channel $\kappa_u:=\displaystyle{\sum_{e\in U}c(e)}$. We can now define the \textbf{node balance coefficient} as $\nu_u = \frac{\tau_u}{\kappa_u}$.
+
+Both $\tau_u$ and $\kappa_u$ must remain constant during rebalancing operations. This is because the rebalancing payment pays always the node itself, so the \textbf{total funds} of a node can not increase or decrease. As no new channels are opened or closed and capacities in existing channel can not be changed \textbf{total capacity} must remain constant. The initially stated goal to have a 50:50 distribution in all channels is only achievable with a \textbf{node balance coefficient} of $0.5$. As this coefficient remains constant only nodes that already have a node balance coefficient of $0.5$ could reach that state.
+
+\citeauthor{pickhardt_imbalance_2019} had to come up with a different balance measure which is applicable to all nodes no matter what node balance coefficient they had. So they generalised the rule discussed in the previous chapter. Every channel of node $u$ should have the same \textbf{balance coefficient} $\zeta{(u,v)}$ which would then equal the \textbf{node balance coefficient} $\nu_u$. In other words, making all channel balance coefficients as similar as possible. They then defined a measure to assess how well this is achieved for a particular node. The Gini coefficient measures the inequality of a distribution. For a node $u$ with channel balance coefficients $\zeta_{(u,v_1)},\dots,\zeta_{(u,v_d)}$ they define $G_u = \frac{\displaystyle{\sum_{i\in U} \sum_{j \in U}} | \zeta_i - \zeta_j |}{2 \displaystyle{\sum_{i \in U} \sum_{j \in U} \zeta_j}}$. When all balance coefficients are equal the Gini coefficient $G_u$ turns to $0$. A value of $G_u=1$ represents the most unequal distribution \citep{pickhardt_imbalance_2019}. 
+
+\subsubsection{Proposed algorithm}\label{subsec:prop_algo}
+The proposed algorithm should be executed by each node individually. The main goal of each node is to achieve a low value of imbalance $G_u$. The node can improve its imbalance by repeatedly executing the following steps according to \cite{pickhardt_imbalance_2019}:
+
+\begin{enumerate}
+\item A node $u$ computes its node balance coefficient $\nu_u$.
+\item $u$ then computes its channel balance coefficients $\zeta_{(u,v_1)},\dots,\zeta_{(u,v_d)}$.
+\item All channels $e=(u,v_i)$ for which the channel balance coefficient is higher 
+than its node balance coefficient, are selected as $C = \{(u,v_i) | \zeta_{(u,v_i)} - \nu_u\ > 0\}$.
+\item From the candidate set $C$ a random channel $e=(u,v)$ is selected.
+\item Now the node searches for a circular payment to itself along $e=(u,v)$ by choosing a path $p = [v,x_1,\dots,x_n,u]$. The amount of that payment should decrease the value of $\zeta_{(u,v)}$ to that of $\nu_u$ and can be computed as $a = c(e)\cdot (\zeta_{(u,v)}-\nu_u)$. The end of the circle should be a channel $(x_n,u)$ for which the channel balance coefficient $\zeta_{(u,x_n)}$ is smaller than the node balance coefficient $\nu_u$.
+\item The node conducts the payment if all the nodes on the path $p$ agree to participate. It could happen that some nodes will only participate with a value smaller than $a$. As this is already progress $u$ will accept the suggested amount instead of being stubborn. 
+\item Repeat all steps as long as the local balance coefficients are not even enough and as long as paths are found.
+\end{enumerate}
+
+\subsection{Protocol change}
+Rebalancing itself is already supported in the current Lightning protocol as it includes normal payments where the sender and receiver is the same entity. However, the incentive to do so is very small. The initiating node is the one who pays the fee for the payment. A node would only do such transactions if it can expect to earn fees on the rebalanced channels that exceed the amount of fees payed for the rebalancing. 
+
+\citeauthor{pickhardt_imbalance_2019} propose a change in the protocol to make rebalancing more explicit \citep{pickhardt_imbalance_2019}. As the proposed algorithm in the previous section~\ref{subsec:prop_algo} shows, only nodes would participate that also benefit from the rebalancing (step 6). As this would be a win-win-situation for all participating nodes they could agree to forego the fees. This change towards a \textbf{fee-free rebalancing} would incentivise nodes to do this proactively as soon as they see the opportunity to improve their balance.
+
+Additionally, the recommend to adopt a change in the communication protocol which allows \textquote[{\cite{pickhardt_imbalance_2019}}, p. 8]{the network to work collaboratively towards achieving a good balance by locally sharing rebalancing hints}. This sharing of local channel balances would only need to be done among the local neighbourhood of a node. This is where the nodes should look for rebalancing circles and providing hints advertises willingness to rebalance in a certain direction without revealing the exact balance of the channel in question. The privacy drawbacks are minimal as balances in the local neighbourhood can easily be probed anyways \citep{tikhomirov_probing_2020}. 
+ 
+\subsubsection{Reasons to not participate}
+So far the presented algorithm sounded like a win-win-situation for everyone and there would be no discussion around adopting it. However, it is not that simple. There are different reasons why nodes would not want to participate in such a change. Some nodes might not want to forego the revenues in fee. If they decide not to participate but most other do, they still benefit from the better overall balance of the network. So, without contribution they can harvest the benefits of others who participate. 
+\todo[inline]{Should I list the need of nodes to not follow the proposed Gini-approach? Because they could technically follow a different startegy and still do fee-free-balancing and hint-sharing}
+
 \section{Experiment}\label{sec:method}
 \subsection{Methodology}
 This section gives an overview over the technology used and the classes created to run the experiments described in later sections. According to \citeauthor{al-taie_python_2017} Python is a general-purpose tool that becomes more and more popular in data science and graph analysis. There are many open source libraries available in the domain of analysis of complex networks, statistics and the visualisation of data \citep{al-taie_python_2017}. Furthermore the experiments in the previous paper were conducted with Python. 
@@ -418,45 +479,59 @@ for channel in reduced:
 
 Depending on the allocation of the balances some nodes are not able to rebalance payments with the rest of the network. To find a network in which each node can reach each other node a NetworkX graph is created with only \textbf{one} edge pointing from the node with balance to the node without balance. From this graph the \textbf{strongly connected component} is selected. This is the directed graph in which a sequence of edges form a path from every vertex to every other vertex \citep{even_network_1975}. The resulting strongly connected component consists of 21147 channels (-2036) and has a diameter of 8. This means the longest path between any two nodes is 8.
 
-\subsection{Proactive Rebalancing Protocol}
-\citeauthor{pickhardt_imbalance_2019} proposed in their paper a rebalancing algorithm which when proactively executed would improve the overall networks ability to route payments \citep{pickhardt_imbalance_2019}. The next sections define the algorithm in more detail and show how it is implemented in the Network class.
-
-\subsubsection{Rebalancing}
-Figure~\ref{fig:rebal} shows an example network with four nodes and four channels that are recently opened. The capacities are hence all on one side of the channel. Such an allocation of balances limits the use of the channels severely as they can only be used into one direction. If Alice wants to have a better balance among her channels she can start a process called rebalancing. This is a self-payment which routes an amount from one of her channels through the Lightning network to another of her channels. In this example Alice decides she has excess balance in the channel with Bob and insufficient balance in the one with David.
+\subsection{Simulate rebalancing}\label{subsec:sim_rebal}
+In section~\ref{subsec:prop_algo} we defined the rebalancing algorithm each node following the protocol change would implement. This section demonstrates how it is implemented in the simulation. Figure~\ref{fig:flow_rebal} serves as a big picture how such a rebalancing is simulated. The next sections will go into more detail. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\linewidth]{rebalancing.pdf}
-\caption{Initial state of newly opened channels.}
-\label{fig:rebal}
+\includegraphics[width=0.7\linewidth]{flow_rebal.pdf}
+\caption{Flow chart of a rebalancing experiment.}
+\label{fig:flow_rebal}
 \end{figure}
 
-She can now construct a payment of e.g. 40 with the path [Alice, Bob, Charli, David, Alice]. This reduces her balance in the channel with Bob by 40 (new 60) and increases her balance in the channel with David by 40 (new 40). Both of her channels are now better balanced and allow for more payments to be routed. The resulting state is shown in figure~\ref{fig:rebal2}. 
+\subsubsection{Determine the desired flow}
+While the rebalancing in reality would require each node to calculate the desired transactions individually we assume that rebalancing hints are shared among nodes and we can take a holistic view of the different flows each node would want to make. The method in listing~\ref{code:comp_flow} covers steps 1 to 4 and part of step 5 described in section ``\nameref{subsec:prop_algo}''.
 
-This action performed by Alice did of course not only change the balances of the channels she is involved but also the ones she used to route her self-payment. In this case the channels between Bob and Charli as well as Charli and David are also more balanced. While this was the case in this example it is not guaranteed to be true in all cases, it might well be that some channels end up less balanced. The reason why all the nodes are incentivised to participate are fees that they can collect on each payment they forward. In fact they do not even know that this payment is a rebalancing transaction. Hence, Alice has to pay fees for this rebalancing operation. 
+The method \mintinline{python}{__compute_rebalance_network(self)} creates a new NetworkX graph which is derived from the original network graph (stored in \mintinline{python}{self.G}). Line 4 starts a for-loop which iterates over all edges $(u, v)$ and calculates how much node $u$ would like to send out over this edge. The first step is to calculate the node's \textbf{node balance coefficient}. This value is already pre-calculated and can be retrieved from the attributes stored in the NetworkX graph (line 7). Lines 8-10 retrieves the balance and capacity of the edge and calculates the \textbf{channel balance coefficient}. The formula from step 5 is used to calculate the amount $a = c(e)\cdot (\zeta_{(u,v)}-\nu_u)$ node $u$ would want to rebalance (line 11). This calculation returns a positive integer which represents the need to send out this amount while a negative integer represents the wish to receive this amount. 
 
-Rebalancing can be summarised as an activity performed by a single node attempting to improve the local balances of its channels by sending a payment out through one channel with excess balance and receiving it through a channel with too little balance, effectively paying itself. For all the nodes in the routing path this payment looks no different to any other payment, so they charge their normal routing fees. While the balances within the channel change a node's total balance remains constant. Alice still has a total balance of 100 allocated differently among her two channels. 
+Since a payment channel is always represented by two edges there are two nodes that have some different need to rebalance it. As the protocol foresees only rebalance transactions from which both benefit, an agreement must be found. In the case both nodes would want to rebalance into different directions (both want to send or receive at the same time) the channel is completely removed from the flow graph. As in the replicated network all channel balance lies on one end of the channel this will not be the case. However, most likely one of the nodes wants to send more than the counterparty wants to receive (or the other way around). This case is handled in lines 12-19. The lower of the two values is taken and stored into the flow graph with respect to the sign.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\linewidth]{rebalancing2.pdf}
-\caption{Rebalancing from Alice through Bob, Charli and David.}
-\label{fig:rebal2}
-\end{figure}
+The result of this procedure is a property \mintinline{python}{self.flow} which contains a network graph that has two opposite directed edges for each channel that wants to be rebalanced by both parties. The amount stored in the attribute \texttt{liquidity} is the lower value the two channel partners could agree on. The value is the same for edges of a channel, but positive on the edge that wants to send and negative on the one that wants to receive. This flow graph will be used later to compute possible rebalancing paths. 
 
-\subsubsection{Rebalancing algorithm}
-The previous section was about how nodes can \textit{improve} their channel balances. While the improvement in the example was quite clear it has to be stated what the ultimate goal is towards which the nodes try to improve. Intuitively, a distribution of 50:50 could be thought of as an appropriate goal. 
-
-\subsubsection{Protocol change}
-Such rebalancing operations as described before are nothing new and can be performed by each node already. However, the incentive to do so is very small. The initiating node is the one who pays the fee for the payment. A node would only do such transactions if it can expect to earn fees on the rebalanced channels that exceed the amount of fees payed for the rebalancing. 
-
-\citeauthor{pickhardt_imbalance_2019} propose a change in the protocol to make rebalancing more explicit \citep{pickhardt_imbalance_2019}. This means a node initiating a rebalancing would label the payment as such and ask only nodes to participate that also benefit from the rebalancing. As this would be a win-win-situation for all participating nodes they could agree to forego the fees. 
-
-\todo{why would nodes participate and why not}
-
-\todo[inline]{Describe how the proposed protocol change is impolemented in the \textbf{Network} class. }
-\todo[inline]{show illustrations with a dummy network}
-\todo[inline]{ask Rene to his dummy network}
+\begin{listing}[H]
+  \begin{minted}[
+    frame=single,
+    framesep=3mm,
+    linenos=true,
+    xleftmargin=21pt,
+    tabsize=4,
+    breaklines=true,
+    breakanywhere=true,
+  ]{python}
+ def __compute_rebalance_network(self):
+        self.flow = nx.DiGraph()
+        delete_edges = []
+        for u, v in self.G.edges():
+            if u in self.__excluded or v in self.__excluded:
+                continue
+            nbc = self.G.nodes[u]['nbc']
+            balance = self.G[u][v]['balance']
+            capacity = self.G[u][v]['capacity']
+            cbc = balance / capacity
+            amt = int(capacity * (cbc - nbc))
+            if (v, u) in self.flow.edges():
+                amt_cp = self.flow[v][u]['liquidity']
+                if np.sign(amt) == np.sign(amt_cp):
+                    ...
+                common = min(abs(amt), abs(amt_cp))
+                amt_cp = common * np.sign(amt_cp)
+                amt = common * np.sign(amt)
+                self.flow[v][u]['liquidity'] = amt_cp
+            self.flow.add_edge(u, v, liquidity=amt)
+  \end{minted}
+  \caption{Method to calculate each nodes willingness to rebalance.}
+  \label{code:comp_flow}
+\end{listing}
 
 \subsection{Performance Measures}
 \todo[inline]{list the two existing and the third new performance measurement}
