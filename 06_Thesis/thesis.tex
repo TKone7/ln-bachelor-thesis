@@ -489,7 +489,7 @@ In section~\ref{subsec:prop_algo} we defined the rebalancing algorithm each node
 \label{fig:flow_rebal}
 \end{figure}
 
-\subsubsection{Determine the desired flow}
+\subsubsection{Determine the desired flow}\label{subsub:flow}
 While the rebalancing in reality would require each node to calculate the desired transactions individually we assume that rebalancing hints are shared among nodes and we can take a holistic view of the different flows each node would want to make. The method in listing~\ref{code:comp_flow} covers steps 1 to 4 and part of step 5 described in section ``\nameref{subsec:prop_algo}''.
 
 The method \mintinline{python}{__compute_rebalance_network(self)} creates a new NetworkX graph which is derived from the original network graph (stored in \mintinline{python}{self.G}). Line 4 starts a for-loop which iterates over all edges $(u, v)$ and calculates how much node $u$ would like to send out over this edge. The first step is to calculate the node's \textbf{node balance coefficient}. This value is already pre-calculated and can be retrieved from the attributes stored in the NetworkX graph (line 7). Lines 8-10 retrieves the balance and capacity of the edge and calculates the \textbf{channel balance coefficient}. The formula from step 5 is used to calculate the amount $a = c(e)\cdot (\zeta_{(u,v)}-\nu_u)$ node $u$ would want to rebalance (line 11). This calculation returns a positive integer which represents the need to send out this amount while a negative integer represents the wish to receive this amount. 
@@ -532,6 +532,52 @@ The result of this procedure is a property \mintinline{python}{self.flow} which 
   \caption{Method to calculate each nodes willingness to rebalance.}
   \label{code:comp_flow}
 \end{listing}
+
+\subsubsection{Compute rebalancing cycle}
+Step 5 of the rebalancing algorithm tells a node $u$ to construct circular payments using a path $p = [v,x_1,\dots,x_n,u]$ where $\zeta_{(u,v)}>\nu_u$ and $\zeta_{(x_n,u)}<\nu_u$. Such a rebalancing transaction helps a node to adjust both channel balance coefficients to the node balance coefficient. In the real network nodes would individually calculate those paths based on the \textbf{rebalancing hints} they receive from their local neighbourhood. In the simulation we already have this holistic view since we calculated the desired flow in section~\ref{subsub:flow}. 
+
+Before we extract the rebalancing cycles from the flow network we define the local neighbourhood of a node as the friend of a friend network. This is the network within which the proposed protocol foresees nodes to share hints about their willingness to rebalance. If we assume node \texttt{self} in figure~\ref{fig:foaf} has only two channels open with \texttt{Friend1} and \texttt{Friend2}. These friends would both provide information about all their channel balances (marked as green edges). This allows the node \texttt{self} to assess the rebalancing path $p = [self, Friend1, D, Friend2, self]$ with more insight about the willingness of the nodes to participate. However, this restricts the paths for rebalancing to the ones of length 4 or less. Although node \texttt{self} also knows about the channel $e = (c, x)$, it has no insight about their imbalance since it is not one of its friends channel. Hence, this path of length 5 is not considered for rebalancing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{foaf.pdf}
+\caption{Sharing rebalance hints in the friend-of-a-friend network.}
+\label{fig:foaf}
+\end{figure}
+
+Since the flow network is already calculated, we can simply extract all cycles of length 4 or less as shown in the method \mintinline{python}{compute_circles()} in listing~\ref{code:comp_circles}. Line 4-6 create an extract of the flow network with only positive edges. The negative edges are just the counterparts of same size in the opposite direction and can be deleted. Lines 7-9 then iterate over each edge $e = (u, v)$ and uses the built-in function \mintinline{python}{networkx.all_simple_paths()} to find all paths from $v$ to $u$. This results in paths of length 3 or less and the edge $e = (u, v)$ must be added later to make it a full circle. Since node $u$ is always the last node in the found path it does not have to be stored at this stage. All found cycles are then randomly ordered in a deterministic manner and stored to a file. During the future rebalancing process those set of circular paths will not change as we do not allow channels to become less balanced. This means the liquidity in the flow network only decreases and edges might disappear completely, but there is no possibility for new edges to appear. This fact is very helpful as the computation of the paths needs to be done only once per network. If during the restore procedure an existing file of exported paths is found, this will be automatically imported.
+
+\begin{listing}[H]
+  \begin{minted}[
+    frame=single,
+    framesep=3mm,
+    linenos=true,
+    xleftmargin=21pt,
+    tabsize=4,
+    breaklines=true,
+    breakanywhere=true,
+  ]{python}
+    def compute_circles(self, force=False):
+        ...
+        cycles4 = []
+        pos_edges = [e for e in self.flow.edges(data=True) if e[2]['liquidity'] > 0]
+        pos_flow = nx.DiGraph()
+        pos_flow.add_edges_from(pos_edges)
+        for i, (u, v) in enumerate(pos_flow.edges):
+            paths = [p for p in nx.all_simple_paths(pos_flow, v, u, 3)]
+            [cycles4.append(p) for p in paths if len(p) <= 4]
+        ...
+        self.__cycles4 = cycles4
+        random.seed(10)
+        self.__cycles4.sort()
+        random.shuffle(self.__cycles4)
+        self.__store_cycles()
+  \end{minted}
+  \caption{Extracts cycles of length 4 (or less) from the flow graph.}
+  \label{code:comp_circles}
+\end{listing}
+
+
 
 \subsection{Performance Measures}
 \todo[inline]{list the two existing and the third new performance measurement}

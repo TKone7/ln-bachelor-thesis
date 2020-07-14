@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k}{def} \PYG{n+nf}{compute\PYGZus{}circles}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{force}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{):}
+        \PYG{o}{...}
+        \PYG{n}{cycles4} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{n}{pos\PYGZus{}edges} \PYG{o}{=} \PYG{p}{[}\PYG{n}{e} \PYG{k}{for} \PYG{n}{e} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow}\PYG{o}{.}\PYG{n}{edges}\PYG{p}{(}\PYG{n}{data}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)} \PYG{k}{if} \PYG{n}{e}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}liquidity\PYGZsq{}}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{n}{pos\PYGZus{}flow} \PYG{o}{=} \PYG{n}{nx}\PYG{o}{.}\PYG{n}{DiGraph}\PYG{p}{()}
+        \PYG{n}{pos\PYGZus{}flow}\PYG{o}{.}\PYG{n}{add\PYGZus{}edges\PYGZus{}from}\PYG{p}{(}\PYG{n}{pos\PYGZus{}edges}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{p}{(}\PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{pos\PYGZus{}flow}\PYG{o}{.}\PYG{n}{edges}\PYG{p}{):}
+            \PYG{n}{paths} \PYG{o}{=} \PYG{p}{[}\PYG{n}{p} \PYG{k}{for} \PYG{n}{p} \PYG{o+ow}{in} \PYG{n}{nx}\PYG{o}{.}\PYG{n}{all\PYGZus{}simple\PYGZus{}paths}\PYG{p}{(}\PYG{n}{pos\PYGZus{}flow}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{)]}
+            \PYG{p}{[}\PYG{n}{cycles4}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{k}{for} \PYG{n}{p} \PYG{o+ow}{in} \PYG{n}{paths} \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{4}\PYG{p}{]}
+        \PYG{o}{...}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}cycles4} \PYG{o}{=} \PYG{n}{cycles4}
+        \PYG{n}{random}\PYG{o}{.}\PYG{n}{seed}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}cycles4}\PYG{o}{.}\PYG{n}{sort}\PYG{p}{()}
+        \PYG{n}{random}\PYG{o}{.}\PYG{n}{shuffle}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}cycles4}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}store\PYGZus{}cycles}\PYG{p}{()}
+\end{Verbatim}

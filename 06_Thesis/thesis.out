@@ -35,12 +35,13 @@
 \BOOKMARK [3][-]{subsubsection.4.3.2}{4.3.2 Allocate local balances}{subsection.4.3}% 35
 \BOOKMARK [2][-]{subsection.4.4}{4.4 Simulate rebalancing}{section.4}% 36
 \BOOKMARK [3][-]{subsubsection.4.4.1}{4.4.1 Determine the desired flow}{subsection.4.4}% 37
-\BOOKMARK [2][-]{subsection.4.5}{4.5 Performance Measures}{section.4}% 38
-\BOOKMARK [3][-]{subsubsection.4.5.1}{4.5.1 Success rate on shortest path}{subsection.4.5}% 39
-\BOOKMARK [3][-]{subsubsection.4.5.2}{4.5.2 Payment size on shortest path}{subsection.4.5}% 40
-\BOOKMARK [3][-]{subsubsection.4.5.3}{4.5.3 Ability to route different payment sizes}{subsection.4.5}% 41
-\BOOKMARK [1][-]{section.5}{5 Results}{}% 42
-\BOOKMARK [1][-]{section.6}{6 Conclusion \046 Outlook}{}% 43
-\BOOKMARK [1][-]{section*.41}{References}{}% 44
-\BOOKMARK [1][-]{section*.43}{Glossary}{}% 45
-\BOOKMARK [1][-]{appendix.A}{A Some appendix}{}% 46
+\BOOKMARK [3][-]{subsubsection.4.4.2}{4.4.2 Compute rebalancing cycle}{subsection.4.4}% 38
+\BOOKMARK [2][-]{subsection.4.5}{4.5 Performance Measures}{section.4}% 39
+\BOOKMARK [3][-]{subsubsection.4.5.1}{4.5.1 Success rate on shortest path}{subsection.4.5}% 40
+\BOOKMARK [3][-]{subsubsection.4.5.2}{4.5.2 Payment size on shortest path}{subsection.4.5}% 41
+\BOOKMARK [3][-]{subsubsection.4.5.3}{4.5.3 Ability to route different payment sizes}{subsection.4.5}% 42
+\BOOKMARK [1][-]{section.5}{5 Results}{}% 43
+\BOOKMARK [1][-]{section.6}{6 Conclusion \046 Outlook}{}% 44
+\BOOKMARK [1][-]{section*.42}{References}{}% 45
+\BOOKMARK [1][-]{section*.44}{Glossary}{}% 46
+\BOOKMARK [1][-]{appendix.A}{A Some appendix}{}% 47
