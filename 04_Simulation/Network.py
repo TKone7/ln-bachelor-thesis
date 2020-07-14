@@ -146,7 +146,7 @@ class Network:
 
     def __compute_all_pair_shortest_paths(self):
         all_pair_shortest_paths = []
-        apsp = nx.all_pairs_dijkstra_path(self.G, weight='base', cutoff=20)
+        apsp = nx.all_pairs_dijkstra_path(self.G, weight='base')
         for paths in apsp:
             for k, v in paths[1].items():
                 if len(v) > 1:  # ignore paths with only one element (is source element)
