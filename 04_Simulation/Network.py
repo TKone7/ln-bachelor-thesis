@@ -201,7 +201,7 @@ class Network:
             micro_cnt = 0
             normal_cnt = 0
             for path in path_list:
-                max_flow = self.__max_flow_along_path(path)
+                max_flow, _ = self.__max_flow_along_path(path)
                 if max_flow > 0:
                     success_cnt += 1
                 if max_flow > MICRO_PAYMENT_SIZE:
@@ -214,18 +214,15 @@ class Network:
         return total_success_cnt, total_micro_cnt, total_normal_cnt
 
     def __compute_rebalance_network(self):
-        # This calculates a new graph of desired flows by each node.
-        # Only for nodes which participate
         self.flow = nx.DiGraph()
         delete_edges = []
         for u, v in self.G.edges():
             if u in self.__excluded or v in self.__excluded:
                 continue
             nbc = self.G.nodes[u]['nbc']
-            balance = self.G[u][v]["balance"]
-            capacity = self.G[u][v]["capacity"]
+            balance = self.G[u][v]['balance']
+            capacity = self.G[u][v]['capacity']
             cbc = balance / capacity
-            # amount can be above or below zero (below signals desire for receiving balance)
             amt = int(capacity * (cbc - nbc))
             if (v, u) in self.flow.edges():
                 amt_cp = self.flow[v][u]['liquidity']
@@ -237,8 +234,6 @@ class Network:
                 amt_cp = common * np.sign(amt_cp)
                 amt = common * np.sign(amt)
                 self.flow[v][u]['liquidity'] = amt_cp
-            # if cbc > nbc:
-            # check if reverse channel is already in list, if yes, remove both
 
             self.flow.add_edge(u, v, liquidity=amt)
 
@@ -246,14 +241,62 @@ class Network:
             logger.debug('will delete {} edges'.format(len(delete_edges)))
         self.flow.remove_edges_from(delete_edges)
 
+    def calc_flow_measure(self):
+        def outbound(node_id):
+            balances = [(ch, self.G[node_id][ch]['balance'])for ch in self.G[node_id]]
+            sort_bal = sorted(balances, key=lambda x: x[1], reverse=True)
+            return sort_bal[0][1]
+        def inbound(node_id):
+            inbound = [(ch, self.G[node_id][ch]['capacity'] - self.G[node_id][ch]['balance'])for ch in self.G[node_id]]
+            sort_bal = sorted(inbound, key=lambda x: x[1], reverse=True)
+            return sort_bal[0][1]
+
+        todo = len(self.G.nodes) * (len(self.G.nodes)-1)
+        logger.info('total to calc {}'.format(todo))
+        for idx, pair in enumerate([(a, b) for a in self.G.nodes for b in self.G.nodes]):
+            a = pair[0]
+            b = pair[1]
+            if a == b:
+                continue
+            denom = min(outbound(a), inbound(b))
+            paths_found = 0
+            routingbal = self.G.copy()
+            bottleneck = ()
+            all_results = dict()
+            max_result = 0
+            for paths_found in range(10):
+                if bottleneck:
+                    routingbal.remove_edge(*bottleneck)
+                if not nx.has_path(routingbal, a, b):  # if already achieved 100% or no more path can be found
+                    for i in range(len(all_results),10):
+                        all_results[i] = all_results[i-1]
+                    break
+                iterator = nx.all_simple_paths(routingbal, a, b, 5)
+                path = list(islice(iterator, 1))[0]
+                liq, bottleneck = self.__max_flow_along_path(path)
+                result = liq / denom
+                max_result = max(result, max_result)
+                all_results[paths_found] = max_result
+                if list(all_results.values())[-1] == 1:
+                    for i in range(len(all_results),10):
+                        all_results[i] = all_results[i-1]
+                    break
+            # logger.info('max result for {} to {} was {}'.format(a, b, max(list(all_results.values()))))
+            if idx % 100 == 0:
+                logger.info('calculated {} nodepairs, {}%'.format(idx, 100/todo*idx))
+
     def __max_flow_along_path(self, path):
         assert len(path) > 1, 'Path must include at least two nodes, to calc the max flow.'
         liqs = []
+        bottleneck = ()
         for i in range(len(path) - 1):  # exclude last
             src = path[i]
             dest = path[i + 1]
-            liqs.append(self.G[src][dest]['balance'])
-        return int(min(liqs))
+            balance = self.G[src][dest]['balance']
+            if not liqs or int(min(liqs)) > balance:
+                bottleneck = (src, dest)
+            liqs.append(balance)
+        return int(min(liqs)), bottleneck
 
     def __store_cycles(self):
         # check for operations to store
@@ -343,7 +386,7 @@ class Network:
         amounts = []
         # Get list with all amounts along all shortest paths
         for path in self.__all_pair_shortest_paths:
-            max_flow = self.__max_flow_along_path(path)
+            max_flow, _ = self.__max_flow_along_path(path)
             amounts.append(max_flow)
 
         # Get successful payments on 20 simple paths between all pairs
@@ -387,12 +430,6 @@ class Network:
         for i, (u, v) in enumerate(pos_flow.edges):
             paths = [p for p in nx.all_simple_paths(pos_flow, v, u, 3)]
             [cycles4.append(p) for p in paths if len(p) <= 4]
-            # for p in paths:
-            # if p not in cycles4:
-            #     ind = p.index(min(p))
-            #     po = [p[(ind + e) % len(p)] for e in range(len(p))] # set the same node as start of the cycle to avoid duplicate cycles
-            #     if po not in cycles4:
-            #         cycles4.append(po)
             if i % 100 == 0:
                 logger.info('{} edges checked for circles'.format(i))
 
@@ -662,6 +699,11 @@ class Network:
         # get max(strongly_connected_component)
         T = nx.DiGraph()
         T.add_edges_from(shuffled)
+
+        d0 = [e for e in list(nx.degree(T)) if e[1] == 0]
+        d1 = [e for e in list(nx.degree(T)) if e[1] == 1]
+        s = T.in_degree(list(T.nodes)[0])
+        d = [e for e in T.nodes if T.in_degree(e) < 1 or T.out_degree(e) < 1]
         strong_conn = max(nx.strongly_connected_components(T), key=len)
         T = T.subgraph(strong_conn).copy()
         logger.info('Found max strongly connected component of length {}'.format(len(list(T.edges))))
