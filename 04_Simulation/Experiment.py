@@ -288,8 +288,8 @@ class Experiment:
             networks[exp] = condensed
 
         # subset = [n for n in networks.values()]
-        for n in networks.values():
-            n.plot_payments_vs_imbalance()
+        # for n in networks.values():
+        #     n.plot_payments_vs_imbalance()
         all = [value for key, value in networks.items()]
         subset = [value for key, value in networks.items() if key in (100, 90, 80, 70, 60, 50)]
         self.__plot_all(subset)
@@ -310,15 +310,15 @@ class Experiment:
         self.plot_gini_vs_rebalops(networks)
         self.plot_paymentsize_vs_imbalance(networks)
         self.plot_successrate_vs_imbalance(networks)
-        self.plot_payments_vs_imbalance_one(networks)
-        self.plot_payments_vs_imbalance_micro(networks)
-        self.plot_payments_vs_imbalance_normal(networks)
+        # self.plot_payments_vs_imbalance_one(networks)
+        # self.plot_payments_vs_imbalance_micro(networks)
+        # self.plot_payments_vs_imbalance_normal(networks)
 
     def __plot_vs_participation(self, networks):
         # new against participation in percent
         self.plot_paymentsize_vs_participation(networks)
         self.plot_successrate_vs_participation(networks)
-        self.plot_payments_vs_participation(networks)
+        # self.plot_payments_vs_participation(networks)
         self.plot_gini_vs_participation(networks)
 
     def __load_existing_experiment(self, participation, iteration=1):
@@ -390,6 +390,7 @@ class Experiment:
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
     def plot_payments_vs_imbalance_one(self, networks, filename='payments_vs_imbalance_onesat'):
+        raise DeprecationWarning
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         for n in networks:
@@ -405,6 +406,7 @@ class Experiment:
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
     def plot_payments_vs_imbalance_micro(self, networks, filename='payments_vs_imbalance_micro'):
+        raise DeprecationWarning
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         for n in networks:
@@ -420,6 +422,7 @@ class Experiment:
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
     def plot_payments_vs_imbalance_normal(self, networks, filename='payments_vs_imbalance_normal'):
+        raise DeprecationWarning
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         for n in networks:

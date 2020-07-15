@@ -12,6 +12,7 @@ BASE_FILE = 'lightning_network'
 CYCLES_FILE = BASE_FILE + '_cycles'
 SIMPLE_PATH = BASE_FILE + '_simple_path'
 STATS_GINIS = BASE_FILE + '_stats_ginis'
+FINAL_STATS = BASE_FILE + '_final_stats'
 STATS = BASE_FILE + '_stats'
 
 MICRO_PAYMENT_SIZE = 10000
@@ -35,7 +36,7 @@ class Network:
         self.__excluded = []
         self.__cycles4 = cycles4 if cycles4 else []
         self.__all_pair_shortest_paths = None
-        self.__all_pair_simple_paths = None
+        # self.__all_pair_simple_paths = None
         # self.__k_shortest_path = None
         self.incl_capacity = None
         self.total_capacity = None
@@ -177,6 +178,7 @@ class Network:
         except OSError as e:
             simplepath = dict()
             cnt = 0
+
             for nodepair in self.__all_pair_shortest_paths:
                 src = nodepair[0]
                 dest = nodepair[-1]
@@ -192,6 +194,7 @@ class Network:
             return simplepath
 
     def __compute_multi_payment_stat(self):
+        raise DeprecationWarning
         total_success_cnt = []
         total_micro_cnt = []
         total_normal_cnt = []
@@ -279,7 +282,8 @@ class Network:
         self.incl_capacity = meta_info['available_capacity']
         self.nr_participating_nodes = meta_info['participating_nodes']
         self.nr_nodes = meta_info['total_nodes']
-
+    def __set_final_stats(self, final_stats):
+        self.__final_stats = final_stats
 
     def exclude(self, excl_list):
         assert self.__cycles4, 'Cannot exclude nodes before the cycles are not calculated. Run "compute_circles()" first.'
@@ -347,21 +351,21 @@ class Network:
             amounts.append(max_flow)
 
         # Get successful payments on 20 simple paths between all pairs
-        total_success_cnt, total_micro_cnt, total_normal_cnt = self.__compute_multi_payment_stat()
+        # total_success_cnt, total_micro_cnt, total_normal_cnt = self.__compute_multi_payment_stat()
 
         # calc stats
         median_payment_amount = np.median(amounts)
         zero_amounts = amounts.count(0)
         success_rate = (len(amounts) - zero_amounts) / len(amounts)
-        median_success = np.median(total_success_cnt)
-        median_micro = np.median(total_micro_cnt)
-        median_normal = np.median(total_normal_cnt)
+        # median_success = np.median(total_success_cnt)
+        # median_micro = np.median(total_micro_cnt)
+        # median_normal = np.median(total_normal_cnt)
         # store stats
         stats['median_payment_amount'] = median_payment_amount
         stats['success_rate'] = success_rate
-        stats['median_success'] = median_success
-        stats['median_micro'] = median_micro
-        stats['median_normal'] = median_normal
+        # stats['median_success'] = median_success
+        # stats['median_micro'] = median_micro
+        # stats['median_normal'] = median_normal
         return stats
 
     def compute_circles(self, force=False):
@@ -408,8 +412,10 @@ class Network:
     def rebalance(self, max_ops=100000, amount_coeff=1):
         # calculate shortest paths first (will change in future)
         self.__all_pair_shortest_paths = self.__compute_all_pair_shortest_paths()
+        logger.info('finished shortest path calculation')
         # calculate (if not loaded) simple paths between all node pairs
-        self.__all_pair_simple_paths = self.__compute_all_pair_simple_paths()
+        # self.__all_pair_simple_paths = self.__compute_all_pair_simple_paths()
+
         # self.__compute_k_shortest_path()
         nr_executed = 0
         executed_this_time = 0
@@ -459,14 +465,20 @@ class Network:
         assert self.__stats and self.__history_gini, 'Statistics are empty, no experiment was performed. Cannot store results.'
         assert self.__history, 'No experiment was performed. Cannot store results.'
         assert self.flow and self.G, 'The network is empty. Cannot store results.'
+        # store final results
+        self.__final_stats = self.calculate_routing_stats()
+
         if not os.path.isdir(self.fingerprint):
             logger.error('Folder {} is not available. Create snapshot first.'.format(self.fingerprint))
+        final_stats_file = os.path.join(self.fingerprint, FINAL_STATS + '_' + self.experiment_name) + '.json'
         stats_file = os.path.join(self.fingerprint, STATS + '_' + self.experiment_name) + '.json'
         ginis_file = os.path.join(self.fingerprint, STATS_GINIS + '_' + self.experiment_name) + '.json'
         meta_file = os.path.join(self.fingerprint, 'META' + '_' + self.experiment_name) + '.json'
         graph_file = os.path.join(self.fingerprint, 'NETWORK' + '_' + self.experiment_name)
         flow_graph_file = os.path.join(self.fingerprint, 'FLOW' + '_' + self.experiment_name)
 
+        with open(final_stats_file, "w") as f:
+            json.dump(self.__final_stats, f)
         with open(stats_file, "w") as f:
             json.dump(self.stats(), f)
         with open(ginis_file, "w") as f:
@@ -525,6 +537,7 @@ class Network:
         Network.__store_chart(self.fingerprint, filename + '_' + self.experiment_name)
 
     def plot_payments_vs_imbalance(self, filename='payments_vs_imbalance'):
+        raise DeprecationWarning
         stats = self.stats()
         plt.plot(list(stats.keys())[::-1], [s['median_success'] for s in stats.values()][::-1],
                  label='Route min 1 sat', linewidth=3)
@@ -574,6 +587,7 @@ class Network:
         if not os.path.isdir(fingerprint):
             logger.error('Folder {} is not available. Create snapshot first.'.format(fingerprint))
         #        self.experiment_name = self.fingerprint + '_' + str(int(participation * 100)) + selection + '_' + iteration
+        final_stats_file = os.path.join(fingerprint, FINAL_STATS + '_' + experiment_name) + '.json'
         stats_file = os.path.join(fingerprint, STATS + '_' + experiment_name) + '.json'
         ginis_file = os.path.join(fingerprint, STATS_GINIS + '_' + experiment_name) + '.json'
         meta_file = os.path.join(fingerprint, 'META' + '_' + experiment_name) + '.json'
@@ -593,6 +607,9 @@ class Network:
         with open(meta_file, "r") as f:
             meta_info = json.load(f)
             N.__set_meta_info(meta_info)
+        with open(final_stats_file, "r") as f:
+            final_stas = json.load(f)
+            N.__set_final_stats(final_stas)
         return N
 
     @classmethod
