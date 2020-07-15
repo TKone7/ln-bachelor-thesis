@@ -1,17 +1,19 @@
 [0] Config.pm:304> INFO - This is Biber 2.13
 [0] Config.pm:307> INFO - Logfile is 'thesis.blg'
-[25] biber:315> INFO - === Di Jul 14, 2020, 09:10:48
-[41] Biber.pm:375> INFO - Reading 'thesis.bcf'
-[114] Biber.pm:905> INFO - Found 12 citekeys in bib section 0
-[128] Biber.pm:4196> INFO - Processing section 0
-[129] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
-[129] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
-[139] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
-[142] bibtex.pm:1462> INFO - LaTeX decoding ...
-[192] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
-[435] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[440] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[443] Biber.pm:4024> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
-[448] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
-[495] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[517] bbl.pm:751> INFO - Output to thesis.bbl
+[65] biber:315> INFO - === Mi Jul 15, 2020, 23:50:19
+[99] Biber.pm:375> INFO - Reading 'thesis.bcf'
+[290] Biber.pm:905> INFO - Found 16 citekeys in bib section 0
+[329] Biber.pm:4196> INFO - Processing section 0
+[330] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
+[330] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
+[353] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
+[360] bibtex.pm:1462> INFO - LaTeX decoding ...
+[447] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
+[614] Utils.pm:300> WARN - ISBN '978-0-12-405856-9 978-1-299-19664-3' in entry 'golbeck_analyzing_2013' is invalid - run biber with '--validate_datamodel' for details.
+[665] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[665] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[665] Biber.pm:4024> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
+[666] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
+[696] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[715] bbl.pm:751> INFO - Output to thesis.bbl
+[715] Biber.pm:110> INFO - WARNINGS: 1

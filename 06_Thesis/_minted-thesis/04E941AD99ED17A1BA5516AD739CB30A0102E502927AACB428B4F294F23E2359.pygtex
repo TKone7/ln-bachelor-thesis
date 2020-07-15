@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{exclude}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{excl\PYGZus{}list}\PYG{p}{):}
+        \PYG{o}{...}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}excluded} \PYG{o}{=} \PYG{n+nb}{set}\PYG{p}{(}\PYG{n}{excl\PYGZus{}list}\PYG{p}{)}
+        \PYG{n}{cycles4} \PYG{o}{=} \PYG{p}{[}\PYG{n}{c} \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}cycles4} \PYG{k}{if} \PYG{o+ow}{not} \PYG{p}{(}\PYG{n+nb}{set}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)} \PYG{o}{\PYGZam{}} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}excluded}\PYG{p}{)]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}cycles4} \PYG{o}{=} \PYG{n}{cycles4}
+        \PYG{o}{...}
+\end{Verbatim}

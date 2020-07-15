@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}update\PYGZus{}channel}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{tx}\PYG{p}{,} \PYG{n}{rev}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{):}
+        \PYG{n}{amount} \PYG{o}{=} \PYG{n}{tx}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{rev} \PYG{k}{else} \PYG{n}{tx}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+        \PYG{n}{circle} \PYG{o}{=} \PYG{n}{tx}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{circle}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{):}
+            \PYG{n}{src} \PYG{o}{=} \PYG{n}{circle}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+            \PYG{n}{dest} \PYG{o}{=} \PYG{n}{circle}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{G}\PYG{p}{[}\PYG{n}{src}\PYG{p}{][}\PYG{n}{dest}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}balance\PYGZsq{}}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{amount}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{G}\PYG{p}{[}\PYG{n}{dest}\PYG{p}{][}\PYG{n}{src}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}balance\PYGZsq{}}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{amount}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow}\PYG{p}{[}\PYG{n}{src}\PYG{p}{][}\PYG{n}{dest}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}liquidity\PYGZsq{}}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{amount}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{flow}\PYG{p}{[}\PYG{n}{dest}\PYG{p}{][}\PYG{n}{src}\PYG{p}{][}\PYG{l+s+s1}{\PYGZsq{}liquidity\PYGZsq{}}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{amount}
+        \PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}update\PYGZus{}node\PYGZus{}gini}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)} \PYG{k}{for} \PYG{n}{n} \PYG{o+ow}{in} \PYG{n}{circle}\PYG{p}{[:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]]}
+\end{Verbatim}

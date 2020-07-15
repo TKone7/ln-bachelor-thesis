@@ -6,6 +6,7 @@
 %\usepackage{longtable} % To display tables on several pages
 %\usepackage{geometry}
 %\usepackage{listings}
+\usepackage{colortbl}
 \usepackage{lipsum}
 \usepackage{silence}
 \usepackage{subfig}
@@ -21,6 +22,7 @@
 \input{header}                            %loads all packages, definitions and settings, except bibliography (otherwise vim-latex doesn't recognise for completion)
 % Some definitions
 \definecolor{highlightyellow}{RGB}{250,237,39}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
 \urldef{\gitpluginurl}\url{https://github.com/TKone7/clightning-plugins/tree/3b47ab992413d7bf9747be1320654b3478c60d37/dumpgraph}
 \urldef{\github}\url{https://github.com/TKone7/ln-bachelor-thesis}
 
@@ -534,18 +536,22 @@ The result of this procedure is a property \mintinline{python}{self.flow} which 
 \end{listing}
 
 \subsubsection{Compute rebalancing cycle}
-Step 5 of the rebalancing algorithm tells a node $u$ to construct circular payments using a path $p = [v,x_1,\dots,x_n,u]$ where $\zeta_{(u,v)}>\nu_u$ and $\zeta_{(x_n,u)}<\nu_u$. Such a rebalancing transaction helps a node to adjust both channel balance coefficients to the node balance coefficient. In the real network nodes would individually calculate those paths based on the \textbf{rebalancing hints} they receive from their local neighbourhood. In the simulation we already have this holistic view since we calculated the desired flow in section~\ref{subsub:flow}. 
+Step 5 of the rebalancing algorithm tells a node $u$ to construct circular payments using a path $p = [v,x_1,\dots,x_n,u]$ for which $\zeta_{(u,v)}>\nu_u$ and $\zeta_{(x_n,u)}<\nu_u$. Such a rebalancing transaction helps a node to adjust both channel balance coefficients to the node balance coefficient. In the real network nodes would individually calculate those paths based on the \textbf{rebalancing hints} they receive from their local neighbourhood. In the simulation we already have this holistic view since we calculated the desired flow in section~\ref{subsub:flow}. 
 
-Before we extract the rebalancing cycles from the flow network we define the local neighbourhood of a node as the friend of a friend network. This is the network within which the proposed protocol foresees nodes to share hints about their willingness to rebalance. If we assume node \texttt{self} in figure~\ref{fig:foaf} has only two channels open with \texttt{Friend1} and \texttt{Friend2}. These friends would both provide information about all their channel balances (marked as green edges). This allows the node \texttt{self} to assess the rebalancing path $p = [self, Friend1, D, Friend2, self]$ with more insight about the willingness of the nodes to participate. However, this restricts the paths for rebalancing to the ones of length 4 or less. Although node \texttt{self} also knows about the channel $e = (c, x)$, it has no insight about their imbalance since it is not one of its friends channel. Hence, this path of length 5 is not considered for rebalancing.
+Before we can extract the rebalancing cycles from the flow network we define the local neighbourhood of a node as the friend of a friend network. This is the network within which the proposed protocol foresees nodes to share hints about their willingness to rebalance. If we assume node \texttt{self} in figure~\ref{fig:foaf} has only two channels with \texttt{Friend1} and \texttt{Friend2}. These friends both provide information about all their channel balances (marked as green edges). This allows the node \texttt{self} to assess the rebalancing path $p = [self, Friend1, D, Friend2, self]$ with more insight about the willingness of the nodes to participate. However, this restricts the paths for rebalancing to the ones of length 4 or less. Although node \texttt{self} also knows about the channel $e = (C, X)$, it has no insight about their imbalance since it is not part of the friend of a friend network. Hence, this path of length 5 is not considered for rebalancing.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{foaf.pdf}
-\caption{Sharing rebalance hints in the friend-of-a-friend network.}
+\caption{Sharing rebalance hints (green) in the friend of a friend network.}
 \label{fig:foaf}
 \end{figure}
 
-Since the flow network is already calculated, we can simply extract all cycles of length 4 or less as shown in the method \mintinline{python}{compute_circles()} in listing~\ref{code:comp_circles}. Line 4-6 create an extract of the flow network with only positive edges. The negative edges are just the counterparts of same size in the opposite direction and can be deleted. Lines 7-9 then iterate over each edge $e = (u, v)$ and uses the built-in function \mintinline{python}{networkx.all_simple_paths()} to find all paths from $v$ to $u$. This results in paths of length 3 or less and the edge $e = (u, v)$ must be added later to make it a full circle. Since node $u$ is always the last node in the found path it does not have to be stored at this stage. All found cycles are then randomly ordered in a deterministic manner and stored to a file. During the future rebalancing process those set of circular paths will not change as we do not allow channels to become less balanced. This means the liquidity in the flow network only decreases and edges might disappear completely, but there is no possibility for new edges to appear. This fact is very helpful as the computation of the paths needs to be done only once per network. If during the restore procedure an existing file of exported paths is found, this will be automatically imported.
+The previously calculated flow network tells us the direction in which nodes want to rebalance. We can now simply extract all cycles of length 4 or less from that graph as shown in the method \mintinline{python}{compute_circles()} in listing~\ref{code:comp_circles}. 
+
+Line 4-6 create an extract of the flow network with only positive edges. The negative edges are just the counterparts of same size in the opposite direction and can be deleted. Lines 7-9 then iterate over each edge $e = (u, v)$ and uses the built-in function \mintinline{python}{networkx.all_simple_paths()} to find all paths from $v$ to $u$. The \textbf{cutoff parameter} 3 specifies the maximum length of paths returned. To build cycles of length 4 we specify the cutoff as 3 as we add the edge $e = (u, v)$ later to make it a full circle. Since node $u$ is always the last node in the found path it does not have to be stored at this stage. All found cycles are then randomly ordered in a deterministic manner and stored to a file. 
+
+During the future rebalancing process those set of circular paths will not change as we do not allow channels to become less balanced. This means the liquidity in the flow network only decreases and edges might disappear completely, but there is no possibility for new edges to appear. This fact is very helpful since the heavy computation of the paths needs to be done only once. If during the restore procedure an existing file of exported paths is found, this will be automatically imported.
 
 \begin{listing}[H]
   \begin{minted}[
@@ -577,16 +583,156 @@ Since the flow network is already calculated, we can simply extract all cycles o
   \label{code:comp_circles}
 \end{listing}
 
+\subsubsection{Node selection}
+The main question that should be answered by the experiments is how the proposed rebalancing algorithm behaves if only a part of the entire network participates. For each level of participation an individual experiment is conducted and the nodes that should be excluded have to be defined. The selection strategies are explained in section~\ref{subsec:selstrat}.
+
+The selection strategy is implemented in the \texttt{Experiment} class and then calls the \mintinline{python}{exclude(excl_list)} method of the Network object. The passed parameter is a list of nodes which will not participate in the rebalancing. Those nodes are stored in a local variable for later lookups. Furthermore, all the cycles which are precalculated need to be adapted. Listing~\ref{code:reduc_cyc} combines a list comprehension combined with a boolean set comparison. A set is a data structure in which each element can only be contained once. They allow for fast membership operations. Each path in \mintinline{python}{self.__cycles4} is converted to a set and then intersected with another set \mintinline{python}{self.__excluded}. If at least one of the nodes in the path is also excluded, the result is a non-empty set. Only paths with no excluded nodes in it should be kept which is checked with the boolean comparison \mintinline{python}{if not}.  
+
+\begin{listing}[H]
+  \begin{minted}[
+    frame=single,
+    framesep=3mm,
+    linenos=true,
+    xleftmargin=21pt,
+    tabsize=4,
+    breaklines=true,
+    breakanywhere=true,
+  ]{python}
+def exclude(self, excl_list):
+        ...
+        self.__excluded = set(excl_list)
+        cycles4 = [c for c in self.__cycles4 if not (set(c) & self.__excluded)]
+        self.__cycles4 = cycles4
+        ...
+  \end{minted}
+  \caption{Reduction of the available rebalancing cycles.}
+  \label{code:reduc_cyc}
+\end{listing}
 
 
-\subsection{Performance Measures}
-\todo[inline]{list the two existing and the third new performance measurement}
+\subsubsection{Execute rebalancing}
+Once the excluded nodes are defined and the rebalancing paths are adjusted the actual rebalancing experiment can be started. In order to have results not only before and after the experiment, intermediate results are also calculated and stored. 
+
+The \mintinline{python}{rebalance()} method start this process that runs until either no more payments can be done or the upper threshold (default: $100000$) is reached. This process iterates over all available rebalance cycles and simulates payments with the maximum possible size all nodes can agree to rebalance. This amount is found by taking the lowest \texttt{liquidity} attribute of the edges in the flow network. If this amount is at least one the rebalancing operation is executed. 
+
+\begin{listing}[H]
+  \begin{minted}[
+    frame=single,
+    framesep=3mm,
+    linenos=true,
+    xleftmargin=21pt,
+    tabsize=4,
+    breaklines=true,
+    breakanywhere=true,
+  ]{python}
+def __update_channel(self, tx, rev=False):
+        amount = tx[0] if not rev else tx[0] * -1
+        circle = tx[1]
+        for i in range(len(circle) - 1):
+            src = circle[i]
+            dest = circle[i + 1]
+            self.G[src][dest]['balance'] -= amount
+            self.G[dest][src]['balance'] += amount
+            self.flow[src][dest]['liquidity'] -= amount
+            self.flow[dest][src]['liquidity'] += amount
+        [self.__update_node_gini(n) for n in circle[:-1]]
+  \end{minted}
+  \caption{Record each rebalancing payment.}
+  \label{code:record}
+\end{listing}
+
+Listing~\ref{code:record} shows how a rebalancing transaction is reflected in the two networks \mintinline{python}{self.G} (state of the Lightning network) and \mintinline{python}{self.flow} (desire to rebalance). The input parameter \mintinline{python}{tx} is a tuple containing the amount and the circle. Line 4 iterates through each hop and determines the source and destination node of that hop. Since payment through a channel redistributes the local balances, both edges representing one channel have to be updated. Line 7 \& 8 increase and decrease the balances by the payment amount. Similarly the desire to rebalance represented in the flow network must be adjusted. Each payment changes the balance distribution of the involved nodes. In order to determine the new balance measure, the Gini coefficient, the \mintinline{python}{self.__update_node_gini(n)} is called for each node that was involved in the payment (line 11).
+
+To later analyse how the network's ability to route payments improve while the network becomes more balanced, different performance measures (defined in section~\ref{sub:perfm}) are calculated. As they take a while to calculate this is not done after every payment but only when the Gini coefficient improves by $0.01$.
+
+\subsubsection{Store and plot results}
+After all rebalancing operations are performed the results should be stored to later allow to generate different data visualisations. Multiple files will be generated containing all the necessary data. The plots of the results often combine multiple networks with different participation, hence, can not be executed by the Network class. The selection of the desired data series and creation of plots is handled by the \texttt{Experiment} class.
+
+\subsection{Performance Measures}\label{sub:perfm}
+The goal of the rebalancing operations is to improve the overall networks ability to route payments between its nodes. The effectiveness of the algorithm can only be determined by measuring this ability with help of \textbf{performance measures}. This is the generic term for the measures defined in this chapter. Some of the presented indicators are also discussed in \cite{pickhardt_evaluating_2020}. 
+
+In order to make an statement about the entire network all the presented measures consider the ability to route payments for every node in the network. As it is unclear what payments nodes would want to make, the best we can measure is one payment between each node in the network. A network with a number of nodes $N$ results in a complete payment graph with a total number of payments $N(N-1)$. The network from the experiments has 2139 nodes which results in 4575321 payments to test. This puts a limit on the computational complexity of the measures, as it becomes difficult to run the experiments on consumer hardware.
+
 \subsubsection{Success rate on shortest path}
-bla
+Successful payments between nodes is the main goal and can be measured by sending a minimal payment of 1 satoshi over all shortest paths between any two nodes. As the evaluation of the success rate is done over and over again the list of all shortest paths is cached for later use. The function \mintinline{python}{networkx.all_pairs_dijkstra_path()} is used to retrieve them. The weight to calculate short paths is represented by the fee a node would need to pay. The fee is defined by a variable and a fixed fee. As payment sizes are not known for this calculation simply the base fee is used for the shortest path calculation. 
+
+This figure will give a good overview of how many nodes can reach each other with a minimal payment. The limitation of the measure that it does not take payment size into account and minimal payments might not be very beneficial for real payments.
+%%With $E$ as the set of all shortest paths between all nodes and $P(k)$ as the proposition to route a payment of 1 satoshi over a path $k$ then the success rate is defined as:
+
+%%$$
+%%s = \frac{\displaystyle{\sum_{k \in E}} \left[ P(k) \right]}{n(E)}
+%%$$
+
 \subsubsection{Payment size on shortest path}
-dl
+Similar to the success rate the \textbf{median possible payment size} also consider the shortest paths between all node pairs. On all node pairs the maximum amount that can be sent is calculated. This amount is defined by the smallest balance of all edges of the path. From all possible payment amounts the median is taken. This measure can make an assessment about how much the nodes are able to send to each other. 
+
 \subsubsection{Ability to route different payment sizes}
-bla
+Both payment size and success rate consider only the shortest path for their calculation. In reality a node that receives a payment error would simply calculate new paths and retry the payment on those. A failed payment does not necessary mean a bad user experience as several paths can be tried within a short amount of time. To account for this fact a measure should be defined that can check many paths in sequence. We define here a measure that can be seen as a combination of the latter two. 
+
+Between each node pair not the shortest path is calculated but a set of 10 different paths. On each of those paths 3 payments of different sizes are tried to be executed. A \textbf{1-satoshi payment}, a \textbf{micro payment} of 10'000 satoshi and a \textbf{normal payment} of 100'000 satoshi. Each node pair then receives a score between 1 and 10 per payment size depending of how many paths could route the payment. The median of all node pairs then gives an indication about how successful different payment sizes are considering multiple paths in sequence. 
+
+\subsection{Selection strategies}\label{subsec:selstrat}
+The simulation will rebalance the same network with different levels of participation. This is done since it can be assumed that not all nodes will adopt a new protocol immediately. The network is not homogeneous in regards to the centrality and the degree of the nodes. The distribution of the payment channels appears to follow a power law distribution. However, we did not test distribution to actually be power-law, since \textquote[\cite{clauset_power-law_2009}, p. 1]{the detection and characterization of power laws is complicated by the large fluctuations that occur in the tail of the distribution}. But it shows a few nodes have many channels and most of the nodes only a few as can be seen in figure~\ref{fig:channelcount}. The result of the experiment, therefore, will vary depending how the participating nodes are selected. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{channel_count_distr.pdf}
+\caption{Probability distribution of the channel count of a node.}
+\label{fig:channelcount}
+\end{figure}
+
+\subsubsection{Randomised}
+This selection method randomly chooses $x\%$ of nodes. For value $x$, an intervals of 10 is used (10\%, 20\%, \ldots, 90\%, 100\%). The set of nodes in a smaller participation are subsets of the larger ones. To make the experiments reproducible the \mintinline{python}{random} package is seeded with a fixed value. There is a disadvantage in this method. Multiple random selections with different randomness result in other results. It could be that by coincidence a disproportionate amount of either large or small nodes are selected. In order to reduce this effect the experiment runs 10 samples with different randomness. Then from all the success measures are being averaged. 
+
+\subsubsection{By size linear}
+The main characteristic by which we can distinguish the nodes is their importance. This can be measured in many ways. This section shows some ways how the node's importance could be determined. In a preliminary experiment we want to see if there is a significant difference.
+
+The \textbf{degree centrality} is an easy to calculate measure. It simply counts the degree - the number of edges connected to a node. The higher the value, the more central a node is \citep{golbeck_analyzing_2013}.
+
+A slightly more sophisticated measure is the \textbf{betweenness centrality}. It \textquote[\cite{golbeck_analyzing_2013}]{measures how important a node is to the shortest paths through the network}. A higher value means the node has an important location in the flow of information through the network. For the reason of simplicity no special weights were used for the shortest path calculation. Which means each edges was weighted equally.
+
+The \textbf{eigenvector centrality} does not treat each neighbour equally. A node's importance will rise if it is surrounded by other important nodes. It can also be interpreted as a node's influence on the network \citep{golbeck_analyzing_2013}. A variation of eigenvector specialised for directed networks is \textbf{pagerank}. There the in-degree of influential nodes is increases the score for a node. For the Lightning network in this experiment this does not make much sense, since all nodes connected with a payment channel are connected with two edges, one in each direction.
+
+All these different methods return a score for each node by which one could make a ranking from least to most important. We want to proof the hypothesis that for the dataset at hand all rankings would be similar. In order to compare different rankings a rank correlation can be calculated which measures the similarity of two rankings. Spearman's correlation is an appropriate way to test a monotonic relationship between two variables \citep{noauthor_resources_nodate}. It is not required for the distribution to be normal. The variables simply have to be on an ordinal scale. The resulting correlation coefficient lays between $-1$ and $1$ and is a measure for how strong the two rankings correlate. $0$ means no correlation while $1$ and $-1$ stand for strong positive or negative correlation. Table \ref{tab:spearman} shows the result of the conducted experiment. 
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccccc} 
+{} & {Degree centr.} & {Betweenness centr.} & {Eigenvector centr.} & {Pagerank} \\ \hline\hline 
+{Degree centr.} & {1.0} & {0.845} & {0.916} & {0.988} \\ 
+{Betweenness centr.} & {0.845} & {1.0} & {0.698} & {0.893}\\
+{Eigenvector centr.} & {0.916} & {0.698} & {1.0} & {0.880} \\
+{Pagerank} & {0.988} & {0.893} & {0.880} & {1.0} \\ \hline
+\end{tabular}
+\caption{Ranking correlation coefficients of importance measures.}
+\label{tab:spearman}
+\end{table}
+
+\subsubsection{Grouped}
+i
+\subsubsection{Network spread}
+Here comes a table.
+
+\newcolumntype{a}{>{\columncolor{LightCyan}}c}
+\begin{table}[b]
+\centering
+\begin{tabular}{ccacccccaac} 
+  \multicolumn{11}{c|}{\textbf{Spread in \% vs. Initial participation in \%}} \\
+{} & {1\%} & {2\%} & {3\%} & {4\%} & {5\%} & {7\%} & {9\%} & {10\%} & {15\%} & {20\%}  \\ \hline\hline 
+{20\%} & {} & {} & {} & {24/50} & {} & {} & {23/33} & {21/33} & {22/38} & {23/50} \\
+{30\%} & {} & {15/31} & {14/32} & {15/28} & {15/23} & {15/30} & {14/31} & {16/25} & {14/23} & {14/20} \\
+\rowcolor{LightCyan}
+{40\%} & {12/23} & {\textbf{11/20}} & {11/21} & {11/18} & {11/23} & {11/17} & {11/18} & {\textbf{11/15}} & {\textbf{11/23}} & {10/20} \\
+\rowcolor{LightCyan}
+{50\%} & {9/15} & {\textbf{9/13}} & {9/13} & {9/16} & {9/18} & {9/15} & {9/15} & {\textbf{9/15}} & {\textbf{8/12}} & {8/15} \\
+\rowcolor{LightCyan}
+{60\%} & {8/12} & {\textbf{7/12}} & {9/10} & {8/14} & {7/11} & {7/10} & {7/11} & {\textbf{7/10}} & {\textbf{7/9}} & {7/10} \\ \hline
+
+\end{tabular}
+\caption{Shows number of iterations needed to achieve 99\% or 100\% for the two parameters.}
+\label{tab:param}
+\end{table}
 
 \section{Results}
 Show a lot of charts :-)
