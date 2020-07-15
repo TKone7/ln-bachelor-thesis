@@ -36,12 +36,20 @@
 \BOOKMARK [2][-]{subsection.4.4}{4.4 Simulate rebalancing}{section.4}% 36
 \BOOKMARK [3][-]{subsubsection.4.4.1}{4.4.1 Determine the desired flow}{subsection.4.4}% 37
 \BOOKMARK [3][-]{subsubsection.4.4.2}{4.4.2 Compute rebalancing cycle}{subsection.4.4}% 38
-\BOOKMARK [2][-]{subsection.4.5}{4.5 Performance Measures}{section.4}% 39
-\BOOKMARK [3][-]{subsubsection.4.5.1}{4.5.1 Success rate on shortest path}{subsection.4.5}% 40
-\BOOKMARK [3][-]{subsubsection.4.5.2}{4.5.2 Payment size on shortest path}{subsection.4.5}% 41
-\BOOKMARK [3][-]{subsubsection.4.5.3}{4.5.3 Ability to route different payment sizes}{subsection.4.5}% 42
-\BOOKMARK [1][-]{section.5}{5 Results}{}% 43
-\BOOKMARK [1][-]{section.6}{6 Conclusion \046 Outlook}{}% 44
-\BOOKMARK [1][-]{section*.42}{References}{}% 45
-\BOOKMARK [1][-]{section*.44}{Glossary}{}% 46
-\BOOKMARK [1][-]{appendix.A}{A Some appendix}{}% 47
+\BOOKMARK [3][-]{subsubsection.4.4.3}{4.4.3 Node selection}{subsection.4.4}% 39
+\BOOKMARK [3][-]{subsubsection.4.4.4}{4.4.4 Execute rebalancing}{subsection.4.4}% 40
+\BOOKMARK [3][-]{subsubsection.4.4.5}{4.4.5 Store and plot results}{subsection.4.4}% 41
+\BOOKMARK [2][-]{subsection.4.5}{4.5 Performance Measures}{section.4}% 42
+\BOOKMARK [3][-]{subsubsection.4.5.1}{4.5.1 Success rate on shortest path}{subsection.4.5}% 43
+\BOOKMARK [3][-]{subsubsection.4.5.2}{4.5.2 Payment size on shortest path}{subsection.4.5}% 44
+\BOOKMARK [3][-]{subsubsection.4.5.3}{4.5.3 Ability to route different payment sizes}{subsection.4.5}% 45
+\BOOKMARK [2][-]{subsection.4.6}{4.6 Selection strategies}{section.4}% 46
+\BOOKMARK [3][-]{subsubsection.4.6.1}{4.6.1 Randomised}{subsection.4.6}% 47
+\BOOKMARK [3][-]{subsubsection.4.6.2}{4.6.2 By size linear}{subsection.4.6}% 48
+\BOOKMARK [3][-]{subsubsection.4.6.3}{4.6.3 Grouped}{subsection.4.6}% 49
+\BOOKMARK [3][-]{subsubsection.4.6.4}{4.6.4 Network spread}{subsection.4.6}% 50
+\BOOKMARK [1][-]{section.5}{5 Results}{}% 51
+\BOOKMARK [1][-]{section.6}{6 Conclusion \046 Outlook}{}% 52
+\BOOKMARK [1][-]{section*.44}{References}{}% 53
+\BOOKMARK [1][-]{section*.46}{Glossary}{}% 54
+\BOOKMARK [1][-]{appendix.A}{A Some appendix}{}% 55

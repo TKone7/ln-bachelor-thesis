@@ -39,12 +39,20 @@
 \contentsline {subsection}{\numberline {4.4}Simulate rebalancing}{20}{subsection.4.4}% 
 \contentsline {subsubsection}{\numberline {4.4.1}Determine the desired flow}{22}{subsubsection.4.4.1}% 
 \contentsline {subsubsection}{\numberline {4.4.2}Compute rebalancing cycle}{23}{subsubsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.5}Performance Measures}{25}{subsection.4.5}% 
-\contentsline {subsubsection}{\numberline {4.5.1}Success rate on shortest path}{25}{subsubsection.4.5.1}% 
-\contentsline {subsubsection}{\numberline {4.5.2}Payment size on shortest path}{25}{subsubsection.4.5.2}% 
-\contentsline {subsubsection}{\numberline {4.5.3}Ability to route different payment sizes}{25}{subsubsection.4.5.3}% 
-\contentsline {section}{\numberline {5}Results}{25}{section.5}% 
-\contentsline {section}{\numberline {6}Conclusion \& Outlook}{30}{section.6}% 
-\contentsline {section}{References}{31}{section*.42}% 
-\contentsline {section}{Glossary}{32}{section*.44}% 
-\contentsline {section}{\numberline {A}Some appendix}{32}{appendix.A}% 
+\contentsline {subsubsection}{\numberline {4.4.3}Node selection}{25}{subsubsection.4.4.3}% 
+\contentsline {subsubsection}{\numberline {4.4.4}Execute rebalancing}{26}{subsubsection.4.4.4}% 
+\contentsline {subsubsection}{\numberline {4.4.5}Store and plot results}{26}{subsubsection.4.4.5}% 
+\contentsline {subsection}{\numberline {4.5}Performance Measures}{27}{subsection.4.5}% 
+\contentsline {subsubsection}{\numberline {4.5.1}Success rate on shortest path}{27}{subsubsection.4.5.1}% 
+\contentsline {subsubsection}{\numberline {4.5.2}Payment size on shortest path}{27}{subsubsection.4.5.2}% 
+\contentsline {subsubsection}{\numberline {4.5.3}Ability to route different payment sizes}{27}{subsubsection.4.5.3}% 
+\contentsline {subsection}{\numberline {4.6}Selection strategies}{28}{subsection.4.6}% 
+\contentsline {subsubsection}{\numberline {4.6.1}Randomised}{28}{subsubsection.4.6.1}% 
+\contentsline {subsubsection}{\numberline {4.6.2}By size linear}{28}{subsubsection.4.6.2}% 
+\contentsline {subsubsection}{\numberline {4.6.3}Grouped}{29}{subsubsection.4.6.3}% 
+\contentsline {subsubsection}{\numberline {4.6.4}Network spread}{29}{subsubsection.4.6.4}% 
+\contentsline {section}{\numberline {5}Results}{30}{section.5}% 
+\contentsline {section}{\numberline {6}Conclusion \& Outlook}{35}{section.6}% 
+\contentsline {section}{References}{36}{section*.44}% 
+\contentsline {section}{Glossary}{37}{section*.46}% 
+\contentsline {section}{\numberline {A}Some appendix}{37}{appendix.A}% 
