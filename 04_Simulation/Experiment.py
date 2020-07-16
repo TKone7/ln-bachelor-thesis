@@ -498,9 +498,8 @@ class Experiment:
         for n in networks:
             participation = int(n.participation) if self.type.startswith('netw_spread_') else n.participation*100
             k.append(participation)
-            stats = n.stats()
-            values = [s['median_payment_amount'] for s in stats.values()]
-            v.append(max(values))
+            stats = n.get_final_stats()
+            v.append((stats['median_payment_amount']))
             part_node = (n.nr_participating_nodes / n.nr_nodes) * 100
             part_capa = (n.incl_capacity / n.total_capacity) * 100
             node_participation.append(part_node)
@@ -540,9 +539,8 @@ class Experiment:
         for n in networks:
             participation = int(n.participation) if self.type.startswith('netw_spread_') else n.participation*100
             k.append(participation)
-            stats = n.stats()
-            values = [s['success_rate'] for s in stats.values()]
-            v.append(max(values))
+            stats = n.get_final_stats()
+            v.append((stats['success_rate']))
             part_node = (n.nr_participating_nodes / n.nr_nodes) * 100
             part_capa = (n.incl_capacity / n.total_capacity) * 100
             node_participation.append(part_node)
@@ -573,7 +571,7 @@ class Experiment:
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
     def plot_payments_vs_participation(self, networks, filename='median_paymnets_vs_participation'):
-        # plot stats per 0.01 gini
+        raise DeprecationWarning
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         k = []
