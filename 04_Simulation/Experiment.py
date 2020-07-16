@@ -78,6 +78,7 @@ class Experiment:
             raise NotImplementedError
 
     def __execute_size_category(self):
+        newversion = True
         def chunks(l, n):
             """Yield n number of sequential chunks from l."""
             d, r = divmod(len(l), n)
@@ -103,12 +104,26 @@ class Experiment:
 
                     degree_centrality_dict = nx.degree_centrality(n.G)
                     sorted_nodes = [k for k, _ in sorted(degree_centrality_dict.items(), key=lambda item: item[1])]
-                    lists = list(chunks(sorted_nodes, 3))
-                    logger.info('Threshold between {} and {} is {}. Between {} and {} is {}.'.format(self.bins[0], self.bins[1], n.G.in_degree(lists[1][0]), self.bins[1], self.bins[2], n.G.in_degree(lists[2][0])))
-                    self.plot_channel_distr(n, [n.G.in_degree(lists[1][0]), n.G.in_degree(lists[2][0])])
-                    current_set = lists[i]
+                    if newversion:
+                        ind = n.G.in_degree()
+                        cum_deg = 0
+                        boundaries = []
+                        threshold = (sum([e[1] for e in list(ind)]) / 3)
+                        for e, node in enumerate(sorted_nodes):
+                            cum_deg += ind[node]
+                            if cum_deg >= threshold:
+                                boundaries.append(e)
+                                cum_deg = 0
+                        lists = [sorted_nodes[:boundaries[0]+1], sorted_nodes[boundaries[0]+1:boundaries[1]+1], sorted_nodes[boundaries[1]+1:]]
+                            # add to one of the three bins
+                        # lists = list(chunks(sorted_nodes, 3))
+                        logger.info('Threshold between {} and {} is {}. Between {} and {} is {}.'.format(self.bins[0], self.bins[1], n.G.in_degree(lists[1][0]), self.bins[1], self.bins[2], n.G.in_degree(lists[2][0])))
+                        self.plot_channel_distr(n)
+                        current_set = lists[i]
+                    else:
+                        lists = list(chunks(sorted_nodes, 3))
+                        current_set = lists[i]
                     incl = random.sample(current_set, int(len(current_set) * exp / 100))
-
                     excl = list(set(sorted_nodes) - set(incl))
                     n.exclude(excl)
                     n.rebalance(max_ops=100000, amount_coeff=1)
@@ -238,14 +253,13 @@ class Experiment:
                     random.seed(100)
                     logger.error('Cannot plot the defined experiment, as results are not there.')
             size[bin] = networks
+        # net = size['large']
 
-
-        net = size['large']
-        subset = [value for key, value in net.items() if key in (100, 90, 80, 70)]
-        all = list(net.values())
-        self.__plot_all(subset)
-        self.__plot_vs_participation(all)
-
+        for k, net in size.items():
+            subset = [value for key, value in net.items() if key in (100, 90, 80, 70)]
+            all = list(net.values())
+            self.__plot_all(subset, k)
+            self.__plot_vs_participation(all, k)
 
     def __plot_spread(self):
         networks = dict()
