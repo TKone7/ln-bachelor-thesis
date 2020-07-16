@@ -343,7 +343,7 @@ class Experiment:
         plt.xlabel("Number of successfull rebalancing operations (logarithmic)")
         plt.ylabel("Network imbalance (G)")
         plt.xscale("log")
-        plt.xlim(100, 10000000)
+        plt.xlim(100, 1000000)
         plt.grid()
         plt.legend(loc="upper right")
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
@@ -706,6 +706,12 @@ class Experiment:
         # Ginis
 
         N.end_mean_gini = np.average([n.mean_gini for n in networks])
-        # N.end_std_mean_gini = np.average([np.std(n.gini_distr_data()) for n in networks])
         N.end_std_mean_gini = np.std([n.mean_gini for n in networks])
+
+        mpa = np.average([n.get_final_stats()['median_payment_amount'] for n in networks])
+        sr = np.average([n.get_final_stats()['success_rate'] for n in networks])
+        total_final_stats = dict()
+        total_final_stats['median_payment_amount'] = mpa
+        total_final_stats['success_rate'] = sr
+        N.set_final_stats(total_final_stats)
         return N
