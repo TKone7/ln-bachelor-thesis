@@ -711,14 +711,14 @@ All these different methods return a score for each node by which one could make
 There are two ways to simulate different levels of participation based on this rank. Either select $x\%$ of the \textbf{top} or \textbf{bottom} as participants. 
 
 \subsubsection{Node categories}
-Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by equal frequency binning to ensure equal sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. This means 100\% participation of one group yields in a total of 33\%. 
+Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by \textbf{equal frequency binning} to ensure equal sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. This means 100\% participation of one group yields in a total of 33\%. 
 
 Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (a) is a cumulative histogram of the node degree (with logarithmic scale). The boundaries fall on a node degree of 5 and 11. Figure (b) shows those same boundaries but with regards to how many channels those nodes contribute. It is clearly visible that the number of channels are mainly concentrated in the last group. 
 
 \todo[inline]{maybe declare that this was not a good boundary since one third of the smallest node have very little channels}
 
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \subfloat[Distribution of node degree]{
   \includegraphics[width=0.45\linewidth]{cum_channel_distr_eq_width.pdf}
@@ -726,16 +726,28 @@ Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (
 \subfloat[Node's contribution to channels]{
   \includegraphics[width=0.45\linewidth]{node_count_to_contr_channel_count_eq_width.pdf}
 }
-\caption{Shows boundary definition by equal frequency.}
+\caption{Shows boundary definition by equal node frequency.}
 \label{fig:eqfreq}
 \end{figure}
 
+An alternative to building bins with equal numbers of nodes the bins can be chosen so that each contains roughly the same amount of channels. As those bins are built from a list ranked by node degree this necessarily leads to large first group (1814, 85\%), a medium sized middle group (273, 13\%) and a small (52, 2\%) last group. 
 
+\begin{figure}[H]
+\centering
+\subfloat[Distribution of node degree]{
+  \includegraphics[width=0.45\linewidth]{cum_channel_distr_eq_chc.pdf}
+}\quad
+\subfloat[Node's contribution to channels]{
+  \includegraphics[width=0.45\linewidth]{node_count_to_contr_channel_count_eq_chc.pdf}
+}
+\caption{Shows boundary definition by equal channel frequency.}
+\label{fig:eqfreqchannel}
+\end{figure}
 \subsubsection{Network spread}
-For this node selection method we assume that the adoption of the new protocol is being spread through the network. Nodes only start adopting it when someone in their neighbourhood has adopted it. The simulation, therefore, starts with an initial set of nodes which participate in round 1. In each iteration a certain percentage of their channel partner participate as well. This results in two parameters which can be adjusted to simulate the way adoption can take place. \textbf{Init parameter} in \% defines how many nodes start while \textbf{spread parameter} in \% define how many of the adjacent nodes participate in the next round. Those two parameters should be chosen in a way that allows a number of participation levels similar to the 10 levels seen in the previous sections. Table~\ref{tab:param} shows the number of iterations required to reach either 99\% or 100\% of all nodes. The colored columns and row illustrate the chosen parameters which where used. An initial value of 2/10/15 \% and a spread of 40/50/60 \% result in total 9 experiments which all reach 99\% of the nodes within 7 to 11 iterations.
+For this node selection method we assume that the adoption of the new protocol is being spread through the network. Nodes only start adopting it when someone in their neighbourhood has adopted it. The simulation, therefore, starts with an initial set of nodes which participate in round 1. In each iteration a certain percentage of their channel partner participate as well. This results in two parameters which can be adjusted to simulate the way adoption can take place. \textbf{Init parameter} in \% defines how many nodes start while \textbf{spread parameter} in \% defines how many of the adjacent nodes participate in the next round. Those two parameters should be chosen in a way that allows a number of participation levels similar to the 10 levels seen in the previous sections. Table~\ref{tab:param} shows the number of iterations required to reach either 99\% or 100\% of all nodes. The colored columns and row illustrate the chosen parameters which where used. An initial value of 2/10/15\% and a spread of 40/50/60\% result in total 9 experiments which all reach 99\% of the nodes within 7 to 11 iterations.
 
 \newcolumntype{a}{>{\columncolor{LightCyan}}c}
-\begin{table}[b]
+\begin{table}[H]
 \centering
 \begin{tabular}{c|cacccccaac} 
   \multicolumn{11}{c|}{\textbf{Spread vs. Initial participation}} \\
@@ -750,21 +762,84 @@ For this node selection method we assume that the adoption of the new protocol i
 {60\%} & {8/12} & {\textbf{7/12}} & {9/10} & {8/14} & {7/11} & {7/10} & {7/11} & {\textbf{7/10}} & {\textbf{7/9}} & {7/10} \\ \hline
 
 \end{tabular}
-\caption{Shows number of iterations needed to achieve 99\% or 100\% for the two parameters.}
+\caption{Shows number of iterations needed to achieve 99\% or 100\% of participation}
 \label{tab:param}
 \end{table}
 
-\section{Results}
-Show a lot of charts :-)
+\newpage
+\section{Results}\label{sec:result}
+The results of all the previously presented experiments are presented in this section. Main focus is put on the performance measures defined in section~\ref{sub:perfm}. Main tool for analysing and interpreting the results are charts which visualise the measures with different levels of node participation.
+
+\subsection{Random participation}
+Before analysing the performance measures we will have a look at how the balance score (Gini) has changed during the process of rebalancing. Figure~\ref{fig:gini_rebal_rand} compares the Gini score with the number of rebalancing operations executed. It becomes evident that a smaller participation of nodes leads to a decreased amount of rebalancing operations. This is because nodes only rebalance with other nodes that also follow the new protocol. If only one node within a possible cycle is not participating the whole cycle must be discarded. The decreasing slope of the Gini, and therefore rate of increase in balance of the network, is stable among the different participation levels. Thus, follows that the fewer rebalancing possibilities are responsible for the smaller balance improvement. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{results/3a65a961_gini_vs_rebalops_random.pdf}
+\caption{Compare development of Gini score during rebalancing.}
+\label{fig:gini_rebal_rand}
+\end{figure}
+
+Since fewer rebalancing opportunities means smaller Gini score, the best Gini score a network can achieve is lower the fewer nodes participate. Figure~\ref{fig:gini_part_rand} shows this relation. The yellow area around the mean Gini score visualises the standard deviation of the 10 experiments which were conducted with different random node selections. There must be no standard deviation at 100\% since the node selection is the same. Furthermore, the deviation is very small in the low bands of participation which signals a low Gini score no matter what nodes are randomly selected. 
+
+Note the second Y-axis which shows the relative capacity that participates at different node participation levels. This tells us how much of the channel capacity was available for rebalancing. It is simply a different similar to the node participation, as more nodes means more capacity. The two variables must therefore be monotonically increasing. But the rate at which it increases reveals some insight about the effect of the different node selection methods. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{results/3a65a961_gini_vs_participation_random.pdf}
+\caption{Compare final Gini score with participation level.}
+\label{fig:gini_part_rand}
+\end{figure}
+
+Here is the text explaining this:
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.5\textwidth]{results/3a65a961_median_payment_size_random.pdf}\hfill
+\includegraphics[width=.5\textwidth]{results/3a65a961_median_paymnet_size_vs_participation_random.pdf}
+\label{fig:pay_size_part}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_imbalance_random.pdf}\hfill
+\includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_participation_random.pdf}
+\label{fig:success_part}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.7\textwidth]{results/3a65a961_median_paymnets_vs_participation_random.pdf}
+\label{fig:sizes_part}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.7\textwidth]{results/3a65a961_payments_vs_imbalance_onesat_random.pdf}
+\label{fig:onesat_random}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.7\textwidth]{results/3a65a961_payments_vs_imbalance_micro_random.pdf}
+\label{fig:micro_random}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.7\textwidth]{results/3a65a961_payments_vs_imbalance_normal_random.pdf}
+\label{fig:normal_random}
+\end{figure}
+
 \newpage
 \newgeometry{left=1cm,right=0.1cm}
 \begin{figure}
 \begin{tabular}{ccc}
-  \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_02_40.pdf} &   \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_10_40.pdf} & \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_15_40.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf} &   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf} & \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_15_40.pdf}  \\
   (a) Init: 2 Spread: 40  & (b) Init: 10 Spread: 40 & (c) Init: 15 Spread: 40  \\[6pt]
-  \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_02_50.pdf} &   \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_10_50.pdf} & \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_15_50.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_50.pdf} &   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_10_50.pdf} & \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_15_50.pdf}  \\
   (d) Init: 2 Spread: 50  & (e) Init: 10 Spread: 50 & (f) Init: 15 Spread: 50  \\[6pt]
-  \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{3a65a961_successrate_vs_participation_netw_spread_15_60.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_15_60.pdf}  \\
   (g) Init: 2 Spread: 60  & (h) Init: 10 Spread: 60 & (i) Init: 15 Spread: 60  \\[6pt]
 \end{tabular}
 \caption{Success Rate}
@@ -773,11 +848,11 @@ Show a lot of charts :-)
 \newpage 
 \begin{figure}
 \begin{tabular}{ccc}
-  \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_02_40.pdf} &   \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_10_40.pdf} & \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_15_40.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_40.pdf} &   \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_40.pdf} & \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_40.pdf}  \\
   (a) Init: 2 Spread: 40  & (b) Init: 10 Spread: 40 & (c) Init: 15 Spread: 40  \\[6pt]
-  \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_02_50.pdf} &   \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_10_50.pdf} & \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_15_50.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_50.pdf} &   \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_50.pdf} & \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_50.pdf}  \\
   (d) Init: 2 Spread: 50  & (e) Init: 10 Spread: 50 & (f) Init: 15 Spread: 50  \\[6pt]
-  \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{3a65a961_median_paymnet_size_vs_participation_netw_spread_15_60.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_60.pdf}  \\
   (g) Init: 2 Spread: 60  & (h) Init: 10 Spread: 60 & (i) Init: 15 Spread: 60  \\[6pt]
 \end{tabular}
 \caption{Median possible payment size}
@@ -786,11 +861,11 @@ Show a lot of charts :-)
 \newpage 
 \begin{figure}
 \begin{tabular}{ccc}
-  \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_02_40.pdf} &   \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_10_40.pdf} & \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_15_40.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_02_40.pdf} &   \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_10_40.pdf} & \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_15_40.pdf}  \\
   (a) Init: 2 Spread: 40  & (b) Init: 10 Spread: 40 & (c) Init: 15 Spread: 40  \\[6pt]
-  \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_02_50.pdf} &   \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_10_50.pdf} & \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_15_50.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_02_50.pdf} &   \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_10_50.pdf} & \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_15_50.pdf}  \\
   (d) Init: 2 Spread: 50  & (e) Init: 10 Spread: 50 & (f) Init: 15 Spread: 50  \\[6pt]
-  \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{3a65a961_median_paymnets_vs_participation_netw_spread_15_60.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_15_60.pdf}  \\
   (g) Init: 2 Spread: 60  & (h) Init: 10 Spread: 60 & (i) Init: 15 Spread: 60  \\[6pt]
 \end{tabular}
 \caption{Different payment sizes}
@@ -799,13 +874,13 @@ Show a lot of charts :-)
 \newpage 
 \begin{figure}
 \begin{tabular}{ccc}
-  \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_02_40.pdf} &   \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_10_40.pdf} & \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_15_40.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_02_40.pdf} &   \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_10_40.pdf} & \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_15_40.pdf}  \\
   (a) Init: 2 Spread: 40  & (b) Init: 10 Spread: 40 & (c) Init: 15 Spread: 40  \\[6pt]
-  \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_02_50.pdf} &   \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_10_50.pdf} & \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_15_50.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_02_50.pdf} &   \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_10_50.pdf} & \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_15_50.pdf}  \\
   (d) Init: 2 Spread: 50  & (e) Init: 10 Spread: 50 & (f) Init: 15 Spread: 50  \\[6pt]
-  \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{3a65a961_gini_vs_participation_netw_spread_15_60.pdf}  \\
+  \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_15_60.pdf}  \\
   (g) Init: 2 Spread: 60  & (h) Init: 10 Spread: 60 & (i) Init: 15 Spread: 60  \\[6pt]
-%\multicolumn{2}{c}{\includegraphics[width=60mm]{3a65a961_gini_vs_rebalops_netw_spread_02_40.pdf} }\\
+%\multicolumn{2}{c}{\includegraphics[width=60mm]{results/3a65a961_gini_vs_rebalops_netw_spread_02_40.pdf} }\\
 %\multicolumn{2}{c}{(e) fifth}
 \end{tabular}
 \caption{Different payment sizes}
