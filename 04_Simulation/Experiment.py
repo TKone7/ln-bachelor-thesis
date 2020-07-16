@@ -306,20 +306,20 @@ class Experiment:
         subset = [value for key, value in networks.items()]
         self.__plot_all(subset)
 
-    def __plot_all(self, networks):
-        self.plot_gini_vs_rebalops(networks)
-        self.plot_paymentsize_vs_imbalance(networks)
-        self.plot_successrate_vs_imbalance(networks)
+    def __plot_all(self, networks, addon=None):
+        self.plot_gini_vs_rebalops(networks, addon=addon)
+        self.plot_paymentsize_vs_imbalance(networks, addon=addon)
+        self.plot_successrate_vs_imbalance(networks, addon=addon)
         # self.plot_payments_vs_imbalance_one(networks)
         # self.plot_payments_vs_imbalance_micro(networks)
         # self.plot_payments_vs_imbalance_normal(networks)
 
-    def __plot_vs_participation(self, networks):
+    def __plot_vs_participation(self, networks, addon=None):
         # new against participation in percent
-        self.plot_paymentsize_vs_participation(networks)
-        self.plot_successrate_vs_participation(networks)
+        self.plot_paymentsize_vs_participation(networks, addon=addon)
+        self.plot_successrate_vs_participation(networks, addon=addon)
         # self.plot_payments_vs_participation(networks)
-        self.plot_gini_vs_participation(networks)
+        self.plot_gini_vs_participation(networks, addon=addon)
 
     def __load_existing_experiment(self, participation, iteration=1):
         experiment_name = self.fingerprint + '_' + str(int(participation)) + '_' + self.type + '_' + str(iteration)
@@ -332,7 +332,9 @@ class Experiment:
             n.set_participation((participation))
         return n
 
-    def plot_gini_vs_rebalops(self, networks, filename='gini_vs_rebalops'):
+    def plot_gini_vs_rebalops(self, networks, filename='gini_vs_rebalops', addon=None):
+        if addon:
+            filename += '_' + addon
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         for n in networks:
@@ -348,8 +350,9 @@ class Experiment:
         plt.legend(loc="upper right")
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
-    def plot_paymentsize_vs_imbalance(self, networks, filename='median_payment_size'):
-        # plot stats per 0.01 gini
+    def plot_paymentsize_vs_imbalance(self, networks, filename='median_payment_size', addon=None):
+        if addon:
+            filename += '_' + addon
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         for n in networks:
@@ -373,7 +376,9 @@ class Experiment:
         plt.grid()
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
-    def plot_successrate_vs_imbalance(self, networks, filename='successrate_vs_imbalance'):
+    def plot_successrate_vs_imbalance(self, networks, filename='successrate_vs_imbalance', addon=None):
+        if addon:
+            filename += '_' + addon
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         for n in networks:
@@ -437,8 +442,9 @@ class Experiment:
         plt.legend(loc="lower left")
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
-    def plot_gini_vs_participation(self, networks, filename='gini_vs_participation'):
-
+    def plot_gini_vs_participation(self, networks, filename='gini_vs_participation', addon=None):
+        if addon:
+            filename += '_' + addon
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         k = []
@@ -481,14 +487,16 @@ class Experiment:
         ax2 = plt.twinx()
         if self.type.startswith('netw_spread_'):
             ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
-        ax2.set_ylabel("Participation [%]")
+        ax2.set_ylabel("Rel. capacity included  [%]")
         ax2.plot(k, capacity_participation, label='Capacity participation', linewidth=2, color='tab:cyan', linestyle='dotted', marker='o')
         ax2.legend(loc='lower left')
+        ax2.set_ylim(0, 100)
 
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
-    def plot_paymentsize_vs_participation(self, networks, filename='median_paymnet_size_vs_participation'):
-        # plot stats per 0.01 gini
+    def plot_paymentsize_vs_participation(self, networks, filename='median_paymnet_size_vs_participation', addon=None):
+        if addon:
+            filename += '_' + addon
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         k = []
@@ -522,14 +530,16 @@ class Experiment:
         ax2 = plt.twinx()
         if self.type.startswith('netw_spread_'):
             ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
-        ax2.set_ylabel("Participation [%]")
+        ax2.set_ylabel("Rel. capacity included  [%]")
         ax2.plot(k, capacity_participation, label='Capacity participation', linewidth=2, color='tab:cyan', linestyle='dotted', marker='o')
         ax2.legend(loc='lower left')
+        ax2.set_ylim(0, 100)
 
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
-    def plot_successrate_vs_participation(self, networks, filename='successrate_vs_participation'):
-        # plot stats per 0.01 gini
+    def plot_successrate_vs_participation(self, networks, filename='successrate_vs_participation', addon=None):
+        if addon:
+            filename += '_' + addon
         assert len(set([n.fingerprint for n in networks])) == 1, 'You cannot plot different networks together'
         fingerprint = networks[0].fingerprint
         k = []
@@ -563,10 +573,11 @@ class Experiment:
         ax2 = plt.twinx()
         if self.type.startswith('netw_spread_'):
             ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
-        ax2.set_ylabel("Participation [%]")
+        ax2.set_ylabel("Rel. capacity included  [%]")
         ax2.plot(k, capacity_participation, label='Capacity participation', linewidth=2, color='tab:cyan', linestyle='dotted', marker='o')
-        ax2.set_ylabel("Participation [%]")
+        ax2.set_ylabel("Rel. capacity included  [%]")
         ax2.legend(loc='lower left')
+        ax2.set_ylim(0, 100)
 
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
@@ -614,14 +625,15 @@ class Experiment:
         ax2 = plt.twinx()
         if self.type.startswith('netw_spread_'):
             ax2.plot(k, node_participation, label='Node participation', linewidth=2, color='tab:purple', linestyle='dotted', marker='^')
-        ax2.set_ylabel("Participation [%]")
+        ax2.set_ylabel("Rel. capacity included  [%]")
         ax2.plot(k, capacity_participation, label='Capacity participation', linewidth=2, color='tab:cyan', linestyle='dotted', marker='o')
-        ax2.set_ylabel("Participation [%]")
+        ax2.set_ylabel("Rel. capacity included  [%]")
         ax2.legend(loc='lower left')
+        ax2.set_ylim(0, 100)
 
         Experiment.__store_chart(fingerprint, filename + '_' + self.type)
 
-    def plot_channel_distr(self, network, boundaries, filename='channel_distribution'):
+    def plot_channel_distr(self, network, filename='channel_distribution'):
         file = filename
         for i in range(2):
             dict_degrees = dict(network.G.in_degree())
@@ -633,8 +645,8 @@ class Experiment:
             # plt.hist(degrees, bins=100)
             if i == 1:
                 plt.xscale("log")
-                plt.axvline(x=boundaries[0], color='tab:orange', linestyle='dashed')
-                plt.axvline(x=boundaries[1], color='tab:orange', linestyle='dashed')
+                # plt.axvline(x=boundaries[0], color='tab:orange', linestyle='dashed')
+                # plt.axvline(x=boundaries[1], color='tab:orange', linestyle='dashed')
                 file += '_log_boundaries'
             plt.title("Distribution of nodes channelcount")
             plt.xlabel("Number of channels")
