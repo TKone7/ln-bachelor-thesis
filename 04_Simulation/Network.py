@@ -32,6 +32,7 @@ class Network:
         self.__history = []
         self.__history_gini = []
         self.__stats = {}
+        self.__final_stats = {}
         self.__all_pair_max_flow = dict()
         self.__excluded = []
         self.__cycles4 = cycles4 if cycles4 else []
@@ -325,10 +326,12 @@ class Network:
         self.incl_capacity = meta_info['available_capacity']
         self.nr_participating_nodes = meta_info['participating_nodes']
         self.nr_nodes = meta_info['total_nodes']
-    def __set_final_stats(self, final_stats):
+    def set_final_stats(self, final_stats):
         self.__final_stats = final_stats
+
     def get_final_stats(self):
         return self.__final_stats
+
     def exclude(self, excl_list):
         assert self.__cycles4, 'Cannot exclude nodes before the cycles are not calculated. Run "compute_circles()" first.'
 
@@ -647,7 +650,7 @@ class Network:
             N.__set_meta_info(meta_info)
         with open(final_stats_file, "r") as f:
             final_stas = json.load(f)
-            N.__set_final_stats(final_stas)
+            N.set_final_stats(final_stas)
         return N
 
     @classmethod
