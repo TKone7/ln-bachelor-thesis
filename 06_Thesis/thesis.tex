@@ -684,7 +684,7 @@ The simulation will rebalance the same network with different levels of particip
 \subsubsection{Randomised}
 This selection method randomly chooses $x\%$ of nodes. For value $x$, an intervals of 10 is used (10\%, 20\%, \ldots, 90\%, 100\%). The set of nodes in a smaller participation are subsets of the larger ones. To make the experiments reproducible the \mintinline{python}{random} package is seeded with a fixed value. There is a disadvantage in this method. Multiple random selections with different randomness result in other results. It could be that by coincidence a disproportionate amount of either large or small nodes are selected. In order to reduce this effect the experiment runs 10 samples with different randomness. Then from all the success measures are being averaged. 
 
-\subsubsection{By size linear}
+\subsubsection{Node ranking}
 The main characteristic by which we can distinguish the nodes is their importance. This can be measured in many ways. This section shows some ways how the node's importance could be determined. In a preliminary experiment we want to see if there is a significant difference.
 
 The \textbf{degree centrality} is an easy to calculate measure. It simply counts the degree - the number of edges connected to a node. The higher the value, the more central a node is \citep{golbeck_analyzing_2013}.
@@ -693,33 +693,53 @@ A slightly more sophisticated measure is the \textbf{betweenness centrality}. It
 
 The \textbf{eigenvector centrality} does not treat each neighbour equally. A node's importance will rise if it is surrounded by other important nodes. It can also be interpreted as a node's influence on the network \citep{golbeck_analyzing_2013}. A variation of eigenvector specialised for directed networks is \textbf{pagerank}. There the in-degree of influential nodes is increases the score for a node. For the Lightning network in this experiment this does not make much sense, since all nodes connected with a payment channel are connected with two edges, one in each direction.
 
-All these different methods return a score for each node by which one could make a ranking from least to most important. We want to proof the hypothesis that for the dataset at hand all rankings would be similar. In order to compare different rankings a rank correlation can be calculated which measures the similarity of two rankings. Spearman's correlation is an appropriate way to test a monotonic relationship between two variables \citep{noauthor_resources_nodate}. It is not required for the distribution to be normal. The variables simply have to be on an ordinal scale. The resulting correlation coefficient lays between $-1$ and $1$ and is a measure for how strong the two rankings correlate. $0$ means no correlation while $1$ and $-1$ stand for strong positive or negative correlation. Table \ref{tab:spearman} shows the result of the conducted experiment. 
-
+All these different methods return a score for each node by which one could make a ranking from least to most important. We want to proof the hypothesis that for the dataset at hand all rankings would be similar. In order to compare different rankings a rank correlation can be calculated which measures the similarity of two rankings. Spearman's correlation is an appropriate way to test a monotonic relationship between two variables \citep{noauthor_resources_nodate}. It is not required for the distribution to be normal. The variables simply have to be on an ordinal scale. The resulting correlation coefficient lays between $-1$ and $1$ and is a measure for how strong the two rankings correlate. $0$ means no correlation while $1$ and $-1$ stand for strong positive or negative correlation. Table \ref{tab:spearman} shows the result of the conducted experiment. All coefficients are fairly close together, therefore, these different ranking criteria all end up with a very similar ranking. We from now on use the degree centrality as a measure for importance since it is the simplest to calculate.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{ccccc} 
-{} & {Degree centr.} & {Betweenness centr.} & {Eigenvector centr.} & {Pagerank} \\ \hline\hline 
+\begin{tabular}{c | cccc} 
+{} & {Degree centr.} & {Betweenness centr.} & {Eigenvector centr.} & {Pagerank} \\ \hline 
 {Degree centr.} & {1.0} & {0.845} & {0.916} & {0.988} \\ 
 {Betweenness centr.} & {0.845} & {1.0} & {0.698} & {0.893}\\
 {Eigenvector centr.} & {0.916} & {0.698} & {1.0} & {0.880} \\
-{Pagerank} & {0.988} & {0.893} & {0.880} & {1.0} \\ \hline
+{Pagerank} & {0.988} & {0.893} & {0.880} & {1.0} \\
 \end{tabular}
 \caption{Ranking correlation coefficients of importance measures.}
 \label{tab:spearman}
 \end{table}
 
-\subsubsection{Grouped}
-i
+There are two ways to simulate different levels of participation based on this rank. Either select $x\%$ of the \textbf{top} or \textbf{bottom} as participants. 
+
+\subsubsection{Node categories}
+Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by equal frequency binning to ensure equal sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. This means 100\% participation of one group yields in a total of 33\%. 
+
+Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (a) is a cumulative histogram of the node degree (with logarithmic scale). The boundaries fall on a node degree of 5 and 11. Figure (b) shows those same boundaries but with regards to how many channels those nodes contribute. It is clearly visible that the number of channels are mainly concentrated in the last group. 
+
+\todo[inline]{maybe declare that this was not a good boundary since one third of the smallest node have very little channels}
+
+
+\begin{figure}[t]
+\centering
+\subfloat[Distribution of node degree]{
+  \includegraphics[width=0.45\linewidth]{cum_channel_distr_eq_width.pdf}
+}\quad
+\subfloat[Node's contribution to channels]{
+  \includegraphics[width=0.45\linewidth]{node_count_to_contr_channel_count_eq_width.pdf}
+}
+\caption{Shows boundary definition by equal frequency.}
+\label{fig:eqfreq}
+\end{figure}
+
+
 \subsubsection{Network spread}
-Here comes a table.
+For this node selection method we assume that the adoption of the new protocol is being spread through the network. Nodes only start adopting it when someone in their neighbourhood has adopted it. The simulation, therefore, starts with an initial set of nodes which participate in round 1. In each iteration a certain percentage of their channel partner participate as well. This results in two parameters which can be adjusted to simulate the way adoption can take place. \textbf{Init parameter} in \% defines how many nodes start while \textbf{spread parameter} in \% define how many of the adjacent nodes participate in the next round. Those two parameters should be chosen in a way that allows a number of participation levels similar to the 10 levels seen in the previous sections. Table~\ref{tab:param} shows the number of iterations required to reach either 99\% or 100\% of all nodes. The colored columns and row illustrate the chosen parameters which where used. An initial value of 2/10/15 \% and a spread of 40/50/60 \% result in total 9 experiments which all reach 99\% of the nodes within 7 to 11 iterations.
 
 \newcolumntype{a}{>{\columncolor{LightCyan}}c}
 \begin{table}[b]
 \centering
-\begin{tabular}{ccacccccaac} 
-  \multicolumn{11}{c|}{\textbf{Spread in \% vs. Initial participation in \%}} \\
-{} & {1\%} & {2\%} & {3\%} & {4\%} & {5\%} & {7\%} & {9\%} & {10\%} & {15\%} & {20\%}  \\ \hline\hline 
+\begin{tabular}{c|cacccccaac} 
+  \multicolumn{11}{c|}{\textbf{Spread vs. Initial participation}} \\
+{} & {1\%} & {2\%} & {3\%} & {4\%} & {5\%} & {7\%} & {9\%} & {10\%} & {15\%} & {20\%}  \\ \hline
 {20\%} & {} & {} & {} & {24/50} & {} & {} & {23/33} & {21/33} & {22/38} & {23/50} \\
 {30\%} & {} & {15/31} & {14/32} & {15/28} & {15/23} & {15/30} & {14/31} & {16/25} & {14/23} & {14/20} \\
 \rowcolor{LightCyan}
