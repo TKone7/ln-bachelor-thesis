@@ -327,7 +327,8 @@ class Network:
         self.nr_nodes = meta_info['total_nodes']
     def __set_final_stats(self, final_stats):
         self.__final_stats = final_stats
-
+    def get_final_stats(self):
+        return self.__final_stats
     def exclude(self, excl_list):
         assert self.__cycles4, 'Cannot exclude nodes before the cycles are not calculated. Run "compute_circles()" first.'
 
