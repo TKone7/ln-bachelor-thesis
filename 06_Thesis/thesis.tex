@@ -710,7 +710,7 @@ All these different methods return a score for each node by which one could make
 
 There are two ways to simulate different levels of participation based on this rank. Either select $x\%$ of the \textbf{top} or \textbf{bottom} as participants. 
 
-\subsubsection{Node categories}
+\subsubsection{Node categories}\label{subsub:categ}
 Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by \textbf{equal frequency binning} to ensure equal sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. This means 100\% participation of one group yields in a total of 33\%. 
 
 Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (a) is a cumulative histogram of the node degree (with logarithmic scale). The boundaries fall on a node degree of 5 and 11. Figure (b) shows those same boundaries but with regards to how many channels those nodes contribute. It is clearly visible that the number of channels are mainly concentrated in the last group. 
@@ -771,7 +771,7 @@ For this node selection method we assume that the adoption of the new protocol i
 The results of all the previously presented experiments are presented in this section. Main focus is put on the performance measures defined in section~\ref{sub:perfm}. Main tool for analysing and interpreting the results are charts which visualise the measures with different levels of node participation.
 
 \subsection{Random participation}
-Before analysing the performance measures we will have a look at how the balance score (Gini) has changed during the process of rebalancing. Figure~\ref{fig:gini_rebal_rand} compares the Gini score with the number of rebalancing operations executed. It becomes evident that a smaller participation of nodes leads to a decreased amount of rebalancing operations. This is because nodes only rebalance with other nodes that also follow the new protocol. If only one node within a possible cycle is not participating the whole cycle must be discarded. The decreasing slope of the Gini, and therefore rate of increase in balance of the network, is stable among the different participation levels. Thus, follows that the fewer rebalancing possibilities are responsible for the smaller balance improvement. 
+Before analysing the performance measures we will have a look at how the balance score (Gini) has changed during the process of rebalancing. Figure~\ref{fig:gini_rebal_rand} compares the Gini score with the number of rebalancing operations executed. It becomes evident that a smaller participation of nodes leads to a decreased amount of rebalancing operations. This is because rebalancing only occurs between nodes which participate in the new protocol. If only one node within a cycle is not participating the whole cycle is discarded. The decreasing slope of the Gini, and therefore rate of increase in balance of the network, is stable among the different participation levels. Thus, follows that the fewer rebalancing possibilities are responsible for the smaller balance improvement. 
 
 \begin{figure}[H]
 \centering
@@ -780,7 +780,7 @@ Before analysing the performance measures we will have a look at how the balance
 \label{fig:gini_rebal_rand}
 \end{figure}
 
-Since fewer rebalancing opportunities means smaller Gini score, the best Gini score a network can achieve is lower the fewer nodes participate. Figure~\ref{fig:gini_part_rand} shows this relation. The yellow area around the mean Gini score visualises the standard deviation of the 10 experiments which were conducted with different random node selections. There must be no standard deviation at 100\% since the node selection is the same. Furthermore, the deviation is very small in the low bands of participation which signals a low Gini score no matter what nodes are randomly selected. 
+Since fewer rebalancing opportunities means smaller Gini score, the best Gini score a network can achieve is lower the fewer nodes participate. Figure~\ref{fig:gini_part_rand} shows this relation. The yellow area around the mean Gini score visualises the standard deviation of the 10 experiments conducted with different random node selections. There must be no standard deviation at 100\% since the node selection is always the same. Furthermore, the deviation is very small in the low bands of participation which signals a low Gini score no matter what nodes are selected. 
 
 Note the second Y-axis which shows the relative capacity that participates at different node participation levels. This tells us how much of the channel capacity was available for rebalancing. It is simply a different similar to the node participation, as more nodes means more capacity. The two variables must therefore be monotonically increasing. But the rate at which it increases reveals some insight about the effect of the different node selection methods. 
 
@@ -791,47 +791,128 @@ Note the second Y-axis which shows the relative capacity that participates at di
 \label{fig:gini_part_rand}
 \end{figure}
 
-Here is the text explaining this:
-
+The two charts in figure~\ref{fig:pay_size_random} show the first performance measure \textbf{median possible payment size} at different Gini levels and for the end value for all levels of participation. Since the variable is not evenly distributed, there are certain spikes visible. Both charts visualise that an improvement of the measure is only noticable with a participation of 80\% or higher. 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_median_payment_size_random.pdf}\hfill
 \includegraphics[width=.5\textwidth]{results/3a65a961_median_paymnet_size_vs_participation_random.pdf}
-\label{fig:pay_size_part}
+\caption{Median possible payment size in random node selection.}
+\label{fig:pay_size_random}
 \end{figure}
+
+A similar picture can be drawn from the \textbf{success rate} measure. Since this is the ratio of all node pairs able to rout at least 1 satoshi there are no spikes. The improving effects are more distributed among the different levels of participation and start with 20\% and reach up to 80\% of all node pairs which can send a payment.
+
+It can be seen that at a certain Gini score the networks ability to route payments is lower in lower participation levels. It seems that not the Gini score itself determines the network's performance but also how many nodes participated to achieve to that score.
 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_imbalance_random.pdf}\hfill
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_participation_random.pdf}
-\label{fig:success_part}
+\caption{Success rate in random node selection.}
+\label{fig:success_random}
 \end{figure}
+
+
+Figure~\ref{fig:sizes_random} compares the third performance measures that evaluates how many paths out of 10 between each node pair can accommodate a payment of a certain size. The ability to send a micro payment of the size 10'000 satoshi increases roughly the same as the ability to send 1 satoshi. If this means ability to send 1 satoshi comes with the ability to also send 10'000 satoshi respectively this might give some more importance to the success rate measure.
 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.7\textwidth]{results/3a65a961_median_paymnets_vs_participation_random.pdf}
-\label{fig:sizes_part}
+\caption{Ability to make different payments.}
+\label{fig:sizes_random}
 \end{figure}
+
+\subsection{Node importance}
+df
+\subsubsection{Adoption started by important nodes}\label{subsub:desc}
+In this section we show the results for the experiments for which the participating nodes were chosen based on their importance ranking. The highest ranked $x\%$ are chosen to engage in rebalancing. 
+
+The fact persists that lower participation results in lower performance measures as can be seen in figures~\ref{fig:pay_size_size_linear_desc} and \ref{fig:success_size_linear_desc}. From the dotted line representing the fraction of the total capacity that participates it is also visible that those important nodes contribute overproportionately to the available capacity. 30\% of nodes include 80\% of the capacity and 50\% include 90\%. This explains why the Gini score falls much faster with increasing participation than it was the case with the random selection.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{results/3a65a961_gini_vs_participation_size_linear_desc.pdf}
+\caption{Compare final Gini score with participation level.}
+\label{fig:gini_part_size_linear_desc}
+\end{figure}
+
+This lower Gini score has its effect on the performance measures which are much higher during partial participation. This is specially true in the lower participation areas of 10\% to 30\%.  
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.7\textwidth]{results/3a65a961_payments_vs_imbalance_onesat_random.pdf}
-\label{fig:onesat_random}
+\includegraphics[width=.5\textwidth]{results/3a65a961_median_payment_size_size_linear_desc.pdf}\hfill
+\includegraphics[width=.5\textwidth]{results/3a65a961_median_paymnet_size_vs_participation_size_linear_desc.pdf}
+\caption{Median possible payment size in random node selection.}
+\label{fig:pay_size_size_linear_desc}
 \end{figure}
+
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.7\textwidth]{results/3a65a961_payments_vs_imbalance_micro_random.pdf}
-\label{fig:micro_random}
+\includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_imbalance_size_linear_desc.pdf}\hfill
+\includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_participation_size_linear_desc.pdf}
+\caption{Success rate in random node selection.}
+\label{fig:success_size_linear_desc}
 \end{figure}
+
+Also the ability to route certain payments is much better with lower participation. A 50\% participation already allows 8 out of 10 payments up to 10'000 satoshi to succeed. The random selection needed 80\% participation to reach a similar result. A payment of the size 100'000 satoshi never got routed. Therefore, no conclusion can be drawn from the data and it should have been chosen lower.
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=.7\textwidth]{results/3a65a961_payments_vs_imbalance_normal_random.pdf}
-\label{fig:normal_random}
+\includegraphics[width=.7\textwidth]{results/3a65a961_median_paymnets_vs_participation_size_linear_desc.pdf}
+\caption{Ability to make different payments.}
+\label{fig:sizes_size_linear_desc}
 \end{figure}
+
+
+\subsubsection{Adoption started by unimportant nodes}\label{subsub:asc}
+When instead the most important but the least important nodes are drawn for the experiment not many results could have been recorded. As visible in figure~\ref{fig:gini_part_size_linear_asc} almost no capacity was available for rebalancing. This is why an additional experiment was conducted with 95\% participation. But even then only around 11\% of the total channel capacity was available, too little than to rebalance more than a couple hundred rebalancing transactions. Therefore, no effect on the Gini score nor the other performance measures could be recorded. 
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=.7\textwidth]{results/3a65a961_gini_vs_participation_size_linear_asc.pdf}
+\caption{Gini score during different levels of participation.}
+\label{fig:gini_part_size_linear_asc}
+\end{figure}
+
+\subsubsection{Participation within a group}
+When the experiment was conducted with equal frequency binning with regards to \textbf{nodes} the three groups contained each 713 nodes. As the previous results from section~\ref{subsub:asc} have shown, even the 95\% lowest ranked nodes are not able to rebalance a significant amount and therefore did not improve the performance measures. Concluding, both the small and the middle group also are not able to improve the networks balance at all even when the entire group participates. Successive experiments with lower participation within the groups were meaningless. The group containing the 713 most important nodes does of course result in some rebalancing, however this basically the same result as in section~\ref{subsub:desc} just with a increased granularity of factor three.
+
+\subsection{Network spread}
+The results from the experiments stemming from the selection via network spread do not vary significantly from the random selected ones. This can be explained that both, the initial set of starting nodes as well as the ones added during each iteration are chosen randomly as well. So, the results regarding the performance measures of the network can be compared to those. What can be learned, however, is the influence of the two experiment parameters on the duration it takes achieve a broad coverage in the network.
+
+If we compare an experiment with low initial value with one that has a high initial value surely the results in the first phases are better. However, they do not differ much in the number of iterations it takes to achieve high network saturation.This effect is only noticeable during the first few iterations.
+
+show chars here
+
+If in comparison low and high spread are compared the number of iterations to reach a 99\% coverage is reduced by 4. The development of the different measures does not vary much, simply the rate at which it improves.
+
+\section{Conclusion \& Outlook}
+
+\todo[inline]{gini score alone does not determine network performance}
+
+\todo[inline]{measures all consider the total network. more likely is that the participating nodes are also the one being active in eco. transactions. this is why maybe the scores should focus on them. The effecto of benefitting from others vs. the benefit from being proactive themselves could be interesting. go into the dilemma of the commons.}
+
+%%---BIBLIOGRAPHY------------------------------------------------------------------------
+\newpage
+{\sloppypar
+\printbibliography[heading=bibintoc]
+\label{sec:lit}
+}
+
+
+%Print the glossary
+\newpage
+\newglossaryentry{doublespend}{
+	name={double spend problem},
+	description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.}
+}
+\section*{Glossary}
+\printglossaries
 
 \newpage
+\appendix
+\section{Charts network spread experiment}
 \newgeometry{left=1cm,right=0.1cm}
 \begin{figure}
 \begin{tabular}{ccc}
@@ -887,27 +968,6 @@ Here is the text explaining this:
 \end{figure}
 \restoregeometry
 
-\section{Conclusion \& Outlook}
-%% Dummy text
-
-%%---BIBLIOGRAPHY------------------------------------------------------------------------
-\newpage
-{\sloppypar
-\printbibliography[heading=bibintoc]
-\label{sec:lit}
-}
-
-
-%Print the glossary
-\newpage
-\newglossaryentry{doublespend}{
-	name={double spend problem},
-	description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.}
-}
-\section*{Glossary}
-\printglossaries
-
-\appendix
 \section{Some appendix}
 maybe\ldots
 

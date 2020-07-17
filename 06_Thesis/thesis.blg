@@ -1,19 +1,19 @@
 [0] Config.pm:304> INFO - This is Biber 2.13
 [0] Config.pm:307> INFO - Logfile is 'thesis.blg'
-[26] biber:315> INFO - === Do Jul 16, 2020, 19:53:01
-[41] Biber.pm:375> INFO - Reading 'thesis.bcf'
-[113] Biber.pm:905> INFO - Found 16 citekeys in bib section 0
-[128] Biber.pm:4196> INFO - Processing section 0
-[129] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
-[129] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
-[140] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
-[144] bibtex.pm:1462> INFO - LaTeX decoding ...
-[182] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
-[276] Utils.pm:300> WARN - ISBN '978-0-12-405856-9 978-1-299-19664-3' in entry 'golbeck_analyzing_2013' is invalid - run biber with '--validate_datamodel' for details.
-[309] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[310] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[310] Biber.pm:4024> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
-[310] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
-[330] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[345] bbl.pm:751> INFO - Output to thesis.bbl
-[346] Biber.pm:110> INFO - WARNINGS: 1
+[44] biber:315> INFO - === Fr Jul 17, 2020, 17:44:53
+[75] Biber.pm:375> INFO - Reading 'thesis.bcf'
+[191] Biber.pm:905> INFO - Found 16 citekeys in bib section 0
+[221] Biber.pm:4196> INFO - Processing section 0
+[222] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
+[222] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
+[236] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
+[240] bibtex.pm:1462> INFO - LaTeX decoding ...
+[306] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
+[447] Utils.pm:300> WARN - ISBN '978-0-12-405856-9 978-1-299-19664-3' in entry 'golbeck_analyzing_2013' is invalid - run biber with '--validate_datamodel' for details.
+[496] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[496] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[496] Biber.pm:4024> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
+[496] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
+[515] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[527] bbl.pm:751> INFO - Output to thesis.bbl
+[527] Biber.pm:110> INFO - WARNINGS: 1
