@@ -1,80 +1,76 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.13)  26 JUL 2020 18:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.26)  26 JUL 2020 20:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **thesis.tex
 (./thesis.tex
-LaTeX2e <2019-10-01> patch level 1
-(./fhnwreport.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-06-03> (./fhnwreport.cls
 Document Class: fhnwreport 2018/05/06 v2.5 PDF-LaTeX class for FHNW reports
 (/usr/share/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/08/27 v1.4j Standard LaTeX document class
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2019/08/27 v1.4j Standard LaTeX file (size option)
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
 )
 (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/04/16 v5.8 Page Geometry
+Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks14
+\KV@toks@=\toks15
 )
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-)
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-)
-(/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
-\Gm@bindingoffset=\dimen103
-\Gm@wd@mp=\dimen104
-\Gm@odd@mp=\dimen105
-\Gm@even@mp=\dimen106
-\Gm@layoutwidth=\dimen107
-\Gm@layoutheight=\dimen108
-\Gm@layouthoffset=\dimen109
-\Gm@layoutvoffset=\dimen110
-\Gm@dimlist=\toks15
+(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count175
+\Gm@cntv=\count176
+\c@Gm@tempcnt=\count177
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks16
 )
 (/usr/share/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count91
-\calc@Bcount=\count92
-\calc@Adimen=\dimen111
-\calc@Bdimen=\dimen112
-\calc@Askip=\skip43
-\calc@Bskip=\skip44
+\calc@Acount=\count178
+\calc@Bcount=\count179
+\calc@Adimen=\dimen143
+\calc@Bdimen=\dimen144
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count93
-\calc@Cskip=\skip45
+\calc@Ccount=\count180
+\calc@Cskip=\skip51
 )
 (/usr/share/texmf-dist/tex/latex/psnfss/times.sty
-Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
 )
 (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/10/08 v1.3c Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -87,8 +83,8 @@ Package graphics Info: Driver file: pdftex.def on input line 105.
 (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen113
-\Gin@req@width=\dimen114
+\Gin@req@height=\dimen145
+\Gin@req@width=\dimen146
 )
 (/usr/share/texmf-dist/tex/latex/chngcntr/chngcntr.sty
 Package: chngcntr 2018/04/09 v1.1a change counter resetting
@@ -103,330 +99,190 @@ Package tocbibind Info: The document has section divisions on input line 50.
 Package tocbibind Note: Using section or other style headings.
 
 ) (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2019/09/28 v7.00a Hypertext links for LaTeX
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
 
-(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
-
-
-(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-Package hobsub Info: Skipping package `ifvtex' (already loaded).
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package hobsub Info: Skipping package `ifpdf' (already loaded).
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
-Package pdftexcmds Info: LuaTeX not detected.
+(/usr/share/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-04 v0.32 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+(/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(/usr/share/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )
-(/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-\@linkdim=\dimen115
-\Hy@linkcounter=\count94
-\Hy@pagecounter=\count95
+(/usr/share/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen147
+\Hy@linkcounter=\count181
+\Hy@pagecounter=\count182
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2019/09/28 v7.00a Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count96
-
-(/usr/share/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-Package hyperref Info: Option `final' set `true' on input line 4414.
-Package hyperref Info: Hyper figures OFF on input line 4540.
-Package hyperref Info: Link nesting OFF on input line 4545.
-Package hyperref Info: Hyper index ON on input line 4548.
-Package hyperref Info: Plain pages OFF on input line 4555.
-Package hyperref Info: Backreferencing OFF on input line 4560.
+(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count183
+Package hyperref Info: Option `final' set `true' on input line 4338.
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4793.
-\c@Hy@tempcnt=\count97
+Package hyperref Info: Bookmarks ON on input line 4717.
+\c@Hy@tempcnt=\count184
 
 (/usr/share/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip10
+\Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5152.
-\XeTeXLinkMargin=\dimen116
-\Fld@menulength=\count98
-\Field@Width=\dimen117
-\Fld@charsize=\dimen118
-Package hyperref Info: Hyper figures OFF on input line 6423.
-Package hyperref Info: Link nesting OFF on input line 6428.
-Package hyperref Info: Hyper index ON on input line 6431.
-Package hyperref Info: backreferencing OFF on input line 6438.
-Package hyperref Info: Link coloring OFF on input line 6443.
-Package hyperref Info: Link coloring with OCG OFF on input line 6448.
-Package hyperref Info: PDF/A mode OFF on input line 6453.
-LaTeX Info: Redefining \ref on input line 6493.
-LaTeX Info: Redefining \pageref on input line 6497.
-\Hy@abspage=\count99
-\c@Item=\count100
-\c@Hfootnote=\count101
+LaTeX Info: Redefining \url on input line 5076.
+\XeTeXLinkMargin=\dimen148
+
+(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count185
+\Field@Width=\dimen149
+\Fld@charsize=\dimen150
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing OFF on input line 6362.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
+
+(/usr/share/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count186
+\c@Item=\count187
+\c@Hfootnote=\count188
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2019/09/28 v7.00a Hyperref driver for pdfTeX
-\Fld@listcount=\count102
-\c@bookmark@seq@number=\count103
+File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
 
-(/usr/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-82.
+(/usr/share/texmf-dist/tex/latex/atveryend/atveryend.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
 )
-\Hy@SectionHShift=\skip46
+\Fld@listcount=\count189
+\c@bookmark@seq@number=\count190
+
+(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip52
 )
 Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 216.
 
 
 (/usr/share/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2019/09/01 v3.3d Customizing captions (AR)
+Package: caption 2020/05/10 v3.4j Customizing captions (AR)
 
 (/usr/share/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen119
-\captionmargin@=\dimen120
-\captionwidth=\dimen121
-\caption@tempdima=\dimen122
-\caption@indent=\dimen123
-\caption@parindent=\dimen124
-\caption@hangindent=\dimen125
+Package: caption3 2020/05/10 v1.11 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen151
+\captionmargin@=\dimen152
+\captionwidth=\dimen153
+\caption@tempdima=\dimen154
+\caption@indent=\dimen155
+\caption@parindent=\dimen156
+\caption@hangindent=\dimen157
+Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count104
-\c@ContinuedFloat=\count105
+\c@caption@flags=\count191
+\c@continuedfloat=\count192
 Package caption Info: hyperref package is loaded.
 ))
 (/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
 
 (/usr/share/texmf-dist/tex/latex/tools/array.sty
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
-\col@sep=\dimen126
-\ar@mcellbox=\box27
-\extrarowheight=\dimen127
-\NC@list=\toks16
-\extratabsurround=\skip47
-\backup@length=\skip48
-\ar@cellbox=\box28
+\col@sep=\dimen158
+\ar@mcellbox=\box45
+\extrarowheight=\dimen159
+\NC@list=\toks17
+\extratabsurround=\skip53
+\backup@length=\skip54
+\ar@cellbox=\box46
 )
 (/usr/share/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
 
 (/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
-\everycr=\toks17
-\minrowclearance=\skip49
+\everycr=\toks18
+\minrowclearance=\skip55
 )
 (/usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
 (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2019-10-28 L3 programming layer (loader) 
+Package: expl3 2020-06-03 L3 programming layer (loader) 
 
-(/usr/share/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-Package: expl3 2019-10-28 L3 programming layer (code)
-\c_max_int=\count106
-\l_tmpa_int=\count107
-\l_tmpb_int=\count108
-\g_tmpa_int=\count109
-\g_tmpb_int=\count110
-\l__seq_internal_a_int=\count111
-\l__seq_internal_b_int=\count112
-\g__kernel_prg_map_int=\count113
-\c__ior_term_noprompt_ior=\count114
-\c_log_iow=\count115
-\l_iow_line_count_int=\count116
-\l__iow_line_target_int=\count117
-\l__iow_one_indent_int=\count118
-\l__iow_indent_int=\count119
-\c_zero_dim=\dimen128
-\c_max_dim=\dimen129
-\l_tmpa_dim=\dimen130
-\l_tmpb_dim=\dimen131
-\g_tmpa_dim=\dimen132
-\g_tmpb_dim=\dimen133
-\c_zero_skip=\skip50
-\c_max_skip=\skip51
-\l_tmpa_skip=\skip52
-\l_tmpb_skip=\skip53
-\g_tmpa_skip=\skip54
-\g_tmpb_skip=\skip55
-\c_zero_muskip=\muskip11
-\c_max_muskip=\muskip12
-\l_tmpa_muskip=\muskip13
-\l_tmpb_muskip=\muskip14
-\g_tmpa_muskip=\muskip15
-\g_tmpb_muskip=\muskip16
-\l_keys_choice_int=\count120
-\l__intarray_loop_int=\count121
-\c__intarray_sp_dim=\dimen134
-\g__intarray_font_int=\count122
-\c__fp_leading_shift_int=\count123
-\c__fp_middle_shift_int=\count124
-\c__fp_trailing_shift_int=\count125
-\c__fp_big_leading_shift_int=\count126
-\c__fp_big_middle_shift_int=\count127
-\c__fp_big_trailing_shift_int=\count128
-\c__fp_Bigg_leading_shift_int=\count129
-\c__fp_Bigg_middle_shift_int=\count130
-\c__fp_Bigg_trailing_shift_int=\count131
-\c__kernel_randint_max_int=\count132
-\g__fp_array_int=\count133
-\l__fp_array_loop_int=\count134
-\l__sort_length_int=\count135
-\l__sort_min_int=\count136
-\l__sort_top_int=\count137
-\l__sort_max_int=\count138
-\l__sort_true_max_int=\count139
-\l__sort_block_int=\count140
-\l__sort_begin_int=\count141
-\l__sort_end_int=\count142
-\l__sort_A_int=\count143
-\l__sort_B_int=\count144
-\l__sort_C_int=\count145
-\l__str_internal_int=\count146
-\c__str_replacement_char_int=\count147
-\l__tl_analysis_normal_int=\count148
-\l__tl_analysis_index_int=\count149
-\l__tl_analysis_nesting_int=\count150
-\l__tl_analysis_type_int=\count151
-\l__regex_internal_a_int=\count152
-\l__regex_internal_b_int=\count153
-\l__regex_internal_c_int=\count154
-\l__regex_balance_int=\count155
-\l__regex_group_level_int=\count156
-\l__regex_mode_int=\count157
-\c__regex_cs_in_class_mode_int=\count158
-\c__regex_cs_mode_int=\count159
-\l__regex_catcodes_int=\count160
-\l__regex_default_catcodes_int=\count161
-\c__regex_catcode_D_int=\count162
-\c__regex_catcode_S_int=\count163
-\c__regex_catcode_L_int=\count164
-\c__regex_catcode_O_int=\count165
-\c__regex_catcode_A_int=\count166
-\c__regex_all_catcodes_int=\count167
-\l__regex_show_lines_int=\count168
-\l__regex_min_state_int=\count169
-\l__regex_max_state_int=\count170
-\l__regex_left_state_int=\count171
-\l__regex_right_state_int=\count172
-\l__regex_capturing_group_int=\count173
-\l__regex_min_pos_int=\count174
-\l__regex_max_pos_int=\count175
-\l__regex_curr_pos_int=\count176
-\l__regex_start_pos_int=\count177
-\l__regex_success_pos_int=\count178
-\l__regex_curr_char_int=\count179
-\l__regex_curr_catcode_int=\count180
-\l__regex_last_char_int=\count181
-\l__regex_case_changed_char_int=\count182
-\l__regex_curr_state_int=\count183
-\l__regex_step_int=\count184
-\l__regex_min_active_int=\count185
-\l__regex_max_active_int=\count186
-\l__regex_replacement_csnames_int=\count187
-\l__regex_match_count_int=\count188
-\l__regex_min_submatch_int=\count189
-\l__regex_submatch_int=\count190
-\l__regex_zeroth_submatch_int=\count191
-\g__regex_trace_regex_int=\count192
-\c_empty_box=\box29
-\l_tmpa_box=\box30
-\l_tmpb_box=\box31
-\g_tmpa_box=\box32
-\g_tmpb_box=\box33
-\l__box_top_dim=\dimen135
-\l__box_bottom_dim=\dimen136
-\l__box_left_dim=\dimen137
-\l__box_right_dim=\dimen138
-\l__box_top_new_dim=\dimen139
-\l__box_bottom_new_dim=\dimen140
-\l__box_left_new_dim=\dimen141
-\l__box_right_new_dim=\dimen142
-\l__box_internal_box=\box34
-\l__coffin_internal_box=\box35
-\l__coffin_internal_dim=\dimen143
-\l__coffin_offset_x_dim=\dimen144
-\l__coffin_offset_y_dim=\dimen145
-\l__coffin_x_dim=\dimen146
-\l__coffin_y_dim=\dimen147
-\l__coffin_x_prime_dim=\dimen148
-\l__coffin_y_prime_dim=\dimen149
-\c_empty_coffin=\box36
-\l__coffin_aligned_coffin=\box37
-\l__coffin_aligned_internal_coffin=\box38
-\l_tmpa_coffin=\box39
-\l_tmpb_coffin=\box40
-\g_tmpa_coffin=\box41
-\g_tmpb_coffin=\box42
-\l__coffin_bounding_shift_dim=\dimen150
-\l__coffin_left_corner_dim=\dimen151
-\l__coffin_right_corner_dim=\dimen152
-\l__coffin_bottom_corner_dim=\dimen153
-\l__coffin_top_corner_dim=\dimen154
-\l__coffin_scaled_total_height_dim=\dimen155
-\l__coffin_scaled_width_dim=\dimen156
-\c__coffin_empty_coffin=\box43
-\l__coffin_display_coffin=\box44
-\l__coffin_display_coord_coffin=\box45
-\l__coffin_display_pole_coffin=\box46
-\l__coffin_display_offset_dim=\dimen157
-\l__coffin_display_x_dim=\dimen158
-\l__coffin_display_y_dim=\dimen159
-\g__char_data_ior=\read1
-
-(/usr/share/texmf-dist/tex/latex/l3kernel/l3deprecation.def
-File: l3deprecation.def 2019-04-06 v L3 Deprecated functions
-))
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
-File: l3backend-pdfmode.def 2019-04-06 L3 backend support: PDF mode
+File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count193
 \l__pdf_internal_box=\box47
 ))
 (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2019-10-11 L3 Experimental document command parser
+Package: xparse 2020-05-15 L3 Experimental document command parser
+
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex
 \l__xparse_current_arg_int=\count194
 \g__xparse_grabber_int=\count195
 \l__xparse_m_args_int=\count196
 \l__xparse_v_nesting_int=\count197
-)
+))
 Package: lipsum 2019/01/02 v2.2 150 paragraphs of Lorem Ipsum dummy text
 
 (/usr/share/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex
@@ -439,21 +295,21 @@ sages
 \sl@StateNumber=\count199
 \sl@MessageCount=\count266
 \sl@Casualties=\count267
-\sl@Filter=\toks18
-\sl@Message=\toks19
-\sl@UnexpandedMessage=\toks20
-\sl@Mess@ge=\toks21
+\sl@Filter=\toks19
+\sl@Message=\toks20
+\sl@UnexpandedMessage=\toks21
+\sl@Mess@ge=\toks22
 \sl@WarningCount=\count268
 \sl@WarningNumber=\count269
 \sl@WarningCasualties=\count270
-\sl@TempBOW=\toks22
-\sl@BankOfWarnings=\toks23
+\sl@TempBOW=\toks23
+\sl@BankOfWarnings=\toks24
 LaTeX Info: Redefining \GenericWarning on input line 433.
 \sl@ErrorCount=\count271
 \sl@ErrorNumber=\count272
 \sl@ErrorCasualties=\count273
-\sl@TempBOE=\toks24
-\sl@BankOfErrors=\toks25
+\sl@TempBOE=\toks25
+\sl@BankOfErrors=\toks26
 LaTeX Info: Redefining \GenericError on input line 601.
 )
 (/usr/share/texmf-dist/tex/latex/subfig/subfig.sty
@@ -486,9 +342,7 @@ Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count281
 )
 (/usr/share/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2019/10/22
-
-Style option: `fancyvrb' v3.3 <2019/10/22> (tvz)
+Package: fancyvrb 2020/05/03 v3.6 verbatim text (tvz,hv)
 \FV@CodeLineNo=\count282
 \FV@InFile=\read2
 \FV@TabBox=\box48
@@ -501,168 +355,12 @@ Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 
 (/usr/share/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
-Package textcomp Info: Sub-encoding information:
-(textcomp)               5 = only ISO-Adobe without \textcurrency
-(textcomp)               4 = 5 + \texteuro
-(textcomp)               3 = 4 + \textohm
-(textcomp)               2 = 3 + \textestimated + \textcurrency
-(textcomp)               1 = TS1 - \textcircled - \t
-(textcomp)               0 = TS1 (full)
-(textcomp)             Font families with sub-encoding setting implement
-(textcomp)             only a restricted character set as indicated.
-(textcomp)             Family '?' is the default used for unknown fonts.
-(textcomp)             See the documentation for details.
-Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
-
-(/usr/share/texmf-dist/tex/latex/base/ts1enc.def
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encoding TS1
-
-(/usr/share/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2019/07/11 v1.2j UTF-8 support for inputenc
-   defining Unicode char U+00A2 (decimal 162)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00A4 (decimal 164)
-   defining Unicode char U+00A5 (decimal 165)
-   defining Unicode char U+00A6 (decimal 166)
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AC (decimal 172)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B0 (decimal 176)
-   defining Unicode char U+00B1 (decimal 177)
-   defining Unicode char U+00B2 (decimal 178)
-   defining Unicode char U+00B3 (decimal 179)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B5 (decimal 181)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00B9 (decimal 185)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+00BC (decimal 188)
-   defining Unicode char U+00BD (decimal 189)
-   defining Unicode char U+00BE (decimal 190)
-   defining Unicode char U+00D7 (decimal 215)
-   defining Unicode char U+00F7 (decimal 247)
-   defining Unicode char U+0192 (decimal 402)
-   defining Unicode char U+02C7 (decimal 711)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+02DD (decimal 733)
-   defining Unicode char U+0E3F (decimal 3647)
-   defining Unicode char U+2016 (decimal 8214)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+203B (decimal 8251)
-   defining Unicode char U+203D (decimal 8253)
-   defining Unicode char U+2044 (decimal 8260)
-   defining Unicode char U+204E (decimal 8270)
-   defining Unicode char U+2052 (decimal 8274)
-   defining Unicode char U+20A1 (decimal 8353)
-   defining Unicode char U+20A4 (decimal 8356)
-   defining Unicode char U+20A6 (decimal 8358)
-   defining Unicode char U+20A9 (decimal 8361)
-   defining Unicode char U+20AB (decimal 8363)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+20B1 (decimal 8369)
-   defining Unicode char U+2103 (decimal 8451)
-   defining Unicode char U+2116 (decimal 8470)
-   defining Unicode char U+2117 (decimal 8471)
-   defining Unicode char U+211E (decimal 8478)
-   defining Unicode char U+2120 (decimal 8480)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+2127 (decimal 8487)
-   defining Unicode char U+212E (decimal 8494)
-   defining Unicode char U+2190 (decimal 8592)
-   defining Unicode char U+2191 (decimal 8593)
-   defining Unicode char U+2192 (decimal 8594)
-   defining Unicode char U+2193 (decimal 8595)
-   defining Unicode char U+2329 (decimal 9001)
-   defining Unicode char U+232A (decimal 9002)
-   defining Unicode char U+2422 (decimal 9250)
-   defining Unicode char U+25E6 (decimal 9702)
-   defining Unicode char U+25EF (decimal 9711)
-   defining Unicode char U+266A (decimal 9834)
-   defining Unicode char U+27E8 (decimal 10216)
-   defining Unicode char U+27E9 (decimal 10217)
-   defining Unicode char U+FEFF (decimal 65279)
-))
-LaTeX Info: Redefining \oldstylenums on input line 334.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
-
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
-Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
-Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
-Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
-Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
-Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
-Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
-Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
-Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
-Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
-Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
-Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
-Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
-Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
-Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
-Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ))
 (/usr/share/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \linenopenalty=\count285
-\output=\toks26
+\output=\toks27
 \linenoprevgraf=\count286
 \linenumbersep=\dimen161
 \linenumberwidth=\dimen162
@@ -701,14 +399,17 @@ LaTeX Info: Redefining \\ on input line 3056.
 \FV@LineWidth=\dimen171
 )
 (/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
-Package: shellesc 2016/06/07 v0.02b unified shell escape interface for LaTeX
-Package shellesc Info: Unrestricted shell escape enabled on input line 70.
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 75.
 )
 (/usr/share/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
 
-(/usr/share/texmf-dist/tex/generic/oberdiek/catchfile.sty
-Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+(/usr/share/texmf-dist/tex/generic/catchfile/catchfile.sty
+Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
+)
+(/usr/share/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )
 runsystem(uname -s > "thesis.w18")...executed.
 
@@ -734,9 +435,9 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 (/usr/share/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count305
-\float@exts=\toks27
+\float@exts=\toks28
 \float@box=\box54
-\@float@everytoks=\toks28
+\@float@everytoks=\toks29
 \@floatcapt=\box55
 )
 \minted@appexistsfile=\read3
@@ -744,30 +445,30 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \minted@code=\write4
 \c@minted@FancyVerbLineTemp=\count306
 \c@minted@pygmentizecounter=\count307
-\@float@every@listing=\toks29
+\@float@every@listing=\toks30
 \c@listing=\count308
 )
 runsystem(mkdir -p _minted-thesis)...executed.
 
 
 (/usr/share/texmf-dist/tex/latex/glossaries/base/glossaries.sty
-Package: glossaries 2019/09/28 v4.43 (NLCT)
+Package: glossaries 2020/03/19 v4.46 (NLCT)
 
 (/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks30
-\XKV@tempa@toks=\toks31
+\XKV@toks=\toks31
+\XKV@tempa@toks=\toks32
 )
 \XKV@depth=\count309
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
 Package: mfirstuc 2017/11/14 v2.06 (NLCT)
-\@glsmfirst=\toks32
-\@glsmrest=\toks33
+\@glsmfirst=\toks33
+\@glsmrest=\toks34
 )
 (/usr/share/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2019/09/14 v1.00 Text only upper/lower case changing (DPC)
@@ -779,7 +480,7 @@ Package: xfor 2009/02/05 v1.05 (NLCT)
 Package: datatool-base 2019/09/27 v2.32 (NLCT)
 
 (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2019/04/01 v2.17c AMS math features
+Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip63
 
 For additional information on amsmath, use the `?' option.
@@ -788,7 +489,7 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks34
+\@emptytoks=\toks35
 \ex@=\dimen176
 ))
 (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -818,23 +519,23 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 \dotsspace@=\muskip17
 \c@parentequation=\count317
 \dspbrk@lvl=\count318
-\tag@help=\toks35
+\tag@help=\toks36
 \row@=\count319
 \column@=\count320
 \maxfields@=\count321
-\andhelp@=\toks36
+\andhelp@=\toks37
 \eqnshift@=\dimen179
 \alignsep@=\dimen180
 \tagshift@=\dimen181
 \tagwidth@=\dimen182
 \totwidth@=\dimen183
 \lineht@=\dimen184
-\@envbody=\toks37
+\@envbody=\toks38
 \multlinegap=\skip64
 \multlinetaggap=\skip65
-\mathdisplay@stack=\toks38
-LaTeX Info: Redefining \[ on input line 2855.
-LaTeX Info: Redefining \] on input line 2856.
+\mathdisplay@stack=\toks39
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
 )
 (/usr/share/texmf-dist/tex/latex/substr/substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
@@ -891,7 +592,7 @@ Package: fp-upn 1996/10/21
 (/usr/share/texmf-dist/tex/latex/fp/fp-eval.sty
 Package: fp-eval 1995/04/03
 )))
-\@dtl@toks=\toks39
+\@dtl@toks=\toks40
 \@dtl@tmpcount=\count334
 \dtl@tmplength=\skip66
 \dtl@sortresult=\count335
@@ -902,27 +603,27 @@ Package: fp-eval 1995/04/03
 \@dtl@foreach@level=\count340
 )
 (/usr/share/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-307.sty
-Package: glossaries-compatible-307 2019/09/28 v4.43 (NLCT)
+Package: glossaries-compatible-307 2020/03/19 v4.46 (NLCT)
 )
 \gls@level=\count341
-\@gls@tmpb=\toks40
+\@gls@tmpb=\toks41
 \gls@tmplen=\skip67
-\glskeylisttok=\toks41
-\glslabeltok=\toks42
-\glsshorttok=\toks43
-\glslongtok=\toks44
+\glskeylisttok=\toks42
+\glslabeltok=\toks43
+\glsshorttok=\toks44
+\glslongtok=\toks45
 (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty
-Package: glossary-hypernav 2019/09/28 v4.43 (NLCT)
+Package: glossary-hypernav 2020/03/19 v4.46 (NLCT)
 )
 (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
-Package: glossary-list 2019/09/28 v4.43 (NLCT)
+Package: glossary-list 2020/03/19 v4.46 (NLCT)
 \glslistdottedwidth=\skip68
 )
 (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
-Package: glossary-long 2019/09/28 v4.43 (NLCT)
+Package: glossary-long 2020/03/19 v4.46 (NLCT)
 
 (/usr/share/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2019/02/06 v4.12 Multi-page Table package (DPC)
+Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
 \LTleft=\skip69
 \LTright=\skip70
 \LTpre=\skip71
@@ -937,16 +638,16 @@ Package: longtable 2019/02/06 v4.12 Multi-page Table package (DPC)
 \LT@rows=\count344
 \c@LT@tables=\count345
 \c@LT@chunks=\count346
-\LT@p@ftn=\toks45
+\LT@p@ftn=\toks46
 )
 \glsdescwidth=\skip73
 \glspagelistwidth=\skip74
 )
 (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
-Package: glossary-super 2019/09/28 v4.43 (NLCT)
+Package: glossary-super 2020/03/19 v4.46 (NLCT)
 
 (/usr/share/texmf-dist/tex/latex/supertabular/supertabular.sty
-Package: supertabular 2004/02/20 v4.1e the supertabular environment
+Package: supertabular 2020/02/02 v4.1g the supertabular environment
 \c@tracingst=\count347
 \ST@wd=\dimen186
 \ST@rightskip=\skip75
@@ -958,42 +659,41 @@ Package: supertabular 2004/02/20 v4.1e the supertabular environment
 \ST@pagesofar=\dimen190
 \ST@pboxht=\dimen191
 \ST@lineht=\dimen192
-\ST@stretchht=\dimen193
-\ST@prevht=\dimen194
-\ST@toadd=\dimen195
-\ST@dimen=\dimen196
+\ST@prevht=\dimen193
+\ST@toadd=\dimen194
+\ST@dimen=\dimen195
 \ST@pbox=\box63
 ))
 (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
-Package: glossary-tree 2019/09/28 v4.43 (NLCT)
+Package: glossary-tree 2020/03/19 v4.46 (NLCT)
 \glstreeindent=\skip78
 ))
 \glswrite=\write5
 \glo@main@file=\write6
-\openout6 = `thesis.glo'.
-
 Package glossaries Info: Writing glossary file thesis.glo on input line 20.
 
 (./header.tex (/usr/share/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2019/10/15 3.35 The Babel package
-
-(/usr/share/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2019/10/15 3.35 Babel switching mechanism
-)
-(/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
-Language: english 2017/06/06 v3.3r English support from the babel system
+Package: babel 2020/05/13 3.44 The Babel package
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2019/10/15 3.35 Babel common definitions
+File: babel.def 2020/05/13 3.44 Babel common definitions
 \babel@savecnt=\count348
-\U@D=\dimen197
+\U@D=\dimen196
+\l@babelnohyphens=\language86
 
 (/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count349
+\bbl@readstream=\read4
 )
-\l@canadian = a dialect from \language\l@american 
-\l@australian = a dialect from \language\l@british 
-\l@newzealand = a dialect from \language\l@british 
+\bbl@dirlevel=\count349
+
+(/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: \l@canadian = using hyphenrules for english
+(babel)             (\language0) on input line 102.
+Package babel Info: \l@australian = using hyphenrules for ukenglish
+(babel)             (\language21) on input line 105.
+Package babel Info: \l@newzealand = using hyphenrules for ukenglish
+(babel)             (\language21) on input line 108.
 )
 (/usr/share/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2018/12/08 v2.11 German support for babel (post-1996 orthogra
@@ -1005,16 +705,17 @@ aphy)
 Package babel Info: Making " an active character on input line 121.
 )))
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 11
+2.
 
-(/usr/share/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+(/usr/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ))
 (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
-\inpenc@prehook=\toks46
-\inpenc@posthook=\toks47
+\inpenc@prehook=\toks47
+\inpenc@posthook=\toks48
 )
 (/usr/share/texmf-dist/tex/latex/lm/lmodern.sty
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
@@ -1076,17 +777,17 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ))
 (/usr/share/texmf-dist/tex/latex/csquotes/csquotes.sty
-Package: csquotes 2019/05/10 v5.2e context-sensitive quotations (JAW)
+Package: csquotes 2019-12-06 v5.2j context-sensitive quotations (JAW)
 \csq@reset=\count350
 \csq@gtype=\count351
 \csq@glevel=\count352
 \csq@qlevel=\count353
 \csq@maxlvl=\count354
 \csq@tshold=\count355
-\csq@ltx@everypar=\toks48
+\csq@ltx@everypar=\toks49
 
 (/usr/share/texmf-dist/tex/latex/csquotes/csquotes.def
-File: csquotes.def 2019/05/10 v5.2e csquotes generic definitions (JAW)
+File: csquotes.def 2019-12-06 v5.2j csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
@@ -1095,13 +796,13 @@ Package csquotes Info: ... configuration file loaded successfully.
 File: csquotes.cfg 
 ))
 (/usr/share/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2019/10/10 v2.7t A comprehensive (SI) units package
+Package: siunitx 2020/02/25 v2.8b A comprehensive (SI) units package
 
 (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2019-10-11 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2020-05-15 LaTeX2e option processing using LaTeX3 keys
 )
 \l__siunitx_tmp_box=\box64
-\l__siunitx_tmp_dim=\dimen198
+\l__siunitx_tmp_dim=\dimen197
 \l__siunitx_tmp_int=\count356
 \l__siunitx_number_mantissa_length_int=\count357
 \l__siunitx_number_uncert_length_int=\count358
@@ -1114,8 +815,8 @@ Package: l3keys2e 2019-10-11 LaTeX2e option processing using LaTeX3 keys
 \l__siunitx_group_min_int=\count365
 \l__siunitx_angle_marker_box=\box65
 \l__siunitx_angle_unit_box=\box66
-\l__siunitx_angle_marker_dim=\dimen199
-\l__siunitx_angle_unit_dim=\dimen256
+\l__siunitx_angle_marker_dim=\dimen198
+\l__siunitx_angle_unit_dim=\dimen199
 \l__siunitx_unit_int=\count366
 \l__siunitx_unit_denominator_int=\count367
 \l__siunitx_unit_numerator_int=\count368
@@ -1125,15 +826,15 @@ Package: l3keys2e 2019-10-11 LaTeX2e option processing using LaTeX3 keys
 \l__siunitx_number_product_int=\count372
 \c__siunitx_one_fill_skip=\skip79
 \l__siunitx_table_unit_align_skip=\skip80
-\l__siunitx_table_exponent_dim=\dimen257
-\l__siunitx_table_integer_dim=\dimen258
-\l__siunitx_table_mantissa_dim=\dimen259
-\l__siunitx_table_marker_dim=\dimen260
-\l__siunitx_table_result_dim=\dimen261
-\l__siunitx_table_uncert_dim=\dimen262
-\l__siunitx_table_fill_pre_dim=\dimen263
-\l__siunitx_table_fill_post_dim=\dimen264
-\l__siunitx_table_fill_mid_dim=\dimen265
+\l__siunitx_table_exponent_dim=\dimen256
+\l__siunitx_table_integer_dim=\dimen257
+\l__siunitx_table_mantissa_dim=\dimen258
+\l__siunitx_table_marker_dim=\dimen259
+\l__siunitx_table_result_dim=\dimen260
+\l__siunitx_table_uncert_dim=\dimen261
+\l__siunitx_table_fill_pre_dim=\dimen262
+\l__siunitx_table_fill_post_dim=\dimen263
+\l__siunitx_table_fill_mid_dim=\dimen264
 \l__siunitx_table_pre_box=\box67
 \l__siunitx_table_post_box=\box68
 \l__siunitx_table_mantissa_box=\box69
@@ -1147,32 +848,32 @@ Package: translator 2019-05-31 v1.12a Easy translation of strings in LaTeX
 (/usr/share/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count373
 \lst@gtempboxa=\box71
-\lst@token=\toks49
+\lst@token=\toks50
 \lst@length=\count374
-\lst@currlwidth=\dimen266
+\lst@currlwidth=\dimen265
 \lst@column=\count375
 \lst@pos=\count376
-\lst@lostspace=\dimen267
-\lst@width=\dimen268
+\lst@lostspace=\dimen266
+\lst@width=\dimen267
 \lst@newlines=\count377
 \lst@lineno=\count378
-\lst@maxwidth=\dimen269
+\lst@maxwidth=\dimen268
 
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 \c@lstnumber=\count379
 \lst@skipnumbers=\count380
 \lst@framebox=\box72
 )
 (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2019/09/10 1.8c listings configuration
+File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
-Package: listings 2019/09/10 1.8c (Carsten Heinz)
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
 (/usr/share/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
-\FN@temptoken=\toks50
-\footnotemargin=\dimen270
+\FN@temptoken=\toks51
+\footnotemargin=\dimen269
 \c@pp@next@reset=\count381
 Package footmisc Info: Declaring symbol style bringhurst on input line 855.
 Package footmisc Info: Declaring symbol style chicago on input line 863.
@@ -1186,13 +887,13 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 (/usr/share/texmf-dist/tex/latex/mdwtools/footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box73
-\fn@width=\dimen271
+\fn@width=\dimen270
 )
 (/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks51
-\verbatim@line=\toks52
-\verbatim@in@stream=\read4
+Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks52
+\verbatim@line=\toks53
+\verbatim@in@stream=\read5
 )
 (/usr/share/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2019/01/24 v1.1.2 Todonotes source and documentation.
@@ -1202,9 +903,9 @@ Package: todonotes 2018/11/22
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks53
-\pgfutil@tempdima=\dimen272
-\pgfutil@tempdimb=\dimen273
+\pgfutil@everybye=\toks54
+\pgfutil@tempdima=\dimen271
+\pgfutil@tempdimb=\dimen272
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
@@ -1215,75 +916,75 @@ Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
 ))
-Package: pgf 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks54
-\pgfkeys@temptoks=\toks55
+\pgfkeys@pathtoks=\toks55
+\pgfkeys@temptoks=\toks56
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks56
+\pgfkeys@tmptoks=\toks57
 ))
-\pgf@x=\dimen274
-\pgf@y=\dimen275
-\pgf@xa=\dimen276
-\pgf@ya=\dimen277
-\pgf@xb=\dimen278
-\pgf@yb=\dimen279
-\pgf@xc=\dimen280
-\pgf@yc=\dimen281
-\pgf@xd=\dimen282
-\pgf@yd=\dimen283
+\pgf@x=\dimen273
+\pgf@y=\dimen274
+\pgf@xa=\dimen275
+\pgf@ya=\dimen276
+\pgf@xb=\dimen277
+\pgf@yb=\dimen278
+\pgf@xc=\dimen279
+\pgf@yc=\dimen280
+\pgf@xd=\dimen281
+\pgf@yd=\dimen282
 \w@pgf@writea=\write7
-\r@pgf@reada=\read5
+\r@pgf@reada=\read6
 \c@pgf@counta=\count382
 \c@pgf@countb=\count383
 \c@pgf@countc=\count384
 \c@pgf@countd=\count385
-\t@pgf@toka=\toks57
-\t@pgf@tokb=\toks58
-\t@pgf@tokc=\toks59
+\t@pgf@toka=\toks58
+\t@pgf@tokb=\toks59
+\t@pgf@tokc=\toks60
 \pgf@sys@id@count=\count386
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2019/08/03 v3.1.4b (3.1.4b)
+File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfsys-pdftex.def 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfsyssoftpath@smallbuffer@items=\count387
 \pgfsyssoftpath@bigbuffer@items=\count388
 )
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen284
+\pgfmath@dimen=\dimen283
 \pgfmath@count=\count389
 \pgfmath@box=\box75
-\pgfmath@toks=\toks60
-\pgfmath@stack@operand=\toks61
-\pgfmath@stack@operation=\toks62
+\pgfmath@toks=\toks61
+\pgfmath@stack@operand=\toks62
+\pgfmath@stack@operation=\toks63
 )
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
@@ -1299,99 +1000,99 @@ x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
 \c@pgfmathroundto@lastzeros=\count390
 )) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@picminx=\dimen285
-\pgf@picmaxx=\dimen286
-\pgf@picminy=\dimen287
-\pgf@picmaxy=\dimen288
-\pgf@pathminx=\dimen289
-\pgf@pathmaxx=\dimen290
-\pgf@pathminy=\dimen291
-\pgf@pathmaxy=\dimen292
-\pgf@xx=\dimen293
-\pgf@xy=\dimen294
-\pgf@yx=\dimen295
-\pgf@yy=\dimen296
-\pgf@zx=\dimen297
-\pgf@zy=\dimen298
+File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@picminx=\dimen284
+\pgf@picmaxx=\dimen285
+\pgf@picminy=\dimen286
+\pgf@picmaxy=\dimen287
+\pgf@pathminx=\dimen288
+\pgf@pathmaxx=\dimen289
+\pgf@pathminy=\dimen290
+\pgf@pathmaxy=\dimen291
+\pgf@xx=\dimen292
+\pgf@xy=\dimen293
+\pgf@yx=\dimen294
+\pgf@yy=\dimen295
+\pgf@zx=\dimen296
+\pgf@zy=\dimen297
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@path@lastx=\dimen299
-\pgf@path@lasty=\dimen300
+File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@path@lastx=\dimen298
+\pgf@path@lasty=\dimen299
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@shorten@end@additional=\dimen301
-\pgf@shorten@start@additional=\dimen302
+File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@shorten@end@additional=\dimen300
+\pgf@shorten@start@additional=\dimen301
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfpic=\box76
 \pgf@hbox=\box77
 \pgf@layerbox@main=\box78
 \pgf@picture@serial@count=\count391
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgflinewidth=\dimen303
+File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgflinewidth=\dimen302
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
 ex
-File: pgfcoretransformations.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@pt@x=\dimen304
-\pgf@pt@y=\dimen305
-\pgf@pt@temp=\dimen306
+File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@pt@x=\dimen303
+\pgf@pt@y=\dimen304
+\pgf@pt@temp=\dimen305
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.te
 x
-File: pgfcorepathprocessing.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgfarrowsep=\dimen307
+File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfarrowsep=\dimen306
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@max=\dimen308
+File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@max=\dimen307
 \pgf@sys@shading@range@num=\count392
 \pgf@shadingcount=\count393
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfexternal@startupbox=\box79
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfmoduleshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfnodeparttextbox=\box80
 )
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfmoduleplot.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2019/08/03 v3.1.4b (3.1.4b)
-\pgf@nodesepstart=\dimen309
-\pgf@nodesepend=\dimen310
+Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@nodesepstart=\dimen308
+\pgf@nodesepend=\dimen309
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
@@ -1399,31 +1100,31 @@ Package: pgfcomp-version-1-18 2019/08/03 v3.1.4b (3.1.4b)
 (/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen311
-\pgffor@skip=\dimen312
-\pgffor@stack=\toks63
-\pgffor@toks=\toks64
+\pgffor@iter=\dimen310
+\pgffor@skip=\dimen311
+\pgffor@stack=\toks64
+\pgffor@toks=\toks65
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2019/08/03 v3.1.4b (3.1.4b)
+Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
 x
-File: pgflibraryplothandlers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@plot@mark@count=\count394
-\pgfplotmarksize=\dimen313
+\pgfplotmarksize=\dimen312
 )
-\tikz@lastx=\dimen314
-\tikz@lasty=\dimen315
-\tikz@lastxsaved=\dimen316
-\tikz@lastysaved=\dimen317
-\tikz@lastmovetox=\dimen318
-\tikz@lastmovetoy=\dimen319
-\tikzleveldistance=\dimen320
-\tikzsiblingdistance=\dimen321
+\tikz@lastx=\dimen313
+\tikz@lasty=\dimen314
+\tikz@lastxsaved=\dimen315
+\tikz@lastysaved=\dimen316
+\tikz@lastmovetox=\dimen317
+\tikz@lastmovetoy=\dimen318
+\tikzleveldistance=\dimen319
+\tikzsiblingdistance=\dimen320
 \tikz@figbox=\box81
 \tikz@figbox@bg=\box82
 \tikz@tempbox=\box83
@@ -1433,7 +1134,7 @@ File: pgflibraryplothandlers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 \tikznumberofcurrentchild=\count397
 \tikz@fig@count=\count398
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfmatrixcurrentrow=\count399
 \pgfmatrixcurrentcolumn=\count400
 \pgf@matrix@numberofcolumns=\count401
@@ -1442,22 +1143,22 @@ File: pgfmodulematrix.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 topaths.code.tex
-File: tikzlibrarytopaths.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 positioning.code.tex
-File: tikzlibrarypositioning.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: tikzlibrarypositioning.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 shadows.code.tex
-File: tikzlibraryshadows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: tikzlibraryshadows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 fadings.code.tex
-File: tikzlibraryfadings.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: tikzlibraryfadings.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
-File: pgflibraryfadings.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: pgflibraryfadings.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
 \c@@todonotes@numberoftodonotes=\count403
 ) (/usr/share/texmf-dist/tex/latex/standalone/standalone.sty
@@ -1469,7 +1170,7 @@ Package: currfile 2015/04/23 v0.7c Provides the file path elements of the curre
 nt input file
 
 (/usr/share/texmf-dist/tex/latex/filehook/filehook.sty
-Package: filehook 2019/10/03 v0.6 Hooks for input files
+Package: filehook 2020/02/03 v0.7 Hooks for input files
 )
 \c@currfiledepth=\count404
 )
@@ -1493,23 +1194,23 @@ Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
 Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
 \collectedbox=\box85
 )
-\tc@llx=\dimen322
-\tc@lly=\dimen323
-\tc@urx=\dimen324
-\tc@ury=\dimen325
+\tc@llx=\dimen321
+\tc@lly=\dimen322
+\tc@urx=\dimen323
+\tc@ury=\dimen324
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (/usr/share/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen326
-\adjbox@Height=\dimen327
-\adjbox@Depth=\dimen328
-\adjbox@Totalheight=\dimen329
-\adjbox@pwidth=\dimen330
-\adjbox@pheight=\dimen331
-\adjbox@pdepth=\dimen332
-\adjbox@ptotalheight=\dimen333
+\adjbox@Width=\dimen325
+\adjbox@Height=\dimen326
+\adjbox@Depth=\dimen327
+\adjbox@Totalheight=\dimen328
+\adjbox@pwidth=\dimen329
+\adjbox@pheight=\dimen330
+\adjbox@pdepth=\dimen331
+\adjbox@ptotalheight=\dimen332
 
 (/usr/share/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
@@ -1519,8 +1220,8 @@ Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box86
 \sift@deathcycles=\count406
-\@vwid@loff=\dimen334
-\@vwid@roff=\dimen335
+\@vwid@loff=\dimen333
+\@vwid@roff=\dimen334
 ))
 \gincltex@box=\box87
 )
@@ -1530,15 +1231,15 @@ Package: filemod-expmin 2011/09/19 v1.2 Get and compare file modification times
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 arrows.code.tex
-File: tikzlibraryarrows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: tikzlibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
-File: pgflibraryarrows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
-\arrowsize=\dimen336
+File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\arrowsize=\dimen335
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 calc.code.tex
-File: tikzlibrarycalc.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+File: tikzlibrarycalc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 intersections.code.tex
@@ -1547,41 +1248,41 @@ ex (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
 \pgf@intersect@solutions=\count407
 ))
 (/usr/share/texmf-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
-\TX@col@width=\dimen337
-\TX@old@table=\dimen338
-\TX@old@col=\dimen339
-\TX@target=\dimen340
-\TX@delta=\dimen341
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen336
+\TX@old@table=\dimen337
+\TX@old@col=\dimen338
+\TX@target=\dimen339
+\TX@delta=\dimen340
 \TX@cols=\count408
-\TX@ftn=\toks65
+\TX@ftn=\toks66
 )
 (/usr/share/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip83
 \multirow@cntb=\count409
 \multirow@dima=\skip84
-\bigstrutjot=\dimen342
+\bigstrutjot=\dimen341
 )
 (/usr/share/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2019/03/01 v1.8w multicolumn formatting (FMi)
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \c@tracingmulticols=\count410
 \mult@box=\box88
-\multicol@leftmargin=\dimen343
+\multicol@leftmargin=\dimen342
 \c@unbalance=\count411
 \c@collectmore=\count412
 \doublecol@number=\count413
 \multicoltolerance=\count414
 \multicolpretolerance=\count415
-\full@width=\dimen344
-\page@free=\dimen345
-\premulticols=\dimen346
-\postmulticols=\dimen347
+\full@width=\dimen343
+\page@free=\dimen344
+\premulticols=\dimen345
+\postmulticols=\dimen346
 \multicolsep=\skip85
 \multicolbaselineskip=\skip86
 \partial@page=\box89
 \last@line=\box90
-\maxbalancingoverflow=\dimen348
+\maxbalancingoverflow=\dimen347
 \mult@rightbox=\box91
 \mult@grightbox=\box92
 \mult@gfirstbox=\box93
@@ -1603,36 +1304,57 @@ Package: multicol 2019/03/01 v1.8w multicolumn formatting (FMi)
 \@tempa=\box109
 \@tempa=\box110
 \@tempa=\box111
+\@tempa=\box112
+\@tempa=\box113
+\@tempa=\box114
+\@tempa=\box115
+\@tempa=\box116
+\@tempa=\box117
+\@tempa=\box118
+\@tempa=\box119
+\@tempa=\box120
+\@tempa=\box121
+\@tempa=\box122
+\@tempa=\box123
+\@tempa=\box124
+\@tempa=\box125
+\@tempa=\box126
+\@tempa=\box127
+\@tempa=\box128
+\@tempa=\box129
+\@tempa=\box130
+\@tempa=\box131
 \c@minrows=\count416
 \c@columnbadness=\count417
 \c@finalcolumnbadness=\count418
-\last@try=\dimen349
-\multicolovershoot=\dimen350
-\multicolundershoot=\dimen351
-\mult@nat@firstbox=\box112
-\colbreak@box=\box113
+\last@try=\dimen348
+\multicolovershoot=\dimen349
+\multicolundershoot=\dimen350
+\mult@nat@firstbox=\box132
+\colbreak@box=\box133
 \mc@col@check@num=\count419
 )
 (/usr/share/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2019/09/21 v0.5n Insert pages of external PDF documents (AM)
+Package: pdfpages 2020/01/28 v0.5q Insert pages of external PDF documents (AM)
 
 (/usr/share/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
 )
-\AM@pagewidth=\dimen352
-\AM@pageheight=\dimen353
+\AM@pagewidth=\dimen351
+\AM@pageheight=\dimen352
 
 (/usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def
-File: pppdftex.def 2019/09/21 v0.5n Pdfpages driver for pdfTeX (AM)
+File: pppdftex.def 2020/01/28 v0.5q Pdfpages driver for pdfTeX (AM)
 )
-\AM@pagebox=\box114
-\AM@global@opts=\toks66
-\AM@toc@title=\toks67
-\c@AM@survey=\count420
-\AM@templatesizebox=\box115
+\AM@pagebox=\box134
+\AM@global@opts=\toks67
+\AM@pagecnt=\count420
+\AM@toc@title=\toks68
+\c@AM@survey=\count421
+\AM@templatesizebox=\box135
 )
-(/usr/share/texmf-dist/tex/latex/oberdiek/pdflscape.sty
-Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+(/usr/share/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
 
 (/usr/share/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
@@ -1640,59 +1362,59 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2019/09/10 1.8c listings language file
+File: lstlang1.sty 2020/03/24 1.8d listings language file
 ))
 (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.sty
-Package: biblatex 2019/08/31 v3.13a programmable bibliographies (PK/MW)
+Package: biblatex 2019/12/01 v3.14 programmable bibliographies (PK/MW)
 
 (/usr/share/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count421
+\lrq@indent=\count422
 
 (/usr/share/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@tabx@nest=\count422
-\c@listtotal=\count423
-\c@listcount=\count424
-\c@liststart=\count425
-\c@liststop=\count426
-\c@citecount=\count427
-\c@citetotal=\count428
-\c@multicitecount=\count429
-\c@multicitetotal=\count430
-\c@instcount=\count431
-\c@maxnames=\count432
-\c@minnames=\count433
-\c@maxitems=\count434
-\c@minitems=\count435
-\c@citecounter=\count436
-\c@maxcitecounter=\count437
-\c@savedcitecounter=\count438
-\c@uniquelist=\count439
-\c@uniquename=\count440
-\c@refsection=\count441
-\c@refsegment=\count442
-\c@maxextratitle=\count443
-\c@maxextratitleyear=\count444
-\c@maxextraname=\count445
-\c@maxextradate=\count446
-\c@maxextraalpha=\count447
-\c@abbrvpenalty=\count448
-\c@highnamepenalty=\count449
-\c@lownamepenalty=\count450
-\c@maxparens=\count451
-\c@parenlevel=\count452
-\blx@tempcnta=\count453
-\blx@tempcntb=\count454
-\blx@tempcntc=\count455
-\blx@maxsection=\count456
-\blx@maxsegment@0=\count457
-\blx@notetype=\count458
-\blx@parenlevel@text=\count459
-\blx@parenlevel@foot=\count460
-\blx@sectionciteorder@0=\count461
-\blx@entrysetcounter=\count462
+\c@tabx@nest=\count423
+\c@listtotal=\count424
+\c@listcount=\count425
+\c@liststart=\count426
+\c@liststop=\count427
+\c@citecount=\count428
+\c@citetotal=\count429
+\c@multicitecount=\count430
+\c@multicitetotal=\count431
+\c@instcount=\count432
+\c@maxnames=\count433
+\c@minnames=\count434
+\c@maxitems=\count435
+\c@minitems=\count436
+\c@citecounter=\count437
+\c@maxcitecounter=\count438
+\c@savedcitecounter=\count439
+\c@uniquelist=\count440
+\c@uniquename=\count441
+\c@refsection=\count442
+\c@refsegment=\count443
+\c@maxextratitle=\count444
+\c@maxextratitleyear=\count445
+\c@maxextraname=\count446
+\c@maxextradate=\count447
+\c@maxextraalpha=\count448
+\c@abbrvpenalty=\count449
+\c@highnamepenalty=\count450
+\c@lownamepenalty=\count451
+\c@maxparens=\count452
+\c@parenlevel=\count453
+\blx@tempcnta=\count454
+\blx@tempcntb=\count455
+\blx@tempcntc=\count456
+\blx@maxsection=\count457
+\blx@maxsegment@0=\count458
+\blx@notetype=\count459
+\blx@parenlevel@text=\count460
+\blx@parenlevel@foot=\count461
+\blx@sectionciteorder@0=\count462
+\blx@entrysetcounter=\count463
 \labelnumberwidth=\skip87
 \labelalphawidth=\skip88
 \biblabelsep=\skip89
@@ -1701,104 +1423,106 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \bibinitsep=\skip92
 \bibparsep=\skip93
 \bibhang=\skip94
-\blx@bcfin=\read6
+\blx@bcfin=\read7
 \blx@bcfout=\write8
-\blx@langwohyphens=\language85
-\c@mincomprange=\count463
-\c@maxcomprange=\count464
-\c@mincompwidth=\count465
+\blx@langwohyphens=\language87
+\c@mincomprange=\count464
+\c@maxcomprange=\count465
+\c@mincompwidth=\count466
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex/blx-dm.def
-File: blx-dm.def 2019/08/31 v3.13a biblatex localization (PK/MW)
+File: blx-dm.def 2019/12/01 v3.14 biblatex localization (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex citestyle data model...
 Package biblatex Info: ... file 'apa.dbx' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex-apa/apa.dbx
-File: apa.dbx 2019/09/07 v8.0 APA biblatex style data model
+File: apa.dbx 2020/05/30 v9.13 APA biblatex style data model
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count466
-\c@savedafterword=\count467
-\c@annotator=\count468
-\c@savedannotator=\count469
-\c@author=\count470
-\c@savedauthor=\count471
-\c@bookauthor=\count472
-\c@savedbookauthor=\count473
-\c@commentator=\count474
-\c@savedcommentator=\count475
-\c@editor=\count476
-\c@savededitor=\count477
-\c@editora=\count478
-\c@savededitora=\count479
-\c@editorb=\count480
-\c@savededitorb=\count481
-\c@editorc=\count482
-\c@savededitorc=\count483
-\c@foreword=\count484
-\c@savedforeword=\count485
-\c@holder=\count486
-\c@savedholder=\count487
-\c@introduction=\count488
-\c@savedintroduction=\count489
-\c@namea=\count490
-\c@savednamea=\count491
-\c@nameb=\count492
-\c@savednameb=\count493
-\c@namec=\count494
-\c@savednamec=\count495
-\c@translator=\count496
-\c@savedtranslator=\count497
-\c@shortauthor=\count498
-\c@savedshortauthor=\count499
-\c@shorteditor=\count500
-\c@savedshorteditor=\count501
-\c@with=\count502
-\c@savedwith=\count503
-\c@writer=\count504
-\c@savedwriter=\count505
-\c@producer=\count506
-\c@savedproducer=\count507
-\c@execproducer=\count508
-\c@savedexecproducer=\count509
-\c@director=\count510
-\c@saveddirector=\count511
-\c@labelname=\count512
-\c@savedlabelname=\count513
-\c@institution=\count514
-\c@savedinstitution=\count515
-\c@lista=\count516
-\c@savedlista=\count517
-\c@listb=\count518
-\c@savedlistb=\count519
-\c@listc=\count520
-\c@savedlistc=\count521
-\c@listd=\count522
-\c@savedlistd=\count523
-\c@liste=\count524
-\c@savedliste=\count525
-\c@listf=\count526
-\c@savedlistf=\count527
-\c@location=\count528
-\c@savedlocation=\count529
-\c@organization=\count530
-\c@savedorganization=\count531
-\c@origlocation=\count532
-\c@savedoriglocation=\count533
-\c@origpublisher=\count534
-\c@savedorigpublisher=\count535
-\c@publisher=\count536
-\c@savedpublisher=\count537
-\c@language=\count538
-\c@savedlanguage=\count539
-\c@origlanguage=\count540
-\c@savedoriglanguage=\count541
-\c@pageref=\count542
-\c@savedpageref=\count543
+\c@afterword=\count467
+\c@savedafterword=\count468
+\c@annotator=\count469
+\c@savedannotator=\count470
+\c@author=\count471
+\c@savedauthor=\count472
+\c@bookauthor=\count473
+\c@savedbookauthor=\count474
+\c@commentator=\count475
+\c@savedcommentator=\count476
+\c@editor=\count477
+\c@savededitor=\count478
+\c@editora=\count479
+\c@savededitora=\count480
+\c@editorb=\count481
+\c@savededitorb=\count482
+\c@editorc=\count483
+\c@savededitorc=\count484
+\c@foreword=\count485
+\c@savedforeword=\count486
+\c@holder=\count487
+\c@savedholder=\count488
+\c@introduction=\count489
+\c@savedintroduction=\count490
+\c@namea=\count491
+\c@savednamea=\count492
+\c@nameb=\count493
+\c@savednameb=\count494
+\c@namec=\count495
+\c@savednamec=\count496
+\c@translator=\count497
+\c@savedtranslator=\count498
+\c@shortauthor=\count499
+\c@savedshortauthor=\count500
+\c@shorteditor=\count501
+\c@savedshorteditor=\count502
+\c@groupauthor=\count503
+\c@savedgroupauthor=\count504
+\c@narrator=\count505
+\c@savednarrator=\count506
+\c@execproducer=\count507
+\c@savedexecproducer=\count508
+\c@execdirector=\count509
+\c@savedexecdirector=\count510
+\c@with=\count511
+\c@savedwith=\count512
+\c@labelname=\count513
+\c@savedlabelname=\count514
+\c@institution=\count515
+\c@savedinstitution=\count516
+\c@lista=\count517
+\c@savedlista=\count518
+\c@listb=\count519
+\c@savedlistb=\count520
+\c@listc=\count521
+\c@savedlistc=\count522
+\c@listd=\count523
+\c@savedlistd=\count524
+\c@liste=\count525
+\c@savedliste=\count526
+\c@listf=\count527
+\c@savedlistf=\count528
+\c@location=\count529
+\c@savedlocation=\count530
+\c@organization=\count531
+\c@savedorganization=\count532
+\c@origlocation=\count533
+\c@savedoriglocation=\count534
+\c@origpublisher=\count535
+\c@savedorigpublisher=\count536
+\c@publisher=\count537
+\c@savedpublisher=\count538
+\c@language=\count539
+\c@savedlanguage=\count540
+\c@origlanguage=\count541
+\c@savedoriglanguage=\count542
+\c@citation=\count543
+\c@savedcitation=\count544
+\c@pageref=\count545
+\c@savedpageref=\count546
 \shorthandwidth=\skip95
 \shortjournalwidth=\skip96
 \shortserieswidth=\skip97
@@ -1817,32 +1541,32 @@ Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex/blx-compat.def
-File: blx-compat.def 2019/08/31 v3.13a biblatex compatibility (PK/MW)
+File: blx-compat.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.def
-File: biblatex.def 2019/08/31 v3.13a biblatex compatibility (PK/MW)
-\c@textcitecount=\count544
-\c@textcitetotal=\count545
-\c@textcitemaxnames=\count546
-\c@biburlbigbreakpenalty=\count547
-\c@biburlbreakpenalty=\count548
-\c@biburlnumpenalty=\count549
-\c@biburlucpenalty=\count550
-\c@biburllcpenalty=\count551
+File: biblatex.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
+\c@textcitecount=\count547
+\c@textcitetotal=\count548
+\c@textcitemaxnames=\count549
+\c@biburlbigbreakpenalty=\count550
+\c@biburlbreakpenalty=\count551
+\c@biburlnumpenalty=\count552
+\c@biburlucpenalty=\count553
+\c@biburllcpenalty=\count554
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count552
+\c@smartand=\count555
 )
 Package biblatex Info: Trying to load natbib compatibility...
 Package biblatex Info: ... file 'blx-natbib.def' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex/blx-natbib.def
-File: blx-natbib.def 2019/08/31 v3.13a biblatex compatibility (PK/MW)
+File: blx-natbib.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
 Package biblatex Info: Delimiter 'nameyeardelim' in context '' already defined,
  overwriting.
 )
@@ -1850,34 +1574,41 @@ Package biblatex Info: Trying to load bibliography style 'apa'...
 Package biblatex Info: ... file 'apa.bbx' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex-apa/apa.bbx
-File: apa.bbx 2019/09/07 v8.0 APA biblatex references style
+File: apa.bbx 2020/05/30 v9.13 APA biblatex references style
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
-File: standard.bbx 2019/08/31 v3.13a biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count553
-\c@bbx:relatedtotal=\count554
+File: standard.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count556
+\c@bbx:relatedtotal=\count557
 ))
 Package biblatex Info: Trying to load citation style 'apa'...
 Package biblatex Info: ... file 'apa.cbx' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex-apa/apa.cbx
-File: apa.cbx 2019/09/07 v8.0 APA biblatex citation style
+File: apa.cbx 2020/05/30 v9.13 APA biblatex citation style
 Package biblatex Info: Delimiter 'nameyeardelim' in context '' already defined,
  overwriting.
 Package biblatex Info: Delimiter 'nameyeardelim' in context 'textcite' already 
 defined, overwriting.
 Package biblatex Info: Delimiter 'andothersdelim' in context '' already defined
 , overwriting.
-Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\fullcite'.
+Package biblatex Info: Redefining '\citeauthor'.
 Package biblatex Info: Redefining '\citeyear'.
 Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\parencites'.
 Package biblatex Info: Redefining '\footcite'.
-Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\smartcites'.
 Package biblatex Info: Redefining '\textcite'.
-Package biblatex Info: Redefining '\citeauthor'.
+Package biblatex Info: Redefining '\textcites'.
 )
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
@@ -1893,93 +1624,22 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'ngerman'.
-Package biblatex Info: Trying to load language 'ngerman' -> 'ngerman-apa'...
-Package biblatex Info: ... file 'ngerman-apa.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex-apa/ngerman-apa.lbx
-File: ngerman-apa.lbx 2019/09/07 v8.0 APA biblatex localisation
-Package biblatex Info: Trying to load language 'ngerman'...
-Package biblatex Info: ... file 'ngerman.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/lbx/ngerman.lbx
-File: ngerman.lbx 2019/08/31 v3.13a biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'german' -> 'german-apa'...
-Package biblatex Info: ... file 'german-apa.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex-apa/german-apa.lbx
-File: german-apa.lbx 2019/09/07 v8.0 APA biblatex localisation
-Package biblatex Info: Trying to load language 'german'...
-Package biblatex Info: ... file 'german.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/lbx/german.lbx
-File: german.lbx 2019/08/31 v3.13a biblatex localization (PK/MW)
-)))
-Package biblatex Info: Trying to load language 'ngerman'...
-Package biblatex Info: ... file 'ngerman.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/lbx/ngerman.lbx
-File: ngerman.lbx 2019/08/31 v3.13a biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'german' -> 'german-apa'...
-Package biblatex Info: ... file 'german-apa.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex-apa/german-apa.lbx
-File: german-apa.lbx 2019/09/07 v8.0 APA biblatex localisation
-Package biblatex Info: Trying to load language 'german'...
-Package biblatex Info: ... file 'german.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/lbx/german.lbx
-File: german.lbx 2019/08/31 v3.13a biblatex localization (PK/MW)
-))))
-Package biblatex Info: Trying to load language 'english' -> 'english-apa'...
-Package biblatex Info: ... file 'english-apa.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex-apa/english-apa.lbx
-File: english-apa.lbx 2019/09/07 v8.0 APA biblatex localisation
-Package biblatex Info: Trying to load language 'english'...
-Package biblatex Info: ... file 'english.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-File: english.lbx 2019/08/31 v3.13a biblatex localization (PK/MW)
-)
-Package biblatex Info: Trying to load language 'american' -> 'american-apa'...
-Package biblatex Info: ... file 'american-apa.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex-apa/american-apa.lbx
-File: american-apa.lbx 2019/09/07 v8.0 APA biblatex localisation
-Package biblatex Info: Trying to load language 'american'...
-Package biblatex Info: ... file 'american.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/lbx/american.lbx
-File: american.lbx 2019/08/31 v3.13a biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'english'...
-Package biblatex Info: ... file 'english.lbx' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-File: english.lbx 2019/08/31 v3.13a biblatex localization (PK/MW)
-)))) (./thesis.aux)
-\openout1 = `thesis.aux'.
-
+ (./thesis.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 4
-1.
-
-(/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 41
 .
@@ -2023,78 +1683,142 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count555
-\scratchdimen=\dimen354
-\scratchbox=\box116
-\nofMPsegments=\count556
-\nofMParguments=\count557
-\everyMPshowfont=\toks68
-\MPscratchCnt=\count558
-\MPscratchDim=\dimen355
-\MPnumerator=\count559
-\makeMPintoPDFobject=\count560
-\everyMPtoPDFconversion=\toks69
-) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+\scratchcounter=\count558
+\scratchdimen=\dimen353
+\scratchbox=\box136
+\nofMPsegments=\count559
+\nofMParguments=\count560
+\everyMPshowfont=\toks69
+\MPscratchCnt=\count561
+\MPscratchDim=\dimen354
+\MPnumerator=\count562
+\makeMPintoPDFobject=\count563
+\everyMPtoPDFconversion=\toks70
+) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 
-(/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+(/usr/share/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
+85.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+(grfext)             \AppendGraphicsExtensions on input line 504.
 
 (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box117
+\AtBeginShipoutBox=\box137
 Package hyperref Info: Link coloring OFF on input line 41.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
-(/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-\c@section@level=\count561
+(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count564
 )
 LaTeX Info: Redefining \ref on input line 41.
 LaTeX Info: Redefining \pageref on input line 41.
 LaTeX Info: Redefining \nameref on input line 41.
- (./thesis.out) (./thesis.out)
-\@outlinefile=\write9
-\openout9 = `thesis.out'.
 
+(./thesis.out) (./thesis.out)
+\@outlinefile=\write9
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
- (/usr/share/texmf-dist/tex/latex/caption/ltcaption.sty
+
+(/usr/share/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2018/08/26 v1.4a longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-
-(./thesis.glsdefs)
+ (./thesis.glsdefs)
 (/usr/share/texmf-dist/tex/latex/translator/translator-basic-dictionary-English
 .dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/share/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
-\c@lstlisting=\count562
+\c@lstlisting=\count565
 
 ABD: EveryShipout initializing macros
+Package biblatex Info: Trying to load language 'ngerman' -> 'ngerman-apa'...
+Package biblatex Info: ... file 'ngerman-apa.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex-apa/ngerman-apa.lbx
+File: ngerman-apa.lbx 2020/05/30 v9.13 APA biblatex localisation
+Package biblatex Info: Trying to load language 'ngerman'...
+Package biblatex Info: ... file 'ngerman.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/lbx/ngerman.lbx
+File: ngerman.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+Package biblatex Info: Trying to load language 'german' -> 'german-apa'...
+Package biblatex Info: ... file 'german-apa.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex-apa/german-apa.lbx
+File: german-apa.lbx 2020/05/30 v9.13 APA biblatex localisation
+Package biblatex Info: Trying to load language 'german'...
+Package biblatex Info: ... file 'german.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/lbx/german.lbx
+File: german.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+)))
+Package biblatex Info: Trying to load language 'ngerman'...
+Package biblatex Info: ... file 'ngerman.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/lbx/ngerman.lbx
+File: ngerman.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+Package biblatex Info: Trying to load language 'german' -> 'german-apa'...
+Package biblatex Info: ... file 'german-apa.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex-apa/german-apa.lbx
+File: german-apa.lbx 2020/05/30 v9.13 APA biblatex localisation
+Package biblatex Info: Trying to load language 'german'...
+Package biblatex Info: ... file 'german.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/lbx/german.lbx
+File: german.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+))))
+Package biblatex Info: Trying to load language 'english' -> 'english-apa'...
+Package biblatex Info: ... file 'english-apa.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex-apa/english-apa.lbx
+File: english-apa.lbx 2020/05/30 v9.13 APA biblatex localisation
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load language 'american' -> 'american-apa'...
+Package biblatex Info: ... file 'american-apa.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex-apa/american-apa.lbx
+File: american-apa.lbx 2020/05/30 v9.13 APA biblatex localisation
+Package biblatex Info: Trying to load language 'american'...
+Package biblatex Info: ... file 'american.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/lbx/american.lbx
+File: american.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+))))
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout8 = `thesis.bcf'.
-
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thesis.bbl' found.
  (./thesis.bbl)
@@ -2162,8 +1886,6 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <12> on input line 45.
  [1
 
-\openout5 = `thesis.ist'.
-
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fhnw_hw_e_10mm-eps-conve
 rted-to.pdf>]
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 7
@@ -2175,8 +1897,6 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 ] [2])
 \tf@toc=\write10
-\openout10 = `thesis.toc'.
-
  [3]
 [4
 
@@ -2213,52 +1933,43 @@ File: ./graphics/nopayment.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./graphics/nopayment.pdf  used on input line 187.
 (pdftex.def)             Requested size: 455.24408pt x 105.86177pt.
  [6 <./graphics/nopayment.pdf>]
-<./graphics/simple_channel.pdf, id=561, 462.52798pt x 346.89601pt>
+<./graphics/simple_channel.pdf, id=562, 425.52577pt x 69.3792pt>
 File: ./graphics/simple_channel.pdf Graphic file (type pdf)
 <use ./graphics/simple_channel.pdf>
-Package pdftex.def Info: ./graphics/simple_channel.pdf  used on input line 220.
+Package pdftex.def Info: ./graphics/simple_channel.pdf  used on input line 223.
 
-(pdftex.def)             Requested size: 409.71689pt x 307.30202pt.
- [7] [8 <./graphics/simple_channel.pdf>]
+(pdftex.def)             Requested size: 409.71689pt x 66.80545pt.
+ [7 <./graphics/simple_channel.pdf>]
+[8]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 244.
+(Font)              <9> on input line 247.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 244.
-
-[9] [10]
-<./graphics/rebalancing.pdf, id=617, 462.52798pt x 346.89601pt>
+(Font)              <5> on input line 247.
+ [9]
+<./graphics/rebalancing.pdf, id=615, 462.52798pt x 346.89601pt>
 File: ./graphics/rebalancing.pdf Graphic file (type pdf)
 <use ./graphics/rebalancing.pdf>
-Package pdftex.def Info: ./graphics/rebalancing.pdf  used on input line 257.
+Package pdftex.def Info: ./graphics/rebalancing.pdf  used on input line 260.
 (pdftex.def)             Requested size: 409.71689pt x 307.30202pt.
- [11 <./graphics/rebalancing.pdf>]
-<./graphics/rebalancing2.pdf, id=650, 462.52798pt x 346.89601pt>
+ [10 <./graphics/rebalancing.pdf>]
+<./graphics/rebalancing2.pdf, id=648, 462.52798pt x 346.89601pt>
 File: ./graphics/rebalancing2.pdf Graphic file (type pdf)
 <use ./graphics/rebalancing2.pdf>
-Package pdftex.def Info: ./graphics/rebalancing2.pdf  used on input line 270.
+Package pdftex.def Info: ./graphics/rebalancing2.pdf  used on input line 273.
 (pdftex.def)             Requested size: 409.71689pt x 307.30202pt.
- [12 <./graphics/rebalancing2.pdf>]
-[13] [14]
+ [11 <./graphics/rebalancing2.pdf>]
+[12] [13]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-20.
+23.
  (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/default-pyg-prefix.pygstyle)
 (./_minted-thesis/default.pygstyle)
 (./_minted-thesis/A19F65F69D5AE486A7ECD8DA66E69B830102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/124C883428AFCB134CB9A1E95656F1800102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout3 = `thesis.pyg'.
-
-
 (./_minted-thesis/6F5AC13FB8AFF4ED8E7A92D5C27D42D20102E502927AACB428B4F294F23E2
 359.pygtex
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
@@ -2267,84 +1978,53 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2.
 )
 Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 343.
-\openout4 = `thesis.pyg'.
-
+t line 346.
 
 (./_minted-thesis/935456895FE9371E06948BCE0C4136170102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/38B8BCA33CE59E8870BCBD3DCEE4791D0102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/22AD3683684868DD12218F732D2691150102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/AB7B56F0EAF8BC18887BB6D5DB18B7930102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/A0EF369520F60CB784F9E80F38A2E0140102E502927AACB428B4F294F23E2
 359.pygtex)
-<./graphics/state_diagram_network.pdf, id=718, 516.97137pt x 356.29109pt>
+<./graphics/state_diagram_network.pdf, id=716, 516.97137pt x 356.29109pt>
 File: ./graphics/state_diagram_network.pdf Graphic file (type pdf)
 <use ./graphics/state_diagram_network.pdf>
 Package pdftex.def Info: ./graphics/state_diagram_network.pdf  used on input li
-ne 355.
+ne 358.
 (pdftex.def)             Requested size: 409.71689pt x 282.36934pt.
- [15]
-\openout4 = `thesis.pyg'.
-
-
+ [14]
 (./_minted-thesis/1EE586F223554C8422A0A5027871CCF30102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/1BE10D0A7B981EED645F9D2ED7B9EE350102E502927AACB428B4F294F23E2
 359.pygtex)
-<./graphics/experiment_network_class.pdf, id=729, 441.56969pt x 155.6214pt>
+<./graphics/experiment_network_class.pdf, id=727, 441.56969pt x 155.6214pt>
 File: ./graphics/experiment_network_class.pdf Graphic file (type pdf)
 <use ./graphics/experiment_network_class.pdf>
 Package pdftex.def Info: ./graphics/experiment_network_class.pdf  used on input
- line 365.
+ line 368.
 (pdftex.def)             Requested size: 318.66946pt x 112.3085pt.
-\openout3 = `thesis.pyg'.
-
 
 (./_minted-thesis/7C73086C28896089D5CD7F9018EAA7779F014CDCC252D787938A66F94A2C2
-8CF.pygtex) [16 <./graphics/state_diagram_network.pdf> <./graphics/experiment_n
+8CF.pygtex) [15 <./graphics/state_diagram_network.pdf> <./graphics/experiment_n
 etwork_class.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 405--405
+Underfull \hbox (badness 10000) in paragraph at lines 408--408
 [][][]$\T1/lmr/m/n/9 https : / / github . com / TKone7 / clightning-[]plugins /
  tree / 3b47ab992413d7bf9747be1320654b3478c60d37 /
  []
 
 
 (./_minted-thesis/9563DB0EE35D26DB697C969117162EE6FC610389674DD962FC47E10EBAA34
-29E.pygtex) [17]
+29E.pygtex) [16]
 (./_minted-thesis/C2508D58DCF2E9C3D23328FAA05B97704F5CC42A0211E53E346D8C9DEA04E
-60E.pygtex) [18]
-\openout4 = `thesis.pyg'.
-
-
+60E.pygtex) [17]
 (./_minted-thesis/809B557DD5D9C7A7939DE3B02F7FC9300102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/528C6E21A5818233270BCDF4190EF1630102E502927AACB428B4F294F23E2
-359.pygtex) [19]
-\openout3 = `thesis.pyg'.
-
-
+359.pygtex) [18]
 (./_minted-thesis/1D6B3E89A4B1D2E3A18D2466CD6D934E0102E502927AACB428B4F294F23E2
 359.pygtex
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
@@ -2352,163 +2032,104 @@ LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line
  (/usr/share/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ))
-<./graphics/flow_rebal.pdf, id=807, 183.8067pt x 392.42609pt>
+<./graphics/flow_rebal.pdf, id=804, 183.8067pt x 392.42609pt>
 File: ./graphics/flow_rebal.pdf Graphic file (type pdf)
 <use ./graphics/flow_rebal.pdf>
-Package pdftex.def Info: ./graphics/flow_rebal.pdf  used on input line 482.
+Package pdftex.def Info: ./graphics/flow_rebal.pdf  used on input line 485.
 (pdftex.def)             Requested size: 318.66946pt x 680.44466pt.
- [20]
+ [19]
 Overfull \vbox (16.73325pt too high) has occurred while \output is active []
 
 
-[21 <./graphics/flow_rebal.pdf>]
-\openout4 = `thesis.pyg'.
-
-
+[20 <./graphics/flow_rebal.pdf>]
 (./_minted-thesis/F5E9CAE23D760C69C3351F45FADCECA90102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/528C6E21A5818233270BCDF4190EF1630102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/19906A2DFFA09D4865758B2434E21F490102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout3 = `thesis.pyg'.
-
-
 (./_minted-thesis/4588B5F22D58D9C3C6A2442C7AB117AF0102E502927AACB428B4F294F23E2
-359.pygtex) [22]
-<./graphics/foaf.pdf, id=848, 462.52798pt x 346.89601pt>
+359.pygtex) [21]
+<./graphics/foaf.pdf, id=846, 462.52798pt x 346.89601pt>
 File: ./graphics/foaf.pdf Graphic file (type pdf)
 <use ./graphics/foaf.pdf>
-Package pdftex.def Info: ./graphics/foaf.pdf  used on input line 538.
+Package pdftex.def Info: ./graphics/foaf.pdf  used on input line 541.
 (pdftex.def)             Requested size: 409.71689pt x 307.30202pt.
- [23]
-\openout4 = `thesis.pyg'.
-
-
+ [22]
 (./_minted-thesis/D56EB4AEAA4CEDF141AB1BAA60F73A250102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/7F807915F6574FB9FA276AC928C44E280102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout3 = `thesis.pyg'.
-
-
 (./_minted-thesis/176A65619D2613F8ECC6C6AE9428E7550102E502927AACB428B4F294F23E2
-359.pygtex) [24 <./graphics/foaf.pdf>]
-\openout4 = `thesis.pyg'.
-
-
+359.pygtex) [23 <./graphics/foaf.pdf>]
 (./_minted-thesis/96FD0286429471A6C284EAB96FF782910102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/DCF52A1D632F1FC1D7A63A4004417C970102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/625E8DA79F5881445A796225ADCF86030102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/7C1B14082DF092F3B0951BB1002837870102E502927AACB428B4F294F23E2
 359.pygtex)
-Overfull \hbox (25.49077pt too wide) in paragraph at lines 582--583
+Overfull \hbox (25.49077pt too wide) in paragraph at lines 585--586
 []\T1/lmr/m/n/10.95 The se-lec-tion strat-egy is im-ple-mented in the \T1/lmtt/
 m/n/10.95 Experiment \T1/lmr/m/n/10.95 class and then calls the []|
  []
 
-\openout3 = `thesis.pyg'.
-
 
 (./_minted-thesis/04E941AD99ED17A1BA5516AD739CB30A0102E502927AACB428B4F294F23E2
-359.pygtex) [25]
-\openout4 = `thesis.pyg'.
-
-
+359.pygtex) [24]
 (./_minted-thesis/8A06E3F1E46D34BA41AC3B41645151960102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout3 = `thesis.pyg'.
-
-
 (./_minted-thesis/96C0B7E31C11E1961A80D432B0ACB62D0102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/528C6E21A5818233270BCDF4190EF1630102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/19906A2DFFA09D4865758B2434E21F490102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/CEEF7FCEA40F16A74956BC3622BD88440102E502927AACB428B4F294F23E2
 359.pygtex)
-\openout4 = `thesis.pyg'.
-
-
 (./_minted-thesis/09808887608154FBECCBABDE3A1F48F60102E502927AACB428B4F294F23E2
-359.pygtex) [26]
-\openout4 = `thesis.pyg'.
-
-
+359.pygtex) [25]
 (./_minted-thesis/E4CFFC6859A5C624351D717F3B270AD50102E502927AACB428B4F294F23E2
-359.pygtex) [27]
-<./graphics/channel_count_distr.pdf, id=908, 462.52798pt x 346.89601pt>
+359.pygtex) [26]
+<./graphics/channel_count_distr.pdf, id=906, 462.52798pt x 346.89601pt>
 File: ./graphics/channel_count_distr.pdf Graphic file (type pdf)
 <use ./graphics/channel_count_distr.pdf>
 Package pdftex.def Info: ./graphics/channel_count_distr.pdf  used on input line
- 672.
+ 675.
 (pdftex.def)             Requested size: 318.66946pt x 239.01443pt.
-\openout4 = `thesis.pyg'.
-
 
 (./_minted-thesis/61ECBC41CDAE3E6B32712A06C73606FA0102E502927AACB428B4F294F23E2
-359.pygtex) [28 <./graphics/channel_count_distr.pdf>]
-<./graphics/cum_channel_distr_eq_width.pdf, id=956, 462.52798pt x 346.89601pt>
+359.pygtex) [27 <./graphics/channel_count_distr.pdf>] [28]
+<./graphics/cum_channel_distr_eq_width.pdf, id=963, 462.52798pt x 346.89601pt>
 File: ./graphics/cum_channel_distr_eq_width.pdf Graphic file (type pdf)
 <use ./graphics/cum_channel_distr_eq_width.pdf>
 Package pdftex.def Info: ./graphics/cum_channel_distr_eq_width.pdf  used on inp
-ut line 718.
+ut line 721.
 (pdftex.def)             Requested size: 204.85844pt x 153.6457pt.
-<./graphics/node_count_to_contr_channel_count_eq_width.pdf, id=957, 462.52798pt
+<./graphics/node_count_to_contr_channel_count_eq_width.pdf, id=964, 462.52798pt
  x 346.89601pt>
 File: ./graphics/node_count_to_contr_channel_count_eq_width.pdf Graphic file (t
 ype pdf)
 <use ./graphics/node_count_to_contr_channel_count_eq_width.pdf>
 Package pdftex.def Info: ./graphics/node_count_to_contr_channel_count_eq_width.
-pdf  used on input line 721.
+pdf  used on input line 724.
 (pdftex.def)             Requested size: 204.85844pt x 153.6457pt.
- [29]
-<./graphics/cum_channel_distr_eq_chc.pdf, id=966, 462.52798pt x 346.89601pt>
+<./graphics/cum_channel_distr_eq_chc.pdf, id=965, 462.52798pt x 346.89601pt>
 File: ./graphics/cum_channel_distr_eq_chc.pdf Graphic file (type pdf)
 <use ./graphics/cum_channel_distr_eq_chc.pdf>
 Package pdftex.def Info: ./graphics/cum_channel_distr_eq_chc.pdf  used on input
- line 732.
+ line 735.
 (pdftex.def)             Requested size: 204.85844pt x 153.6457pt.
-<./graphics/node_count_to_contr_channel_count_eq_chc.pdf, id=967, 462.52798pt x
+<./graphics/node_count_to_contr_channel_count_eq_chc.pdf, id=966, 462.52798pt x
  346.89601pt>
 File: ./graphics/node_count_to_contr_channel_count_eq_chc.pdf Graphic file (typ
 e pdf)
 <use ./graphics/node_count_to_contr_channel_count_eq_chc.pdf>
 Package pdftex.def Info: ./graphics/node_count_to_contr_channel_count_eq_chc.pd
-f  used on input line 735.
+f  used on input line 738.
 (pdftex.def)             Requested size: 204.85844pt x 153.6457pt.
- [30 <./graphics/cum_channel_distr_eq_width.pdf> <./graphics/node_count_to_cont
+ [29 <./graphics/cum_channel_distr_eq_width.pdf> <./graphics/node_count_to_cont
 r_channel_count_eq_width.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/node_count_to_contr_channel_count_eq_
@@ -2523,31 +2144,31 @@ clusion: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./graphics/node_count_to_contr_channel_count_eq_
 chc.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
 e
->] [31]
-<./graphics/results/3a65a961_gini_vs_rebalops_random.pdf, id=1118, 462.52798pt 
+>] [30]
+<./graphics/results/3a65a961_gini_vs_rebalops_random.pdf, id=1117, 462.52798pt 
 x 346.89601pt>
 File: ./graphics/results/3a65a961_gini_vs_rebalops_random.pdf Graphic file (typ
 e pdf)
 <use ./graphics/results/3a65a961_gini_vs_rebalops_random.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_rebalops_random.pd
-f  used on input line 771.
+f  used on input line 776.
 (pdftex.def)             Requested size: 318.66946pt x 239.01443pt.
-<./graphics/results/3a65a961_gini_vs_participation_random.pdf, id=1120, 462.527
+<./graphics/results/3a65a961_gini_vs_participation_random.pdf, id=1119, 462.527
 98pt x 346.89601pt>
 File: ./graphics/results/3a65a961_gini_vs_participation_random.pdf Graphic file
  (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_random.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_rand
-om.pdf  used on input line 782.
+om.pdf  used on input line 787.
 (pdftex.def)             Requested size: 318.66946pt x 239.01443pt.
- [32 <./graphics/results/3a65a961_gini_vs_rebalops_random.pdf>]
+ [31 <./graphics/results/3a65a961_gini_vs_rebalops_random.pdf>]
 <./graphics/results/3a65a961_median_payment_size_random.pdf, id=1171, 462.52798
 pt x 346.89601pt>
 File: ./graphics/results/3a65a961_median_payment_size_random.pdf Graphic file (
 type pdf)
 <use ./graphics/results/3a65a961_median_payment_size_random.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_payment_size_random
-.pdf  used on input line 790.
+.pdf  used on input line 795.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_random.pdf, i
 d=1172, 462.52798pt x 346.89601pt>
@@ -2556,7 +2177,7 @@ df Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_random.pd
 f>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_random.pdf  used on input line 791.
+ticipation_random.pdf  used on input line 796.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./graphics/results/3a65a961_successrate_vs_imbalance_random.pdf, id=1173, 462.
 52798pt x 346.89601pt>
@@ -2564,7 +2185,7 @@ File: ./graphics/results/3a65a961_successrate_vs_imbalance_random.pdf Graphic f
 ile (type pdf)
 <use ./graphics/results/3a65a961_successrate_vs_imbalance_random.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_imbalance_r
-andom.pdf  used on input line 802.
+andom.pdf  used on input line 807.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./graphics/results/3a65a961_successrate_vs_participation_random.pdf, id=1174, 
 462.52798pt x 346.89601pt>
@@ -2572,9 +2193,9 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_random.pdf Graph
 ic file (type pdf)
 <use ./graphics/results/3a65a961_successrate_vs_participation_random.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_random.pdf  used on input line 803.
+on_random.pdf  used on input line 808.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
- [33 <./graphics/results/3a65a961_gini_vs_participation_random.pdf> <./graphics
+ [32 <./graphics/results/3a65a961_gini_vs_participation_random.pdf> <./graphics
 /results/3a65a961_median_payment_size_random.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_median_payment_size_
@@ -2592,9 +2213,9 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_random.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_random.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_random.pdf  used on input line 813.
+pation_random.pdf  used on input line 818.
 (pdftex.def)             Requested size: 318.66946pt x 239.01443pt.
- [34 <./graphics/results/3a65a961_successrate_vs_imbalance_random.pdf> <./graph
+ [33 <./graphics/results/3a65a961_successrate_vs_imbalance_random.pdf> <./graph
 ics/results/3a65a961_successrate_vs_participation_random.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_successrate_vs_parti
@@ -2612,7 +2233,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_size_linear_desc.pdf Gr
 aphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_size_linear_desc.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_size
-_linear_desc.pdf  used on input line 827.
+_linear_desc.pdf  used on input line 832.
 (pdftex.def)             Requested size: 318.66946pt x 239.01443pt.
 <./graphics/results/3a65a961_median_payment_size_size_linear_desc.pdf, id=1464,
  462.52798pt x 346.89601pt>
@@ -2620,7 +2241,7 @@ File: ./graphics/results/3a65a961_median_payment_size_size_linear_desc.pdf Grap
 hic file (type pdf)
 <use ./graphics/results/3a65a961_median_payment_size_size_linear_desc.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_payment_size_size_l
-inear_desc.pdf  used on input line 836.
+inear_desc.pdf  used on input line 841.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_size_linear_d
 esc.pdf, id=1465, 462.52798pt x 346.89601pt>
@@ -2629,7 +2250,7 @@ ear_desc.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_size_line
 ar_desc.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_size_linear_desc.pdf  used on input line 837.
+ticipation_size_linear_desc.pdf  used on input line 842.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./graphics/results/3a65a961_successrate_vs_imbalance_size_linear_desc.pdf, id=
 1466, 462.52798pt x 346.89601pt>
@@ -2638,7 +2259,7 @@ File: ./graphics/results/3a65a961_successrate_vs_imbalance_size_linear_desc.pdf
 <use ./graphics/results/3a65a961_successrate_vs_imbalance_size_linear_desc.pdf>
 
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_imbalance_s
-ize_linear_desc.pdf  used on input line 845.
+ize_linear_desc.pdf  used on input line 850.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./graphics/results/3a65a961_successrate_vs_participation_size_linear_desc.pdf,
  id=1467, 462.52798pt x 346.89601pt>
@@ -2647,7 +2268,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_size_linear_desc
 <use ./graphics/results/3a65a961_successrate_vs_participation_size_linear_desc.
 pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_size_linear_desc.pdf  used on input line 846.
+on_size_linear_desc.pdf  used on input line 851.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_size_linear_desc.
 pdf, id=1468, 462.52798pt x 346.89601pt>
@@ -2656,9 +2277,9 @@ desc.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_size_linear_d
 esc.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_size_linear_desc.pdf  used on input line 855.
+pation_size_linear_desc.pdf  used on input line 860.
 (pdftex.def)             Requested size: 318.66946pt x 239.01443pt.
- [35 <./graphics/results/3a65a961_gini_vs_participation_size_linear_desc.pdf> <
+ [34 <./graphics/results/3a65a961_gini_vs_participation_size_linear_desc.pdf> <
 ./graphics/results/3a65a961_median_payment_size_size_linear_desc.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_median_payment_size_
@@ -2670,7 +2291,7 @@ _desc.pdf
 pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_median_paymnet_size_
 vs_participation_size_linear_desc.pdf): PDF inclusion: multiple pdfs with page 
 group included in a single page
->] [36 <./graphics/results/3a65a961_successrate_vs_imbalance_size_linear_desc.p
+>] [35 <./graphics/results/3a65a961_successrate_vs_imbalance_size_linear_desc.p
 df> <./graphics/results/3a65a961_successrate_vs_participation_size_linear_desc.
 pdf
 
@@ -2690,14 +2311,12 @@ File: ./graphics/results/3a65a961_gini_vs_participation_size_linear_asc.pdf Gra
 phic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_size_linear_asc.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_size
-_linear_asc.pdf  used on input line 866.
+_linear_asc.pdf  used on input line 871.
 (pdftex.def)             Requested size: 318.66946pt x 239.01443pt.
- [37 <./graphics/results/3a65a961_gini_vs_participation_size_linear_asc.pdf>] [
-38] [39]
+ [36 <./graphics/results/3a65a961_gini_vs_participation_size_linear_asc.pdf>] [
+37] [38]
 \@gls@deffile=\write11
-\openout11 = `thesis.glsdefs'.
-
- (./thesis.gls) [40] [41]
+ (./thesis.gls) [39] [40]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: a4paper
@@ -2737,7 +2356,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_4
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_40
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_02_40.pdf  used on input line 941.
+on_netw_spread_02_40.pdf  used on input line 946.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf
 , id=1854, 462.52798pt x 346.89601pt>
@@ -2746,7 +2365,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_4
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_40
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_10_40.pdf  used on input line 941.
+on_netw_spread_10_40.pdf  used on input line 946.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_40.pdf
 , id=1855, 462.52798pt x 346.89601pt>
@@ -2755,7 +2374,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_4
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_40
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_15_40.pdf  used on input line 941.
+on_netw_spread_15_40.pdf  used on input line 946.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_50.pdf
 , id=1856, 462.52798pt x 346.89601pt>
@@ -2764,7 +2383,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_5
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_50
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_02_50.pdf  used on input line 943.
+on_netw_spread_02_50.pdf  used on input line 948.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_50.pdf
 , id=1857, 462.52798pt x 346.89601pt>
@@ -2773,7 +2392,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_5
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_50
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_10_50.pdf  used on input line 943.
+on_netw_spread_10_50.pdf  used on input line 948.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_50.pdf
 , id=1858, 462.52798pt x 346.89601pt>
@@ -2782,7 +2401,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_5
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_50
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_15_50.pdf  used on input line 943.
+on_netw_spread_15_50.pdf  used on input line 948.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf
 , id=1859, 462.52798pt x 346.89601pt>
@@ -2791,7 +2410,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_6
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_60
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_02_60.pdf  used on input line 945.
+on_netw_spread_02_60.pdf  used on input line 950.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_60.pdf
 , id=1860, 462.52798pt x 346.89601pt>
@@ -2800,7 +2419,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_6
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10_60
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_10_60.pdf  used on input line 945.
+on_netw_spread_10_60.pdf  used on input line 950.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_60.pdf
 , id=1861, 462.52798pt x 346.89601pt>
@@ -2809,7 +2428,7 @@ File: ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_6
 <use ./graphics/results/3a65a961_successrate_vs_participation_netw_spread_15_60
 .pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_successrate_vs_participati
-on_netw_spread_15_60.pdf  used on input line 945.
+on_netw_spread_15_60.pdf  used on input line 950.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_0
 2_40.pdf, id=1862, 462.52798pt x 346.89601pt>
@@ -2818,7 +2437,7 @@ ead_02_40.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_02_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_02_40.pdf  used on input line 954.
+ticipation_netw_spread_02_40.pdf  used on input line 959.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_1
 0_40.pdf, id=1863, 462.52798pt x 346.89601pt>
@@ -2827,7 +2446,7 @@ ead_10_40.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_10_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_10_40.pdf  used on input line 954.
+ticipation_netw_spread_10_40.pdf  used on input line 959.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_1
 5_40.pdf, id=1864, 462.52798pt x 346.89601pt>
@@ -2836,7 +2455,7 @@ ead_15_40.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_15_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_15_40.pdf  used on input line 954.
+ticipation_netw_spread_15_40.pdf  used on input line 959.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_0
 2_50.pdf, id=1865, 462.52798pt x 346.89601pt>
@@ -2845,7 +2464,7 @@ ead_02_50.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_02_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_02_50.pdf  used on input line 956.
+ticipation_netw_spread_02_50.pdf  used on input line 961.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_1
 0_50.pdf, id=1866, 462.52798pt x 346.89601pt>
@@ -2854,7 +2473,7 @@ ead_10_50.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_10_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_10_50.pdf  used on input line 956.
+ticipation_netw_spread_10_50.pdf  used on input line 961.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_1
 5_50.pdf, id=1867, 462.52798pt x 346.89601pt>
@@ -2863,7 +2482,7 @@ ead_15_50.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_15_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_15_50.pdf  used on input line 956.
+ticipation_netw_spread_15_50.pdf  used on input line 961.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_0
 2_60.pdf, id=1868, 462.52798pt x 346.89601pt>
@@ -2872,7 +2491,7 @@ ead_02_60.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_02_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_02_60.pdf  used on input line 958.
+ticipation_netw_spread_02_60.pdf  used on input line 963.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_1
 0_60.pdf, id=1869, 462.52798pt x 346.89601pt>
@@ -2881,7 +2500,7 @@ ead_10_60.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_10_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_10_60.pdf  used on input line 958.
+ticipation_netw_spread_10_60.pdf  used on input line 963.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spread_1
 5_60.pdf, id=1870, 462.52798pt x 346.89601pt>
@@ -2890,7 +2509,7 @@ ead_15_60.pdf Graphic file (type pdf)
 <use ./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_spre
 ad_15_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnet_size_vs_par
-ticipation_netw_spread_15_60.pdf  used on input line 958.
+ticipation_netw_spread_15_60.pdf  used on input line 963.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_02_40
 .pdf, id=1871, 462.52798pt x 346.89601pt>
@@ -2899,7 +2518,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_0
 2_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_02_40.pdf  used on input line 967.
+pation_netw_spread_02_40.pdf  used on input line 972.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_10_40
 .pdf, id=1872, 462.52798pt x 346.89601pt>
@@ -2908,7 +2527,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_1
 0_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_10_40.pdf  used on input line 967.
+pation_netw_spread_10_40.pdf  used on input line 972.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_15_40
 .pdf, id=1873, 462.52798pt x 346.89601pt>
@@ -2917,7 +2536,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_1
 5_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_15_40.pdf  used on input line 967.
+pation_netw_spread_15_40.pdf  used on input line 972.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_02_50
 .pdf, id=1874, 462.52798pt x 346.89601pt>
@@ -2926,7 +2545,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_0
 2_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_02_50.pdf  used on input line 969.
+pation_netw_spread_02_50.pdf  used on input line 974.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_10_50
 .pdf, id=1875, 462.52798pt x 346.89601pt>
@@ -2935,7 +2554,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_1
 0_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_10_50.pdf  used on input line 969.
+pation_netw_spread_10_50.pdf  used on input line 974.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_15_50
 .pdf, id=1876, 462.52798pt x 346.89601pt>
@@ -2944,7 +2563,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_1
 5_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_15_50.pdf  used on input line 969.
+pation_netw_spread_15_50.pdf  used on input line 974.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_02_60
 .pdf, id=1877, 462.52798pt x 346.89601pt>
@@ -2953,7 +2572,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_0
 2_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_02_60.pdf  used on input line 971.
+pation_netw_spread_02_60.pdf  used on input line 976.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_10_60
 .pdf, id=1878, 462.52798pt x 346.89601pt>
@@ -2962,7 +2581,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_1
 0_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_10_60.pdf  used on input line 971.
+pation_netw_spread_10_60.pdf  used on input line 976.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_15_60
 .pdf, id=1879, 462.52798pt x 346.89601pt>
@@ -2971,7 +2590,7 @@ File: ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_
 <use ./graphics/results/3a65a961_median_paymnets_vs_participation_netw_spread_1
 5_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_median_paymnets_vs_partici
-pation_netw_spread_15_60.pdf  used on input line 971.
+pation_netw_spread_15_60.pdf  used on input line 976.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_40.pdf, id=18
 80, 462.52798pt x 346.89601pt>
@@ -2979,7 +2598,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_40.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_02_40.pdf  used on input line 980.
+_spread_02_40.pdf  used on input line 985.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_40.pdf, id=18
 81, 462.52798pt x 346.89601pt>
@@ -2987,7 +2606,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_40.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_10_40.pdf  used on input line 980.
+_spread_10_40.pdf  used on input line 985.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_40.pdf, id=18
 82, 462.52798pt x 346.89601pt>
@@ -2995,7 +2614,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_40.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_40.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_15_40.pdf  used on input line 980.
+_spread_15_40.pdf  used on input line 985.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_50.pdf, id=18
 83, 462.52798pt x 346.89601pt>
@@ -3003,7 +2622,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_50.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_02_50.pdf  used on input line 982.
+_spread_02_50.pdf  used on input line 987.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_50.pdf, id=18
 84, 462.52798pt x 346.89601pt>
@@ -3011,7 +2630,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_50.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_10_50.pdf  used on input line 982.
+_spread_10_50.pdf  used on input line 987.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_50.pdf, id=18
 85, 462.52798pt x 346.89601pt>
@@ -3019,7 +2638,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_50.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_50.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_15_50.pdf  used on input line 982.
+_spread_15_50.pdf  used on input line 987.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_60.pdf, id=18
 86, 462.52798pt x 346.89601pt>
@@ -3027,7 +2646,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_60.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_02_60.pdf  used on input line 984.
+_spread_02_60.pdf  used on input line 989.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_60.pdf, id=18
 87, 462.52798pt x 346.89601pt>
@@ -3035,7 +2654,7 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_60.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_10_60.pdf  used on input line 984.
+_spread_10_60.pdf  used on input line 989.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_60.pdf, id=18
 88, 462.52798pt x 346.89601pt>
@@ -3043,9 +2662,9 @@ File: ./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_60.pdf G
 raphic file (type pdf)
 <use ./graphics/results/3a65a961_gini_vs_participation_netw_spread_15_60.pdf>
 Package pdftex.def Info: ./graphics/results/3a65a961_gini_vs_participation_netw
-_spread_15_60.pdf  used on input line 984.
+_spread_15_60.pdf  used on input line 989.
 (pdftex.def)             Requested size: 170.71652pt x 128.0372pt.
- [42 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_4
+ [41 <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_02_4
 0.pdf> <./graphics/results/3a65a961_successrate_vs_participation_netw_spread_10
 _40.pdf
 
@@ -3094,7 +2713,7 @@ df
 pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_successrate_vs_parti
 cipation_netw_spread_15_60.pdf): PDF inclusion: multiple pdfs with page group i
 ncluded in a single page
->] [43 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_s
+>] [42 <./graphics/results/3a65a961_median_paymnet_size_vs_participation_netw_s
 pread_02_40.pdf> <./graphics/results/3a65a961_median_paymnet_size_vs_participat
 ion_netw_spread_10_40.pdf
 
@@ -3143,7 +2762,7 @@ _15_60.pdf
 pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_median_paymnet_size_
 vs_participation_netw_spread_15_60.pdf): PDF inclusion: multiple pdfs with page
  group included in a single page
->] [44 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_sprea
+>] [43 <./graphics/results/3a65a961_median_paymnets_vs_participation_netw_sprea
 d_02_40.pdf> <./graphics/results/3a65a961_median_paymnets_vs_participation_netw
 _spread_10_40.pdf
 
@@ -3192,7 +2811,7 @@ up included in a single page
 pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_median_paymnets_vs_p
 articipation_netw_spread_15_60.pdf): PDF inclusion: multiple pdfs with page gro
 up included in a single page
->] [45 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_40.pdf
+>] [44 <./graphics/results/3a65a961_gini_vs_participation_netw_spread_02_40.pdf
 > <./graphics/results/3a65a961_gini_vs_participation_netw_spread_10_40.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_gini_vs_participatio
@@ -3234,29 +2853,27 @@ pdfTeX warning: pdflatex (file ./graphics/results/3a65a961_gini_vs_participatio
 n_netw_spread_15_60.pdf): PDF inclusion: multiple pdfs with page group included
  in a single page
 >]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1002.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1002.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1007.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1007.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1002.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1002.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1007.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1007.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: A5A3D2A34D444D64E2576009B8F1D920;4680.
+(rerunfilecheck)             Checksum: 6056ACDE81E5D7E954D5286E1EA0325D;4677.
 runsystem(rm thesis.pyg)...executed.
 
 Package logreq Info: Writing requests to 'thesis.run.xml'.
-\openout1 = `thesis.run.xml'.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1002.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1007.
  ) 
 Here is how much of TeX's memory you used:
- 53100 strings out of 492167
- 1051604 string characters out of 6131558
- 1771291 words of memory out of 5000000
- 56213 multiletter control sequences out of 15000+600000
- 628554 words of font info for 82 fonts, out of 8000000 for 9000
+ 43785 strings out of 480478
+ 873921 string characters out of 5905959
+ 1876367 words of memory out of 5000000
+ 58511 multiletter control sequences out of 15000+600000
+ 629429 words of font info for 82 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 81i,13n,131p,1986b,5514s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,13n,131p,1947b,6083s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -3285,10 +2902,10 @@ ype1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy6.pf
 b></usr/share/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf-dist
 /fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/
 lmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on thesis.pdf (51 pages, 1862529 bytes).
+Output written on thesis.pdf (50 pages, 1865446 bytes).
 PDF statistics:
- 3681 PDF objects out of 4296 (max. 8388607)
- 1251 compressed objects within 13 object streams
- 203 named destinations out of 1000 (max. 500000)
+ 3682 PDF objects out of 4296 (max. 8388607)
+ 1253 compressed objects within 13 object streams
+ 206 named destinations out of 1000 (max. 500000)
  927 words of extra memory for PDF output out of 10000 (max. 10000000)
 
