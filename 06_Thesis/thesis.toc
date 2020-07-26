@@ -5,61 +5,60 @@
 \contentsline {section}{Foreword}{V}{section*.3}% 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}% 
 \contentsline {subsection}{\numberline {1.1}Bitcoin: Peer to Peer Electronic Cash}{1}{subsection.1.1}% 
-\contentsline {subsubsection}{\numberline {1.1.1}History of digital cash}{1}{subsubsection.1.1.1}% 
-\contentsline {subsubsection}{\numberline {1.1.2}Scaling solutions}{2}{subsubsection.1.1.2}% 
-\contentsline {subsection}{\numberline {1.2}Lightning technology}{3}{subsection.1.2}% 
-\contentsline {subsubsection}{\numberline {1.2.1}Payment channels}{3}{subsubsection.1.2.1}% 
-\contentsline {subsubsection}{\numberline {1.2.2}Using other channels for payments}{4}{subsubsection.1.2.2}% 
+\contentsline {subsubsection}{\numberline {1.1.1}History of Digital Cash}{1}{subsubsection.1.1.1}% 
+\contentsline {subsubsection}{\numberline {1.1.2}Scaling Solutions}{2}{subsubsection.1.1.2}% 
+\contentsline {subsection}{\numberline {1.2}Lightning Technology}{3}{subsection.1.2}% 
+\contentsline {subsubsection}{\numberline {1.2.1}Payment Channels}{3}{subsubsection.1.2.1}% 
+\contentsline {subsubsection}{\numberline {1.2.2}Using other Channels for Payments}{4}{subsubsection.1.2.2}% 
 \contentsline {subsubsection}{\numberline {1.2.3}Routing}{5}{subsubsection.1.2.3}% 
-\contentsline {section}{\numberline {2}Problems in graph theory}{6}{section.2}% 
-\contentsline {subsection}{\numberline {2.1}Formal definition}{6}{subsection.2.1}% 
-\contentsline {subsection}{\numberline {2.2}Overview of broad problems}{6}{subsection.2.2}% 
-\contentsline {subsection}{\numberline {2.3}Application in the Lightning Network}{7}{subsection.2.3}% 
+\contentsline {section}{\numberline {2}Problems in Graph Theory}{6}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Formal Definition}{6}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}General Problems}{6}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Application of Theories in the Lightning Network}{7}{subsection.2.3}% 
 \contentsline {subsubsection}{\numberline {2.3.1}Fees}{8}{subsubsection.2.3.1}% 
-\contentsline {subsubsection}{\numberline {2.3.2}Path finding problem}{8}{subsubsection.2.3.2}% 
-\contentsline {subsection}{\numberline {2.4}Previous work}{9}{subsection.2.4}% 
-\contentsline {subsection}{\numberline {2.5}Problem statement}{9}{subsection.2.5}% 
+\contentsline {subsubsection}{\numberline {2.3.2}Path Finding Problem}{8}{subsubsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.4}Previous Work}{9}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Problem Statement}{9}{subsection.2.5}% 
 \contentsline {section}{\numberline {3}Proactive Rebalancing Protocol}{11}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}Rebalancing}{11}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Rebalancing algorithm}{12}{subsection.3.2}% 
-\contentsline {subsubsection}{\numberline {3.2.1}Imbalance definition}{12}{subsubsection.3.2.1}% 
-\contentsline {subsubsection}{\numberline {3.2.2}Proposed algorithm}{13}{subsubsection.3.2.2}% 
-\contentsline {subsection}{\numberline {3.3}Protocol change}{14}{subsection.3.3}% 
-\contentsline {subsubsection}{\numberline {3.3.1}Reasons to not participate}{14}{subsubsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Rebalancing Algorithm}{12}{subsection.3.2}% 
+\contentsline {subsubsection}{\numberline {3.2.1}Imbalance Definition}{12}{subsubsection.3.2.1}% 
+\contentsline {subsubsection}{\numberline {3.2.2}Proposed Algorithm}{13}{subsubsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.3}Protocol Change}{14}{subsection.3.3}% 
+\contentsline {subsubsection}{\numberline {3.3.1}Motivations to not Participate}{14}{subsubsection.3.3.1}% 
 \contentsline {section}{\numberline {4}Experiment}{14}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Methodology}{14}{subsection.4.1}% 
-\contentsline {subsubsection}{\numberline {4.1.1}Python libraries}{14}{subsubsection.4.1.1}% 
-\contentsline {subsubsection}{\numberline {4.1.2}Network class}{15}{subsubsection.4.1.2}% 
-\contentsline {subsubsection}{\numberline {4.1.3}Experiment class}{16}{subsubsection.4.1.3}% 
-\contentsline {subsubsection}{\numberline {4.1.4}Command line interface}{17}{subsubsection.4.1.4}% 
-\contentsline {subsection}{\numberline {4.2}Data collection}{17}{subsection.4.2}% 
+\contentsline {subsubsection}{\numberline {4.1.1}Python Libraries}{14}{subsubsection.4.1.1}% 
+\contentsline {subsubsection}{\numberline {4.1.2}Network Class}{15}{subsubsection.4.1.2}% 
+\contentsline {subsubsection}{\numberline {4.1.3}Experiment Class}{16}{subsubsection.4.1.3}% 
+\contentsline {subsubsection}{\numberline {4.1.4}Command Line Interface}{16}{subsubsection.4.1.4}% 
+\contentsline {subsection}{\numberline {4.2}Data Collection}{17}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}Preprocessing}{19}{subsection.4.3}% 
-\contentsline {subsubsection}{\numberline {4.3.1}Remove incomplete data}{19}{subsubsection.4.3.1}% 
-\contentsline {subsubsection}{\numberline {4.3.2}Allocate local balances}{20}{subsubsection.4.3.2}% 
-\contentsline {subsection}{\numberline {4.4}Simulate rebalancing}{20}{subsection.4.4}% 
-\contentsline {subsubsection}{\numberline {4.4.1}Determine the desired flow}{22}{subsubsection.4.4.1}% 
-\contentsline {subsubsection}{\numberline {4.4.2}Compute rebalancing cycle}{23}{subsubsection.4.4.2}% 
-\contentsline {subsubsection}{\numberline {4.4.3}Node selection}{25}{subsubsection.4.4.3}% 
-\contentsline {subsubsection}{\numberline {4.4.4}Execute rebalancing}{26}{subsubsection.4.4.4}% 
-\contentsline {subsubsection}{\numberline {4.4.5}Store and plot results}{26}{subsubsection.4.4.5}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Remove Incomplete Data}{19}{subsubsection.4.3.1}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Allocating Local Balances}{20}{subsubsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.4}Simulate Rebalancing}{20}{subsection.4.4}% 
+\contentsline {subsubsection}{\numberline {4.4.1}Determine the Desired Flow}{22}{subsubsection.4.4.1}% 
+\contentsline {subsubsection}{\numberline {4.4.2}Compute Rebalancing Cycle}{23}{subsubsection.4.4.2}% 
+\contentsline {subsubsection}{\numberline {4.4.3}Node Selection}{25}{subsubsection.4.4.3}% 
+\contentsline {subsubsection}{\numberline {4.4.4}Execute Rebalancing}{26}{subsubsection.4.4.4}% 
+\contentsline {subsubsection}{\numberline {4.4.5}Store and Plot Results}{26}{subsubsection.4.4.5}% 
 \contentsline {subsection}{\numberline {4.5}Performance Measures}{27}{subsection.4.5}% 
-\contentsline {subsubsection}{\numberline {4.5.1}Success rate on shortest path}{27}{subsubsection.4.5.1}% 
-\contentsline {subsubsection}{\numberline {4.5.2}Payment size on shortest path}{27}{subsubsection.4.5.2}% 
-\contentsline {subsubsection}{\numberline {4.5.3}Ability to route different payment sizes}{27}{subsubsection.4.5.3}% 
-\contentsline {subsection}{\numberline {4.6}Selection strategies}{28}{subsection.4.6}% 
+\contentsline {subsubsection}{\numberline {4.5.1}Success Rate on Shortest Path}{27}{subsubsection.4.5.1}% 
+\contentsline {subsubsection}{\numberline {4.5.2}Payment Size on Shortest Path}{27}{subsubsection.4.5.2}% 
+\contentsline {subsubsection}{\numberline {4.5.3}Ability to Route Different Payment Sizes}{27}{subsubsection.4.5.3}% 
+\contentsline {subsection}{\numberline {4.6}Selection Strategies}{28}{subsection.4.6}% 
 \contentsline {subsubsection}{\numberline {4.6.1}Randomised}{28}{subsubsection.4.6.1}% 
-\contentsline {subsubsection}{\numberline {4.6.2}Node ranking}{28}{subsubsection.4.6.2}% 
-\contentsline {subsubsection}{\numberline {4.6.3}Node categories}{29}{subsubsection.4.6.3}% 
-\contentsline {subsubsection}{\numberline {4.6.4}Network spread}{30}{subsubsection.4.6.4}% 
+\contentsline {subsubsection}{\numberline {4.6.2}Node Ranking}{28}{subsubsection.4.6.2}% 
+\contentsline {subsubsection}{\numberline {4.6.3}Node Categories}{29}{subsubsection.4.6.3}% 
+\contentsline {subsubsection}{\numberline {4.6.4}Network Spread}{30}{subsubsection.4.6.4}% 
 \contentsline {section}{\numberline {5}Results}{32}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}Random participation}{32}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}Node importance}{34}{subsection.5.2}% 
-\contentsline {subsubsection}{\numberline {5.2.1}Adoption started by important nodes}{34}{subsubsection.5.2.1}% 
-\contentsline {subsubsection}{\numberline {5.2.2}Adoption started by unimportant nodes}{37}{subsubsection.5.2.2}% 
-\contentsline {subsubsection}{\numberline {5.2.3}Participation within a group}{37}{subsubsection.5.2.3}% 
-\contentsline {subsection}{\numberline {5.3}Network spread}{37}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.1}Random Participation}{32}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}Node Importance}{34}{subsection.5.2}% 
+\contentsline {subsubsection}{\numberline {5.2.1}Adoption by Important Nodes First}{34}{subsubsection.5.2.1}% 
+\contentsline {subsubsection}{\numberline {5.2.2}Adoption by Unimportant Nodes First}{37}{subsubsection.5.2.2}% 
+\contentsline {subsubsection}{\numberline {5.2.3}Participation Within a Group}{37}{subsubsection.5.2.3}% 
+\contentsline {subsection}{\numberline {5.3}Network Spread}{37}{subsection.5.3}% 
 \contentsline {section}{\numberline {6}Conclusion \& Outlook}{38}{section.6}% 
-\contentsline {section}{References}{39}{section*.55}% 
-\contentsline {section}{Glossary}{40}{section*.57}% 
-\contentsline {section}{\numberline {A}Charts network spread experiment}{41}{appendix.A}% 
-\contentsline {section}{\numberline {B}Some appendix}{46}{appendix.B}% 
+\contentsline {section}{References}{39}{section*.43}% 
+\contentsline {section}{Glossary}{40}{section*.44}% 
+\contentsline {section}{\numberline {A}Charts Network Spread Experiment}{41}{appendix.A}% 

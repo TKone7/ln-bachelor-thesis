@@ -28,3 +28,183 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{blockchain}{}%
+{%
+\gls@defglossaryentry{blockchain}%
+{%
+name={block chain},%
+sort={block chain},%
+type={main},%
+first={block chain},%
+firstplural={block chains},%
+text={block chain},%
+plural={block chains},%
+description={Data structure to store transactional data in cryptographically linked blocks that ensures integrity.},%
+descriptionplural={Data structure to store transactional data in cryptographically linked blocks that ensures integrity.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{trilemma}{}%
+{%
+\gls@defglossaryentry{trilemma}%
+{%
+name={scalability trilemma},%
+sort={scalability trilemma},%
+type={main},%
+first={scalability trilemma},%
+firstplural={scalability trilemmas},%
+text={scalability trilemma},%
+plural={scalability trilemmas},%
+description={Inability to combine all three features in a decentralised network: Security, decentralisation and scalability.},%
+descriptionplural={Inability to combine all three features in a decentralised network: Security, decentralisation and scalability.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{second}{}%
+{%
+\gls@defglossaryentry{second}%
+{%
+name={second layer},%
+sort={second layer},%
+type={main},%
+first={second layer},%
+firstplural={second layers},%
+text={second layer},%
+plural={second layers},%
+description={Describes an additional layer of abstraction in protocols.},%
+descriptionplural={Describes an additional layer of abstraction in protocols.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{base}{}%
+{%
+\gls@defglossaryentry{base}%
+{%
+name={base layer},%
+sort={base layer},%
+type={main},%
+first={base layer},%
+firstplural={base layers},%
+text={base layer},%
+plural={base layers},%
+description={The block chain is often referred to as the base layer on top of which other protocols can develop.},%
+descriptionplural={The block chain is often referred to as the base layer on top of which other protocols can develop.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{htlc}{}%
+{%
+\gls@defglossaryentry{htlc}%
+{%
+name={HTLC},%
+sort={HTLC},%
+type={main},%
+first={HTLC},%
+firstplural={HTLCs},%
+text={HTLC},%
+plural={HTLCs},%
+description={Hashed Time-Locked Contract, is a special kind of Bitcoin transaction that allows to send an off-chain transaction through multiple nodes.},%
+descriptionplural={Hashed Time-Locked Contract, is a special kind of Bitcoin transaction that allows to send an off-chain transaction through multiple nodes.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{fullnode}{}%
+{%
+\gls@defglossaryentry{fullnode}%
+{%
+name={fully validating node},%
+sort={fully validating node},%
+type={main},%
+first={fully validating node},%
+firstplural={fully validating nodes},%
+text={fully validating node},%
+plural={fully validating nodes},%
+description={A Bitcoin node that has a full copy of the block chain data containing all historic transactions in order to validate new transactions and blocks},%
+descriptionplural={A Bitcoin node that has a full copy of the block chain data containing all historic transactions in order to validate new transactions and blocks},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

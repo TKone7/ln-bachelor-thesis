@@ -1,19 +1,19 @@
-[0] Config.pm:304> INFO - This is Biber 2.13
-[0] Config.pm:307> INFO - Logfile is 'thesis.blg'
-[44] biber:315> INFO - === Fr Jul 17, 2020, 17:44:53
-[75] Biber.pm:375> INFO - Reading 'thesis.bcf'
-[191] Biber.pm:905> INFO - Found 16 citekeys in bib section 0
-[221] Biber.pm:4196> INFO - Processing section 0
-[222] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
-[222] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
-[236] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
-[240] bibtex.pm:1462> INFO - LaTeX decoding ...
-[306] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
-[447] Utils.pm:300> WARN - ISBN '978-0-12-405856-9 978-1-299-19664-3' in entry 'golbeck_analyzing_2013' is invalid - run biber with '--validate_datamodel' for details.
-[496] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[496] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[496] Biber.pm:4024> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
-[496] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
-[515] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[527] bbl.pm:751> INFO - Output to thesis.bbl
-[527] Biber.pm:110> INFO - WARNINGS: 1
+[1] Config.pm:304> INFO - This is Biber 2.13
+[1] Config.pm:307> INFO - Logfile is 'thesis.blg'
+[65] biber:315> INFO - === So Jul 26, 2020, 18:55:45
+[81] Biber.pm:375> INFO - Reading 'thesis.bcf'
+[402] Biber.pm:905> INFO - Found 16 citekeys in bib section 0
+[468] Biber.pm:4196> INFO - Processing section 0
+[469] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
+[469] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
+[505] Biber.pm:4373> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
+[511] bibtex.pm:1462> INFO - LaTeX decoding ...
+[705] bibtex.pm:1281> INFO - Found BibTeX data source 'literature/bibliography.bib'
+[953] Utils.pm:300> WARN - ISBN '978-0-12-405856-9 978-1-299-19664-3' in entry 'golbeck_analyzing_2013' is invalid - run biber with '--validate_datamodel' for details.
+[1016] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1016] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1017] Biber.pm:4024> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
+[1017] Biber.pm:4030> INFO - No sort tailoring available for locale 'de-DE'
+[1035] bbl.pm:648> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[1048] bbl.pm:751> INFO - Output to thesis.bbl
+[1048] Biber.pm:110> INFO - WARNINGS: 1

@@ -2,61 +2,60 @@
 \BOOKMARK [1][-]{section*.3}{Foreword}{}% 2
 \BOOKMARK [1][-]{section.1}{1 Introduction}{}% 3
 \BOOKMARK [2][-]{subsection.1.1}{1.1 Bitcoin: Peer to Peer Electronic Cash}{section.1}% 4
-\BOOKMARK [3][-]{subsubsection.1.1.1}{1.1.1 History of digital cash}{subsection.1.1}% 5
-\BOOKMARK [3][-]{subsubsection.1.1.2}{1.1.2 Scaling solutions}{subsection.1.1}% 6
-\BOOKMARK [2][-]{subsection.1.2}{1.2 Lightning technology}{section.1}% 7
-\BOOKMARK [3][-]{subsubsection.1.2.1}{1.2.1 Payment channels}{subsection.1.2}% 8
-\BOOKMARK [3][-]{subsubsection.1.2.2}{1.2.2 Using other channels for payments}{subsection.1.2}% 9
+\BOOKMARK [3][-]{subsubsection.1.1.1}{1.1.1 History of Digital Cash}{subsection.1.1}% 5
+\BOOKMARK [3][-]{subsubsection.1.1.2}{1.1.2 Scaling Solutions}{subsection.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.2}{1.2 Lightning Technology}{section.1}% 7
+\BOOKMARK [3][-]{subsubsection.1.2.1}{1.2.1 Payment Channels}{subsection.1.2}% 8
+\BOOKMARK [3][-]{subsubsection.1.2.2}{1.2.2 Using other Channels for Payments}{subsection.1.2}% 9
 \BOOKMARK [3][-]{subsubsection.1.2.3}{1.2.3 Routing}{subsection.1.2}% 10
-\BOOKMARK [1][-]{section.2}{2 Problems in graph theory}{}% 11
-\BOOKMARK [2][-]{subsection.2.1}{2.1 Formal definition}{section.2}% 12
-\BOOKMARK [2][-]{subsection.2.2}{2.2 Overview of broad problems}{section.2}% 13
-\BOOKMARK [2][-]{subsection.2.3}{2.3 Application in the Lightning Network}{section.2}% 14
+\BOOKMARK [1][-]{section.2}{2 Problems in Graph Theory}{}% 11
+\BOOKMARK [2][-]{subsection.2.1}{2.1 Formal Definition}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.2}{2.2 General Problems}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.3}{2.3 Application of Theories in the Lightning Network}{section.2}% 14
 \BOOKMARK [3][-]{subsubsection.2.3.1}{2.3.1 Fees}{subsection.2.3}% 15
-\BOOKMARK [3][-]{subsubsection.2.3.2}{2.3.2 Path finding problem}{subsection.2.3}% 16
-\BOOKMARK [2][-]{subsection.2.4}{2.4 Previous work}{section.2}% 17
-\BOOKMARK [2][-]{subsection.2.5}{2.5 Problem statement}{section.2}% 18
+\BOOKMARK [3][-]{subsubsection.2.3.2}{2.3.2 Path Finding Problem}{subsection.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.4}{2.4 Previous Work}{section.2}% 17
+\BOOKMARK [2][-]{subsection.2.5}{2.5 Problem Statement}{section.2}% 18
 \BOOKMARK [1][-]{section.3}{3 Proactive Rebalancing Protocol}{}% 19
 \BOOKMARK [2][-]{subsection.3.1}{3.1 Rebalancing}{section.3}% 20
-\BOOKMARK [2][-]{subsection.3.2}{3.2 Rebalancing algorithm}{section.3}% 21
-\BOOKMARK [3][-]{subsubsection.3.2.1}{3.2.1 Imbalance definition}{subsection.3.2}% 22
-\BOOKMARK [3][-]{subsubsection.3.2.2}{3.2.2 Proposed algorithm}{subsection.3.2}% 23
-\BOOKMARK [2][-]{subsection.3.3}{3.3 Protocol change}{section.3}% 24
-\BOOKMARK [3][-]{subsubsection.3.3.1}{3.3.1 Reasons to not participate}{subsection.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.2}{3.2 Rebalancing Algorithm}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.2.1}{3.2.1 Imbalance Definition}{subsection.3.2}% 22
+\BOOKMARK [3][-]{subsubsection.3.2.2}{3.2.2 Proposed Algorithm}{subsection.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.3}{3.3 Protocol Change}{section.3}% 24
+\BOOKMARK [3][-]{subsubsection.3.3.1}{3.3.1 Motivations to not Participate}{subsection.3.3}% 25
 \BOOKMARK [1][-]{section.4}{4 Experiment}{}% 26
 \BOOKMARK [2][-]{subsection.4.1}{4.1 Methodology}{section.4}% 27
-\BOOKMARK [3][-]{subsubsection.4.1.1}{4.1.1 Python libraries}{subsection.4.1}% 28
-\BOOKMARK [3][-]{subsubsection.4.1.2}{4.1.2 Network class}{subsection.4.1}% 29
-\BOOKMARK [3][-]{subsubsection.4.1.3}{4.1.3 Experiment class}{subsection.4.1}% 30
-\BOOKMARK [3][-]{subsubsection.4.1.4}{4.1.4 Command line interface}{subsection.4.1}% 31
-\BOOKMARK [2][-]{subsection.4.2}{4.2 Data collection}{section.4}% 32
+\BOOKMARK [3][-]{subsubsection.4.1.1}{4.1.1 Python Libraries}{subsection.4.1}% 28
+\BOOKMARK [3][-]{subsubsection.4.1.2}{4.1.2 Network Class}{subsection.4.1}% 29
+\BOOKMARK [3][-]{subsubsection.4.1.3}{4.1.3 Experiment Class}{subsection.4.1}% 30
+\BOOKMARK [3][-]{subsubsection.4.1.4}{4.1.4 Command Line Interface}{subsection.4.1}% 31
+\BOOKMARK [2][-]{subsection.4.2}{4.2 Data Collection}{section.4}% 32
 \BOOKMARK [2][-]{subsection.4.3}{4.3 Preprocessing}{section.4}% 33
-\BOOKMARK [3][-]{subsubsection.4.3.1}{4.3.1 Remove incomplete data}{subsection.4.3}% 34
-\BOOKMARK [3][-]{subsubsection.4.3.2}{4.3.2 Allocate local balances}{subsection.4.3}% 35
-\BOOKMARK [2][-]{subsection.4.4}{4.4 Simulate rebalancing}{section.4}% 36
-\BOOKMARK [3][-]{subsubsection.4.4.1}{4.4.1 Determine the desired flow}{subsection.4.4}% 37
-\BOOKMARK [3][-]{subsubsection.4.4.2}{4.4.2 Compute rebalancing cycle}{subsection.4.4}% 38
-\BOOKMARK [3][-]{subsubsection.4.4.3}{4.4.3 Node selection}{subsection.4.4}% 39
-\BOOKMARK [3][-]{subsubsection.4.4.4}{4.4.4 Execute rebalancing}{subsection.4.4}% 40
-\BOOKMARK [3][-]{subsubsection.4.4.5}{4.4.5 Store and plot results}{subsection.4.4}% 41
+\BOOKMARK [3][-]{subsubsection.4.3.1}{4.3.1 Remove Incomplete Data}{subsection.4.3}% 34
+\BOOKMARK [3][-]{subsubsection.4.3.2}{4.3.2 Allocating Local Balances}{subsection.4.3}% 35
+\BOOKMARK [2][-]{subsection.4.4}{4.4 Simulate Rebalancing}{section.4}% 36
+\BOOKMARK [3][-]{subsubsection.4.4.1}{4.4.1 Determine the Desired Flow}{subsection.4.4}% 37
+\BOOKMARK [3][-]{subsubsection.4.4.2}{4.4.2 Compute Rebalancing Cycle}{subsection.4.4}% 38
+\BOOKMARK [3][-]{subsubsection.4.4.3}{4.4.3 Node Selection}{subsection.4.4}% 39
+\BOOKMARK [3][-]{subsubsection.4.4.4}{4.4.4 Execute Rebalancing}{subsection.4.4}% 40
+\BOOKMARK [3][-]{subsubsection.4.4.5}{4.4.5 Store and Plot Results}{subsection.4.4}% 41
 \BOOKMARK [2][-]{subsection.4.5}{4.5 Performance Measures}{section.4}% 42
-\BOOKMARK [3][-]{subsubsection.4.5.1}{4.5.1 Success rate on shortest path}{subsection.4.5}% 43
-\BOOKMARK [3][-]{subsubsection.4.5.2}{4.5.2 Payment size on shortest path}{subsection.4.5}% 44
-\BOOKMARK [3][-]{subsubsection.4.5.3}{4.5.3 Ability to route different payment sizes}{subsection.4.5}% 45
-\BOOKMARK [2][-]{subsection.4.6}{4.6 Selection strategies}{section.4}% 46
+\BOOKMARK [3][-]{subsubsection.4.5.1}{4.5.1 Success Rate on Shortest Path}{subsection.4.5}% 43
+\BOOKMARK [3][-]{subsubsection.4.5.2}{4.5.2 Payment Size on Shortest Path}{subsection.4.5}% 44
+\BOOKMARK [3][-]{subsubsection.4.5.3}{4.5.3 Ability to Route Different Payment Sizes}{subsection.4.5}% 45
+\BOOKMARK [2][-]{subsection.4.6}{4.6 Selection Strategies}{section.4}% 46
 \BOOKMARK [3][-]{subsubsection.4.6.1}{4.6.1 Randomised}{subsection.4.6}% 47
-\BOOKMARK [3][-]{subsubsection.4.6.2}{4.6.2 Node ranking}{subsection.4.6}% 48
-\BOOKMARK [3][-]{subsubsection.4.6.3}{4.6.3 Node categories}{subsection.4.6}% 49
-\BOOKMARK [3][-]{subsubsection.4.6.4}{4.6.4 Network spread}{subsection.4.6}% 50
+\BOOKMARK [3][-]{subsubsection.4.6.2}{4.6.2 Node Ranking}{subsection.4.6}% 48
+\BOOKMARK [3][-]{subsubsection.4.6.3}{4.6.3 Node Categories}{subsection.4.6}% 49
+\BOOKMARK [3][-]{subsubsection.4.6.4}{4.6.4 Network Spread}{subsection.4.6}% 50
 \BOOKMARK [1][-]{section.5}{5 Results}{}% 51
-\BOOKMARK [2][-]{subsection.5.1}{5.1 Random participation}{section.5}% 52
-\BOOKMARK [2][-]{subsection.5.2}{5.2 Node importance}{section.5}% 53
-\BOOKMARK [3][-]{subsubsection.5.2.1}{5.2.1 Adoption started by important nodes}{subsection.5.2}% 54
-\BOOKMARK [3][-]{subsubsection.5.2.2}{5.2.2 Adoption started by unimportant nodes}{subsection.5.2}% 55
-\BOOKMARK [3][-]{subsubsection.5.2.3}{5.2.3 Participation within a group}{subsection.5.2}% 56
-\BOOKMARK [2][-]{subsection.5.3}{5.3 Network spread}{section.5}% 57
+\BOOKMARK [2][-]{subsection.5.1}{5.1 Random Participation}{section.5}% 52
+\BOOKMARK [2][-]{subsection.5.2}{5.2 Node Importance}{section.5}% 53
+\BOOKMARK [3][-]{subsubsection.5.2.1}{5.2.1 Adoption by Important Nodes First}{subsection.5.2}% 54
+\BOOKMARK [3][-]{subsubsection.5.2.2}{5.2.2 Adoption by Unimportant Nodes First}{subsection.5.2}% 55
+\BOOKMARK [3][-]{subsubsection.5.2.3}{5.2.3 Participation Within a Group}{subsection.5.2}% 56
+\BOOKMARK [2][-]{subsection.5.3}{5.3 Network Spread}{section.5}% 57
 \BOOKMARK [1][-]{section.6}{6 Conclusion \046 Outlook}{}% 58
-\BOOKMARK [1][-]{section*.55}{References}{}% 59
-\BOOKMARK [1][-]{section*.57}{Glossary}{}% 60
-\BOOKMARK [1][-]{appendix.A}{A Charts network spread experiment}{}% 61
-\BOOKMARK [1][-]{appendix.B}{B Some appendix}{}% 62
+\BOOKMARK [1][-]{section*.43}{References}{}% 59
+\BOOKMARK [1][-]{section*.44}{Glossary}{}% 60
+\BOOKMARK [1][-]{appendix.A}{A Charts Network Spread Experiment}{}% 61
