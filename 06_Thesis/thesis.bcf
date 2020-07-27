@@ -2887,18 +2887,20 @@
     <bcf:citekey order="26">pickhardt_imbalance_2019</bcf:citekey>
     <bcf:citekey order="27">pickhardt_imbalance_2019</bcf:citekey>
     <bcf:citekey order="28">pickhardt_imbalance_2019</bcf:citekey>
-    <bcf:citekey order="29">tikhomirov_probing_2020</bcf:citekey>
-    <bcf:citekey order="30">al-taie_python_2017</bcf:citekey>
+    <bcf:citekey order="29">pickhardt_imbalance_2019</bcf:citekey>
+    <bcf:citekey order="30">tikhomirov_probing_2020</bcf:citekey>
     <bcf:citekey order="31">al-taie_python_2017</bcf:citekey>
     <bcf:citekey order="32">al-taie_python_2017</bcf:citekey>
     <bcf:citekey order="33">al-taie_python_2017</bcf:citekey>
-    <bcf:citekey order="34">even_network_1975</bcf:citekey>
-    <bcf:citekey order="35">pickhardt_evaluating_2020</bcf:citekey>
-    <bcf:citekey order="36">clauset_power-law_2009</bcf:citekey>
-    <bcf:citekey order="37">golbeck_analyzing_2013</bcf:citekey>
-    <bcf:citekey order="38">golbeck_analyzing_2013</bcf:citekey>
+    <bcf:citekey order="34">al-taie_python_2017</bcf:citekey>
+    <bcf:citekey order="35">even_network_1975</bcf:citekey>
+    <bcf:citekey order="36">pickhardt_evaluating_2020</bcf:citekey>
+    <bcf:citekey order="37">pickhardt_evaluating_2020</bcf:citekey>
+    <bcf:citekey order="38">clauset_power-law_2009</bcf:citekey>
     <bcf:citekey order="39">golbeck_analyzing_2013</bcf:citekey>
-    <bcf:citekey order="40">noauthor_resources_nodate</bcf:citekey>
+    <bcf:citekey order="40">golbeck_analyzing_2013</bcf:citekey>
+    <bcf:citekey order="41">golbeck_analyzing_2013</bcf:citekey>
+    <bcf:citekey order="42">noauthor_resources_nodate</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">
