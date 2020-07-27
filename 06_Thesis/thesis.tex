@@ -126,7 +126,7 @@ Combining proof of work with the chaining of hashes introduced in the last parag
 \subsubsection{Scaling Solutions}
 One of Bitcoin's value propositions is being decentralised. At the same time every transaction ever made must be distributed and stored among all network peers. It becomes obvious that some trade-off has to be made to maintain those two properties: scalability. This is often referred to as the \gls{trilemma} which states that in distributed systems the three objectives \emph{security}, \emph{decentralisation} and \emph{scalability} can not be achieved in full extent at the same time. While two can often be achieved, there are certain trade-offs to be made in the third domain. This section is explaining why this is true for Bitcoin and what main categories of solution exist.
 
-While decentralisation can be described on many levels we focus here on the decentralisation of validating nodes. Those are network participants that verify the blocks published by miners. Decentralisation would be best achieved if  every user of Bitcoin would run its own \gls{fullnode} to receive information about the ledger independently. On the other hand the network would be centralised when only few nodes would validate and users would need to trust those to tell the truth about the ledger state. To keep decentralisation high it is crucial to keep the hardware and network requirements as low as possible. The Bitcoin protocol restricts the amount of data to be processed to one block of 1 megabyte per 10 minutes. A full node in the network must be able to download at least 1 MB / 10 minutes in order to keep up with the tip of the chain. Lower bandwidth would cause it to get left behind without every being able to catch up. Additionally, the full node must keep the full ledger on storage. This yields to approximately 286 GB \cite{noauthor_blocks-size_nodate} at time of writing, increasing linearly in the future. This upper limit block size results in a throughput of approximately 7 transactions per second (tps) \cite{poon_bitcoin_2016}. Clearly by several orders of magnitude smaller than what it would require to become a world wide payments network. 
+While decentralisation can be described on many levels we focus here on the decentralisation of validating nodes. Those are network participants that verify the blocks published by miners. Decentralisation would be best achieved if  every user of Bitcoin would run its own \gls{fullnode} to receive information about the ledger independently. On the other hand the network would be centralised when only few nodes would validate and users would need to trust those to tell the truth about the ledger state. To keep decentralisation high it is crucial to keep the hardware and network requirements as low as possible. The Bitcoin protocol restricts the amount of data to be processed to one block of 1 megabyte per 10 minutes. A full node in the network must be able to download at least 1 MB / 10 minutes in order to keep up with the tip of the chain. Lower bandwidth would cause it to get left behind without every being able to catch up. Additionally, the full node must keep the full ledger on storage. This yields to approximately 286 GB \cite{noauthor_blocks-size_nodate} at time of writing, increasing linearly in the future. This upper limit block size results in a throughput of approximately 7 transactions per second \citep{poon_bitcoin_2016}. Clearly by several orders of magnitude smaller than what it would require to become a world wide payments network. 
 
 Bitcoin, by design, promotes security and decentralisation while sacrificing scalability. However, to be usable by everyone the scalability issue needs to be addressed. As Bitcoin is not owned by anyone there is no one party to decide on the future design decisions. This lead to a scaling debate with two ideological camps on how to progress. Scaling on-chain or scaling off-chain.
 
@@ -162,12 +162,12 @@ Often economical transactions to a specific recipient are made only once. It wou
 
 Handling payments off-chain so far only worked between two parties that update Bitcoin transactions off-chain with the security of claiming their balance at any time on-chain. How can payments through multiple channels be accomplished without introducing trust into the system? If Alice wants to pay Carol through Bob, how can she be ensured that Bob will not keep the money and refuse to pay Carol? The solution are so called \emph{Hash Time Locked Contracts} or short ``\gls{htlc}''. 
 
-First Alice asks the payee, Carol, to create and keep a secret $R$ and only share the hash of it, $hash(R)$. Alice then uses this, so called \textit{preimage} \todo{glossary preimage}, to create a special \gls{htlc} transaction that promises Bob to receive the payment amount if he has knowledge of $R$. Bob also gets informed by Alice who is next in the path to find out this secret. Bob then himself creates an \gls{htlc} with the same preimage to Carol offering her the same amount upon disclosure of $R$. Carol is the payee in the transaction and has knowledge of $R$ so she could technically claim the funds on-chain. There is however an easier solution than this. After she releases $R$, Carol and Bob can simply agree to update their channel to reflect this payment. The same is done between Alice and Bob leading to the state where all channel balances are updated and the \gls{htlc}s is rendered useless. This mechanism is called ``time locked'' because the offer of payment to the knowing $R$ is only valid for a certain timespan. If $R$ does not get released until the defined expiry the \gls{htlc} turns invalid. Therefore, it is important that each successive \gls{htlc} has a lower timespan.
+First Alice asks the payee, Carol, to create and keep a secret $R$. This so called \emph{\gls{preimage}} is hashed by Carol and the resulting hash $hash(R)$ is shared with Alice. Alice then uses the hash, to create a special \gls{htlc} transaction that promises Bob to receive the payment amount if he has knowledge of the preimage $R$. Bob also gets informed by Alice who is next in the path to find out this secret. Bob then himself creates an \gls{htlc} with the same preimage to Carol offering her the same amount upon disclosure of $R$. Carol is the payee in the transaction and has knowledge of $R$ so she could technically claim the funds on-chain. There is however an easier solution than this. After she releases $R$, Carol and Bob can simply agree to update their channel to reflect this payment. The same is done between Alice and Bob leading to the state where all channel balances are updated and the \gls{htlc}s is rendered useless. This mechanism is called ``time locked'' because the offer of payment to the knowing $R$ is only valid for a certain timespan. If $R$ does not get released until the defined expiry the \gls{htlc} turns invalid. Therefore, it is important that each successive \gls{htlc} has a lower timespan.
 
 \subsubsection{Routing}\label{subsec:routing}
 The previous chapter explained how a payment can utilize multiple channels to reach its destination without the introduction of trust between participants. This section describes how routing takes place and what trade-off needs to be made.
 
-To ensure privacy of payments the routing protocol uses onion routing \todo{define onion routing in glossary}. The sender of the payment encrypts the information in multiple layers so that each hop only learns about the next hop in the path. Each intermediary node only knows where the payment comes from and where it goes next. Who is the payer and the payee remains secret. Only the last node in the path finds out that it is the actual receiver of a payment.
+To ensure privacy of payments the routing protocol uses \emph{\gls{onionrouting}}. The sender of the payment encrypts the information in multiple layers so that each hop only learns about the next hop in the path. Each intermediary node only knows where the payment comes from and where it goes next. Who is the payer and the payee remains secret. Only the last node in the path finds out that it is the actual receiver of a payment.
 
 \begin{figure}[H]
 \centering
@@ -178,7 +178,7 @@ To ensure privacy of payments the routing protocol uses onion routing \todo{defi
 
 Figure~\ref{fig:onion} color codes the information which is only readable by the respective node with the same color. In each step the outermost layer is decrypted and the next hop gets revealed. The remaining encrypted data is passed on down the line. This ensures that each node only has a local view of the path knowing only about its predecessor and successor. Thus follows, the source of the payment needs to determine the complete path before sending a payment.
 
-Sending a payment requires the sender to find a viable path to the recipient. This is called source routing \todo{glossary source routing} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the $1$ BTC channel between him and Carol. This information however is only known to Bob and Carol, not to Alice. Alice only sees the public information which tells her that the channel has 1 BTC capacity. Local channel balances are kept private for two reasons. Every payment over a channel makes its balances to move. Keeping all nodes updated about all channel balances would necessitate to update them about every transaction. This is exactly how Bitcoin on the \gls{base} work and the reason it does not scale. Secondly, informing the Network about every transaction is very bad for privacy, as an observer could easily determine who pays to whom over what path.
+Sending a payment requires the sender to find a viable path to the recipient. This is called \emph{\gls{sourcerouting}} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the $1$ BTC channel between him and Carol. This information however is only known to Bob and Carol, not to Alice. Alice only sees the public information which tells her that the channel has 1 BTC capacity. Local channel balances are kept private for two reasons. Every payment over a channel makes its balances to move. Keeping all nodes updated about all channel balances would necessitate to update them about every transaction. This is exactly how Bitcoin on the \emph{\gls{base}} work and the reason it does not scale. Secondly, informing the Network about every transaction is very bad for privacy, as an observer could easily determine who pays to whom over what path.
 
 Not knowing local balance distribution of channels makes it hard for source nodes to construct a reliable path. When a payment fails along the path a new route can be calculated and tried. This however is coupled with time delays that can cause a negative user experience.
 
@@ -189,7 +189,24 @@ Not knowing local balance distribution of channels makes it hard for source node
 \label{fig:nopayment}
 \end{figure}
 
-%\newpage
+\subsubsection{Currency Units}\label{subsub:units}
+Analogous to national currencies in which one unit is often divided in hundred smaller sub units also one bitcoin can be divided into smaller elements. The Bitcoin block chain operates with the smallest unit called \emph{satoshi} or short \emph{sat}. This is $\frac{1}{100'000'000}$ of one bitcoin. Although named after the pseudonymous founder it should not be confused with it. From now on satoshi refers to the unit. 
+
+Any value smaller than one \emph{sat} can not be recorded on the block chain. However, when transacting within the Lightning Network not all transactions need to be settled on the base chain which allows for even smaller sub-units. One \emph{millisatoshi} or short \emph{msat} is one thousandth of one satoshi. While other units are common in specific applications the Table~\ref{tab:units} lists the units which are used in this work.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l l S l} 
+  {Unit} & {Abbrevation} & {Decimal (BTC)} & {Usage}\\ \hline 
+  {bitcoin} & {BTC} & 1.0 & {Base unit; most popular}\\  
+  {satoshi} & {sat} & 0.00000001 & {Native to the base layer}\\ 
+  {millisatoshi} & {msat} & 0.00000000001 & {Native to the Lightning Network}\\ 
+\end{tabular}
+\caption{Bitcoin currency units used in this thesis.}
+\label{tab:units}
+\end{table}
+
+\newpage
 \section{Graph Theory Concepts}
 Graph theory is an old discipline which can be used to solve multifaceted problems in the real world. The following chapter contains an introduction to the basic principles and terminologies. It then defines different problems for which graph theory can be applied to find solutions. More emphasis is given to the topics which are applicable to the Lightning Network.
 
@@ -197,13 +214,14 @@ Graph theory is an old discipline which can be used to solve multifaceted proble
 The following paragraph defines the fundamentals of graph theory as described by \citet{rosen_discrete_2012}.
 A graph $G=(V,E)$ consists of a set of vertices $V$ and edges $E$. An edge consists of two vertices which are called its endpoints. In an undirected graph the endpoints are unordered, whereas the pair of vertices in a directed graph are ordered. The edge $(u, v)$ of a directed graph starts at $u$ and ends in $v$. In a \emph{simple directed} graph each directed edge can appear only once. When multiple edges go from one start vertex to the same end vertex the graph is named \emph{directed multigraph}. An edge that connects a vertex to itself is called a loop. Assigning weights to edges allows for more complex representations mere connection and is useful if the real world representation of a connection has certain \emph{cost} or \emph{distance} that one might want to minimise (maximise). 
 
-\todo[inline]{define the diameter of a graph}
-\todo[inline]{define the degree (in or out) of a graph}
+The \emph{diameter} of a graph defines the longest distance between any two vertices. In other words it is the longest of all shortest paths. In case the graph has weighted edges, those have to be considered for determining the shortest path.
 
-\subsection{General Problems}
+Some vertices are better connected to the rest of the graph than others i.e. having a higher edge count. This edge count is referred to as \emph{degree} of a node. In a directed graph the in-degree (edges pointing towards a vertex) and out-degree (edges pointing away from a vertex) can be distinguished. 
+
+\subsection{General Problems}\label{subsec:genprob}
 \todo[inline]{write an introduction to this section}
 
-In \emph{graph coloring problems} vertices can be thought of areas on a map. Areas that share a border are connected with an edge. The goal is to use as little colors as possible to color each area / vertex in such a way that adjacent areas have different colors. This minimum number is called the \textit{chromatic number} $\chi(G)$. 
+In \emph{graph coloring problems} vertices can be thought of areas on a map. Areas that share a border are connected with an edge. The goal is to use as little colors as possible to color each area / vertex in such a way that adjacent areas have different colors. This minimum number is called the \emph{chromatic number} $\chi(G)$. 
 
 Certain properties of graphs can only be proven if they are fulfilled in all their \emph{subgraphs}. Hence, it is important to find those. A graph $H = (W, F)$ is a subgraph of $G = (V, E)$ when $W \subseteq V$ and $F \subseteq E$. A subgraph can be \emph{induced} by $W \subseteq V$ which means the edge set $F$ contains only edges of $E$ for which both endpoints are contained in $W$. Similarly the union can be built of two graphs $G_1$ and $G_2$ where $G = G_1 \cup G_2$ and $V = V_1 \cup V_2$. 
 
@@ -231,11 +249,11 @@ So far the properties of a network graph could be mapped to a Lightning payment 
 \subsubsection{Path Finding Problem}
 As laid out in section~\ref{subsec:routing} the initiator of a payment needs to construct the path before sending the payment. Nodes trying to find such a path work with limited information. While they know what channels are available and what their capacities are, they do not know about the balances and therefore whether the nodes can forward their payment or not. Hence, it is likely that a payment attempt fails because a node had insufficient balance. The paying node needs to find another route and retry the payment until it succeeds. If the payment fails repeatedly it can cause delays that are bad for the user experience.
 
-This problem gets amplified because in the current protocol channels are single funded. This means one party provides 100\% of the channel capacity. A collaborative approach to funding a channel might be possible in the future. As a consequence the funder of the channel owns initially 100\% of the channel balance and the other side 0\% which means the channel can only be used to route into \emph{one direction}. A third party trying to route through this channel has a 50:50 chance that he or she can not even route a minimal amount of 1 satoshi \todo{define satoshi and other units of btc}. 
+This problem gets amplified because in the current protocol channels are single funded. This means one party provides 100\% of the channel capacity. A collaborative approach to funding a channel might be possible in the future. As a consequence the funder of the channel owns initially 100\% of the channel balance and the other side 0\% which means the channel can only be used to route into \emph{one direction}. A third party trying to route through this channel has a 50:50 chance that he or she can not even route a minimal amount of 1 sat. 
 
-The Lightning path finding problem can best described by a \emph{flow network} \todo{glossary flow network}. The goal of a node constructing a payment is to find a path that has enough capacity along its channels to route to the destination. Rules from flow networks apply according to which each node, except source and sink node, must have equal amounts flowing in as are flowing out. 
+The Lightning path finding problem can best described by a \emph{flow network} (see Section~\ref{subsec:genprob}). The goal of a node constructing a payment is to find a path that has enough capacity along its channels to route to the destination. Rules from flow networks apply according to which each node, except source and sink node, must have equal amounts flowing in and out. 
 
-In the next sections terminology native to the Lightning protocol is used. I refer to the directed graph as the \emph{network}. Vertices are called \emph{nodes} and a pair of opposite directed edges are a \emph{channel}. The \emph{capacity} defines the \emph{total amount} of a channel which is distributed between the two node's balance, as opposed to the amount which can flow in flow networks. This flow is determined by the node's \emph{balance}. The terms \emph{route} or \emph{path} are used interchangeably and are defined by a set of channels that can be traversed. \emph{Fees} is the general term that includes both \emph{fixed fees} and \emph{variable fees}. Fee policies are set by each node individually for every channel. This means a channel can charge different fees in either way as both nodes set the fee policy for their balance. \emph{Rebalancing} is the activity of routing a payment in a circle back to the initiating node and is used to reallocate balances within the set of channels a node controls.   
+In the next sections terminology native to the Lightning protocol is used. I refer to the directed graph as the \emph{network}. Vertices are called \emph{nodes} and a pair of opposite directed edges are a \emph{channel}. The \emph{channel capacity} defines the total amount of a channel which is distributed between the two node's balance. The amount which can flow between two nodes is determined by the node's \emph{balance}. The terms \emph{route} or \emph{path} are used interchangeably and are defined by a set of channels that can be traversed. \emph{Fees} is the general term that includes both \emph{fixed fees} and \emph{variable fees}. Fee policies are set by each node individually for every channel. This means a channel can charge different fees in either way as both nodes set the fee policy for their balance. \emph{Rebalancing} is the activity of routing a payment in a circle back to the initiating node and is used to reallocate balances within the set of channels a node controls.   
 
 \subsection{Previous Work}
 The research published by \textcite{pickhardt_imbalance_2019} serves as a base to formulate the question for this thesis. In their work, they present a solution for the pathfinding problem in a privacy-aware payment channel network. The proposed solution includes a rebalancing protocol which the nodes of the network should follow to achieve a higher balancedness (for itself but also the entire network). It consists of instructions to proactively rebalance their channels within their friend of a friend's network, redistributing the relative funds owned in a channel but leaving total funds owned unchanged.
@@ -276,7 +294,7 @@ Rebalancing can be summarised as an activity performed by a single node attempti
 \end{figure}
 
 \subsection{Rebalancing Algorithm}
-The previous section was about how nodes can \textit{improve} their channel balances. While the improvement in the example was quite clear it has to be stated what the ultimate goal is towards which the nodes try to improve. Intuitively, a distribution of 50:50 in each channel could be thought of as an appropriate goal. In reality this is not a feasible target.
+The previous section was about how nodes can \emph{improve} their channel balances. While the improvement in the example was quite clear it has to be stated what the ultimate goal is towards which the nodes try to improve. Intuitively, a distribution of 50:50 in each channel could be thought of as an appropriate goal. In reality this is not a feasible target.
 
 \subsubsection{Imbalance Definition}
 The following terms will first be defined to better understand the problem. The two nodes in a payment channel $e=(u,v)$ are denoted as $e_u$ and $e_v$. The capacity of $e=(u,v)$ is privately split among the two nodes channel balance $b(e_u)$ and $b(e_v)$. Therefore, the capacity of the channel $c(e)=b(e_u)+b(e_v)$. The \emph{channel balance coefficient } for $u$ represents the ratio a node $u$ has in a channel $e=(u,v)$ and is defined as $\zeta{(u,v)}=\frac{b(e_u)}{c(e)}$. Respectively, for the node $v$ the coefficient is $\zeta{(v,u)}=\frac{b(e_v)}{c(e)}$. As both balances make up the total capacity it follows  $\zeta{(u,v)} + \zeta{(v,u)}=1$. Let us define all the channels node $u$ is part of as $U=n(u)$. The \emph{total funds} the node $u$ owns can be denoted by $\tau_u:=\displaystyle{\sum_{e\in U}b(e_u)}$. The \emph{total capacity} of the node's channel $\kappa_u:=\displaystyle{\sum_{e\in U}c(e)}$. We can now define the \emph{node balance coefficient} as $\nu_u = \frac{\tau_u}{\kappa_u}$.
@@ -315,6 +333,7 @@ Additionally, the recommend to adopt a change in the communication protocol whic
 \subsubsection{Motivations to not Participate}
 So far the presented algorithm sounded like a win-win-situation for everyone and there would be no discussion around adopting it. However, it is not that simple. There are different reasons why nodes would not want to participate in such a change. Some nodes might not want to forego the revenues in fee. If they decide not to participate but most other do, they still benefit from the better overall balance of the network. So, without contribution they can harvest the benefits of others who participate. 
 
+\newpage
 \section{Experiment}\label{sec:method}
 \subsection{Methodology}
 This section gives an overview over the technology used and the classes created to run the experiments described in later sections. According to \citeauthor{al-taie_python_2017} Python is a general-purpose tool that becomes more and more popular in data science and graph analysis. There are many open source libraries available in the domain of analysis of complex networks, statistics and the visualisation of data \citep{al-taie_python_2017}. Furthermore the experiments in the previous paper were conducted with Python. 
@@ -367,7 +386,7 @@ From the initial state one experiment can be executed. Such an experiment change
 \end{figure}
 
 \subsubsection{Experiment Class}
-Many of the experiments actually need several Networks to perform experiments with different parameters. The experiment class is used to interact with those Network objects. This class contains also the definition of an experiment type and takes the parameters as arguments. The different \textit{setup}-methods define the types of experiments available. After the experiment is setup the generic \mintinline{python}{run_experiment()} and \mintinline{python}{plot_experiment()} can be called. Figure~\ref{fig:experiment_class} illustrates the relationship between the classes and shows the public methods of the Experiment class.
+Many of the experiments actually need several Networks to perform experiments with different parameters. The experiment class is used to interact with those Network objects. This class contains also the definition of an experiment type and takes the parameters as arguments. The different setup methods define the types of experiments available. After the experiment is setup the generic \mintinline{python}{run_experiment()} and \mintinline{python}{plot_experiment()} can be called. Figure~\ref{fig:experiment_class} illustrates the relationship between the classes and shows the public methods of the Experiment class.
 
 \begin{figure}[H]
 \centering
@@ -429,9 +448,9 @@ In order to run a simulation that resembles the real network closely, data from 
 \label{code:rawchannel}
 \end{listing}
 
-The raw data contains one key named \emph{channels} that consists of an array. At the time of data extraction this array contained 58934 objects. Nodes can open new channels and close existing ones at any point in time. The state of the network is therefore not static. All experiments conducted in this thesis are based on the local view of my node at 30.07.2020. Each object represents one directed edge. Keys \emph{source} and \emph{destination} refer to the involved node's public key. This public key is used as a pseudonym to preserve the node operator's privacy. Furthermore, private public key pairs are used to encrypt (see onion routing \ref{subsec:routing}) and sign messages. Since one entry only represents one directed edge there shoud be a second entry with the same \texttt{short\_channel\_id} with reversed source destination nodes to make the bidirectional channel complete. Field \texttt{sathoshis} tells the total channel capacity in the unit ``sathoshi'' \todo{define units}. The field \texttt{base\_fee\_millisatoshi} is the fixed fee each payment has to pay when routing through the channel. The variable fee to pay for each million satoshis is defined by \texttt{fee\_per\_millionth}. All ofther fields are not important for the simulation and will be ignored. The plugin extracts the highlighted parts and writes them into a file as shown in Listing~\ref{code:channelbyplugin}. 
+The raw data contains one key named \emph{channels} that consists of an array. At the time of data extraction this array contained 58934 objects. Nodes can open new channels and close existing ones at any point in time. The state of the network is therefore not static. All experiments conducted in this thesis are based on the local view of my node at July 30, 2020. Each object represents one directed edge. Keys \emph{source} and \emph{destination} refer to the involved node's public key. This public key is used as a pseudonym to preserve the node operator's privacy. Furthermore, private public key pairs are used to encrypt (see onion routing \ref{subsec:routing}) and sign messages. Since one entry only represents one directed edge there shoud be a second entry with the same \texttt{short\_channel\_id} with reversed source destination nodes to make the bidirectional channel complete. Field \texttt{sathoshis} tells the total channel capacity in the unit ``sathoshi'' \todo{define units}. The field \texttt{base\_fee\_millisatoshi} is the fixed fee each payment has to pay when routing through the channel. The variable fee to pay for each million satoshis is defined by \texttt{fee\_per\_millionth}. All ofther fields are not important for the simulation and will be ignored. The plugin extracts the highlighted parts and writes them into a file as shown in Listing~\ref{code:channelbyplugin}. 
 
-Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_channel\_id} which means they represent the same channel but in opposite directions. Source and destination of both entries confirm this and also the capacity does match. It is also an example for a channel with different fee policies in each direction. For example a payment of $200000$ satoshis routed from \emph{02ad6f} to \emph{03fab7} would charge no fixed fee but $\frac{200000}{1000000}*1 = 0.2$ sathoshi in variable fee. The same payment routed in the opposite direction would charge the same variable fee but additionally $1000$ millisatoshi (equals 1 satoshi) in fixed fee. So a total of $1,2$ satoshi. The complete \texttt{channels.json} file can be downloaded from the Github repository. 
+Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_channel\_id} which means they represent the same channel but in opposite directions. Source and destination of both entries confirm this and also the capacity does match. It is also an example for a channel with different fee policies in each direction. For example a payment of $200000$ sat routed from \emph{02ad6f} to \emph{03fab7} would charge no fixed fee but $\frac{200000}{1000000}*1 = 0.2$ sat in variable fee. The same payment routed in the opposite direction would charge the same variable fee but additionally $1000$ msat (equals 1 sat) in fixed fee. So a total of $1,2$ sat. The complete \texttt{channels.json} file can be downloaded from the Github repository. 
 
 \begin{listing}[H]
   \inputminted[
@@ -656,10 +675,10 @@ The goal of the rebalancing operations is to improve the overall networks abilit
 In order to make an statement about the entire network all the presented measures consider the ability to route payments for every node in the network. As it is unclear what payments nodes would want to make, the best we can measure is one payment between each node in the network. A network with a number of nodes $N$ results in a complete payment graph with a total number of payments $N(N-1)$. The network from the experiments has 2139 nodes which results in 4575321 payments to test. This puts a limit on the computational complexity of the measures, as it becomes difficult to run the experiments on consumer hardware.
 
 \subsubsection{Success Rate on Shortest Path}
-Successful payments between nodes is the main goal and can be measured by sending a minimal payment of 1 satoshi over all shortest paths between any two nodes. As the evaluation of the success rate is done over and over again the list of all shortest paths is cached for later use. The function \mintinline{python}{networkx.all_pairs_dijkstra_path()} is used to retrieve them. The weight to calculate short paths is represented by the fee a node would need to pay. The fee is defined by a variable and a fixed fee. As payment sizes are not known for this calculation simply the base fee is used for the shortest path calculation. 
+Successful payments between nodes is the main goal and can be measured by sending a minimal payment of 1 sat over all shortest paths between any two nodes. As the evaluation of the success rate is done over and over again the list of all shortest paths is cached for later use. The function \mintinline{python}{networkx.all_pairs_dijkstra_path()} is used to retrieve them. The weight to calculate short paths is represented by the fee a node would need to pay. The fee is defined by a variable and a fixed fee. As payment sizes are not known for this calculation simply the base fee is used for the shortest path calculation. 
 
 This figure will give a good overview of how many nodes can reach each other with a minimal payment. The limitation of the measure that it does not take payment size into account and minimal payments might not be very beneficial for real payments.
-%%With $E$ as the set of all shortest paths between all nodes and $P(k)$ as the proposition to route a payment of 1 satoshi over a path $k$ then the success rate is defined as:
+%%With $E$ as the set of all shortest paths between all nodes and $P(k)$ as the proposition to route a payment of 1 sat over a path $k$ then the success rate is defined as:
 
 %%$$
 %%s = \frac{\displaystyle{\sum_{k \in E}} \left[ P(k) \right]}{n(E)}
@@ -671,7 +690,7 @@ Similar to the success rate the \emph{median possible payment size} also conside
 \subsubsection{Ability to Route Different Payment Sizes}
 Both payment size and success rate consider only the shortest path for their calculation. In reality a node that receives a payment error would simply calculate new paths and retry the payment on those. A failed payment does not necessary mean a bad user experience as several paths can be tried within a short amount of time. To account for this fact a measure should be defined that can check many paths in sequence. We define here a measure that can be seen as a combination of the latter two. 
 
-Between each node pair not the shortest path is calculated but a set of 10 different paths. On each of those paths 3 payments of different sizes are tried to be executed. A \emph{1-satoshi payment}, a \emph{micro payment} of 10'000 satoshi and a \emph{normal payment} of 100'000 satoshi. Each node pair then receives a score between 1 and 10 per payment size depending of how many paths could route the payment. The median of all node pairs then gives an indication about how successful different payment sizes are considering multiple paths in sequence. 
+Between each node pair not the shortest path is calculated but a set of 10 different paths. On each of those paths 3 payments of different sizes are tried to be executed. A \emph{1-sat payment}, a \emph{micro payment} of 10'000 sat and a \emph{normal payment} of 100'000 sat. Each node pair then receives a score between 1 and 10 per payment size depending of how many paths could route the payment. The median of all node pairs then gives an indication about how successful different payment sizes are considering multiple paths in sequence. 
 
 \subsection{Selection Strategies}\label{subsec:selstrat}
 The simulation will rebalance the same network with different levels of participation. This is done since it can be assumed that not all nodes will adopt a new protocol immediately. The network is not homogeneous in regards to the centrality and the degree of the nodes. The distribution of the payment channels appears to follow a power law distribution. However, we did not test distribution to actually be power-law, since \textquote[\cite{clauset_power-law_2009}, p. 1]{the detection and characterization of power laws is complicated by the large fluctuations that occur in the tail of the distribution}. But it shows a few nodes have many channels and most of the nodes only a few as can be seen in figure~\ref{fig:channelcount}. The result of the experiment, therefore, will vary depending how the participating nodes are selected. 
@@ -689,7 +708,7 @@ This selection method randomly chooses $x\%$ of nodes. For value $x$, an interva
 \subsubsection{Node Ranking}
 In another scenario more important or less important nodes could decide to participate in the protocol change first. Such a selection strategy, hence, needs to sort the nodes by their importance in the network. This feature can be measured in many ways. This section shows some ways how the node's importance can be determined. A preliminary experiment will show whether there is a significant difference in the rankings obtained by the different methods.
 
-The \emph{degree centrality} is an easy to calculate measure. It simply counts the degree - the number of edges connected to a node. The higher the value, the more central a node is \citep{golbeck_analyzing_2013}. \todo{make reference to the formal definition of degree}
+The \emph{degree centrality} is an easy to calculate measure. It counts the degree, the number of edges connected to a node (see Section~\ref{subsec:formal}). The higher the value, the more central a node is \citep{golbeck_analyzing_2013}.
 
 A slightly more sophisticated measure is the \emph{betweenness centrality}. It \textquote[\cite{golbeck_analyzing_2013}]{measures how important a node is to the shortest paths through the network}. A higher value means the node has an important location in the flow of information through the network. For the reason of simplicity no special weights were used for the shortest path calculation. Which means each edges was weighted equally.
 
@@ -804,7 +823,7 @@ The two charts in figure~\ref{fig:pay_size_random} show the first performance me
 \label{fig:pay_size_random}
 \end{figure}
 
-A similar picture can be drawn from the \emph{success rate} measure. Since this is the ratio of all node pairs able to rout at least 1 satoshi there are no spikes. The improving effects are more distributed among the different levels of participation and start with 20\% and reach up to 80\% of all node pairs which can send a payment.
+A similar picture can be drawn from the \emph{success rate} measure. Since this is the ratio of all node pairs able to rout at least 1 sat there are no spikes. The improving effects are more distributed among the different levels of participation and start with 20\% and reach up to 80\% of all node pairs which can send a payment.
 
 It can be seen that at a certain Gini score the networks ability to route payments is lower in lower participation levels. It seems that not the Gini score itself determines the network's performance but also how many nodes participated to achieve to that score.
 
@@ -817,7 +836,7 @@ It can be seen that at a certain Gini score the networks ability to route paymen
 \end{figure}
 
 
-Figure~\ref{fig:sizes_random} compares the third performance measures that evaluates how many paths out of 10 between each node pair can accommodate a payment of a certain size. The ability to send a micro payment of the size 10'000 satoshi increases roughly the same as the ability to send 1 satoshi. If this means ability to send 1 satoshi comes with the ability to also send 10'000 satoshi respectively this might give some more importance to the success rate measure.
+Figure~\ref{fig:sizes_random} compares the third performance measures that evaluates how many paths out of 10 between each node pair can accommodate a payment of a certain size. The ability to send a micro payment of the size 10'000 sat increases roughly the same as the ability to send 1 sat. If this means ability to send 1 sat comes with the ability to also send 10'000 sat respectively this might give some more importance to the success rate measure.
 
 \begin{figure}[htp]
 \centering
@@ -859,7 +878,7 @@ This lower Gini score has its effect on the performance measures which are much 
 \label{fig:success_size_linear_desc}
 \end{figure}
 
-Also the ability to route certain payments is much better with lower participation. A 50\% participation already allows 8 out of 10 payments up to 10'000 satoshi to succeed. The random selection needed 80\% participation to reach a similar result. A payment of the size 100'000 satoshi never got routed. Therefore, no conclusion can be drawn from the data and it should have been chosen lower.
+Also the ability to route certain payments is much better with lower participation. A 50\% participation already allows 8 out of 10 payments up to 10'000 sat to succeed. The random selection needed 80\% participation to reach a similar result. A payment of the size 100'000 sat never got routed. Therefore, no conclusion can be drawn from the data and it should have been chosen lower.
 
 \begin{figure}[htp]
 \centering
@@ -891,6 +910,7 @@ show chars here
 
 If in comparison low and high spread are compared the number of iterations to reach a 99\% coverage is reduced by 4. The development of the different measures does not vary much, simply the rate at which it improves.
 
+\newpage
 \section{Conclusion \& Outlook}
 
 \todo[inline]{gini score alone does not determine network performance}
@@ -911,9 +931,24 @@ If in comparison low and high spread are compared the number of iterations to re
 
 %Print the glossary
 \newpage
+\newglossaryentry{sourcerouting}{
+	name={source routing},
+	description={The initiator of payment has to construct the payment path at the source which requires knowledge of the network graph}
+}
+
+\newglossaryentry{onionrouting}{
+	name={onion routing},
+	description={Routing technique to preserve the participant's privacy utilizes encryption in a way so that the routing nodes only know about the immediate preceding and subsequent neighbour in the path}
+}
+
 \newglossaryentry{doublespend}{
 	name={double spend problem},
 	description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud}
+}
+
+\newglossaryentry{preimage}{
+  name={preimage},
+  description={A secret created by the receiver of a lightning payment. The hash of the preimage is used to create HTLC transactions which allow the next element in the chain to claim the transferred amount only if they have knowledge of the preimage. The preimage is released by the receiver once the payment is routed completely. It is used to make the routing of a payment atomic}
 }
 
 \newglossaryentry{blockchain}{

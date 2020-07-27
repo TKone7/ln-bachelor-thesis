@@ -2,33 +2,33 @@
 \babel@toc {ngerman}{}
 \babel@toc {english}{}
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Life cycle of payment channel.\relax }}{4}{figure.caption.5}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Onion routing preserves privacy over the chose path.\relax }}{5}{figure.caption.8}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Payment fails when channel balances cannot accommodate the required transfer.\relax }}{6}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Lightning channel represented as attributed simple directed graph.\relax }}{7}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Initial state of newly opened channels.\relax }}{10}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Rebalancing from Alice through Bob, Charli and David.\relax }}{11}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.1}{\ignorespaces State diagram of the Network object.\relax }}{15}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Class relationship between Experiment and Network.\relax }}{15}{figure.caption.22}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Flow chart of a rebalancing experiment.\relax }}{20}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Sharing rebalance hints (green) in the friend of a friend network.\relax }}{23}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Probability distribution of the channel count of a node.\relax }}{27}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Shows boundary definition by equal node frequency.\relax }}{29}{figure.caption.33}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of node degree}}}{29}{subfigure.6.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Node's contribution to channels}}}{29}{subfigure.6.2}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Shows boundary definition by equal channel frequency.\relax }}{29}{figure.caption.34}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of node degree}}}{29}{subfigure.7.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Node's contribution to channels}}}{29}{subfigure.7.2}%
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Compare development of Gini score during rebalancing.\relax }}{31}{figure.caption.36}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Compare final Gini score with participation level.\relax }}{32}{figure.caption.37}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Median possible payment size in random node selection.\relax }}{32}{figure.caption.38}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Success rate in random node selection.\relax }}{33}{figure.caption.39}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Ability to make different payments.\relax }}{33}{figure.caption.40}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Compare final Gini score with participation level.\relax }}{34}{figure.caption.41}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Median possible payment size in random node selection.\relax }}{34}{figure.caption.42}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Success rate in random node selection.\relax }}{35}{figure.caption.43}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Ability to make different payments.\relax }}{35}{figure.caption.44}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Gini score during different levels of participation.\relax }}{36}{figure.caption.45}%
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Success Rate\relax }}{42}{figure.caption.53}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Median possible payment size\relax }}{43}{figure.caption.54}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Different payment sizes\relax }}{44}{figure.caption.55}%
-\contentsline {figure}{\numberline {A.4}{\ignorespaces Different payment sizes\relax }}{45}{figure.caption.56}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Onion routing preserves privacy over the chose path.\relax }}{5}{figure.caption.6}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Payment fails when channel balances cannot accommodate the required transfer.\relax }}{6}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Lightning channel represented as attributed simple directed graph.\relax }}{8}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Initial state of newly opened channels.\relax }}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Rebalancing from Alice through Bob, Charli and David.\relax }}{12}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces State diagram of the Network object.\relax }}{16}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Class relationship between Experiment and Network.\relax }}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Flow chart of a rebalancing experiment.\relax }}{21}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Sharing rebalance hints (green) in the friend of a friend network.\relax }}{24}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Probability distribution of the channel count of a node.\relax }}{28}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Shows boundary definition by equal node frequency.\relax }}{30}{figure.caption.26}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of node degree}}}{30}{subfigure.6.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Node's contribution to channels}}}{30}{subfigure.6.2}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Shows boundary definition by equal channel frequency.\relax }}{30}{figure.caption.27}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of node degree}}}{30}{subfigure.7.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Node's contribution to channels}}}{30}{subfigure.7.2}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Compare development of Gini score during rebalancing.\relax }}{32}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Compare final Gini score with participation level.\relax }}{33}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Median possible payment size in random node selection.\relax }}{33}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Success rate in random node selection.\relax }}{34}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Ability to make different payments.\relax }}{34}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Compare final Gini score with participation level.\relax }}{35}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Median possible payment size in random node selection.\relax }}{35}{figure.caption.35}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Success rate in random node selection.\relax }}{36}{figure.caption.36}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Ability to make different payments.\relax }}{36}{figure.caption.37}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Gini score during different levels of participation.\relax }}{37}{figure.caption.38}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Success Rate\relax }}{44}{figure.caption.46}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Median possible payment size\relax }}{45}{figure.caption.47}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Different payment sizes\relax }}{46}{figure.caption.48}%
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Different payment sizes\relax }}{47}{figure.caption.49}%

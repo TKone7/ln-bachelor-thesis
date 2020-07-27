@@ -1,3 +1,63 @@
+\ifglsentryexists{sourcerouting}{}%
+{%
+\gls@defglossaryentry{sourcerouting}%
+{%
+name={source routing},%
+sort={source routing},%
+type={main},%
+first={source routing},%
+firstplural={source routings},%
+text={source routing},%
+plural={source routings},%
+description={The initiator of payment has to construct the payment path at the source which requires knowledge of the network graph},%
+descriptionplural={The initiator of payment has to construct the payment path at the source which requires knowledge of the network graph},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{onionrouting}{}%
+{%
+\gls@defglossaryentry{onionrouting}%
+{%
+name={onion routing},%
+sort={onion routing},%
+type={main},%
+first={onion routing},%
+firstplural={onion routings},%
+text={onion routing},%
+plural={onion routings},%
+description={Routing technique to preserve the participant's privacy utilizes encryption in a way so that the routing nodes only know about the immediate preceding and subsequent neighbour in the path},%
+descriptionplural={Routing technique to preserve the participant's privacy utilizes encryption in a way so that the routing nodes only know about the immediate preceding and subsequent neighbour in the path},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{doublespend}{}%
 {%
 \gls@defglossaryentry{doublespend}%
@@ -11,6 +71,36 @@ text={double spend problem},%
 plural={double spend problems},%
 description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.},%
 descriptionplural={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{preimage}{}%
+{%
+\gls@defglossaryentry{preimage}%
+{%
+name={preimage},%
+sort={preimage},%
+type={main},%
+first={preimage},%
+firstplural={preimages},%
+text={preimage},%
+plural={preimages},%
+description={A secret created by the receiver of a lightning payment. The hash of the preimage is used to create HTLC transactions which allow the next element in the chain to claim the transferred amount only if they have knowledge of the preimage. The preimage is released by the receiver once the payment is routed completely. It is used to make the routing of a payment atomic},%
+descriptionplural={A secret created by the receiver of a lightning payment. The hash of the preimage is used to create HTLC transactions which allow the next element in the chain to claim the transferred amount only if they have knowledge of the preimage. The preimage is released by the receiver once the payment is routed completely. It is used to make the routing of a payment atomic},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
