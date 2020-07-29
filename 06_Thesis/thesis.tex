@@ -928,6 +928,7 @@ When an experiment with low \emph{initial value} is compared to one with high \e
 
 If in comparison low and high \emph{spread} are compared the number of iterations to reach a 99\% coverage is reduced by 4. The development of the different measures does not vary much, simply the rate at which they progress. Figure~\ref{fig:fix_init} shows how the speed of spread in increased.
 
+\newpage
 \begin{figure}[htp]
 \centering
   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf} 
@@ -939,7 +940,17 @@ If in comparison low and high \emph{spread} are compared the number of iteration
 
 \newpage
 \section{Conclusion \& Outlook}
-The research aimed to answer the question of how effective the proactive rebalancing protocol is, under the assumption that only a part of all nodes would participate. Based on the empirical data collected through simulations with several different parametrisations the following main statements can be concluded
+The research aimed to answer the question of how effective the proactive rebalancing protocol is, under the assumption that only a part of all nodes would participate. 
+
+To find the answer to the thesis question multiple experiments have been designed. Data from the real Lightning Network was extracted to construct a realistic simulation. Network nodes and payment channels resemble the actual Lightning Network while the balances were randomly assigned to one node entirely. This simplification was necessary as the exact balances are not publicly shared.
+
+Multiple selection strategies were developed to chose the nodes which participate. Random selection did not apply any strategy. The importance of a node determined by degree centrality was used to create a node ranking which in turn was used as basis for other selection strategies. A slightly different approach represents the spread through the network. Here, participation levels are not predefined by fix percentages but evolved through the two parameters of initial participation and spread.
+
+The Lightning Network principles and the mechanics of payments were then implemented in Python. The proactive rebalancing algorithm was implemented to allow nodes to rebalance within their friend-of-a-friend network and improve the network's overall balance. 
+
+To better assess the balance of the overall network the Gini score was adopted from \textcite{pickhardt_imbalance_2019}. The proactive rebalancing algorithm aims to improve this score which is why it is used as an approximation for the network's balance. Additionally, three more performance measures are defined which aim to assess the network's ability to route payments: \emph{Success Rate} (\gls{sr}), \emph{Median Payment Size} (\gls{mps}) and the \emph{ability to route different payment sizes on multiple paths} (\gls{ps}). 
+
+Based on the empirical data collected through simulations with several different parametrisations the following main statements can be concluded
 
 \begin{itemize}
   \item Lower participation makes it difficult to find enough rebalancing cycles. This is the main cause for the Gini score to drop with participation.
