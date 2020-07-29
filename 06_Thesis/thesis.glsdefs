@@ -1,3 +1,213 @@
+\ifglsentryexists{ps}{}%
+{%
+\gls@defglossaryentry{ps}%
+{%
+name={PS},%
+sort={PS},%
+type={main},%
+first={PS},%
+firstplural={PSs},%
+text={PS},%
+plural={PSs},%
+description={Ability to route different payment sizes on multiple paths indicates how many out of 10 paths accommodate a certain payment size},%
+descriptionplural={Ability to route different payment sizes on multiple paths indicates how many out of 10 paths accommodate a certain payment size},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{mps}{}%
+{%
+\gls@defglossaryentry{mps}%
+{%
+name={MPS},%
+sort={MPS},%
+type={main},%
+first={MPS},%
+firstplural={MPSs},%
+text={MPS},%
+plural={MPSs},%
+description={Performance measure median payment size defines the minimum amount in sat which at least half of all node pairs can send on the shortest path connecting them},%
+descriptionplural={Performance measure median payment size defines the minimum amount in sat which at least half of all node pairs can send on the shortest path connecting them},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{sr}{}%
+{%
+\gls@defglossaryentry{sr}%
+{%
+name={SR},%
+sort={SR},%
+type={main},%
+first={SR},%
+firstplural={SRs},%
+text={SR},%
+plural={SRs},%
+description={Performance measure success rate defines the ratio of all shortest paths between all node pairs which can accommodate a payment of one sat},%
+descriptionplural={Performance measure success rate defines the ratio of all shortest paths between all node pairs which can accommodate a payment of one sat},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{pseudonymous}{}%
+{%
+\gls@defglossaryentry{pseudonymous}%
+{%
+name={pseudonymous},%
+sort={pseudonymous},%
+type={main},%
+first={pseudonymous},%
+firstplural={pseudonymouss},%
+text={pseudonymous},%
+plural={pseudonymouss},%
+description={Using an identification that can not be linked to someone's real identity. However multiple interactions with the same pseudonymous identity are usually relatable},%
+descriptionplural={Using an identification that can not be linked to someone's real identity. However multiple interactions with the same pseudonymous identity are usually relatable},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{rpc}{}%
+{%
+\gls@defglossaryentry{rpc}%
+{%
+name={Remote Procedure Call},%
+sort={Remote Procedure Call},%
+type={main},%
+first={Remote Procedure Call},%
+firstplural={Remote Procedure Calls},%
+text={Remote Procedure Call},%
+plural={Remote Procedure Calls},%
+description={An interface provided by an application that can be called by another application},%
+descriptionplural={An interface provided by an application that can be called by another application},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{hash}{}%
+{%
+\gls@defglossaryentry{hash}%
+{%
+name={hash},%
+sort={hash},%
+type={main},%
+first={hash},%
+firstplural={hashs},%
+text={hash},%
+plural={hashs},%
+description={The result of a hash function},%
+descriptionplural={The result of a hash function},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{hashfunction}{}%
+{%
+\gls@defglossaryentry{hashfunction}%
+{%
+name={hash function},%
+sort={hash function},%
+type={main},%
+first={hash function},%
+firstplural={hash functions},%
+text={hash function},%
+plural={hash functions},%
+description={Takes a variable length input and creates a fixed length output. This function is one way, i.e. can not be reversed, the result can not be predicted or influenced and repetitive calculations with the same input result in the same output (deterministic)},%
+descriptionplural={Takes a variable length input and creates a fixed length output. This function is one way, i.e. can not be reversed, the result can not be predicted or influenced and repetitive calculations with the same input result in the same output (deterministic)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{sourcerouting}{}%
 {%
 \gls@defglossaryentry{sourcerouting}%
@@ -69,8 +279,8 @@ first={double spend problem},%
 firstplural={double spend problems},%
 text={double spend problem},%
 plural={double spend problems},%
-description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.},%
-descriptionplural={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud.},%
+description={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud},%
+descriptionplural={Problem in digital cash systems that a digital token can be duplicated at will and used as payment to multiple receivers at the same time making it difficult to detect the fraud},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
@@ -129,8 +339,8 @@ first={block chain},%
 firstplural={block chains},%
 text={block chain},%
 plural={block chains},%
-description={Data structure to store transactional data in cryptographically linked blocks that ensures integrity.},%
-descriptionplural={Data structure to store transactional data in cryptographically linked blocks that ensures integrity.},%
+description={Data structure to store transactional data in cryptographically linked blocks that ensures integrity},%
+descriptionplural={Data structure to store transactional data in cryptographically linked blocks that ensures integrity},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
@@ -159,8 +369,8 @@ first={scalability trilemma},%
 firstplural={scalability trilemmas},%
 text={scalability trilemma},%
 plural={scalability trilemmas},%
-description={Inability to combine all three features in a decentralised network: Security, decentralisation and scalability.},%
-descriptionplural={Inability to combine all three features in a decentralised network: Security, decentralisation and scalability.},%
+description={Inability to combine all three features in a decentralised network: Security, decentralisation and scalability},%
+descriptionplural={Inability to combine all three features in a decentralised network: Security, decentralisation and scalability},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
@@ -189,8 +399,8 @@ first={second layer},%
 firstplural={second layers},%
 text={second layer},%
 plural={second layers},%
-description={Describes an additional layer of abstraction in protocols.},%
-descriptionplural={Describes an additional layer of abstraction in protocols.},%
+description={Describes an additional layer of abstraction in protocols},%
+descriptionplural={Describes an additional layer of abstraction in protocols},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
