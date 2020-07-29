@@ -342,7 +342,140 @@ Additionally, the recommend to adopt a change in the communication protocol whic
 So far the presented algorithm sounded like a win-win-situation for everyone and there would be no discussion around adopting it. However, it is not that simple. There are different reasons why nodes would not want to participate in such a change. Some nodes might not want to forego the revenues in fee. If they decide not to participate but most other do, they still benefit from the better overall balance of the network. So, without contribution they can harvest the benefits of others who participate. 
 
 \newpage
-\section{Experiment}\label{sec:method}
+\section{Experiment}\label{sec:experiment}
+Experiments are executed to find out how the effectiveness of the proactive rebalancing is affected by different levels of participation. This section gives an abstract overview of what an experiment does, what parameters can be set and how it is executed. The subsequent Section~\ref{sec:method} then shows in greater detail how it is implemented in Python.
+
+\subsection{Performance Measures}\label{sub:perfm}
+The goal of rebalancing is to improve the overall networks ability to route payments between its nodes. The effectiveness of the algorithm can only be determined by measuring this ability with help of \emph{performance measures}. This is the generic term for the measures defined in this chapter. Some of the presented indicators were previously defined and used by \textcite{pickhardt_evaluating_2020}. 
+
+To make a statement about the entire network, all the presented measures consider the ability to route payments for every node in the network. As it is unclear what payments nodes would want to make, the best that  can be measured is one payment between each node in the network. A network with a number of nodes $N$ results in a complete payment graph with a total number of payments $N(N-1)$. The network from the experiments has 2139 nodes which results in 4'575'321 payments to test. This puts a limit on the computational complexity of the measures, since expensive calculations become unfeasible on consumer hardware.
+
+\subsubsection{Success Rate on Shortest Path}
+The ability to conduct any payment between two nodes is very fundamental. This \emph{success rate} (\emph{\gls{sr}}) can be measured by attempting to send a minimal payment of 1 sat over all shortest paths between any two nodes. The fraction of paths which can accommodate the payment from all shortest paths is the \gls{sr}. As the evaluation of the \gls{sr} is done over and over again the list of all shortest paths is cached for later use. The function \mintinline{python}{networkx.all_pairs_dijkstra_path()} is used to retrieve them. The weight to calculate short paths is represented by the fee a node would need to pay. The fee is defined by a variable and a fixed fee. As payment sizes are not known for this calculation simply the base fee is used for the shortest path calculation. 
+
+The \gls{sr} will give a good overview of how many nodes can reach each other with a minimal payment. The limitation of the measure is that it does not take payment size into account and a minimal payments might not be very beneficial in reality.
+
+
+\subsubsection{Payment Size on Shortest Path}
+Similar to the \gls{sr} the \emph{median payment size} (\emph{\gls{mps}}) also considers the shortest paths between all node pairs. On all node pairs the maximum amount that can be sent is calculated. This amount is defined by the smallest balance of edges along the path. From all possible payment amounts the median is taken to come up with a measure for the entire network. Since the distribution of the payment amounts is expected to be highly skewed, the median is taken to summarise the data instead of the mean. This measure makes an assessment about how much the nodes are able to send to each other.
+
+\subsubsection{Ability to Route Different Payment Sizes}
+Both \gls{mps} and \gls{sr} consider only the shortest path for their calculation. In reality a node that receives a payment error would simply calculate new paths and retry the payment on those. A failed payment does not necessary mean a bad user experience as several paths can be tried sequentially within a short amount of time. To account for this fact a measure will be defined that can check many paths instead of just one. The ability to route different payment sizes (\emph{\gls{ps}}) can be seen as a combination of the latter two. 
+
+Between each node pair not the shortest path is calculated but a set of 10 different paths. On each of those paths 3 payments of different sizes are tried to be executed. A \emph{1 sat payment}, a \emph{micro payment} of 10'000 sat and a \emph{normal payment} of 100'000 sat. Each node pair then receives a score between 1 and 10 per payment size, depending on how many paths could route the payment. The median of all node pairs then gives an indication about the total network, considering different payment sizes and multiple paths.
+
+
+\subsection{Simulating Proactive Rebalancing}\label{subsec:pro}
+The main objective of the simulation is to see how the proactive rebalancing protocol described in Section~\ref{subsec:prop_algo} can be applied in the Lightning Network. To answer this, the simulation network resembles the real Lightning Network. Each experiment then executes the proposed rebalancing algorithm for each node in the network.
+
+In reality each node would execute the algorithm itself. However, since this simulation has knowledge of all nodes, channels and balances it is possible to calculate and execute the rebalancing in a holistic way. Nevertheless, it must follow the limited amount of information which each node has about the rest of the network. 
+
+In a first step cycles are being determined on which nodes would agree to rebalance. Such a rebalancing cycle can only be found if \emph{all nodes} want to rebalance in that direction. As the proposed protocol foresees to share hints about desired liquidity only in the local neighbourhood, the length of those cycles is limited. The local neighbourhood of a node is defined as the friend of a friend network. If we assume node \texttt{self} in figure~\ref{fig:foaf} has only two channels with \texttt{Friend1} and \texttt{Friend2}. These friends both provide information about all their channel balances (marked as green edges). This allows the node \texttt{self} to assess the rebalancing path $p = [self, Friend1, D, Friend2, self]$ with more insight about the willingness of the nodes to participate. However, this restricts the paths for rebalancing to the ones of length 4 or 3. Although node \texttt{self} also knows about the channel $e = (C, X)$, it has no insight about their imbalance since it is not part of the friend of a friend network. Hence, this path of length 5 is not considered for rebalancing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{foaf.pdf}
+\caption{Sharing Rebalance Hints (Green) in the Friend of a Friend Network.}
+\label{fig:foaf}
+\end{figure}
+
+In a next step rebalancing is executed within those cycles. For each payment the maximum amount is found on which all participants agree. During the process the Gini score is calculated after each payment to record the progress towards a more balanced network. Similarly, the performance measures are calculated. The rebalancing stops once there are no more circles on which at least one sat can be rebalanced. This simultaneously marks the end of the experiment.
+
+\subsection{Simulating Participation Levels}
+While Section~\ref{subsec:pro} describes how proactive rebalancing is simulated it assumes that all nodes in the network participate. As the experiments aim to show the impact of different participation levels, the simulation has to be adapted accordingly. 
+
+Before the experiment starts the rebalancing the participating nodes can be explicitly specified. 
+
+\subsection{Selection Strategies}\label{subsec:selstrat}
+The simulation will rebalance the same network with different levels of participation. This is done since it can be assumed that not all nodes will adopt a new protocol immediately. The network is not homogeneous in regards to the channel count and available capacity per node. The distribution of the payment channels appears to follow a power law distribution. However, no test has been executed to prove this, since \textquote[\cite{clauset_power-law_2009}, p. 1]{the detection and characterization of power laws is complicated by the large fluctuations that occur in the tail of the distribution}. Figure~\ref{fig:channelcount}, however, shows that little nodes have a large number of channels and most of the nodes have only a few. The result of the experiment, therefore, will vary depending on how the participating nodes are selected. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{channel_count_distr.pdf}
+\caption{Frequency Distribution of the Node's Channel Count.}
+\label{fig:channelcount}
+\end{figure}
+
+\subsubsection{Randomised}
+The randomised selection executes experiments with participation levels from 10\% to 100\% in 10\% intervals (10\%, 20\%, \ldots, 90\%, 100\%). The nodes are selected randomly. The set of nodes in a smaller participation level are a subset of the larger ones. To make the experiments reproducible the \mintinline{python}{random} package is seeded with a fixed value.
+
+There is a disadvantage in this method. Multiple random selections with different randomness result in other results. It could be that by coincidence a disproportionate amount of either large or small nodes are selected. In order to reduce this effect the experiment runs 10 samples with different randomness. Then from all the success measures are being averaged. 
+
+\subsubsection{Node Ranking}
+In another scenario more important or less important nodes could decide to participate in the protocol change first. Such a selection strategy, hence, needs to sort the nodes by their importance in the network. This feature can be measured in multiple ways. This section shows some ways how the node's importance can be determined. A preliminary experiment will show whether there is a significant difference in the rankings obtained by the different methods.
+
+The \emph{degree centrality} is an easy to calculate measure. It counts the degree, the number of edges connected to a node (see Section~\ref{subsec:formal}). The higher the value, the more central a node is \citep{golbeck_analyzing_2013}.
+
+A slightly more sophisticated measure is the \emph{betweenness centrality}. It \textquote[\cite{golbeck_analyzing_2013}]{measures how important a node is to the shortest paths through the network}. A higher value means the node has an important location in the flow of information through the network. For the reason of simplicity no special weights were used for the shortest path calculation. Which means each edges was weighted equally.
+
+The \emph{eigenvector centrality} does not treat each neighbour equally. A node's importance will rise if it is surrounded by other important nodes. It can also be interpreted as a node's influence on the network \citep{golbeck_analyzing_2013}. A variation of eigenvector specialised for directed networks is \emph{pagerank}. There the in-degree of influential nodes is increases the score for a node. For the Lightning network in this experiment this does not make much sense, since all nodes connected with a payment channel are connected with two edges, one in each direction.
+
+All these different methods return a score for each node by which one could make a ranking from least to most important. We want to proof the hypothesis that for the dataset at hand all rankings would be similar. In order to compare different rankings a rank correlation can be calculated which measures the similarity of two rankings. Spearman's correlation is an appropriate way to test a monotonic relationship between two variables \citep{noauthor_resources_nodate}. It is not required for the distribution to be normal. The variables simply have to be on an ordinal scale. The resulting correlation coefficient lays between $-1$ and $1$ and is a measure for how strong the two rankings correlate. $0$ means no correlation while $1$ and $-1$ stand for strong positive or negative correlation. Table \ref{tab:spearman} shows the result of the conducted experiment. All coefficients are fairly close together, therefore, these different ranking criteria all end up with a very similar ranking. We from now on use the degree centrality as a measure for importance since it is the simplest to calculate.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c | cccc} 
+{} & {Degree centr.} & {Betweenness centr.} & {Eigenvector centr.} & {Pagerank} \\ \hline 
+{Degree centr.} & {1.0} & {0.845} & {0.916} & {0.988} \\ 
+{Betweenness centr.} & {0.845} & {1.0} & {0.698} & {0.893}\\
+{Eigenvector centr.} & {0.916} & {0.698} & {1.0} & {0.880} \\
+{Pagerank} & {0.988} & {0.893} & {0.880} & {1.0} \\
+\end{tabular}
+\caption{Ranking Correlation Coefficients of Importance Measures.}
+\label{tab:spearman}
+\end{table}
+
+There are two ways to simulate different levels of participation based on this rank. Either select $x\%$ of the \emph{top} or \emph{bottom} as participants. \todo{remove this percentage definition}
+
+\subsubsection{Node Categories}\label{subsub:categ}
+Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by \emph{equal frequency binning} to ensure equal sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. This means 100\% participation of one group yields in a total of 33\%. 
+
+Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (a) is a cumulative histogram of the node degree (with logarithmic scale). The boundaries fall on a node degree of 5 and 11. Figure (b) shows those same boundaries but with regards to how many channels those nodes contribute. It is clearly visible that the number of channels are mainly concentrated in the last group. 
+
+\begin{figure}[H]
+\centering
+\subfloat[Distribution of node degree]{
+  \includegraphics[width=0.45\linewidth]{cum_channel_distr_eq_width.pdf}
+}\quad
+\subfloat[Node's contribution to channels]{
+  \includegraphics[width=0.45\linewidth]{node_count_to_contr_channel_count_eq_width.pdf}
+}
+\caption{Shows Boundary Definition by Equal Node Frequency.}
+\label{fig:eqfreq}
+\end{figure}
+
+\subsubsection{Network Spread}
+For this node selection method we assume that the adoption of the new protocol is being spread through the network. Nodes only start adopting it when someone in their neighbourhood has adopted it. The simulation, therefore, starts with an initial set of nodes which participate in round 1. In each iteration a certain percentage of their channel partner participate as well. This results in \emph{two experiment parameters} which can be adjusted to simulate the way adoption can take place. 
+
+\emph{Init parameter} in \% defines how many nodes start while \emph{spread parameter} in \% defines how many of the adjacent nodes participate in the next round. Those two parameters should be chosen in a way that allows a number of participation levels similar to the 10 levels seen in the previous sections. Table~\ref{tab:param} shows the number of iterations required to reach either 99\% or 100\% of all nodes. The colored columns and row illustrate the chosen parameters which where used. An initial value of 2/10/15\% and a spread of 40/50/60\% result in total 9 experiments which all reach 99\% of the nodes within 7 to 11 iterations.
+
+\newcolumntype{a}{>{\columncolor{LightCyan}}c}
+\begin{table}[H]
+\centering
+\begin{tabular}{c|cacccccaac} 
+  \multicolumn{11}{c|}{\emph{Spread vs. Initial participation}} \\
+{} & {1\%} & {2\%} & {3\%} & {4\%} & {5\%} & {7\%} & {9\%} & {10\%} & {15\%} & {20\%}  \\ \hline
+{20\%} & {} & {} & {} & {24/50} & {} & {} & {23/33} & {21/33} & {22/38} & {23/50} \\
+{30\%} & {} & {15/31} & {14/32} & {15/28} & {15/23} & {15/30} & {14/31} & {16/25} & {14/23} & {14/20} \\
+\rowcolor{LightCyan}
+{40\%} & {12/23} & {\textbf{11/20}} & {11/21} & {11/18} & {11/23} & {11/17} & {11/18} & {\textbf{11/15}} & {\textbf{11/23}} & {10/20} \\
+\rowcolor{LightCyan}
+{50\%} & {9/15} & {\textbf{9/13}} & {9/13} & {9/16} & {9/18} & {9/15} & {9/15} & {\textbf{9/15}} & {\textbf{8/12}} & {8/15} \\
+\rowcolor{LightCyan}
+{60\%} & {8/12} & {\textbf{7/12}} & {9/10} & {8/14} & {7/11} & {7/10} & {7/11} & {\textbf{7/10}} & {\textbf{7/9}} & {7/10} \\ \hline
+
+\end{tabular}
+\caption{Shows Number of Iterations Needed to Achieve 99\% or 100\% of Participation}
+\label{tab:param}
+\end{table}
+
+\newpage
+
+\subsection{Combining Multiple Experiments}
+sof
+
+\newpage
+\section{Implementation of Simulation}\label{sec:method}
 \subsection{Methodology}
 This section gives an overview over the technology used and the classes created to run the experiments described in later sections. According to \citeauthor{al-taie_python_2017} Python is a general-purpose tool that becomes more and more popular in data science and graph analysis. There are many open source libraries available in the domain of analysis of complex networks, statistics and the visualisation of data \citep{al-taie_python_2017}. Furthermore the experiments in the previous paper were conducted with Python. 
 
@@ -521,7 +654,7 @@ In section~\ref{subsec:prop_algo} we defined the rebalancing algorithm each node
 \end{figure}
 
 \subsubsection{Determine the Desired Flow}\label{subsub:flow}
-While the rebalancing in reality would require each node to calculate the desired transactions individually we assume that rebalancing hints are shared among nodes and we can take a holistic view of the different flows each node would want to make. The method in listing~\ref{code:comp_flow} covers steps 1 to 4 and part of step 5 described in section ``\nameref{subsec:prop_algo}''.
+In this step the amounts all the nodes want to send / receive over any channel is calculated and stored. It is later used to determine possible rebalancing cycles. The method in listing~\ref{code:comp_flow} covers steps 1 to 4 and part of step 5 described in section ``\nameref{subsec:prop_algo}''.
 
 The method \mintinline{python}{__compute_rebalance_network(self)} creates a new NetworkX graph which is derived from the original network graph (stored in \mintinline{python}{self.G}). Line 4 starts a for-loop which iterates over all edges $(u, v)$ and calculates how much node $u$ would like to send out over this edge. The first step is to calculate the node's \emph{node balance coefficient}. This value is already pre-calculated and can be retrieved from the attributes stored in the NetworkX graph (line 7). Lines 8-10 retrieves the balance and capacity of the edge and calculates the \emph{channel balance coefficient}. The formula from step 5 is used to calculate the amount $a = c(e)\cdot (\zeta_{(u,v)}-\nu_u)$ node $u$ would want to rebalance (line 11). This calculation returns a positive integer which represents the need to send out this amount while a negative integer represents the wish to receive this amount. 
 
@@ -565,18 +698,9 @@ The result of this procedure is a property \mintinline{python}{self.flow} which 
 \end{listing}
 
 \subsubsection{Compute Rebalancing Cycle}
-Step 5 of the rebalancing algorithm tells a node $u$ to construct circular payments using a path $p = [v,x_1,\dots,x_n,u]$ for which $\zeta_{(u,v)}>\nu_u$ and $\zeta_{(x_n,u)}<\nu_u$. Such a rebalancing transaction helps a node to adjust both channel balance coefficients to the node balance coefficient. In the real network nodes would individually calculate those paths based on the \emph{rebalancing hints} they receive from their local neighbourhood. In the simulation we already have this holistic view since we calculated the desired flow in section~\ref{subsub:flow}. 
+Step 5 of the rebalancing algorithm tells a node $u$ to construct circular payments using a path $p = [v,x_1,\dots,x_n,u]$ for which $\zeta_{(u,v)}>\nu_u$ and $\zeta_{(x_n,u)}<\nu_u$. Such a rebalancing transaction helps a node to adjust both channel balance coefficients towards the node balance coefficient. In the real network nodes would individually calculate those paths based on the \emph{rebalancing hints} they receive from their local neighbourhood. In the simulation we already have this holistic view since we calculated the desired flow in section~\ref{subsub:flow}. 
 
-Before we can extract the rebalancing cycles from the flow network we define the local neighbourhood of a node as the friend of a friend network. This is the network within which the proposed protocol foresees nodes to share hints about their willingness to rebalance. If we assume node \texttt{self} in figure~\ref{fig:foaf} has only two channels with \texttt{Friend1} and \texttt{Friend2}. These friends both provide information about all their channel balances (marked as green edges). This allows the node \texttt{self} to assess the rebalancing path $p = [self, Friend1, D, Friend2, self]$ with more insight about the willingness of the nodes to participate. However, this restricts the paths for rebalancing to the ones of length 4 or less. Although node \texttt{self} also knows about the channel $e = (C, X)$, it has no insight about their imbalance since it is not part of the friend of a friend network. Hence, this path of length 5 is not considered for rebalancing.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\linewidth]{foaf.pdf}
-\caption{Sharing Rebalance Hints (Green) in the Friend of a Friend Network.}
-\label{fig:foaf}
-\end{figure}
-
-The previously calculated flow network tells us the direction in which nodes want to rebalance. We can now simply extract all cycles of length 4 or less from that graph as shown in the method \mintinline{python}{compute_circles()} in listing~\ref{code:comp_circles}. 
+The previously calculated flow network tells us the direction in which nodes want to rebalance. We can now simply extract all cycles of length 4 or 3 from that graph as shown in the method \mintinline{python}{compute_circles()} in listing~\ref{code:comp_circles}. 
 
 Line 4-6 create an extract of the flow network with only positive edges. The negative edges are just the counterparts of same size in the opposite direction and can be deleted. Lines 7-9 then iterate over each edge $e = (u, v)$ and uses the built-in function \mintinline{python}{networkx.all_simple_paths()} to find all paths from $v$ to $u$. The \emph{cutoff parameter} 3 specifies the maximum length of paths returned. To build cycles of length 4 we specify the cutoff as 3 as we add the edge $e = (u, v)$ later to make it a full circle. Since node $u$ is always the last node in the found path it does not have to be stored at this stage. All found cycles are then randomly ordered in a deterministic manner and stored to a file. 
 
@@ -677,130 +801,11 @@ To later analyse how the network's ability to route payments improve while the n
 \subsubsection{Store and Plot Results}
 After all rebalancing operations are performed the results should be stored to later allow to generate different data visualisations. Multiple files will be generated containing all the necessary data. The plots of the results often combine multiple networks with different participation, hence, can not be executed by the Network class. The selection of the desired data series and creation of plots is handled by the \texttt{Experiment} class.
 
-\subsection{Performance Measures}\label{sub:perfm}
-The goal of the rebalancing operations is to improve the overall networks ability to route payments between its nodes. The effectiveness of the algorithm can only be determined by measuring this ability with help of \emph{performance measures}. This is the generic term for the measures defined in this chapter. Some of the presented indicators were previously defined and used by \textcite{pickhardt_evaluating_2020}. 
-
-To make a statement about the entire network, all the presented measures consider the ability to route payments for every node in the network. As it is unclear what payments nodes would want to make, the best that  can be measured is one payment between each node in the network. A network with a number of nodes $N$ results in a complete payment graph with a total number of payments $N(N-1)$. The network from the experiments has 2139 nodes which results in 4'575'321 payments to test. This puts a limit on the computational complexity of the measures, since expensive calculations become unfeasible on consumer hardware.
-
-\subsubsection{Success Rate on Shortest Path}
-The ability to conduct any payment between two nodes is very fundamental. This \emph{success rate} (\emph{\gls{sr}}) can be measured by attempting to send a minimal payment of 1 sat over all shortest paths between any two nodes. The fraction of paths which can accommodate the payment from all shortest paths is the \gls{sr}. As the evaluation of the \gls{sr} is done over and over again the list of all shortest paths is cached for later use. The function \mintinline{python}{networkx.all_pairs_dijkstra_path()} is used to retrieve them. The weight to calculate short paths is represented by the fee a node would need to pay. The fee is defined by a variable and a fixed fee. As payment sizes are not known for this calculation simply the base fee is used for the shortest path calculation. 
-
-The \gls{sr} will give a good overview of how many nodes can reach each other with a minimal payment. The limitation of the measure is that it does not take payment size into account and a minimal payments might not be very beneficial in reality.
-
-
-\subsubsection{Payment Size on Shortest Path}
-Similar to the \gls{sr} the \emph{median payment size} (\emph{\gls{mps}}) also considers the shortest paths between all node pairs. On all node pairs the maximum amount that can be sent is calculated. This amount is defined by the smallest balance of edges along the path. From all possible payment amounts the median is taken to come up with a measure for the entire network. Since the distribution of the payment amounts is expected to be highly skewed, the median is taken to summarise the data instead of the mean. This measure makes an assessment about how much the nodes are able to send to each other.
-
-\subsubsection{Ability to Route Different Payment Sizes}
-Both \gls{mps} and \gls{sr} consider only the shortest path for their calculation. In reality a node that receives a payment error would simply calculate new paths and retry the payment on those. A failed payment does not necessary mean a bad user experience as several paths can be tried sequentially within a short amount of time. To account for this fact a measure will be defined that can check many paths instead of just one. The ability to route different payment sizes (\emph{\gls{ps}}) can be seen as a combination of the latter two. 
-
-Between each node pair not the shortest path is calculated but a set of 10 different paths. On each of those paths 3 payments of different sizes are tried to be executed. A \emph{1 sat payment}, a \emph{micro payment} of 10'000 sat and a \emph{normal payment} of 100'000 sat. Each node pair then receives a score between 1 and 10 per payment size, depending on how many paths could route the payment. The median of all node pairs then gives an indication about the total network, considering different payment sizes and multiple paths.
-
-\subsection{Selection Strategies}\label{subsec:selstrat}
-The simulation will rebalance the same network with different levels of participation. This is done since it can be assumed that not all nodes will adopt a new protocol immediately. The network is not homogeneous in regards to the channel count and available capacity per node. The distribution of the payment channels appears to follow a power law distribution. However, no test has been executed to prove this, since \textquote[\cite{clauset_power-law_2009}, p. 1]{the detection and characterization of power laws is complicated by the large fluctuations that occur in the tail of the distribution}. Figure~\ref{fig:channelcount}, however, shows that little nodes have a large number of channels and most of the nodes have only a few. The result of the experiment, therefore, will vary depending on how the participating nodes are selected. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.7\linewidth]{channel_count_distr.pdf}
-\caption{Frequency Distribution of the Node's Channel Count.}
-\label{fig:channelcount}
-\end{figure}
-
-\subsubsection{Randomised}
-The randomised selection executes experiments with participation levels from 10\% to 100\% in 10\% intervals (10\%, 20\%, \ldots, 90\%, 100\%). The nodes are selected randomly. The set of nodes in a smaller participation level are a subset of the larger ones. To make the experiments reproducible the \mintinline{python}{random} package is seeded with a fixed value.
-
-There is a disadvantage in this method. Multiple random selections with different randomness result in other results. It could be that by coincidence a disproportionate amount of either large or small nodes are selected. In order to reduce this effect the experiment runs 10 samples with different randomness. Then from all the success measures are being averaged. 
-
-\subsubsection{Node Ranking}
-In another scenario more important or less important nodes could decide to participate in the protocol change first. Such a selection strategy, hence, needs to sort the nodes by their importance in the network. This feature can be measured in multiple ways. This section shows some ways how the node's importance can be determined. A preliminary experiment will show whether there is a significant difference in the rankings obtained by the different methods.
-
-The \emph{degree centrality} is an easy to calculate measure. It counts the degree, the number of edges connected to a node (see Section~\ref{subsec:formal}). The higher the value, the more central a node is \citep{golbeck_analyzing_2013}.
-
-A slightly more sophisticated measure is the \emph{betweenness centrality}. It \textquote[\cite{golbeck_analyzing_2013}]{measures how important a node is to the shortest paths through the network}. A higher value means the node has an important location in the flow of information through the network. For the reason of simplicity no special weights were used for the shortest path calculation. Which means each edges was weighted equally.
-
-The \emph{eigenvector centrality} does not treat each neighbour equally. A node's importance will rise if it is surrounded by other important nodes. It can also be interpreted as a node's influence on the network \citep{golbeck_analyzing_2013}. A variation of eigenvector specialised for directed networks is \emph{pagerank}. There the in-degree of influential nodes is increases the score for a node. For the Lightning network in this experiment this does not make much sense, since all nodes connected with a payment channel are connected with two edges, one in each direction.
-
-All these different methods return a score for each node by which one could make a ranking from least to most important. We want to proof the hypothesis that for the dataset at hand all rankings would be similar. In order to compare different rankings a rank correlation can be calculated which measures the similarity of two rankings. Spearman's correlation is an appropriate way to test a monotonic relationship between two variables \citep{noauthor_resources_nodate}. It is not required for the distribution to be normal. The variables simply have to be on an ordinal scale. The resulting correlation coefficient lays between $-1$ and $1$ and is a measure for how strong the two rankings correlate. $0$ means no correlation while $1$ and $-1$ stand for strong positive or negative correlation. Table \ref{tab:spearman} shows the result of the conducted experiment. All coefficients are fairly close together, therefore, these different ranking criteria all end up with a very similar ranking. We from now on use the degree centrality as a measure for importance since it is the simplest to calculate.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c | cccc} 
-{} & {Degree centr.} & {Betweenness centr.} & {Eigenvector centr.} & {Pagerank} \\ \hline 
-{Degree centr.} & {1.0} & {0.845} & {0.916} & {0.988} \\ 
-{Betweenness centr.} & {0.845} & {1.0} & {0.698} & {0.893}\\
-{Eigenvector centr.} & {0.916} & {0.698} & {1.0} & {0.880} \\
-{Pagerank} & {0.988} & {0.893} & {0.880} & {1.0} \\
-\end{tabular}
-\caption{Ranking Correlation Coefficients of Importance Measures.}
-\label{tab:spearman}
-\end{table}
-
-There are two ways to simulate different levels of participation based on this rank. Either select $x\%$ of the \emph{top} or \emph{bottom} as participants. \todo{remove this percentage definition}
-
-\subsubsection{Node Categories}\label{subsub:categ}
-Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by \emph{equal frequency binning} to ensure equal sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. This means 100\% participation of one group yields in a total of 33\%. 
-
-Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (a) is a cumulative histogram of the node degree (with logarithmic scale). The boundaries fall on a node degree of 5 and 11. Figure (b) shows those same boundaries but with regards to how many channels those nodes contribute. It is clearly visible that the number of channels are mainly concentrated in the last group. 
-
-\todo[inline]{maybe declare that this was not a good boundary since one third of the smallest node have very little channels}
-
-
-\begin{figure}[H]
-\centering
-\subfloat[Distribution of node degree]{
-  \includegraphics[width=0.45\linewidth]{cum_channel_distr_eq_width.pdf}
-}\quad
-\subfloat[Node's contribution to channels]{
-  \includegraphics[width=0.45\linewidth]{node_count_to_contr_channel_count_eq_width.pdf}
-}
-\caption{Shows Boundary Definition by Equal Node Frequency.}
-\label{fig:eqfreq}
-\end{figure}
-
-An alternative to building bins with equal numbers of nodes the bins can be chosen so that each contains roughly the same amount of channels. As those bins are built from a list ranked by node degree this necessarily leads to large first group (1814, 85\%), a medium sized middle group (273, 13\%) and a small (52, 2\%) last group. 
-
-\begin{figure}[H]
-\centering
-\subfloat[Distribution of node degree]{
-  \includegraphics[width=0.45\linewidth]{cum_channel_distr_eq_chc.pdf}
-}\quad
-\subfloat[Node's contribution to channels]{
-  \includegraphics[width=0.45\linewidth]{node_count_to_contr_channel_count_eq_chc.pdf}
-}
-\caption{Shows Boundary Definition by Equal Channel Frequency.}
-\label{fig:eqfreqchannel}
-\end{figure}
-\subsubsection{Network Spread}
-For this node selection method we assume that the adoption of the new protocol is being spread through the network. Nodes only start adopting it when someone in their neighbourhood has adopted it. The simulation, therefore, starts with an initial set of nodes which participate in round 1. In each iteration a certain percentage of their channel partner participate as well. This results in \emph{two experiment parameters} which can be adjusted to simulate the way adoption can take place. 
-
-\emph{Init parameter} in \% defines how many nodes start while \emph{spread parameter} in \% defines how many of the adjacent nodes participate in the next round. Those two parameters should be chosen in a way that allows a number of participation levels similar to the 10 levels seen in the previous sections. Table~\ref{tab:param} shows the number of iterations required to reach either 99\% or 100\% of all nodes. The colored columns and row illustrate the chosen parameters which where used. An initial value of 2/10/15\% and a spread of 40/50/60\% result in total 9 experiments which all reach 99\% of the nodes within 7 to 11 iterations.
-
-\newcolumntype{a}{>{\columncolor{LightCyan}}c}
-\begin{table}[H]
-\centering
-\begin{tabular}{c|cacccccaac} 
-  \multicolumn{11}{c|}{\emph{Spread vs. Initial participation}} \\
-{} & {1\%} & {2\%} & {3\%} & {4\%} & {5\%} & {7\%} & {9\%} & {10\%} & {15\%} & {20\%}  \\ \hline
-{20\%} & {} & {} & {} & {24/50} & {} & {} & {23/33} & {21/33} & {22/38} & {23/50} \\
-{30\%} & {} & {15/31} & {14/32} & {15/28} & {15/23} & {15/30} & {14/31} & {16/25} & {14/23} & {14/20} \\
-\rowcolor{LightCyan}
-{40\%} & {12/23} & {\textbf{11/20}} & {11/21} & {11/18} & {11/23} & {11/17} & {11/18} & {\textbf{11/15}} & {\textbf{11/23}} & {10/20} \\
-\rowcolor{LightCyan}
-{50\%} & {9/15} & {\textbf{9/13}} & {9/13} & {9/16} & {9/18} & {9/15} & {9/15} & {\textbf{9/15}} & {\textbf{8/12}} & {8/15} \\
-\rowcolor{LightCyan}
-{60\%} & {8/12} & {\textbf{7/12}} & {9/10} & {8/14} & {7/11} & {7/10} & {7/11} & {\textbf{7/10}} & {\textbf{7/9}} & {7/10} \\ \hline
-
-\end{tabular}
-\caption{Shows Number of Iterations Needed to Achieve 99\% or 100\% of Participation}
-\label{tab:param}
-\end{table}
-
-\newpage
 \section{Results}\label{sec:result}
 The results of all the previously presented experiments are presented in this section. Main focus is put on the performance measures defined in section~\ref{sub:perfm}. Main tool for analysing and interpreting the results are charts which visualise the measures with different levels of node participation.
 
 \subsection{Random Participation}
-Before analysing the performance measures we will have a look at how the balance score (Gini) has changed during the process of rebalancing. Figure~\ref{fig:gini_rebal_rand} compares the Gini score with the number of rebalancing operations executed. It becomes evident that a smaller participation of nodes leads to a decreased amount of rebalancing operations. This is because rebalancing only occurs between nodes which participate in the new protocol. If only one node within a cycle is not participating the whole cycle is discarded. The decreasing slope of the Gini, and therefore rate of increase in balance of the network, is stable among the different participation levels. Thus, follows that the fewer rebalancing possibilities are responsible for the smaller balance improvement. 
+Before analysing the performance measures the change of the balance score (Gini) during the process of rebalancing will be observed. Figure~\ref{fig:gini_rebal_rand} compares the Gini score with the number of rebalancing operations executed. It becomes evident that a smaller participation of nodes leads to a decreased amount of rebalancing operations. This is because rebalancing only occurs between nodes which participate in the new protocol. If only one node within a cycle is not participating the whole cycle is ignored. The decreasing slope of the Gini, and therefore rate of increase in balance of the network, is similar among the different participation levels. Thus, follows that the fewer rebalancing possibilities are responsible for the smaller balance improvement. 
 
 \begin{figure}[H]
 \centering
@@ -809,9 +814,9 @@ Before analysing the performance measures we will have a look at how the balance
 \label{fig:gini_rebal_rand}
 \end{figure}
 
-Since fewer rebalancing opportunities means smaller Gini score, the best Gini score a network can achieve is lower the fewer nodes participate. Figure~\ref{fig:gini_part_rand} shows this relation. The yellow area around the mean Gini score visualises the standard deviation of the 10 experiments conducted with different random node selections. There must be no standard deviation at 100\% since the node selection is always the same. Furthermore, the deviation is very small in the low bands of participation which signals a low Gini score no matter what nodes are selected. 
+Since fewer rebalancing opportunities results in a smaller Gini score, the best Gini score a network can achieve is lower the fewer nodes participate. Figure~\ref{fig:gini_part_rand} shows this relation. The yellow area around the mean Gini score visualises the standard deviation of the 10 experiments conducted with different random node selections. There must be no standard deviation at 100\% since the node selection is always the same. Furthermore, the deviation is very small in the low bands of participation which signals a low Gini score no matter what nodes are selected. 
 
-Note the second Y-axis which shows the relative capacity that participates at different node participation levels. This tells us how much of the channel capacity was available for rebalancing. It is simply a different similar to the node participation, as more nodes means more capacity. The two variables must therefore be monotonically increasing. But the rate at which it increases reveals some insight about the effect of the different node selection methods. 
+Note the second Y-axis which shows the relative capacity that participates at different node participation levels. This tells us how much of the channel capacity was available for rebalancing. As more nodes will contribute more capacity the variables node participation and capacity participation must be monotonically increasing. But the rate at which it increases reveals some insight about the effect of the different node selection methods. 
 
 \begin{figure}[H]
 \centering
@@ -820,7 +825,7 @@ Note the second Y-axis which shows the relative capacity that participates at di
 \label{fig:gini_part_rand}
 \end{figure}
 
-The two charts in figure~\ref{fig:pay_size_random} show the first performance measure \gls{mps} at different Gini levels and for the end value for all levels of participation. Since the variable is not evenly distributed, there are certain spikes visible. Both charts visualise that an improvement of the measure is only noticeable with a participation of 80\% or higher. 
+The two charts in figure~\ref{fig:pay_size_random} show the first performance measure \gls{mps} at different Gini levels and also for the different levels of participation. Since the variable is not evenly distributed, a median value will usually generate certain spikes. Both charts visualise that an improvement of the measure is only noticeable with a participation of 80\% or higher. 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_median_payment_size_random.pdf}\hfill
@@ -829,9 +834,9 @@ The two charts in figure~\ref{fig:pay_size_random} show the first performance me
 \label{fig:pay_size_random}
 \end{figure}
 
-A similar picture can be drawn from the \gls{sr} measure. Since this is the ratio of all node pairs able to rout at least 1 sat there are no spikes. The improving effects are more distributed among the different levels of participation and start with 20\% and reach up to 80\% of all node pairs which can send a payment.
+A similar picture can be drawn from the \gls{sr} measure. Since this is the ratio of all node pairs able to rout at least 1 sat there are no spikes. The improving effects are more distributed among the different levels of participation. The imbalanced network already has a \gls{sr} of 20\% which can be improved further up to 80\% (under total participation).
 
-It can be seen that at a given Gini score the performance measure is lower within lower participation levels. It seems that not the Gini score itself determines the network's performance but also how many nodes participated to achieve that score.
+It can be seen that at a given Gini score, the performance measure is lower for lower participation levels. This confirms that the Gini score is only an approximation for the networks balance but is not solely responsible for the effects on the performance measures. 
 
 \begin{figure}[htp]
 \centering
@@ -841,21 +846,20 @@ It can be seen that at a given Gini score the performance measure is lower withi
 \label{fig:success_random}
 \end{figure}
 
-Figure~\ref{fig:sizes_random} compares the third performance, \gls{ps}, measures that evaluates how many paths out of 10 between each node pair can accommodate a payment of a certain size. The ability to send a micro payment of the size 10'000 sat increases roughly the same as the ability to send 1 sat. If this means ability to send 1 sat comes with the ability to also send 10'000 sat respectively this might give some more importance to the success rate measure.
+Figure~\ref{fig:sizes_random} compares the third performance measures, \gls{ps}, that evaluates how many paths out of 10 between each node pair can accommodate a payment of a certain size. The ability to send a micro payment of the size 10'000 sat increases roughly the same as the ability to send 1 sat. Hence, can be concluded that the ability to send 1 sat leads to the ability to also send 10'000 sat respectively. 
 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.7\textwidth]{results/3a65a961_median_paymnets_vs_participation_random.pdf}
-\caption{\gls{ps} in Random Rode Selection.}
+\caption{\gls{ps} in Random Node Selection.}
 \label{fig:sizes_random}
 \end{figure}
 
 \subsection{Node Importance}
-df
 \subsubsection{Adoption by Important Nodes First}\label{subsub:desc}
-In this section we show the results for the experiments for which the participating nodes were chosen based on their importance ranking. The highest ranked $x\%$ are chosen to engage in rebalancing. 
+In this section we show the results for the experiments for which the participating nodes were chosen based on their importance ranking. The fraction of participating nodes where chosen from the highest ranked nodes. 
 
-The fact persists that lower participation results in lower performance measures as can be seen in figures~\ref{fig:pay_size_size_linear_desc} and \ref{fig:success_size_linear_desc}. From the dotted line representing the fraction of the total capacity that participates it is also visible that those important nodes contribute overproportionately to the available capacity. 30\% of nodes include 80\% of the capacity and 50\% include 90\%. This explains why the Gini score falls much faster with increasing participation than it was the case with the random selection.
+The fact persists that lower participation results in lower performance measures as can be seen in figures~\ref{fig:pay_size_size_linear_desc} and \ref{fig:success_size_linear_desc}. From the dotted line representing the fraction of the total capacity that participates it is also visible that those important nodes contribute overproportionately to the available capacity. 30\% of nodes include 80\% of the capacity and 50\% include 90\%. This explains why the Gini score falls much faster with increasing participation than it was the case with random selection.
 
 \begin{figure}[H]
 \centering
@@ -864,7 +868,7 @@ The fact persists that lower participation results in lower performance measures
 \label{fig:gini_part_size_linear_desc}
 \end{figure}
 
-This lower Gini score has its effect on the performance measures which are much higher during partial participation. This is specially true in the lower participation areas of 10\% to 30\%.  
+This lower Gini score has its effect on the performance measures which are consistently higher in all levels of participation. The \gls{mps} measure seen in Figure~\ref{fig:pay_size_size_linear_desc} already increases steeply with 40\% compared to 80\% with random selection.
 
 \begin{figure}[htp]
 \centering
@@ -875,6 +879,8 @@ This lower Gini score has its effect on the performance measures which are much 
 \end{figure}
 
 
+The \gls{sr} in Figure~\ref{fig:success_size_linear_desc} is already with 10\% participation almost two times higher than with random selection. It then grows linearly to the same levels of 80\%.
+
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_imbalance_size_linear_desc.pdf}\hfill
@@ -883,7 +889,7 @@ This lower Gini score has its effect on the performance measures which are much 
 \label{fig:success_size_linear_desc}
 \end{figure}
 
-Also the ability to route certain payments is much better with lower participation. A 50\% participation already allows 8 out of 10 payments up to 10'000 sat to succeed. The random selection needed 80\% participation to reach a similar result. A payment of the size 100'000 sat never got routed. Therefore, no conclusion can be drawn from the data and it should have been chosen lower.
+Also the ability to route certain payments is much better with lower participation. A 50\% participation already allows 8 out of 10 payments up to 10'000 sat to succeed. The random selection needed 90\% participation to reach a similar result. A payment of the size 100'000 sat never got routed. Therefore, no conclusion can be drawn from the data.
 
 \begin{figure}[htp]
 \centering
@@ -894,7 +900,7 @@ Also the ability to route certain payments is much better with lower participati
 
 
 \subsubsection{Adoption by Unimportant Nodes First}\label{subsub:asc}
-When instead the most important but the least important nodes are drawn for the experiment not many results could have been recorded. As visible in figure~\ref{fig:gini_part_size_linear_asc} almost no capacity was available for rebalancing. This is why an additional experiment was conducted with 95\% participation. But even then only around 11\% of the total channel capacity was available, too little than to rebalance more than a couple hundred rebalancing transactions. Therefore, no effect on the Gini score nor the other performance measures could be recorded. 
+Instead of the top ranked nodes this part covers the selection from the lowest ranked nodes. The result shows that all participation levels less than 100\% did not improve the network's balance at all. As visible in Figure~\ref{fig:gini_part_size_linear_asc} almost no capacity was available for rebalancing. This is why an additional experiment was conducted with 95\% participation. But even then only around 11\% of the total channel capacity was available, too little than to rebalance more than a couple hundred rebalancing transactions. Therefore, no effect on the Gini score nor the other performance measures could be recorded. 
 
 \begin{figure}[htp]
 \centering
@@ -904,21 +910,43 @@ When instead the most important but the least important nodes are drawn for the 
 \end{figure}
 
 \subsubsection{Participation Within a Group}
-When the experiment was conducted with equal frequency binning with regards to nodes the three groups contained each 713 nodes. As the previous results from section~\ref{subsub:asc} have shown, even the 95\% lowest ranked nodes are not able to rebalance a significant amount and therefore did not improve the performance measures. Concluding, both the small and the middle group also are not able to improve the networks balance at all even when the entire group participates. Successive experiments with lower participation within the groups were meaningless. The group containing the 713 most important nodes does of course result in some rebalancing, however this basically the same result as in section~\ref{subsub:desc} just with a increased granularity of factor three.
+When the experiment was conducted with equal frequency binning with regards to nodes the three groups contained each 713 nodes. As the previous results from section~\ref{subsub:asc} have shown, even the 95\% lowest ranked nodes are not able to rebalance a significant amount and therefore did not improve the performance measures. Concluding, both the low and the intermediate group also are not able to improve the networks balance at all even when the entire group participates. Successive experiments with lower participation in those groups were meaningless. The group containing the 713 most important nodes does of course result in some rebalancing, however this leads to the same result as in section~\ref{subsub:desc} just with a increased granularity (of factor three).
 
 \subsection{Network Spread}
-The results from the experiments stemming from the selection via network spread do not vary significantly from the random selected ones. This can be explained that both, the initial set of starting nodes as well as the ones added during each iteration are chosen randomly as well. So, the results regarding the performance measures of the network can be compared to those. What can be learned, however, is the influence of the two experiment parameters on the duration it takes achieve a broad coverage in the network.
+The results from the experiments stemming from the selection via network spread do not vary significantly from the random selected ones. This can be explained that both, the initial set of starting nodes as well as the ones added during each iteration are chosen randomly as well. So, the results regarding the performance measures of the network are similar to those. What can be learned, however, is the influence of the two experiment parameters on the participation levels of nodes and capacities.
 
-If we compare an experiment with low initial value with one that has a high initial value surely the results in the first phases are better. However, they do not differ much in the number of iterations it takes to achieve high network saturation.This effect is only noticeable during the first few iterations.
+When an experiment with low \emph{initial value} is compared to one with high \emph{initial value} surely results in the first iterations are better. The higher participation in the beginning acts as a head-start. However, they do not diverge much in the number of iterations it takes to achieve high network saturation. The head-start starts to diminish over the course of further iterations as can be observed in Figure~\ref{fig:fix_spread}.
 
-show chars here
+\begin{figure}[htp]
+\centering
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf} 
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf} 
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_15_40.pdf}
+\caption{\gls{sr} With Different Init Parameters And a Fixed Spread of 40\%.}
+\label{fig:fix_spread}
+\end{figure}
 
-If in comparison low and high spread are compared the number of iterations to reach a 99\% coverage is reduced by 4. The development of the different measures does not vary much, simply the rate at which it improves.
+If in comparison low and high \emph{spread} are compared the number of iterations to reach a 99\% coverage is reduced by 4. The development of the different measures does not vary much, simply the rate at which they progress. Figure~\ref{fig:fix_init} shows how the speed of spread in increased.
+
+\begin{figure}[htp]
+\centering
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf} 
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_50.pdf} 
+  \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf}
+\caption{\gls{sr} With Different Spread Parameters And a Fixed Init Value of 2\%.}
+\label{fig:fix_init}
+\end{figure}
 
 \newpage
 \section{Conclusion \& Outlook}
+The research aimed to answer the question of how effective the proactive rebalancing protocol is, under the assumption that only a part of all nodes would participate. Based on the empirical data collected through simulations with several different parametrisations the following main statements can be concluded
 
-\todo[inline]{gini score alone does not determine network performance}
+\begin{itemize}
+  \item Lower participation makes it difficult to find enough rebalancing cycles. This is the main cause for the Gini score to drop with participation.
+  \item gini score alone does not determine network performance
+\end{itemize}
+
+\todo[inline]{show limitations }
 
 \todo[inline]{measures all consider the total network. more likely is that the participating nodes are also the one being active in eco. transactions. this is why maybe the scores should focus on them. The effecto of benefitting from others vs. the benefit from being proactive themselves could be interesting. go into the dilemma of the commons.}
 

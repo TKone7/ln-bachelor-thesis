@@ -8,28 +8,27 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Initial state of newly opened channels.\relax }}{11}{figure.caption.12}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Rebalancing from Alice through Bob, Charli and David.\relax }}{12}{figure.caption.13}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Example of Two Distributions of Channel Balances and Their Ginis\relax }}{13}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.1}{\ignorespaces State diagram of the Network object.\relax }}{17}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Class relationship between Experiment and Network.\relax }}{18}{figure.caption.16}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Flow Chart of a Rebalancing Experiment.\relax }}{22}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Sharing Rebalance Hints (Green) in the Friend of a Friend Network.\relax }}{25}{figure.caption.18}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Frequency Distribution of the Node's Channel Count.\relax }}{29}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Shows Boundary Definition by Equal Node Frequency.\relax }}{31}{figure.caption.23}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of node degree}}}{31}{subfigure.6.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Node's contribution to channels}}}{31}{subfigure.6.2}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Shows Boundary Definition by Equal Channel Frequency.\relax }}{31}{figure.caption.24}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of node degree}}}{31}{subfigure.7.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Node's contribution to channels}}}{31}{subfigure.7.2}%
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Compare Development of Gini Score During Rebalancing.\relax }}{33}{figure.caption.26}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Compare Final Gini Score with Participation Level.\relax }}{34}{figure.caption.27}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces \gls {mps} in Random Node Selection.\relax }}{34}{figure.caption.28}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces \gls {sr} in Random Node Selection.\relax }}{35}{figure.caption.29}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces \gls {ps} in Random Rode Selection.\relax }}{35}{figure.caption.30}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Compare final Gini score with participation level.\relax }}{36}{figure.caption.31}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Median possible payment size in random node selection.\relax }}{36}{figure.caption.32}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Success rate in random node selection.\relax }}{37}{figure.caption.33}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Ability to make different payments.\relax }}{37}{figure.caption.34}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Gini score during different levels of participation.\relax }}{38}{figure.caption.35}%
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Success Rate\relax }}{45}{figure.caption.43}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Median possible payment size\relax }}{46}{figure.caption.44}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Different payment sizes\relax }}{47}{figure.caption.45}%
-\contentsline {figure}{\numberline {A.4}{\ignorespaces Different payment sizes\relax }}{48}{figure.caption.46}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Sharing Rebalance Hints (Green) in the Friend of a Friend Network.\relax }}{18}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Frequency Distribution of the Node's Channel Count.\relax }}{19}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Shows Boundary Definition by Equal Node Frequency.\relax }}{21}{figure.caption.19}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of node degree}}}{21}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Node's contribution to channels}}}{21}{subfigure.3.2}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces State diagram of the Network object.\relax }}{24}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Class relationship between Experiment and Network.\relax }}{25}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Flow Chart of a Rebalancing Experiment.\relax }}{29}{figure.caption.23}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Compare Development of Gini Score During Rebalancing.\relax }}{34}{figure.caption.24}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Compare Final Gini Score with Participation Level.\relax }}{35}{figure.caption.25}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces \gls {mps} in Random Node Selection.\relax }}{35}{figure.caption.26}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces \gls {sr} in Random Node Selection.\relax }}{36}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces \gls {ps} in Random Node Selection.\relax }}{36}{figure.caption.28}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Compare final Gini score with participation level.\relax }}{37}{figure.caption.29}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Median possible payment size in random node selection.\relax }}{37}{figure.caption.30}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Success rate in random node selection.\relax }}{38}{figure.caption.31}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Ability to make different payments.\relax }}{38}{figure.caption.32}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Gini score during different levels of participation.\relax }}{39}{figure.caption.33}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces \gls {sr} With Different Init Parameters And a Fixed Spread of 40\%.\relax }}{40}{figure.caption.34}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces \gls {sr} With Different Spread Parameters And a Fixed Init Value of 2\%.\relax }}{41}{figure.caption.35}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Success Rate\relax }}{46}{figure.caption.43}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Median possible payment size\relax }}{47}{figure.caption.44}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Different payment sizes\relax }}{48}{figure.caption.45}%
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Different payment sizes\relax }}{49}{figure.caption.46}%
