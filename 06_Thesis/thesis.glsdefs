@@ -1,16 +1,16 @@
-\ifglsentryexists{ps}{}%
+\ifglsentryexists{mpr}{}%
 {%
-\gls@defglossaryentry{ps}%
+\gls@defglossaryentry{mpr}%
 {%
-name={PS},%
-sort={PS},%
+name={MPR},%
+sort={MPR},%
 type={main},%
-first={PS},%
-firstplural={PSs},%
-text={PS},%
-plural={PSs},%
-description={Ability to route different payment sizes on multiple paths indicates how many out of 10 paths accommodate a certain payment size},%
-descriptionplural={Ability to route different payment sizes on multiple paths indicates how many out of 10 paths accommodate a certain payment size},%
+first={MPR},%
+firstplural={MPRs},%
+text={MPR},%
+plural={MPRs},%
+description={Multi Path Retry},%
+descriptionplural={Multi Path Retry},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%

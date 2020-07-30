@@ -28,7 +28,7 @@
 \BOOKMARK [2][-]{subsection.4.1}{4.1 Performance Measures}{section.4}% 28
 \BOOKMARK [3][-]{subsubsection.4.1.1}{4.1.1 Success Rate on Shortest Path}{subsection.4.1}% 29
 \BOOKMARK [3][-]{subsubsection.4.1.2}{4.1.2 Payment Size on Shortest Path}{subsection.4.1}% 30
-\BOOKMARK [3][-]{subsubsection.4.1.3}{4.1.3 Ability to Route Different Payment Sizes}{subsection.4.1}% 31
+\BOOKMARK [3][-]{subsubsection.4.1.3}{4.1.3 Multi Path Retry}{subsection.4.1}% 31
 \BOOKMARK [2][-]{subsection.4.2}{4.2 Simulating Proactive Rebalancing}{section.4}% 32
 \BOOKMARK [2][-]{subsection.4.3}{4.3 Simulating Participation Levels}{section.4}% 33
 \BOOKMARK [2][-]{subsection.4.4}{4.4 Selection Strategies}{section.4}% 34
@@ -63,8 +63,8 @@
 \BOOKMARK [1][-]{section.7}{7 Conclusion \046 Outlook}{}% 63
 \BOOKMARK [2][-]{subsection.7.1}{7.1 Limitations}{section.7}% 64
 \BOOKMARK [2][-]{subsection.7.2}{7.2 Future work}{section.7}% 65
-\BOOKMARK [1][-]{section*.37}{References}{}% 66
-\BOOKMARK [1][-]{section*.38}{List of Figures}{}% 67
-\BOOKMARK [1][-]{section*.39}{List of Tables}{}% 68
-\BOOKMARK [1][-]{section*.40}{Glossary}{}% 69
+\BOOKMARK [1][-]{section*.35}{References}{}% 66
+\BOOKMARK [1][-]{section*.36}{List of Figures}{}% 67
+\BOOKMARK [1][-]{section*.37}{List of Tables}{}% 68
+\BOOKMARK [1][-]{section*.38}{Glossary}{}% 69
 \BOOKMARK [1][-]{appendix.A}{A Charts Network Spread Experiment}{}% 70

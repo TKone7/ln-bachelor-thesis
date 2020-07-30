@@ -25,6 +25,7 @@
 \definecolor{LightCyan}{rgb}{0.88,1,1}
 \urldef{\gitpluginurl}\url{https://github.com/TKone7/clightning-plugins/tree/3b47ab992413d7bf9747be1320654b3478c60d37/dumpgraph}
 \urldef{\github}\url{https://github.com/TKone7/ln-bachelor-thesis}
+\urldef{\githubsim}\url{https://github.com/TKone7/ln-bachelor-thesis/tree/master/04_Simulation}
 
 %%---Bibliography------------------------------------------------------------------------
 %% \usepackage[style=ieee,urldate=comp,backend=biber]{biblatex}
@@ -262,7 +263,7 @@ Rebalancing is an activity where one node engages in a circular payment that pay
 
 
 \subsection{Problem Statement}
-These payment channel networks are decentralized by nature and protocol changes can not be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure\footnote{Defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
+These payment channel networks are decentralized by nature and protocol changes can not be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure\footnote{defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
 
 The next part of the paper defines the rebalancing algorithm proposed in a protocol change. Then an experiment is constructed which mimics the real Lightning Network with all its participants and payment channels. I formally define multiple performance measurements which are later used to measure the improvement of the network's ability to route payments. Different scenarios are then simulated under different levels of participation also testing different ways to select the participating nodes.
 
@@ -359,8 +360,8 @@ The \gls{sr} will give a good overview of how many nodes can reach each other wi
 \subsubsection{Payment Size on Shortest Path}
 Similar to the \gls{sr} the \emph{median payment size} (\emph{\gls{mps}}) also considers the shortest paths between all node pairs. On all node pairs the maximum amount that can be sent is calculated. This amount is defined by the smallest balance of edges along the path. From all possible payment amounts the median is taken to come up with a measure for the entire network. Since the distribution of the payment amounts is expected to be highly skewed, the median is taken to summarise the data instead of the mean. This measure makes an assessment about how much the nodes are able to send to each other.
 
-\subsubsection{Ability to Route Different Payment Sizes}
-Both \gls{mps} and \gls{sr} consider only the shortest path for their calculation. In reality a node that receives a payment error would simply calculate new paths and retry the payment on those. A failed payment does not necessary mean a bad user experience as several paths can be tried sequentially within a short amount of time. To account for this fact a measure will be defined that can check many paths instead of just one. The ability to route different payment sizes (\emph{\gls{ps}}) can be seen as a combination of the latter two. 
+\subsubsection{Multi Path Retry}
+Both \gls{mps} and \gls{sr} consider only the shortest path for their calculation. In reality a node that receives a payment error would simply calculate new paths and retry the payment on those. A failed payment does not necessary mean a bad user experience as several paths can be tried sequentially within a short amount of time. To account for this fact a measure will be defined that can check multiple paths instead of just one. The measure \emph{Multi Path Retry} (\emph{\gls{mpr}}) can be seen as a combination of the latter two. Additionally, the \gls{mpr} measure considers different payment sizes.
 
 Between each node pair not the shortest path is calculated but a set of 10 different paths. On each of those paths 3 payments of different sizes are tried to be executed. A \emph{1 sat payment}, a \emph{micro payment} of 10'000 sat and a \emph{normal payment} of 100'000 sat. Each node pair then receives a score between 1 and 10 per payment size, depending on how many paths could route the payment. The median of all node pairs then gives an indication about the total network, considering different payment sizes and multiple paths.
 
@@ -425,7 +426,7 @@ All these different methods return a score for each node by which one could make
 \label{tab:spearman}
 \end{table}
 
-There are two ways to simulate different levels of participation based on this rank. Either select $x\%$ of the \emph{top} or \emph{bottom} as participants. \todo{remove this percentage definition}
+When simulating different level of participations the participating nodes can be chosen either from the top or the bottom of the ranked node list. This simulates an adoption starting by important or unimportant nodes respectively. 
 
 \subsubsection{Node Categories}\label{subsub:categ}
 Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by \emph{equal frequency binning} to ensure equal sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. This means 100\% participation of one group yields in a total of 33\%. 
@@ -846,12 +847,12 @@ It can be seen that at a given Gini score, the performance measure is lower for 
 \label{fig:success_random}
 \end{figure}
 
-Figure~\ref{fig:sizes_random} compares the third performance measures, \gls{ps}, that evaluates how many paths out of 10 between each node pair can accommodate a payment of a certain size. The ability to send a micro payment of the size 10'000 sat increases roughly the same as the ability to send 1 sat. Hence, can be concluded that the ability to send 1 sat leads to the ability to also send 10'000 sat respectively. 
+Figure~\ref{fig:sizes_random} compares the third performance measure, \gls{mpr}, that evaluates how many paths out of 10 between each node pair can accommodate a payment of a certain size. The ability to send a micro payment of the size 10'000 sat increases roughly the same as the ability to send 1 sat. Hence, can be concluded that the ability to send 1 sat leads to the ability to also send 10'000 sat respectively. 
 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.7\textwidth]{results/3a65a961_median_paymnets_vs_participation_random.pdf}
-\caption{\gls{ps} in Random Node Selection.}
+\caption{\gls{mpr} in Random Node Selection.}
 \label{fig:sizes_random}
 \end{figure}
 
@@ -952,7 +953,7 @@ Multiple selection strategies were developed to chose the participating nodes. \
 
 The Lightning Network principles and the mechanics of payments were implemented in Python. The proactive rebalancing algorithm was implemented to allow nodes to rebalance within their friend-of-a-friend network achieving improvement not only of their own but also the network's overall balance. 
 
-To better assess the balance of the overall network the Gini score was adopted as a \gls{proxy} by \textcite{pickhardt_imbalance_2019}. The proactive rebalancing algorithm aims to improve this score. Additionally, three more performance measures are defined which aim to assess the network's ability to route payments: \emph{Success Rate} (\gls{sr}), \emph{Median Payment Size} (\gls{mps}) and the \emph{ability to route different payment sizes on multiple paths} (\gls{ps}). 
+To better assess the balance of the overall network the Gini score was adopted as a \gls{proxy} by \textcite{pickhardt_imbalance_2019}. The proactive rebalancing algorithm aims to improve this score. Additionally, three more performance measures are defined which aim to assess the network's ability to route payments: \emph{Success Rate} (\gls{sr}), \emph{Median Payment Size} (\gls{mps}) and the \emph{ability to route different payment sizes on multiple paths} (\gls{mpr}). 
 
 Based on the empirical data collected through simulations with several different parametrisations the following main conclusions can be drawn:
 
@@ -965,14 +966,19 @@ Based on the empirical data collected through simulations with several different
   \item Adoption through network spread is mainly influenced by the fraction of new nodes added per iteration. Performance measures mainly follow the results of random selection.
 \end{itemize}
 
-\subsection{Limitations}
-When interpreting the presented results it is recommended to consider the following limitations.
+The findings from the experiments have confirmed the proactive rebalancing mechanism as a functioning method to improve the network balance. As expected, lower adoption of the protocol change lead to fewer improvement. Different adoption scenarios presented the big variations in routing capability. Furthermore, the importance ranking showed the influence exerted by the most important nodes.
 
-The rebalancing simulation implemented the proposed algorithm in the strictest way possible. Nodes only participated if they could improve their local balance distribution. No temporary deterioration was allowed. Furthermore, rebalancing was only conducted within nodes supporting the fee free rebalancing protocol. In practice a mix of fee free and paid rebalancing would be possible. This strict application lead to a strong decrease of rebalancing possibilities within lower participations. Real world implementations allowing for more freedom could achieve higher routing abilities than measured in the experiments.
+\subsection{Limitations}
+The rebalancing simulation implemented the proposed algorithm in the strictest way possible. Nodes only participated if they could improve their local balance distribution. No temporary deterioration was allowed. Furthermore, rebalancing was only conducted within nodes supporting the fee free rebalancing protocol. In practice, a combination of free and paid rebalancing would be possible. This strict application lead to a strong decrease of rebalancing possibilities within lower participations. Real world implementations allowing for more freedom could achieve higher routing abilities than measured in the experiments.
+
+The performance measure \gls{mpr} aimed to simulate a node sending a payment on several possible paths instead of just focusing on the shortest. This is how nodes behave in reality in the case of a failed payment. The implementation of this measure brought some challenges regarding performance. The calculation of 10 paths on all node pairs was not feasible with available path libraries. Hence, only a random subset of node pairs was used to calculate the measure.
 
 \subsection{Future work}
+All the simulations were conducted under a laboratory setting in which only rebalancing transactions took place. In a real payment network, however, there would be more economical transactions as well, constantly changing the nodes balance distribution while they try to keep it balanced. While this can be seen as counterproductive force, destroying the progress of the rebalancing, it can also be an opportunity to find more rebalancing cycles. It can be hypothesised that this constant random noise generates new rebalancing options where the static network would have been already exhausted. Such a research experiment would need to make assumptions about the economical transactions executed in the network.
 
-\todo[inline]{measures all consider the total network. more likely is that the participating nodes are also the one being active in eco. transactions. this is why maybe the scores should focus on them. The effecto of benefitting from others vs. the benefit from being proactive themselves could be interesting. go into the dilemma of the commons.}
+This work treated all nodes equally for the calculation of the performance measures. Hence, routing capability is calculated by assuming all nodes want to pay all other nodes. While this is the simplest approach it surely does not resemble reality. Nodes participating in rebalancing are more likely to also partake in economical transactions than others. A future experiment could therefore focus the performance measures on those active nodes. It could also be measured how much active or passive nodes benefit from the rebalancing activity. Is there a significant motivation for nodes to be \emph{free riders}?
+
+Since the Lightning Technology is still in its infant stage, the protocol is subject to regular change. Future updates might include different ways of creating payments or improved ways of communication between nodes. Therefore, some findings from this work might become obsolete. New questions which can be solved by simulation might take advantage of the code base provided here and need only small adaptions to run future experiments. The code is pulicly available and free to reuse\footnote{code available at \githubsim}.
 
 %%---BIBLIOGRAPHY------------------------------------------------------------------------
 \newpage
@@ -988,19 +994,19 @@ The rebalancing simulation implemented the proposed algorithm in the strictest w
 
 %Print the glossary
 \newpage
-\newglossaryentry{ps}{
-	name={PS},
-	description={Ability to route different payment sizes on multiple paths indicates how many out of 10 paths accommodate a certain payment size}
+\newglossaryentry{mpr}{
+	name={MPR},
+	description={Multi Path Retry}
 }
 
 \newglossaryentry{mps}{
 	name={MPS},
-	description={Median payment size defines the minimum amount in sat which at least half of all node pairs can send on the shortest path connecting them}
+	description={Median Possible Payment Size}
 }
 
 \newglossaryentry{sr}{
 	name={SR},
-	description={Success rate defines the ratio of all shortest paths between all node pairs which can accommodate a payment of one sat}
+	description={Success Rate}
 }
 
 \newglossaryentry{pseudonymous}{
