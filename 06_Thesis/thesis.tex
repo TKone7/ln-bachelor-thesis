@@ -126,7 +126,7 @@ Combining proof of work with the chaining of hashes introduced in the last parag
 \subsubsection{Scaling Solutions}
 One of Bitcoin's value propositions is being decentralised. At the same time every transaction ever made must be distributed and stored among all network peers. It becomes obvious that some trade-off has to be made to maintain those two properties: scalability. This is often referred to as the \gls{trilemma} which states that in distributed systems the three objectives \emph{security}, \emph{decentralisation} and \emph{scalability} can not be achieved in full extent at the same time. While two can often be achieved, there are certain trade-offs to be made in the third domain. This section is explaining why this is true for Bitcoin and what main categories of solution exist.
 
-While decentralisation can be described on many levels we focus here on the decentralisation of validating nodes. Those are network participants that verify the blocks published by miners. Decentralisation would be best achieved if  every user of Bitcoin would run its own \gls{fullnode} to receive information about the ledger independently. On the other hand the network would be centralised when only few nodes would validate and users would need to trust those to tell the truth about the ledger state. To keep decentralisation high it is crucial to keep the hardware and network requirements as low as possible. The Bitcoin protocol restricts the amount of data to be processed to one block of 1 megabyte per 10 minutes. A full node in the network must be able to download at least 1 MB / 10 minutes in order to keep up with the tip of the chain. Lower bandwidth would cause it to get left behind without every being able to catch up. Additionally, the full node must keep the full ledger on storage. This yields to approximately 286 GB \cite{noauthor_blocks-size_nodate} at time of writing, increasing linearly in the future. This upper limit block size results in a throughput of approximately 7 transactions per second \citep{poon_bitcoin_2016}. Clearly by several orders of magnitude smaller than what it would require to become a world wide payments network. 
+While decentralisation can be described on many levels we focus here on the decentralisation of \glspl{fullnode}. Those are network participants that verify the blocks published by miners. Decentralisation would be best achieved if  every user of Bitcoin would run its own \gls{fullnode} to receive information about the ledger independently. On the other hand the network would be centralised when only few nodes would validate and users would need to trust those to tell the truth about the ledger state. To keep decentralisation high it is crucial to keep the hardware and network requirements as low as possible. The Bitcoin protocol restricts the amount of data to be processed to one block of 1 megabyte per 10 minutes. A full node in the network must be able to download at least 1 MB / 10 minutes in order to keep up with the tip of the chain. Lower bandwidth would cause it to get left behind without every being able to catch up. Additionally, the full node must keep the full ledger on storage. This yields to approximately 286 GB \cite{noauthor_blocks-size_nodate} at time of writing, increasing linearly in the future. This upper limit block size results in a throughput of approximately 7 transactions per second \citep{poon_bitcoin_2016}. Clearly by several orders of magnitude smaller than what it would require to become a world wide payments network. 
 
 Bitcoin, by design, promotes security and decentralisation while sacrificing scalability. However, to be usable by everyone the scalability issue needs to be addressed. As Bitcoin is not owned by anyone there is no one party to decide on the future design decisions. This lead to a scaling debate with two ideological camps on how to progress. Scaling on-chain or scaling off-chain.
 
@@ -836,7 +836,7 @@ The two charts in figure~\ref{fig:pay_size_random} show the first performance me
 
 A similar picture can be drawn from the \gls{sr} measure. Since this is the ratio of all node pairs able to rout at least 1 sat there are no spikes. The improving effects are more distributed among the different levels of participation. The imbalanced network already has a \gls{sr} of 20\% which can be improved further up to 80\% (under total participation).
 
-It can be seen that at a given Gini score, the performance measure is lower for lower participation levels. This confirms that the Gini score is only an approximation for the networks balance but is not solely responsible for the effects on the performance measures. 
+It can be seen that at a given Gini score, the performance measure is lower for lower participation levels. This reveals the limitation of the Gini score as a \gls{proxy} for the networks balance.
 
 \begin{figure}[htp]
 \centering
@@ -900,7 +900,7 @@ Also the ability to route certain payments is much better with lower participati
 
 
 \subsubsection{Adoption by Unimportant Nodes First}\label{subsub:asc}
-Instead of the top ranked nodes this part covers the selection from the lowest ranked nodes. The result shows that all participation levels less than 100\% did not improve the network's balance at all. As visible in Figure~\ref{fig:gini_part_size_linear_asc} almost no capacity was available for rebalancing. This is why an additional experiment was conducted with 95\% participation. But even then only around 11\% of the total channel capacity was available, too little than to rebalance more than a couple hundred rebalancing transactions. Therefore, no effect on the Gini score nor the other performance measures could be recorded. 
+Instead of the top ranked nodes this part covers the selection from the lowest ranked nodes. The result shows that all participation levels less than 100\% did not improve the network's balance at all. This is why an additional experiment was conducted with 95\% participation. But even then, no improvement in the Gini score could be recorded, as shown in Figure~\ref{fig:gini_part_size_linear_asc}.
 
 \begin{figure}[htp]
 \centering
@@ -908,6 +908,10 @@ Instead of the top ranked nodes this part covers the selection from the lowest r
 \caption{Gini score during different levels of participation.}
 \label{fig:gini_part_size_linear_asc}
 \end{figure}
+
+One reasons for this could be the ratio of channel capacity that was available for the rebalancing. As displayed in Figure~\ref{fig:gini_part_size_linear_asc}, capacity only slowly starts rising at levels of 90\%. Even 95\% of all nodes only contribute 11\% of capacity. 
+
+Another conclusion would be that most of the unimportant nodes are not well connected with each other but mainly with central nodes. This would lead them to be disconnected as soon as the most central nodes are no longer available. This in turn eliminates most of the rebalancing cycles and avoids any improvement. To make clearer statements about the situation, more detailed analysis of the network topology is needed.
 
 \subsubsection{Participation Within a Group}
 When the experiment was conducted with equal frequency binning with regards to nodes the three groups contained each 713 nodes. As the previous results from section~\ref{subsub:asc} have shown, even the 95\% lowest ranked nodes are not able to rebalance a significant amount and therefore did not improve the performance measures. Concluding, both the low and the intermediate group also are not able to improve the networks balance at all even when the entire group participates. Successive experiments with lower participation in those groups were meaningless. The group containing the 713 most important nodes does of course result in some rebalancing, however this leads to the same result as in section~\ref{subsub:desc} just with a increased granularity (of factor three).
@@ -940,24 +944,33 @@ If in comparison low and high \emph{spread} are compared the number of iteration
 
 \newpage
 \section{Conclusion \& Outlook}
-The research aimed to answer the question of how effective the proactive rebalancing protocol is, under the assumption that only a part of all nodes would participate. 
+This research aimed to find answers to the question on how effective the proactive rebalancing protocol is, under the assumption that only a part of all Lightning Network nodes would participate. 
 
-To find the answer to the thesis question multiple experiments have been designed. Data from the real Lightning Network was extracted to construct a realistic simulation. Network nodes and payment channels resemble the actual Lightning Network while the balances were randomly assigned to one node entirely. This simplification was necessary as the exact balances are not publicly shared.
+To answer this question multiple experiments have been designed and conducted. Data from the real Lightning Network was extracted and replicated in a realistic simulation. Network nodes and payment channels resemble the actual Lightning Network while the balances were randomly assigned to one node entirely. This simplification was necessary as the exact balances are not publicly shared.
 
-Multiple selection strategies were developed to chose the nodes which participate. Random selection did not apply any strategy. The importance of a node determined by degree centrality was used to create a node ranking which in turn was used as basis for other selection strategies. A slightly different approach represents the spread through the network. Here, participation levels are not predefined by fix percentages but evolved through the two parameters of initial participation and spread.
+Multiple selection strategies were developed to chose the participating nodes. \emph{Random selection} did not apply any strategy. The \emph{importance} of a node determined by degree centrality was used to create a node ranking which in turn served as basis for other selection strategies. A slightly different approach represents \emph{adoption as spread} through the network. Here, participation levels are not predefined but evolved through the two parameters of initial participation and spread.
 
-The Lightning Network principles and the mechanics of payments were then implemented in Python. The proactive rebalancing algorithm was implemented to allow nodes to rebalance within their friend-of-a-friend network and improve the network's overall balance. 
+The Lightning Network principles and the mechanics of payments were implemented in Python. The proactive rebalancing algorithm was implemented to allow nodes to rebalance within their friend-of-a-friend network achieving improvement not only of their own but also the network's overall balance. 
 
-To better assess the balance of the overall network the Gini score was adopted from \textcite{pickhardt_imbalance_2019}. The proactive rebalancing algorithm aims to improve this score which is why it is used as an approximation for the network's balance. Additionally, three more performance measures are defined which aim to assess the network's ability to route payments: \emph{Success Rate} (\gls{sr}), \emph{Median Payment Size} (\gls{mps}) and the \emph{ability to route different payment sizes on multiple paths} (\gls{ps}). 
+To better assess the balance of the overall network the Gini score was adopted as a \gls{proxy} by \textcite{pickhardt_imbalance_2019}. The proactive rebalancing algorithm aims to improve this score. Additionally, three more performance measures are defined which aim to assess the network's ability to route payments: \emph{Success Rate} (\gls{sr}), \emph{Median Payment Size} (\gls{mps}) and the \emph{ability to route different payment sizes on multiple paths} (\gls{ps}). 
 
-Based on the empirical data collected through simulations with several different parametrisations the following main statements can be concluded
+Based on the empirical data collected through simulations with several different parametrisations the following main conclusions can be drawn:
 
 \begin{itemize}
-  \item Lower participation makes it difficult to find enough rebalancing cycles. This is the main cause for the Gini score to drop with participation.
-  \item gini score alone does not determine network performance
+  \item Lower levels of participation make it harder to find rebalancing cycles. Hence, less balanced networks are achieved, judged by the Gini score.
+  \item The Gini score acts as a good \gls{proxy} to determine a network's balance. Still there are other factors influencing the performance measures that are not captured by the Gini score.
+  \item When nodes start adopting the protocol randomly, small improvements start with participations between 40-60\%. However, the effects reinforce from 80\% onwards.
+  \item When adoption starts with more important nodes the networks balances with lower levels of participation.
+  \item Absence of the 5\% most important nodes lead to almost no rebalancing activity and no improvement of any measures. 
+  \item Adoption through network spread is mainly influenced by the fraction of new nodes added per iteration. Performance measures mainly follow the results of random selection.
 \end{itemize}
 
-\todo[inline]{show limitations }
+\subsection{Limitations}
+When interpreting the presented results it is recommended to consider the following limitations.
+
+The rebalancing simulation implemented the proposed algorithm in the strictest way possible. Nodes only participated if they could improve their local balance distribution. No temporary deterioration was allowed. Furthermore, rebalancing was only conducted within nodes supporting the fee free rebalancing protocol. In practice a mix of fee free and paid rebalancing would be possible. This strict application lead to a strong decrease of rebalancing possibilities within lower participations. Real world implementations allowing for more freedom could achieve higher routing abilities than measured in the experiments.
+
+\subsection{Future work}
 
 \todo[inline]{measures all consider the total network. more likely is that the participating nodes are also the one being active in eco. transactions. this is why maybe the scores should focus on them. The effecto of benefitting from others vs. the benefit from being proactive themselves could be interesting. go into the dilemma of the commons.}
 
@@ -992,7 +1005,7 @@ Based on the empirical data collected through simulations with several different
 
 \newglossaryentry{pseudonymous}{
 	name={pseudonymous},
-	description={Using an identification that can not be linked to someone's real identity. However multiple interactions with the same pseudonymous identity are usually relatable}
+	description={Using an identification that can not be linked to someone's real identity}
 }
 
 \newglossaryentry{rpc}{
@@ -1026,7 +1039,7 @@ Based on the empirical data collected through simulations with several different
 
 \newglossaryentry{preimage}{
   name={preimage},
-  description={A secret created by the receiver of a lightning payment. The hash of the preimage is used to create HTLC transactions which allow the next element in the chain to claim the transferred amount only if they have knowledge of the preimage. The preimage is released by the receiver once the payment is routed completely. It is used to make the routing of a payment atomic}
+  description={A secret created by the receiver of a lightning payment used to ensure atomicity of the routed payment}
 }
 
 \newglossaryentry{blockchain}{
@@ -1051,12 +1064,20 @@ Based on the empirical data collected through simulations with several different
 
 \newglossaryentry{htlc}{
   name={HTLC},
-  description={Hashed Time-Locked Contract, is a special kind of Bitcoin transaction that allows to send an off-chain transaction through multiple nodes.}
+  description={Hashed Time-Locked Contract, is a special kind of Bitcoin transaction that allows to send an off-chain transaction through multiple nodes}
 }
 \newglossaryentry{fullnode}{
   name={fully validating node},
-  description={A Bitcoin node that has a full copy of the block chain data containing all historic transactions in order to validate new transactions and blocks}
+  plural={fully validating nodes},
+  description={A Bitcoin node that has a full copy of the block chain data used to validate new transactions and blocks}
 }
+
+\newglossaryentry{proxy}{
+  name={proxy},
+  description={Proxy variables are used in statistics to measure another variable which is difficult to observe but has strong correlation}
+}
+
+
 \printglossaries
 
 

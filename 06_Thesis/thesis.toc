@@ -62,10 +62,12 @@
 \contentsline {subsubsection}{\numberline {6.2.1}Adoption by Important Nodes First}{36}{subsubsection.6.2.1}%
 \contentsline {subsubsection}{\numberline {6.2.2}Adoption by Unimportant Nodes First}{39}{subsubsection.6.2.2}%
 \contentsline {subsubsection}{\numberline {6.2.3}Participation Within a Group}{39}{subsubsection.6.2.3}%
-\contentsline {subsection}{\numberline {6.3}Network Spread}{39}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.3}Network Spread}{40}{subsection.6.3}%
 \contentsline {section}{\numberline {7}Conclusion \& Outlook}{42}{section.7}%
-\contentsline {section}{References}{43}{section*.38}%
-\contentsline {section}{List of Figures}{44}{section*.39}%
-\contentsline {section}{List of Tables}{44}{section*.40}%
-\contentsline {section}{Glossary}{45}{section*.41}%
-\contentsline {section}{\numberline {A}Charts Network Spread Experiment}{46}{appendix.A}%
+\contentsline {subsection}{\numberline {7.1}Limitations}{42}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Future work}{43}{subsection.7.2}%
+\contentsline {section}{References}{44}{section*.37}%
+\contentsline {section}{List of Figures}{45}{section*.38}%
+\contentsline {section}{List of Tables}{45}{section*.39}%
+\contentsline {section}{Glossary}{46}{section*.40}%
+\contentsline {section}{\numberline {A}Charts Network Spread Experiment}{47}{appendix.A}%

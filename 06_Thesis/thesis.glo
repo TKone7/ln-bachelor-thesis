@@ -9,6 +9,7 @@
 \glossaryentry{hash function?\glossentry{hashfunction}|setentrycounter[]{page}\glsnumberformat}{2}
 \glossaryentry{scalability trilemma?\glossentry{trilemma}|setentrycounter[]{page}\glsnumberformat}{2}
 \glossaryentry{fully validating node?\glossentry{fullnode}|setentrycounter[]{page}\glsnumberformat}{2}
+\glossaryentry{fully validating node?\glossentry{fullnode}|setentrycounter[]{page}\glsnumberformat}{2}
 \glossaryentry{second layer?\glossentry{second}|setentrycounter[]{page}\glsnumberformat}{3}
 \glossaryentry{base layer?\glossentry{base}|setentrycounter[]{page}\glsnumberformat}{3}
 \glossaryentry{scalability trilemma?\glossentry{trilemma}|setentrycounter[]{page}\glsnumberformat}{3}
@@ -50,6 +51,7 @@
 \glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{35}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{35}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{35}
+\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{35}
 \glossaryentry{PS?\glossentry{ps}|setentrycounter[]{page}\glsnumberformat}{35}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{36}
 \glossaryentry{PS?\glossentry{ps}|setentrycounter[]{page}\glsnumberformat}{36}
@@ -57,11 +59,13 @@
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{37}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{40}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{41}
+\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{42}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{42}
 \glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{42}
 \glossaryentry{PS?\glossentry{ps}|setentrycounter[]{page}\glsnumberformat}{42}
-\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{44}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{44}
-\glossaryentry{PS?\glossentry{ps}|setentrycounter[]{page}\glsnumberformat}{44}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{44}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{44}
+\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{42}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{45}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{45}
+\glossaryentry{PS?\glossentry{ps}|setentrycounter[]{page}\glsnumberformat}{45}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{45}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{45}
