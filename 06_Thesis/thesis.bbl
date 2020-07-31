@@ -127,6 +127,40 @@
       \verb https://www.blockchain.com/charts/blocks-size
       \endverb
     \endentry
+    \entry{brossard2010graph}{misc}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e5631ea1acc7218d6b30dd0478d4a0a4}{%
+           family={Brossard},
+           familyi={B\bibinitperiod},
+           given={Elliott},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5ca4cd9f62bfda5d803ca4db09a396e1}{%
+           family={Morrow},
+           familyi={M\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {University of Washington}%
+      }
+      \strng{namehash}{2c97de1d5dd9259aefabb745aa62ee8b}
+      \strng{fullhash}{2c97de1d5dd9259aefabb745aa62ee8b}
+      \strng{bibnamehash}{2c97de1d5dd9259aefabb745aa62ee8b}
+      \strng{authorbibnamehash}{2c97de1d5dd9259aefabb745aa62ee8b}
+      \strng{authornamehash}{2c97de1d5dd9259aefabb745aa62ee8b}
+      \strng{authorfullhash}{2c97de1d5dd9259aefabb745aa62ee8b}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Graph Theory: Network Flow}
+      \field{year}{2010}
+    \endentry
     \entry{chaum_blind_1983}{inbook}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=615e97951d5e1c224ddda5bded8c9081}{%
@@ -314,6 +348,59 @@
       \endverb
       \verb{url}
       \verb http://epubs.siam.org/doi/10.1137/0204043
+      \endverb
+    \endentry
+    \entry{ford_maximal_1956}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=8ac1d092264588e515f04a6e0e9da546}{%
+           family={Ford},
+           familyi={F\bibinitperiod},
+           given={L.\bibnamedelimi R.},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e344e6adb502649042816704bfa34fa}{%
+           family={Fulkerson},
+           familyi={F\bibinitperiod},
+           given={D.\bibnamedelimi R.},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{28d93f4f29b3562899aa306b2fd14d28}
+      \strng{fullhash}{28d93f4f29b3562899aa306b2fd14d28}
+      \strng{bibnamehash}{28d93f4f29b3562899aa306b2fd14d28}
+      \strng{authorbibnamehash}{28d93f4f29b3562899aa306b2fd14d28}
+      \strng{authornamehash}{28d93f4f29b3562899aa306b2fd14d28}
+      \strng{authorfullhash}{28d93f4f29b3562899aa306b2fd14d28}
+      \field{sortinit}{F}
+      \field{sortinithash}{fb0c0faa89eb6abae8213bf60e6799ea}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Introduction. The problem discussed in this paper was formulated by T. Harris as follows: “Consider a rail network connecting two cities by way of a number of intermediate cities, where each link of the network has a number assigned to it representing its capacity. Assuming a steady state condition, find a maximal flow from one given city to the other.”}
+      \field{issn}{0008-414X, 1496-4279}
+      \field{journaltitle}{Canadian Journal of Mathematics}
+      \field{langid}{english}
+      \field{shortjournal}{Can. j. math.}
+      \field{title}{Maximal Flow Through a Network}
+      \field{urlday}{30}
+      \field{urlmonth}{7}
+      \field{urlyear}{2020}
+      \field{volume}{8}
+      \field{year}{1956}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{399\bibrangedash 404}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.4153/CJM-1956-045-5
+      \endverb
+      \verb{urlraw}
+      \verb https://www.cambridge.org/core/product/identifier/S0008414X00036890/type/journal_article
+      \endverb
+      \verb{url}
+      \verb https://www.cambridge.org/core/product/identifier/S0008414X00036890/type/journal_article
       \endverb
     \endentry
     \entry{golbeck_analyzing_2013}{book}{}
@@ -746,6 +833,43 @@
       \verb http://arxiv.org/abs/2004.00333
       \endverb
       \keyw{Computer Science - Cryptography and Security}
+    \endentry
+    \entry{wilson_introduction_2010}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1fffd9c4b426ee03090529786201c20a}{%
+           family={Wilson},
+           familyi={W\bibinitperiod},
+           given={Robin\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Harlow, England ; New York}%
+      }
+      \list{publisher}{1}{%
+        {Longman}%
+      }
+      \strng{namehash}{1fffd9c4b426ee03090529786201c20a}
+      \strng{fullhash}{1fffd9c4b426ee03090529786201c20a}
+      \strng{bibnamehash}{1fffd9c4b426ee03090529786201c20a}
+      \strng{authorbibnamehash}{1fffd9c4b426ee03090529786201c20a}
+      \strng{authornamehash}{1fffd9c4b426ee03090529786201c20a}
+      \strng{authorfullhash}{1fffd9c4b426ee03090529786201c20a}
+      \field{sortinit}{W}
+      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5th ed}
+      \field{isbn}{978-0-273-72889-4}
+      \field{note}{{OCLC}: ocn562773056}
+      \field{pagetotal}{184}
+      \field{title}{Introduction to graph theory}
+      \field{year}{2010}
+      \field{dateera}{ce}
+      \keyw{Graph theory}
     \endentry
   \enddatalist
 \endrefsection

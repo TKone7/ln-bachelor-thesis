@@ -11,6 +11,7 @@
 \usepackage{silence}
 \usepackage{subfig}
 \usepackage{minted}
+\usepackage{amssymb}
 \WarningFilter{hyperref}{Draft mode on}
 \WarningFilter{latex}{Marginpar}
 
@@ -82,7 +83,7 @@ Expert                        &    René Pickhardt
 \vfill\noindent
 \section*{Declaration of Honor}
 
-I the undersigned declare that all material presented in this paper is my own work or fully and specifically acknowledged wherever adapted from other sources. I understand that if at any time it is shown that I have significantly misrepresented material presented here, any degree or credits awarded to me on the basis of that material may be revoked. I declare that all statements and information contained herein are true, correct and accurate to the best of my knowledge and belief. This  paper or part of it have not been published to date. It has thus not been made available to other interested parties or examination boards.  
+I, the undersigned, declare that all material presented in this paper is my own work or fully and specifically acknowledged wherever adapted from other sources. I understand that if at any time it is shown that I have significantly misrepresented material presented here, any degree or credits awarded to me on the basis of that material may be revoked. I declare that all statements and information contained herein are true, correct and accurate to the best of my knowledge and belief. This  paper or part of it have not been published to date. It has thus not been made available to other interested parties or examination boards.  
 
 \vspace*{4em}\noindent
 \hfill%
@@ -111,12 +112,12 @@ I the undersigned declare that all material presented in this paper is my own wo
 This section gives a brief introduction and overview of the Bitcoin and Lightning technology. It covers the history of digital cash, the advent of Bitcoin and explains the need for an off-chain scaling solution. 
 
 \subsection{Bitcoin: Peer to Peer Electronic Cash}\label{subsec:peertopeer}
-Bitcoin is a peer-to-peer electronic cash system first introduced in a white paper by the individual or group behind the pseudonym Satoshi Nakamoto \citep{nakamoto_bitcoin_2008}. This paper lines out the fundamental principles of the Bitcoin \gls{blockchain} that achieves digital transfer of value without a central third party. The next paragraph expands on the pre-bitcoin developments on electronic cash that eventually lead to the rise of Bitcoin. Additionally, we explain why there is a need for additional layer protocols.
+Bitcoin is a peer-to-peer electronic cash system first introduced in a white paper by the individual or group behind the pseudonym Satoshi Nakamoto \citep{nakamoto_bitcoin_2008}. This paper lines out the fundamental principles of the Bitcoin \gls{blockchain} that achieves digital transfer of value without a central third party. The next paragraph expands on the pre-bitcoin developments on electronic cash that eventually lead to the rise of Bitcoin. Additionally, the need for additional layer protocols is explained.
 
 \subsubsection{History of Digital Cash}
 Before the digital age cash was the dominant form of payment. A bank note or a coin embodies the respective face value to the bearer of it. Economical transactions can be made by simply exchanging this physical token by which the transaction was immediately settled. However, with the advent of e-commerce this simple and transparent mechanism was no longer possible. New institutions formed to fulfill the need of online transactions. Credit card companies and payment processors filled the gap of trust needed between the sender and the receiver of a transaction over the internet. This architecture came with significant drawbacks. Suddenly, the interacting parties are dependent on third parties which are collecting additional fees. Use of such systems require identification and since the intermediary can track all transactions, this reduces the user's privacy \citep{narayanan_bitcoin_2016}.
 
-Bitcoin is by no means the first system introduced to allow for a digital cash system. Already in in 1983 \citeauthor{chaum_blind_1983} worked on new cryptographic primitives that should make electronic banking services more private and offer improved auditability \citep{chaum_blind_1983}. Although his technology still relied on a central ``bank'' server which issues electronic bills, blinded signatures allowed to anonymously transfer them. In 1989 the company \emph{DigiCash} was found by Chaum to commercialise the idea and a few banks did later implement it. Technological complexity, patents on the invention and the incapability of handling  user-to-user transactions prevented it from becoming a success \cite{narayanan_bitcoin_2016}. 
+Bitcoin is by no means the first system introduced to allow for a digital cash system. Already in 1983 \citeauthor{chaum_blind_1983} worked on new cryptographic primitives that should make electronic banking services more private and offer improved auditability \citep{chaum_blind_1983}. Although his technology still relied on a central ``bank'' server which issues electronic bills, blinded signatures allowed to anonymously transfer them. In 1989 the company \emph{DigiCash} was found by Chaum to commercialise the idea and a few banks did later implement it. Technological complexity, patents on the invention and the incapability of handling  user-to-user transactions prevented it from becoming a success \cite{narayanan_bitcoin_2016}. 
 
 An important problem in the evolution of digital cash has been the so called \emph{\gls{doublespend}}. Digital information has the property of being easily duplicated. This poses a problem to digital cash as this behaviour is generally unwanted. How can a receiver of digital cash be certain that the cash has not been spent to someone else before, thus eliminating its value? Satoshi Nakamoto introduced the concept of a global distributed ledger, a data structure that is append only and where any change must be disseminated to all participants. In order to keep the history of the ledger immutable Satoshi utilizes the idea of a time stamping server first proposed by \textcite{haber_how_1991} in 1991. It works by calculating the \gls{hash} of a piece of data and publishing it to all the participants. This serves as a proof that the data existed at this given time since otherwise the \gls{hash} could not have been calculated. The next piece of data to be published also contains the previous \gls{hash}, effectively linking them and forming a chain. If someone would now want to change the underlying data this would change its \gls{hash} and since it is included in the next element in the chain also this \gls{hash} would need to be changed up until the most recent element. 
 
@@ -143,7 +144,7 @@ The transaction bottleneck in Bitcoin is imposed since every network participant
 
 Opening such a payment channel requires the two parties to create an on-chain Bitcoin transaction which spends an amount of bitcoin to a 2-of-2 multisignature contract. Only both parties collaboratively can spend it from there. At the same time they create a refund transaction that spends from the multisignature contract and distributes the current balance state. However, they could broadcast this transaction instead they can also decide to hold on to it and update it at a later stage. Holding the signed Bitcoin transaction ensures that they could at any time get their balance back on-chain. Every time they wish to transact with each other they just sign a new refund transaction which distributes the updated channel balance.
 
-\textit{Example:} Assume Alice and Bob open a payment channel and both send 0.5 BTC to a 2-of-2 multisignature contract. This channel has a total capacity of $0.5 + 0.5 = 1$ BTC. At the same time they also create a transaction that pays them back their initial balance of 0.5 BTC each. This transaction is not sent to the \gls{blockchain} but kept private by the two parties. If Alice wants to send Bob 0.2 BTC they update this transaction spending the initial 1 BTC to be distributed as follows: 0.3 BTC to Alice; 0.7 BTC to Bob. This payment was only agreed upon Alice and Bob, no one else needed to be notified. Unlimited future transactions like this can take place as long as the sender still has some balance. At any point in time Alice or Bob can decide to broadcast the latest transaction, distributing the agreed balance and effectively closing the payment channel. As depicted in figure~\ref{fig:ChannelCycle} there can be many modifications to that balance.
+\textit{Example:} Assume Alice and Bob open a payment channel and both send 0.5 BTC to a 2-of-2 multisignature contract. This channel has a total capacity of $0.5 + 0.5 = 1$ BTC. At the same time they also create a transaction that pays them back their initial balance of 0.5 BTC each. This transaction is not sent to the \gls{blockchain} but kept private by the two parties. If Alice wants to send Bob 0.2 BTC they update this transaction spending the initial 1 BTC to be distributed as follows: 0.3 BTC to Alice; 0.7 BTC to Bob. This payment was only agreed upon Alice and Bob, no one else needed to be notified. Unlimited future transactions like this can take place as long as the sender still has some balance. At any point in time Alice or Bob can decide to broadcast the latest transaction, distributing the agreed balance and effectively closing the payment channel. As depicted in Figure~\ref{fig:ChannelCycle} there can be many modifications to that balance.
 
 \begin{figure}[H]
 \centering
@@ -179,7 +180,7 @@ To ensure privacy of payments the routing protocol uses \emph{\gls{onionrouting}
 
 Figure~\ref{fig:onion} color codes the information which is only readable by the respective node with the same color. In each step the outermost layer is decrypted and the next hop gets revealed. The remaining encrypted data is passed on down the line. This ensures that each node only has a local view of the path knowing only about its predecessor and successor. Thus follows, the source of the payment needs to determine the complete path before sending a payment.
 
-Sending a payment requires the sender to find a viable path to the recipient. This is called \emph{\gls{sourcerouting}} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the $1$ BTC channel between him and Carol. This information however is only known to Bob and Carol, not to Alice. Alice only sees the public information which tells her that the channel has 1 BTC capacity. Local channel balances are kept private for two reasons. Every payment over a channel makes its balances to move. Keeping all nodes updated about all channel balances would necessitate to update them about every transaction. This is exactly how Bitcoin on the \emph{\gls{base}} work and the reason it does not scale. Secondly, informing the Network about every transaction is very bad for privacy, as an observer could easily determine who pays to whom over what path.
+Sending a payment requires the sender to find a viable path to the recipient. This is called \emph{\gls{sourcerouting}} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in Figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the $1$ BTC channel between him and Carol. This information however is only known to Bob and Carol, not to Alice. Alice only sees the public information which tells her that the channel has 1 BTC capacity. Local channel balances are kept private for two reasons. Every payment over a channel makes its balances to move. Keeping all nodes updated about all channel balances would necessitate to update them about every transaction. This is exactly how Bitcoin on the \emph{\gls{base}} work and the reason it does not scale. Secondly, informing the Network about every transaction is very bad for privacy, as an observer could easily determine who pays to whom over what path.
 
 Not knowing local balance distribution of channels makes it hard for source nodes to construct a reliable path. When a payment fails along the path a new route can be calculated and tried. This however is coupled with time delays that can cause a negative user experience.
 
@@ -207,6 +208,19 @@ Any value smaller than one \emph{sat} can not be recorded on the block chain. Ho
 \label{tab:units}
 \end{table}
 
+\subsection{Previous Work}
+The research published by \textcite{pickhardt_imbalance_2019} serves as a base to formulate the question for this thesis. In their work, they present a solution for the pathfinding problem in a privacy-aware payment channel network. The proposed solution includes a rebalancing protocol which the nodes of the network should follow to achieve a higher balancedness (for itself but also the entire network). It consists of instructions to proactively rebalance their channels within their friend of a friend's network, redistributing the relative funds owned in a channel but leaving total funds owned unchanged.
+
+Rebalancing is an activity where one node engages in a circular payment that pays itself. This is only possible when the node has at least two channels with different peers. The payment gets routed \emph{out} through one channel and is \emph{received back} over another. On the way, it can use one or more hops to find back to the sender node. This procedure enables a node to change the balances of the individual channels while the total node balance stays the same. In practice, there would be a fee collected by the intermediate nodes whose channels are used. In the proposed rebalancing protocol nodes would forego the fee and only participate in the rebalancing attempt if their balancedness improves as well. The rebalancing algorithm is described in more detail in Section~\ref{subsec:rebal_algo}. 
+
+
+\subsection{Problem Statement}
+These payment channel networks are decentralized by nature and protocol changes can not be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure\footnote{defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
+
+In the next section some fundamental graph theory concepts are formally introduced. An overview of some general graph theory problems are briefly elaborated. The field of problems is then narrowed down to the ones that find application in this thesis.
+
+Section~\ref{sec:rebal} elaborates on the rebalancing algorithm proposed in a protocol change. Section~\ref{sec:experiment} lays out what experiments are conducted and how improvement is measured while Section~\ref{sec:method} goes more in-depth about the implementation. Results are presented in Section~\ref{sec:result}. Finally, Section~\ref{sec:concl} summarises the findings and gives some clues about possible future research.
+
 \newpage
 \section{Graph Theory Concepts}
 Graph theory is an old discipline which can be used to solve multifaceted problems in the real world. The following chapter contains an introduction to the basic principles and terminologies. It then defines different problems for which graph theory can be applied to find solutions. More emphasis is given to the topics which are applicable to the Lightning Network.
@@ -218,6 +232,8 @@ A graph $G=(V,E)$ consists of a set of vertices $V$ and edges $E$. An edge consi
 The \emph{diameter} of a graph defines the longest distance between any two vertices. In other words it is the longest of all shortest paths. In case the graph has weighted edges, those have to be considered for determining the shortest path.
 
 Some vertices are better connected to the rest of the graph than others i.e. having a higher edge count. This edge count is referred to as \emph{degree} of a node. In a directed graph the in-degree (edges pointing towards a vertex) and out-degree (edges pointing away from a vertex) can be distinguished. 
+
+The cut of network $G=(V,E)$ is a partition of $V$ into two disjoint subsets $S$ and $T$. The cut is determined by a set of edges which each have one endpoint in $S$ and another in $T$ \citep{brossard2010graph}. In Section~\ref{subsubsec:maxflow} the cut is used to determine the minimum cut that minimises the capacity of the cut in a flow network.
 
 \subsection{General Problems}\label{subsec:genprob}
 \todo[inline]{write an introduction to this section}
@@ -232,10 +248,61 @@ Different \emph{route problems} exist where the solution tries to find a path wi
 
 When edges have a weight assigned different problems can be modelled and optimised by finding a shortest path. A famous algorithm to find such a path is ``Dijkstra’s Algorithm''. Similarly, in the Traveling Salesperson Problem each vertex needs to be visited exactly one before returning to the starting point. Algorithms finding a path with low cost often use approximation since no algorithm with polynomial worst-case complexity exists. 
 
-Different problems deal with the \emph{flow} in a network. Such networks have a capacity assigned to each directed edge. Often the goal is to find the maximum flow between a source and a sink node such that all intermediary nodes have equal in and outflow \citep{even_network_1975}.
+Different problems deal with the \emph{flow} in a network. Such networks have a capacity assigned to each directed edge. Often the goal is to find the maximum flow between a source and a sink node such that all intermediary nodes have equal in and outflow \citep{even_network_1975}. The next section explains more about this field of graph theory as it is most related to the problem encountered in the Lightning Network.
 
-\subsection{Application of Theories in the Lightning Network}
-The Lightning network can best be described by an \emph{attributed simple directed graph}. That is a graph with directed edges without loops and multiple directed edges. Since a payment channel between $u$ and $v$ allows payments to flow in both direction it can be modelled by use of two edges $(u, v)$ and $(v, u)$. Two edges are needed to model local balances and fees as \emph{attributes} since they differ in the two directions. In terms of network flow theory the capacity is the amount that can flow from $u$ to $v$ which in Lightning is defined as the local channel balance of $u$. Figure~\ref{fig:channel_graph} visualises a channel between Alice and Bob with 1 BTC capacity of which Alice holds 0.2 BTC and Bob holds 0.8 BTC as local balances. 
+\subsection{Network Flow}
+Many aspects of the Lightning Network can be described by a flow network as was introduced at then end of the previous chapter. This section explains the principles of such networks in more detail based on the definitions by \cite{wilson_introduction_2010}.
+
+Many real world problems deal with transporting something over a network with limited capacity. A simple example would be a logistic company that has to ship goods from a production site to an inventory. A train network provides multiple direct or indirect connections between the two locations. Each subconnection has a limit on how many goods can be transported per time period. The company would like to know the maximum it can transport from the source to the target in a given period. In Figure~\ref{fig:flow_graph} $s$ represents the manufactury, $t$ the inventory. The intermediate stations $v_i$ are connected and the number represents the capacity limit.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{flowgraph_1.pdf}
+\caption{Flow graph annotated with capacities, from \cite{brossard2010graph}.}
+\label{fig:flow_graph}
+\end{figure}
+
+From the above example the situation can be generalised by a \emph{weighted digraph} $G=(V,E)$ as defined by \cite{brossard2010graph}. The weight of an edge $e=(u,v)$ represents its \emph{capacity} $c(u,v)\geq0$. Any vertex $v$ with an \emph{indegree} $indeg(v)=0$ is called source, and one with an \emph{outdegree} $outdeg(v)=0$ is called sink. Usually it is assumed that there is only one source and one sink node. However, assuming the logistic company in the above example has multiple manufacturies and inventories, the problem can easily be reduced to this case. For any vertex $v \in V$ there is a path from source to sink that leads through $v$.
+
+The \emph{flow} is defined by a function $f : V \times V \rightarrow \mathbb{R}$ which assigns a non-negative real number to all edges in the network. The following constraints must be satisfied
+\begin{itemize}
+  \item \textbf{Flow cannot exceed capacity}:
+  $f(u,v) \leq c(u,v)$
+  \item \textbf{Flows are symmetric}:
+  $f(u,v) = -f(v,u)$
+  \item \textbf{Flow must be conserved}: If $u \neq s$ and $u \neq t$, then $\displaystyle{\sum_{v \in V}f(u,v)}=0$
+\end{itemize}
+
+Those rules define that the flow between two nodes cannot exceed the assigned capacity. Each inflow into one node represents an outflow of the same amount. Each node (except for source and sink) must have equal inflow as outflow. Figure~\ref{fig:flow_graph} applies these rules to the previously discussed network.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{flowgraph_2.pdf}
+\caption{Flow graph annotated with flow and capacities, from \cite{brossard2010graph}.}
+\label{fig:flow_graph}
+\end{figure}
+
+The value of the total flow is denoted by $|f|=\displaystyle{\sum_{v \in V} f(s,v)}$, calculated as the sum all flows out of the source $s$. By definition this is equal to the sum of inflows in the sink node $t$.
+
+\subsubsection{Maximum Flow Problem}\label{subsubsec:maxflow}
+As initially stated with the logistics example, flow networks are used to determine the maximum flow that can be transferred from source to sink. In other terms one tries to find a flow function $f$ that maximises $|f|$. One example of such an algorithm is the \emph{Ford-Fulkerson} algorithm first introduced by \textcite{ford_maximal_1956}.
+
+The algorithm start with the network and its capacities but no flow at all. It then start building up the flow step wise. In a temporary variable also the residual Network with the residual capacities are stored. The \emph{residual capacity} is the leftover capacity of an edge that is not yet used by the flow. For every edge $(u,v) \in E$ it is denoted as $c_f(u,v) = c(u,v)-f(u,v)$. Accordingly, the \emph{residual network} is defined as $G_f = (V, E_f)$, where $E_f=\{(u,v) | u, v \in  E \land c_f(u,v)>0\}$.
+
+In a flow network $G = (V, E)$ with a source node $s$ a sink node $t$ the Ford-Fulkerson algorithm maximises the total flow $|f|$ as follows:
+
+\begin{enumerate}
+  \item For each edge $(u,v) \in E$, initialize $f(u, v)=f(v, u) = 0$
+  \item If there is a path $P$ from $s$ to $t$ in the residual network $G_f$, continue to step 3, otherwise terminate.
+  \item Set $c_f(P) = \min\limits_{(u,v) \in P} c_f(u, v)$.
+  \item For each $(u,v) \in P$, set $f(u,v) = f(u, v) + c_f(P)$ and $f(v,u) = -f(u,v)$.
+  \item Return to step 2.
+\end{enumerate}
+
+Effectively, the algorithm iterates over all paths from $s$ to $t$ in the residual network and add the capacities to the flow function. When there is no more path in $G_f$ connecting $s$ and $t$ this means the minimum cut (min-cut) is found. This is the cut with the minimum possible capacities of all cuts. \textcite{ford_maximal_1956} have shown that this min-cut is equivalent to the maximum flow. 
+
+\subsection{Application in the Lightning Network}
+The Lightning network can best be described by an \emph{attributed simple directed graph}. That is a graph with directed edges without loops and multiple directed edges. Since a payment channel between $u$ and $v$ allows payments to flow in both direction it can be modelled by use of two edges $(u, v)$ and $(v, u)$. Two edges are needed to model local balances and fees as \emph{attributes} since they differ in the two directions. In terms of network flow theory, the capacity is the amount that can flow from $u$ to $v$ which in Lightning is defined as the local channel balance of $u$. Figure~\ref{fig:channel_graph} visualises a channel between Alice and Bob with 1 BTC capacity of which Alice holds 0.2 BTC and Bob holds 0.8 BTC as local balances. 
 
 \begin{figure}[H]
 \centering
@@ -245,7 +312,7 @@ The Lightning network can best be described by an \emph{attributed simple direct
 \end{figure}
 
 \subsubsection{Fees}
-So far the properties of a network graph could be mapped to a Lightning payment channel. There is another concept within lightning that need to be accounted for. When payment channels get used by other nodes than the two channel partners they can ask for fee to be paid. This can be compared to a bridge toll that needs to be paid by everyone crossing the bridge. It is a compensation for the capital that the channel owner has ``locked''. The fee consists of two parts, a fixed fee and a variable fee. While the fixed fee is the same for every payment, the variable increases linearly with the amount being transferred.
+So far the properties of a network graph could be mapped to a Lightning payment channel. There is another concept within lightning that need to be accounted for. When a node wants to use other payment channels it has to pay a fee. This can be compared to a bridge toll that needs to be paid by everyone crossing the bridge. It is a compensation for the capital that the channel owner has locked up. The fee consists of two parts, a fixed fee and a variable fee. While the fixed fee is the same for every payment, the variable increases linearly with the amount being transferred. Those fees can be applied to graph theory concepts as a weight. Hence, whenever finding a shortest path in the Lightning Network, this results in finding the path that is cheapest.
 
 \subsubsection{Path Finding Problem}
 As laid out in section~\ref{subsec:routing} the initiator of a payment needs to construct the path before sending the payment. Nodes trying to find such a path work with limited information. While they know what channels are available and what their capacities are, they do not know about the balances and therefore whether the nodes can forward their payment or not. Hence, it is likely that a payment attempt fails because a node had insufficient balance. The paying node needs to find another route and retry the payment until it succeeds. If the payment fails repeatedly it can cause delays that are bad for the user experience.
@@ -256,19 +323,10 @@ The Lightning path finding problem can best described by a \emph{flow network} (
 
 In the next sections terminology native to the Lightning protocol is used. I refer to the directed graph as the \emph{network}. Vertices are called \emph{nodes} and a pair of opposite directed edges are a \emph{channel}. The \emph{channel capacity} defines the total amount of a channel which is distributed between the two node's balance. The amount which can flow between two nodes is determined by the node's \emph{balance}. The terms \emph{route} or \emph{path} are used interchangeably and are defined by a set of channels that can be traversed. \emph{Fees} is the general term that includes both \emph{fixed fees} and \emph{variable fees}. Fee policies are set by each node individually for every channel. This means a channel can charge different fees in either way as both nodes set the fee policy for their balance. \emph{Rebalancing} is the activity of routing a payment in a circle back to the initiating node and is used to reallocate balances within the set of channels a node controls.   
 
-\subsection{Previous Work}
-The research published by \textcite{pickhardt_imbalance_2019} serves as a base to formulate the question for this thesis. In their work, they present a solution for the pathfinding problem in a privacy-aware payment channel network. The proposed solution includes a rebalancing protocol which the nodes of the network should follow to achieve a higher balancedness (for itself but also the entire network). It consists of instructions to proactively rebalance their channels within their friend of a friend's network, redistributing the relative funds owned in a channel but leaving total funds owned unchanged.
-
-Rebalancing is an activity where one node engages in a circular payment that pays itself. This is only possible when the node has at least two channels with different peers. The payment gets routed \emph{out} through one channel and is \emph{received back} over another. On the way, it can use one or more hops to find back to the sender node. This procedure enables a node to change the balances of the individual channels while the total node balance stays the same. In practice, there would be a fee collected by the intermediate nodes whose channels are used. In the proposed rebalancing protocol nodes would forego the fee and only participate in the rebalancing attempt if their balancedness improves as well. The rebalancing algorithm is described in more detail in the section \todo{include ref to experiment}. 
-
-
-\subsection{Problem Statement}
-These payment channel networks are decentralized by nature and protocol changes can not be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure\footnote{defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
-
-The next part of the paper defines the rebalancing algorithm proposed in a protocol change. Then an experiment is constructed which mimics the real Lightning Network with all its participants and payment channels. I formally define multiple performance measurements which are later used to measure the improvement of the network's ability to route payments. Different scenarios are then simulated under different levels of participation also testing different ways to select the participating nodes.
+\todo[inline]{restate the problem statement}
 
 \newpage
-\section{Proactive Rebalancing Protocol}
+\section{Proactive Rebalancing Protocol}\label{sec:rebal}
 \textcite{pickhardt_imbalance_2019} proposed in their paper a rebalancing algorithm which when proactively executed would improve the overall networks ability to route payments. The next sections define the algorithm in more detail and formally defines the protocol change. In later section~\ref{subsec:sim_rebal} we show how it is implemented as part of the simulation.
 
 \subsection{Rebalancing}
@@ -281,7 +339,7 @@ Figure~\ref{fig:rebal} shows an example network with four nodes and four channel
 \label{fig:rebal}
 \end{figure}
 
-She can now construct a payment of e.g. 40 with the path [Alice, Bob, Charli, David, Alice]. This reduces her balance in the channel with Bob by 40 (new 60) and increases her balance in the channel with David by 40 (new 40). Both of her channels are now better balanced and allow for more payments to be routed. The resulting state is shown in figure~\ref{fig:rebal2} and the path of the rebalancing payment is indicated in red. 
+She can now construct a payment of e.g. 40 with the path [Alice, Bob, Charli, David, Alice]. This reduces her balance in the channel with Bob by 40 (new 60) and increases her balance in the channel with David by 40 (new 40). Both of her channels are now better balanced and allow for more payments to be routed. The resulting state is shown in Figure~\ref{fig:rebal2} and the path of the rebalancing payment is indicated in red. 
 
 This action performed by Alice did of course not only change the balances of the channels she is involved but also the ones she used to route the self-payment. In this case the channels between Bob-Charli as well as Charli-David are also more balanced. While this was the case in this example it is not guaranteed to be true in all cases, it might well be that some channels end up less balanced. The reason why all the nodes are incentivised to participate are fees that they can collect on each payment they forward. In fact they do not even know that this payment is a rebalancing transaction. Hence, Alice has to pay fees for this rebalancing operation. 
 
@@ -294,7 +352,7 @@ Rebalancing can be summarised as an activity performed by a single node attempti
 \label{fig:rebal2}
 \end{figure}
 
-\subsection{Rebalancing Algorithm}
+\subsection{Rebalancing Algorithm}\label{subsec:rebal_algo}
 The previous section was about how nodes can \emph{improve} their channel balances. While the improvement in the example was quite clear it has to be stated what the ultimate goal is towards which the nodes try to improve. Intuitively, a distribution of 50:50 in each channel could be thought of as an appropriate goal. In reality this is not a feasible target.
 
 \subsubsection{Imbalance Definition}
@@ -344,7 +402,7 @@ So far the presented algorithm sounded like a win-win-situation for everyone and
 
 \newpage
 \section{Experiment}\label{sec:experiment}
-Experiments are executed to find out how the effectiveness of the proactive rebalancing is affected by different levels of participation. This section gives an abstract overview of what an experiment does, what parameters can be set and how it is executed. The subsequent Section~\ref{sec:method} then shows in greater detail how it is implemented in Python.
+Experiments are executed to find out how the effectiveness of the proactive rebalancing is affected by different levels of participation. This section gives an abstract overview of what an experiment does, what parameters can be set and how it is executed. The subsequent Section~\ref{sec:method} explains the Python implemented in greater detail.
 
 \subsection{Performance Measures}\label{sub:perfm}
 The goal of rebalancing is to improve the overall networks ability to route payments between its nodes. The effectiveness of the algorithm can only be determined by measuring this ability with help of \emph{performance measures}. This is the generic term for the measures defined in this chapter. Some of the presented indicators were previously defined and used by \textcite{pickhardt_evaluating_2020}. 
@@ -369,9 +427,9 @@ Between each node pair not the shortest path is calculated but a set of 10 diffe
 \subsection{Simulating Proactive Rebalancing}\label{subsec:pro}
 The main objective of the simulation is to see how the proactive rebalancing protocol described in Section~\ref{subsec:prop_algo} can be applied in the Lightning Network. To answer this, the simulation network resembles the real Lightning Network. Each experiment then executes the proposed rebalancing algorithm for each node in the network.
 
-In reality each node would execute the algorithm itself. However, since this simulation has knowledge of all nodes, channels and balances it is possible to calculate and execute the rebalancing in a holistic way. Nevertheless, it must follow the limited amount of information which each node has about the rest of the network. 
+In reality each node would execute the algorithm itself. However, since a simulation has knowledge of all nodes, channels and balances it is possible to calculate and execute the rebalancing in a holistic manner. Nevertheless, the limited information nodes have about the rest of the network must be respected. 
 
-In a first step cycles are being determined on which nodes would agree to rebalance. Such a rebalancing cycle can only be found if \emph{all nodes} want to rebalance in that direction. As the proposed protocol foresees to share hints about desired liquidity only in the local neighbourhood, the length of those cycles is limited. The local neighbourhood of a node is defined as the friend of a friend network. If we assume node \texttt{self} in figure~\ref{fig:foaf} has only two channels with \texttt{Friend1} and \texttt{Friend2}. These friends both provide information about all their channel balances (marked as green edges). This allows the node \texttt{self} to assess the rebalancing path $p = [self, Friend1, D, Friend2, self]$ with more insight about the willingness of the nodes to participate. However, this restricts the paths for rebalancing to the ones of length 4 or 3. Although node \texttt{self} also knows about the channel $e = (C, X)$, it has no insight about their imbalance since it is not part of the friend of a friend network. Hence, this path of length 5 is not considered for rebalancing.
+In a first step cycles are being determined on which nodes would agree to rebalance. Such a rebalancing cycle can only be found if \emph{all nodes} want to rebalance in that direction. As the proposed protocol foresees to share hints about desired liquidity only in the local neighbourhood, the length of those cycles is limited. The local neighbourhood of a node is defined as the friend of a friend network. If we assume node \texttt{self} in Figure~\ref{fig:foaf} has only two channels with \texttt{Friend1} and \texttt{Friend2}. These friends both provide information about all their channel balances (marked as green edges). This allows the node \texttt{self} to assess the path $p = [self, Friend1, D, Friend2, self]$ in regards to the node's willingness to rebalance. However, this restricts the paths for rebalancing to the ones of length 4 or 3. Although node \texttt{self} also knows about the channel $e = (C, X)$, it has no insight about their imbalance, since it is not part of the friend of a friend network. Hence, this path of length 5 is not considered for rebalancing.
 
 \begin{figure}[H]
 \centering
@@ -380,15 +438,13 @@ In a first step cycles are being determined on which nodes would agree to rebala
 \label{fig:foaf}
 \end{figure}
 
-In a next step rebalancing is executed within those cycles. For each payment the maximum amount is found on which all participants agree. During the process the Gini score is calculated after each payment to record the progress towards a more balanced network. Similarly, the performance measures are calculated. The rebalancing stops once there are no more circles on which at least one sat can be rebalanced. This simultaneously marks the end of the experiment.
+In a next step rebalancing is executed within those cycles. For each payment the maximum amount is found on which all participants agree. After each payment the Gini score is calculated to record the progress towards a more balanced network. Similarly, the performance measures are calculated. The rebalancing stops once there are no more circles on which at least one sat can be rebalanced. This simultaneously marks the end of the experiment.
 
-\subsection{Simulating Participation Levels}
-While Section~\ref{subsec:pro} describes how proactive rebalancing is simulated it assumes that all nodes in the network participate. As the experiments aim to show the impact of different participation levels, the simulation has to be adapted accordingly. 
-
-Before the experiment starts the rebalancing the participating nodes can be explicitly specified. 
 
 \subsection{Selection Strategies}\label{subsec:selstrat}
-The simulation will rebalance the same network with different levels of participation. This is done since it can be assumed that not all nodes will adopt a new protocol immediately. The network is not homogeneous in regards to the channel count and available capacity per node. The distribution of the payment channels appears to follow a power law distribution. However, no test has been executed to prove this, since \textquote[\cite{clauset_power-law_2009}, p. 1]{the detection and characterization of power laws is complicated by the large fluctuations that occur in the tail of the distribution}. Figure~\ref{fig:channelcount}, however, shows that little nodes have a large number of channels and most of the nodes have only a few. The result of the experiment, therefore, will vary depending on how the participating nodes are selected. 
+While Section~\ref{subsec:pro} describes how proactive rebalancing is simulated it assumes that all nodes in the network participate. As the experiments aim to show the impact of different participation levels, the simulation has to be executed multiple times with different levels of participation. This is done since it can be assumed that not all nodes will adopt a new protocol immediately.
+
+The network is not homogeneous in regards to the channel count and available capacity per node. The distribution of the payment channels appears to follow a power law distribution. However, no test has been executed to prove this, since \textquote[\cite{clauset_power-law_2009}, p. 1]{the detection and characterization of power laws is complicated by the large fluctuations that occur in the tail of the distribution}. Figure~\ref{fig:channelcount}, however, shows that little nodes have a large number of channels and most of the nodes have only a few. The result of the experiment, therefore, will vary depending on how the participating nodes are selected. 
 
 \begin{figure}[H]
 \centering
@@ -470,10 +526,6 @@ For this node selection method we assume that the adoption of the new protocol i
 \label{tab:param}
 \end{table}
 
-\newpage
-
-\subsection{Combining Multiple Experiments}
-sof
 
 \newpage
 \section{Implementation of Simulation}\label{sec:method}
@@ -481,7 +533,7 @@ sof
 This section gives an overview over the technology used and the classes created to run the experiments described in later sections. According to \citeauthor{al-taie_python_2017} Python is a general-purpose tool that becomes more and more popular in data science and graph analysis. There are many open source libraries available in the domain of analysis of complex networks, statistics and the visualisation of data \citep{al-taie_python_2017}. Furthermore the experiments in the previous paper were conducted with Python. 
 
 \subsubsection{Python Libraries}
-NetworkX is a Python library that offers tools for to create, manipulate and study the structure, dynamics and function of complex networks \citep{al-taie_python_2017}. The library provides basic operations with different types of network and also implements common algorithms often used in the study of graphs.  
+NetworkX is a Python library that offers tools to create, manipulate and study the structure, dynamics and function of complex networks \citep{al-taie_python_2017}. The library provides basic operations with different types of network and also implements common algorithms often used in the study of graphs.  
 
 For all kinds of visualisation the package Matplotlib is used. It offers broad functionality to create various types of charts. Also NetworkX has some basic drawing capabilities to visualise graphs and relies on the Matplotlib package. In this thesis visualisation of graphs is not of great use and Matplotlib is mainly used for the generation of data plots \citep{al-taie_python_2017}.
 
@@ -490,9 +542,9 @@ Numerical computation and statistical calculations are performed using the softw
 In order to reproduce the results presented in this work all Python dependencies are written down in the file \texttt{04\_Simulation/requirements.txt} on the Github repository\footnote{\github} and the \texttt{README.md} file demonstrates how to set up the execution environment.
 
 \subsubsection{Network Class}
-While NetworkX provides the basic graph functionality, I need more logic to build all the Lightning specific functions. The \texttt{Network} Python class holds all these features of which I give rough overview here. All mentions of \texttt{Network} in this section refer to the Python class named like this.
+While NetworkX provides the basic graph functionality, More logic is needed to build all the Lightning specific functions. The \texttt{Network} Python class holds all these features which are explained in this section. All mentions of \texttt{Network} in this section refer to the Python class named like this.
 
-Most importantly the Network is a container that holds two NetworkX graphs. The constructor of the Network class in listing~\ref{code:init} shows these two variables \mintinline{python}{G} and \mintinline{python}{flow} which will be explained in more detail later.
+Most importantly the Network is a container that holds two NetworkX graphs. The constructor of the Network class in Listing~\ref{code:init} shows these two variables \mintinline{python}{G} and \mintinline{python}{flow} which will be explained in more detail later.
 
 \begin{listing}[H]
   \begin{minted}[
@@ -514,7 +566,7 @@ class Network:
   \label{code:init}
 \end{listing}
 
-Figure~\ref{fig:state_network} visualises the states a Network can be in and how a Network can be exported and restored from file. The first state is a Network that went through all the preprocessing and is ready to start with an experiment of any kind. It serves as starting point for all further modifications. To ensure reproducibility of the results it is important that the same initial state is used all the time. For the very first time, this state can only be reached by parsing a channel file (\mintinline{python}{parse_clightning()}) and going through the preprocessing. The content of such a channel file and all the preprocessing steps are explained in sections~\ref{subsec:datacol} and \ref{subsec:preproc}. After this state is reached one can create a snapshot (\mintinline{python}{create_snapshot()}) which is stored to a file. In addition a fingerprint is generated and used as identifier for this specific network state. The fingerprint is calculated by hashing all the networks nodes, edges and attributes and prevents accidental load of any altered state.
+Figure~\ref{fig:state_network} visualises the states a Network can be in and how a Network can be exported and restored from file. The first state is a Network that went through all the preprocessing and is ready to start with an experiment of any kind. It serves as starting point for all further modifications. To ensure reproducibility of the results it is important that the same initial state is used all the time. For the very first time, this state can only be reached by parsing a channel file (\mintinline{python}{parse_clightning()}) and going through the preprocessing. The content of such a channel file and all the preprocessing steps are explained in sections~\ref{subsec:datacol} and \ref{subsec:preproc}. After this state is reached one can create a snapshot (\mintinline{python}{create_snapshot()}) which is stored to a file. A fingerprint is generated as identifier for this specific network state. The fingerprint is calculated by hashing all the networks nodes, edges and attributes and prevents accidental load of any altered state.
 
 Once a snapshot is generated the Network object can be recreated from there without going through the preprocessing again. The \mintinline{python}{restore_snapshot()} function takes the fingerprint as parameter and looks for the corresponding file to reload the state. 
 
@@ -528,7 +580,7 @@ From the initial state one experiment can be executed. Such an experiment change
 \end{figure}
 
 \subsubsection{Experiment Class}
-Many of the experiments actually need several Networks to perform experiments with different parameters. The experiment class is used to interact with those Network objects. This class contains also the definition of an experiment type and takes the parameters as arguments. The different setup methods define the types of experiments available. After the experiment is setup the generic \mintinline{python}{run_experiment()} and \mintinline{python}{plot_experiment()} can be called. Figure~\ref{fig:experiment_class} illustrates the relationship between the classes and shows the public methods of the Experiment class.
+One experiment is often composed of multiple seperate experiments with different parametrisation. The \texttt{Experiment} class is used to interact with those Network objects. This class contains also the definition of an experiment type and takes the parameters as arguments. The different setup methods define the types of experiments available. After the experiment is setup the generic \mintinline{python}{run_experiment()} and \mintinline{python}{plot_experiment()} can be called. Figure~\ref{fig:experiment_class} illustrates the relationship between the classes and shows the public methods of the Experiment class.
 
 \begin{figure}[H]
 \centering
@@ -538,7 +590,7 @@ Many of the experiments actually need several Networks to perform experiments wi
 \end{figure}
 
 \subsubsection{Command Line Interface}
-To simplify the interaction with the simulation software to facilitate execution of different experiment parameters without the need of changing the source code a simple command line interface can be used. The file is called \texttt{simulate.py} and uses the package \emph{docopt} to create the interface and the parser. The interface is defines as shown in listing~\ref{code:cli}. While \texttt{parse} starts the preprocessing from a channel file all other commands execute different types of experiments and take respective parameters. The optional \texttt{---charts} flag skips the experiment and only generates the resulting charts.
+To simplify the interaction with the simulation software and to facilitate execution of different experiment parameters without the need of changing the source code a simple command line interface can be used. The file is called \texttt{simulate.py} and uses the package \emph{docopt} to create the interface and the parser. The interface is defines as shown in Listing~\ref{code:cli}. While \texttt{parse} starts the preprocessing from a channel file all other commands execute different types of experiments and take respective parameters. The optional \texttt{---charts} flag skips the experiment and only generates the resulting charts.
 
 \begin{listing}[H]
   \begin{minted}[
@@ -611,12 +663,12 @@ Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_
 The date obtained in section~\ref{subsec:datacol} is not yet ready to be used to construct a network. There exist channels in the dataset for which only one of the two edges is known. Furthermore the information about the distribution of the channel balance is unknown but must be allocated somehow. These two issues are being addressed in the preprocessing which only has to be executed once. The result from the preprocessing is a \mintinline{python}{networkx.DiGraph} which is then passed to the constructor of the Network. It is then accessible through the attribute \mintinline{python}{self.G} of the Network object.
 
 \subsubsection{Remove Incomplete Data}
-The data sample presented in listing~\ref{code:channelbyplugin} shows that each Lightning channel is represented by two entries with opposite source-destination node pairs. In the obtained dataset not every entry has its matching counterpart. The experiments should only deal with channels that can be used in both direction (normal case), therefore, these data objects are simply deleted from the dataset. This reduced the dataset from a total of 58934 to 46366 (-6172) data objects, representing $frac{46366}{2}=23183$ channels.  
+The data sample presented in Listing~\ref{code:channelbyplugin} shows that each Lightning channel is represented by two entries with opposite source-destination node pairs. In the obtained dataset not every entry has its matching counterpart. The experiments should only deal with channels that can be used in both direction (normal case), therefore, these data objects are simply deleted from the dataset. This reduced the dataset from a total of 58934 to 46366 (-6172) data objects, representing $frac{46366}{2}=23183$ channels.  
 
 I use a \emph{simple directed graph} to represent the Lightning network. Multiple edges with the same source and destination node are not permitted. The Lightning protocol does not prevent nodes to open multiple channels with the same partner. Therefore, multiple channels are reduced to one single channel.
 
 \subsubsection{Allocating Local Balances}
-The public data only contains information about the total channel capacity, the local distribution between the two channel partners is unknown. To run a simulation some distribution must be assumed. As all channels are single funded this means the capacity was all on one side initially. The best guess to distribute channel balances is therefore to assume all channels were just opened and therefore only one party hold the full capacity in its balance. However, there is no hint on who opened the channel. This is why the preprocessing allocates 100\% of the capacity to one of the parties \emph{randomly}. To ensure reproducibility of the preprocessing the allocation of the balance should be random but deterministic. Meaning the same channel distributes the capacity to the same node in consecutive runs. Based of the evenness of the result of a \gls{hashfunction} the node holding the balance is selected (see listing~\ref{code:random_alloc}).
+The public data only contains information about the total channel capacity, the local distribution between the two channel partners is unknown. To run a simulation some distribution must be assumed. As all channels are single funded this means the capacity was all on one side initially. The best guess to distribute channel balances is therefore to assume all channels were just opened and therefore only one party hold the full capacity in its balance. However, there is no hint on who opened the channel. This is why the preprocessing allocates 100\% of the capacity to one of the parties \emph{randomly}. To ensure reproducibility of the preprocessing the allocation of the balance should be random but deterministic. Meaning the same channel distributes the capacity to the same node in consecutive runs. Based of the evenness of the result of a \gls{hashfunction} the node holding the balance is selected (see Listing~\ref{code:random_alloc}).
 
 \begin{listing}[H]
   \begin{minted}[
@@ -655,7 +707,7 @@ In section~\ref{subsec:prop_algo} we defined the rebalancing algorithm each node
 \end{figure}
 
 \subsubsection{Determine the Desired Flow}\label{subsub:flow}
-In this step the amounts all the nodes want to send / receive over any channel is calculated and stored. It is later used to determine possible rebalancing cycles. The method in listing~\ref{code:comp_flow} covers steps 1 to 4 and part of step 5 described in section ``\nameref{subsec:prop_algo}''.
+In this step the amounts all the nodes want to send / receive over any channel is calculated and stored. It is later used to determine possible rebalancing cycles. The method in Listing~\ref{code:comp_flow} covers steps 1 to 4 and part of step 5 described in section ``\nameref{subsec:prop_algo}''.
 
 The method \mintinline{python}{__compute_rebalance_network(self)} creates a new NetworkX graph which is derived from the original network graph (stored in \mintinline{python}{self.G}). Line 4 starts a for-loop which iterates over all edges $(u, v)$ and calculates how much node $u$ would like to send out over this edge. The first step is to calculate the node's \emph{node balance coefficient}. This value is already pre-calculated and can be retrieved from the attributes stored in the NetworkX graph (line 7). Lines 8-10 retrieves the balance and capacity of the edge and calculates the \emph{channel balance coefficient}. The formula from step 5 is used to calculate the amount $a = c(e)\cdot (\zeta_{(u,v)}-\nu_u)$ node $u$ would want to rebalance (line 11). This calculation returns a positive integer which represents the need to send out this amount while a negative integer represents the wish to receive this amount. 
 
@@ -701,7 +753,7 @@ The result of this procedure is a property \mintinline{python}{self.flow} which 
 \subsubsection{Compute Rebalancing Cycle}
 Step 5 of the rebalancing algorithm tells a node $u$ to construct circular payments using a path $p = [v,x_1,\dots,x_n,u]$ for which $\zeta_{(u,v)}>\nu_u$ and $\zeta_{(x_n,u)}<\nu_u$. Such a rebalancing transaction helps a node to adjust both channel balance coefficients towards the node balance coefficient. In the real network nodes would individually calculate those paths based on the \emph{rebalancing hints} they receive from their local neighbourhood. In the simulation we already have this holistic view since we calculated the desired flow in section~\ref{subsub:flow}. 
 
-The previously calculated flow network tells us the direction in which nodes want to rebalance. We can now simply extract all cycles of length 4 or 3 from that graph as shown in the method \mintinline{python}{compute_circles()} in listing~\ref{code:comp_circles}. 
+The previously calculated flow network tells us the direction in which nodes want to rebalance. We can now simply extract all cycles of length 4 or 3 from that graph as shown in the method \mintinline{python}{compute_circles()} in Listing~\ref{code:comp_circles}. 
 
 Line 4-6 create an extract of the flow network with only positive edges. The negative edges are just the counterparts of same size in the opposite direction and can be deleted. Lines 7-9 then iterate over each edge $e = (u, v)$ and uses the built-in function \mintinline{python}{networkx.all_simple_paths()} to find all paths from $v$ to $u$. The \emph{cutoff parameter} 3 specifies the maximum length of paths returned. To build cycles of length 4 we specify the cutoff as 3 as we add the edge $e = (u, v)$ later to make it a full circle. Since node $u$ is always the last node in the found path it does not have to be stored at this stage. All found cycles are then randomly ordered in a deterministic manner and stored to a file. 
 
@@ -826,7 +878,7 @@ Note the second Y-axis which shows the relative capacity that participates at di
 \label{fig:gini_part_rand}
 \end{figure}
 
-The two charts in figure~\ref{fig:pay_size_random} show the first performance measure \gls{mps} at different Gini levels and also for the different levels of participation. Since the variable is not evenly distributed, a median value will usually generate certain spikes. Both charts visualise that an improvement of the measure is only noticeable with a participation of 80\% or higher. 
+The two charts in Figure~\ref{fig:pay_size_random} show the first performance measure \gls{mps} at different Gini levels and also for the different levels of participation. Since the variable is not evenly distributed, a median value will usually generate certain spikes. Both charts visualise that an improvement of the measure is only noticeable with a participation of 80\% or higher. 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_median_payment_size_random.pdf}\hfill
@@ -886,7 +938,7 @@ The \gls{sr} in Figure~\ref{fig:success_size_linear_desc} is already with 10\% p
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_imbalance_size_linear_desc.pdf}\hfill
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_participation_size_linear_desc.pdf}
-\caption{Success rate in random node selection.}
+\caption{\gls{sr} in random node selection.}
 \label{fig:success_size_linear_desc}
 \end{figure}
 
@@ -944,7 +996,7 @@ If in comparison low and high \emph{spread} are compared the number of iteration
 \end{figure}
 
 \newpage
-\section{Conclusion \& Outlook}
+\section{Conclusion \& Outlook}\label{sec:concl}
 This research aimed to find answers to the question on how effective the proactive rebalancing protocol is, under the assumption that only a part of all Lightning Network nodes would participate. 
 
 To answer this question multiple experiments have been designed and conducted. Data from the real Lightning Network was extracted and replicated in a realistic simulation. Network nodes and payment channels resemble the actual Lightning Network while the balances were randomly assigned to one node entirely. This simplification was necessary as the exact balances are not publicly shared.
