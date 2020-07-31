@@ -64,6 +64,72 @@
       \verb https://search.ebscohost.com/login.aspx?direct=true&scope=site&db=nlebk&db=nlabk&AN=1488266
       \endverb
     \endentry
+    \entry{steen_four-color_1978}{inbook}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=79691a41bf93d3c3175059813244648e}{%
+           family={Appel},
+           familyi={A\bibinitperiod},
+           given={Kenneth},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0eb10df6be2a6573de8f67cd83fe65ab}{%
+           family={Haken},
+           familyi={H\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=4887fe598c2dbc2dd140738c2d495672}{%
+           family={Steen},
+           familyi={S\bibinitperiod},
+           given={Lynn\bibnamedelima Arthur},
+           giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, {NY}}%
+      }
+      \list{publisher}{1}{%
+        {Springer New York}%
+      }
+      \strng{namehash}{8c586d48716d836b293e6647db330eeb}
+      \strng{fullhash}{8c586d48716d836b293e6647db330eeb}
+      \strng{bibnamehash}{8c586d48716d836b293e6647db330eeb}
+      \strng{authorbibnamehash}{8c586d48716d836b293e6647db330eeb}
+      \strng{authornamehash}{8c586d48716d836b293e6647db330eeb}
+      \strng{authorfullhash}{8c586d48716d836b293e6647db330eeb}
+      \strng{editorbibnamehash}{4887fe598c2dbc2dd140738c2d495672}
+      \strng{editornamehash}{4887fe598c2dbc2dd140738c2d495672}
+      \strng{editorfullhash}{4887fe598c2dbc2dd140738c2d495672}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Mathematics Today Twelve Informal Essays}
+      \field{isbn}{978-1-4613-9437-2 978-1-4613-9435-8}
+      \field{langid}{english}
+      \field{title}{The Four-Color Problem}
+      \field{urlday}{31}
+      \field{urlmonth}{7}
+      \field{urlyear}{2020}
+      \field{year}{1978}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{153\bibrangedash 180}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1007/978-1-4613-9435-8_7
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/978-1-4613-9435-8_7
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/978-1-4613-9435-8_7
+      \endverb
+    \endentry
     \entry{back_hashcash_2002}{report}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=56cdb816bf599f4f7f766374b2663310}{%
@@ -105,13 +171,13 @@
       \verb http://cypherspace.org/hashcash/hashcash.pdf
       \endverb
     \endentry
-    \entry{noauthor_blocks-size_nodate}{online}{}
-      \field{sortinit}{b}
+    \entry{noauthor_block-size_nodate}{online}{}
+      \field{sortinit}{B}
       \field{sortinithash}{8de16967003c7207dae369d874f1456e}
       \field{labeldatesource}{nodate}
       \field{labeltitlesource}{title}
       \field{abstract}{The total size of the blockchain minus database indexes in megabytes.}
-      \field{title}{blocks-size}
+      \field{title}{Block-Size}
       \field{titleaddon}{Blockchain.com}
       \field{urlday}{6}
       \field{urlmonth}{7}
@@ -127,7 +193,7 @@
       \verb https://www.blockchain.com/charts/blocks-size
       \endverb
     \endentry
-    \entry{brossard2010graph}{misc}{}
+    \entry{brossard_graph_2010}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=e5631ea1acc7218d6b30dd0478d4a0a4}{%
            family={Brossard},
@@ -154,12 +220,13 @@
       \field{sortinit}{B}
       \field{sortinithash}{8de16967003c7207dae369d874f1456e}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Graph Theory: Network Flow}
       \field{year}{2010}
+      \field{dateera}{ce}
     \endentry
     \entry{chaum_blind_1983}{inbook}{}
       \name{author}{1}{}{%
@@ -395,6 +462,9 @@
       \range{pages}{6}
       \verb{doi}
       \verb 10.4153/CJM-1956-045-5
+      \endverb
+      \verb{file}
+      \verb Full Text:/home/tobias/Zotero/storage/WIBN95AY/Ford and Fulkerson - 1956 - Maximal Flow Through a Network.pdf:application/pdf
       \endverb
       \verb{urlraw}
       \verb https://www.cambridge.org/core/product/identifier/S0008414X00036890/type/journal_article
@@ -714,23 +784,6 @@
       \verb Poon and Dryja - The Bitcoin Lightning Network.pdf:/home/tobias/Zotero/storage/TF7BZAT8/Poon and Dryja - The Bitcoin Lightning Network.pdf:application/pdf
       \endverb
     \endentry
-    \entry{noauthor_resources_nodate}{online}{}
-      \field{sortinit}{R}
-      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
-      \field{labeldatesource}{nodate}
-      \field{labeltitlesource}{title}
-      \field{title}{Resources for Correlation > Spearmans Correlation Coefficient from statstutor}
-      \field{urlday}{15}
-      \field{urlmonth}{7}
-      \field{urlyear}{2020}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb http://www.statstutor.ac.uk/topics/correlation/spearmans-correlation-coefficient/
-      \endverb
-      \verb{url}
-      \verb http://www.statstutor.ac.uk/topics/correlation/spearmans-correlation-coefficient/
-      \endverb
-    \endentry
     \entry{rosen_discrete_2012}{book}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=5d7c5a2525564580a8aa04190ae2b822}{%
@@ -766,6 +819,23 @@
       \field{year}{2012}
       \field{dateera}{ce}
       \keyw{Computer science,Mathematics}
+    \endentry
+    \entry{noauthor_spearmans_nodate}{online}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labeldatesource}{nodate}
+      \field{labeltitlesource}{title}
+      \field{title}{Spearmans Correlation Coefficient from statstutor}
+      \field{urlday}{15}
+      \field{urlmonth}{7}
+      \field{urlyear}{2020}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://www.statstutor.ac.uk/topics/correlation/spearmans-correlation-coefficient/
+      \endverb
+      \verb{url}
+      \verb http://www.statstutor.ac.uk/topics/correlation/spearmans-correlation-coefficient/
+      \endverb
     \endentry
     \entry{tikhomirov_probing_2020}{article}{}
       \name{author}{4}{}{%

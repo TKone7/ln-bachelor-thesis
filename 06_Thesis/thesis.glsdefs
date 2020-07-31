@@ -1,3 +1,33 @@
+\ifglsentryexists{gini}{}%
+{%
+\gls@defglossaryentry{gini}%
+{%
+name={Gini},%
+sort={Gini},%
+type={main},%
+first={Gini},%
+firstplural={Ginis},%
+text={Gini},%
+plural={Ginis},%
+description={Measurement of imbalance},%
+descriptionplural={Measurement of imbalance},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{mpr}{}%
 {%
 \gls@defglossaryentry{mpr}%
@@ -39,8 +69,8 @@ first={MPS},%
 firstplural={MPSs},%
 text={MPS},%
 plural={MPSs},%
-description={Median payment size defines the minimum amount in sat which at least half of all node pairs can send on the shortest path connecting them},%
-descriptionplural={Median payment size defines the minimum amount in sat which at least half of all node pairs can send on the shortest path connecting them},%
+description={Median Possible Payment Size},%
+descriptionplural={Median Possible Payment Size},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%
@@ -69,8 +99,8 @@ first={SR},%
 firstplural={SRs},%
 text={SR},%
 plural={SRs},%
-description={Success rate defines the ratio of all shortest paths between all node pairs which can accommodate a payment of one sat},%
-descriptionplural={Success rate defines the ratio of all shortest paths between all node pairs which can accommodate a payment of one sat},%
+description={Success Rate},%
+descriptionplural={Success Rate},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%

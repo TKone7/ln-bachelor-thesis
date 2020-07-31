@@ -17,57 +17,63 @@
 \contentsline {section}{\numberline {2}Graph Theory Concepts}{8}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Formal Definition}{8}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}General Problems}{8}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Network Flow}{9}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Maximum Flow Problem}{10}{subsubsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.4}Application in the Lightning Network}{11}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Fees}{11}{subsubsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.2}Path Finding Problem}{11}{subsubsection.2.4.2}%
-\contentsline {section}{\numberline {3}Proactive Rebalancing Protocol}{13}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Rebalancing}{13}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Rebalancing Algorithm}{14}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Imbalance Definition}{14}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Proposed Algorithm}{16}{subsubsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.3}Protocol Change}{16}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Motivations to not Participate}{16}{subsubsection.3.3.1}%
-\contentsline {section}{\numberline {4}Experiment}{18}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Performance Measures}{18}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Success Rate on Shortest Path}{18}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Payment Size on Shortest Path}{18}{subsubsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.3}Multi Path Retry}{18}{subsubsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.2}Simulating Proactive Rebalancing}{19}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Selection Strategies}{20}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Randomised}{21}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}Node Ranking}{21}{subsubsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.3}Node Categories}{22}{subsubsection.4.3.3}%
-\contentsline {subsubsection}{\numberline {4.3.4}Network Spread}{23}{subsubsection.4.3.4}%
-\contentsline {section}{\numberline {5}Implementation of Simulation}{24}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Methodology}{24}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Python Libraries}{24}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Network Class}{24}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}Experiment Class}{25}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}Command Line Interface}{26}{subsubsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.2}Data Collection}{26}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Preprocessing}{28}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}Remove Incomplete Data}{28}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}Allocating Local Balances}{29}{subsubsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.4}Simulate Rebalancing}{29}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}Determine the Desired Flow}{31}{subsubsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}Compute Rebalancing Cycle}{32}{subsubsection.5.4.2}%
-\contentsline {subsubsection}{\numberline {5.4.3}Node Selection}{33}{subsubsection.5.4.3}%
-\contentsline {subsubsection}{\numberline {5.4.4}Execute Rebalancing}{34}{subsubsection.5.4.4}%
-\contentsline {subsubsection}{\numberline {5.4.5}Store and Plot Results}{34}{subsubsection.5.4.5}%
-\contentsline {section}{\numberline {6}Results}{35}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Random Participation}{35}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Node Importance}{37}{subsection.6.2}%
-\contentsline {subsubsection}{\numberline {6.2.1}Adoption by Important Nodes First}{37}{subsubsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2}Adoption by Unimportant Nodes First}{40}{subsubsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.3}Participation Within a Group}{40}{subsubsection.6.2.3}%
-\contentsline {subsection}{\numberline {6.3}Network Spread}{41}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Conclusion \& Outlook}{43}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Limitations}{44}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Future work}{44}{subsection.7.2}%
-\contentsline {section}{References}{45}{section*.37}%
-\contentsline {section}{List of Figures}{46}{section*.38}%
-\contentsline {section}{List of Tables}{47}{section*.39}%
-\contentsline {section}{Glossary}{48}{section*.40}%
-\contentsline {section}{\numberline {A}Charts Network Spread Experiment}{49}{appendix.A}%
+\contentsline {subsubsection}{\numberline {2.2.1}Graph Coloring Problems}{9}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Subgraph Problems}{9}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Isomorphism Problems}{9}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Path Problems}{9}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Network Flow}{10}{subsubsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.3}Network Flow}{10}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Maximum Flow Problem}{11}{subsubsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.4}Application in the Lightning Network}{12}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Fees}{12}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Path Finding Problem}{12}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Partial Participation}{13}{subsubsection.2.4.3}%
+\contentsline {section}{\numberline {3}Proactive Rebalancing Protocol}{15}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Rebalancing}{15}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Rebalancing Algorithm}{16}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Imbalance Definition}{16}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Proposed Algorithm}{18}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Protocol Change}{18}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Motivations to not Participate}{18}{subsubsection.3.3.1}%
+\contentsline {section}{\numberline {4}Experiment}{20}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Performance Measures}{20}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Success Rate on Shortest Path}{20}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Payment Size on Shortest Path}{20}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Multi Path Retry}{20}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Simulating Proactive Rebalancing}{21}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Selection Strategies}{22}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Randomised}{23}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Node Ranking}{23}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Node Categories}{24}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Network Spread}{25}{subsubsection.4.3.4}%
+\contentsline {section}{\numberline {5}Implementation of Simulation}{26}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Methodology}{26}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Python Libraries}{26}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Network Class}{26}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Experiment Class}{27}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}Command Line Interface}{28}{subsubsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.2}Data Collection}{28}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Preprocessing}{30}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Remove Incomplete Data}{30}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Allocating Local Balances}{31}{subsubsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.4}Simulate Rebalancing}{31}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Determine the Desired Flow}{33}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Compute Rebalancing Cycle}{34}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Node Selection}{35}{subsubsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.4}Execute Rebalancing}{36}{subsubsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.5}Store and Plot Results}{36}{subsubsection.5.4.5}%
+\contentsline {section}{\numberline {6}Results}{37}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Random Participation}{37}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Node Importance}{39}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Adoption by Important Nodes First}{39}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Adoption by Unimportant Nodes First}{42}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Participation Within a Group}{42}{subsubsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.3}Network Spread}{43}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Conclusion \& Outlook}{45}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Limitations}{46}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Future work}{46}{subsection.7.2}%
+\contentsline {section}{References}{47}{section*.38}%
+\contentsline {section}{List of Figures}{48}{section*.39}%
+\contentsline {section}{List of Tables}{49}{section*.40}%
+\contentsline {section}{Glossary}{50}{section*.41}%
+\contentsline {section}{\numberline {A}Charts Network Spread Experiment}{51}{appendix.A}%
