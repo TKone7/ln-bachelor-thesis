@@ -72,8 +72,8 @@
 \contentsline {section}{\numberline {7}Conclusion \& Outlook}{45}{section.7}%
 \contentsline {subsection}{\numberline {7.1}Limitations}{46}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}Future work}{46}{subsection.7.2}%
-\contentsline {section}{References}{47}{section*.38}%
-\contentsline {section}{List of Figures}{48}{section*.39}%
-\contentsline {section}{List of Tables}{49}{section*.40}%
-\contentsline {section}{Glossary}{50}{section*.41}%
+\contentsline {section}{References}{47}{section*.37}%
+\contentsline {section}{List of Figures}{48}{section*.38}%
+\contentsline {section}{List of Tables}{49}{section*.39}%
+\contentsline {section}{Glossary}{50}{section*.40}%
 \contentsline {section}{\numberline {A}Charts Network Spread Experiment}{51}{appendix.A}%
