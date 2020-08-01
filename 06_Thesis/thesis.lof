@@ -18,22 +18,22 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Shows Boundary Definition by Equal Node Frequency\relax }}{24}{figure.caption.20}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of node degree}}}{24}{subfigure.3.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Node's contribution to channels}}}{24}{subfigure.3.2}%
-\contentsline {figure}{\numberline {5.1}{\ignorespaces State Diagram of the Network Object\relax }}{26}{figure.caption.22}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Class Relationship between Experiment and Network\relax }}{27}{figure.caption.23}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Flow Chart of a Rebalancing Experiment\relax }}{31}{figure.caption.24}%
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Compare Development of \gls {gini} Score During Rebalancing\relax }}{36}{figure.caption.25}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Compare Final \gls {gini} Score with Participation Level\relax }}{37}{figure.caption.26}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces \gls {mps} in Random Node Selection\relax }}{37}{figure.caption.27}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces \gls {sr} in Random Node Selection\relax }}{38}{figure.caption.28}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces \gls {mpr} in Random Node Selection\relax }}{38}{figure.caption.29}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Compare Final \gls {gini} Score with Participation Level\relax }}{39}{figure.caption.30}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces \gls {mps} in Random Node Selection\relax }}{39}{figure.caption.31}%
-\contentsline {figure}{\numberline {6.8}{\ignorespaces \gls {sr} in Random Node Selection\relax }}{40}{figure.caption.32}%
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Ability to Make Different Payments\relax }}{40}{figure.caption.33}%
-\contentsline {figure}{\numberline {6.10}{\ignorespaces \gls {gini} Score During Different Levels of Participation\relax }}{41}{figure.caption.34}%
-\contentsline {figure}{\numberline {6.11}{\ignorespaces \gls {sr} With Different Init Parameters and a Fixed Spread of 40\%\relax }}{42}{figure.caption.35}%
-\contentsline {figure}{\numberline {6.12}{\ignorespaces \gls {sr} With Different Spread Parameters and a Fixed Init Value of 2\%\relax }}{43}{figure.caption.36}%
-\contentsline {figure}{\numberline {A.1}{\ignorespaces \gls {sr} All Parametrisations of Network Spread\relax }}{51}{figure.caption.42}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces \gls {mps} All Parametrisations of Network Spread\relax }}{52}{figure.caption.43}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces \gls {mpr} All Parametrisations of Network Spread\relax }}{53}{figure.caption.44}%
-\contentsline {figure}{\numberline {A.4}{\ignorespaces \gls {gini} All Parametrisations of Network Spread\relax }}{54}{figure.caption.45}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces State Diagram of the Network Object\relax }}{26}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Class Relationship between Experiment and Network\relax }}{27}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Flow Chart of a Rebalancing Experiment\relax }}{32}{figure.caption.25}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Compare Development of \gls {gini} Score During Rebalancing\relax }}{37}{figure.caption.26}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Compare Final \gls {gini} Score with Participation Level\relax }}{38}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces \gls {mps} in Random Node Selection\relax }}{38}{figure.caption.28}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces \gls {sr} in Random Node Selection\relax }}{39}{figure.caption.29}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces \gls {mpr} in Random Node Selection\relax }}{39}{figure.caption.30}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Compare Final \gls {gini} Score with Participation Level\relax }}{40}{figure.caption.31}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces \gls {mps} in Random Node Selection\relax }}{40}{figure.caption.32}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces \gls {sr} in Random Node Selection\relax }}{41}{figure.caption.33}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Ability to Make Different Payments\relax }}{41}{figure.caption.34}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces \gls {gini} Score During Different Levels of Participation\relax }}{42}{figure.caption.35}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces \gls {sr} With Different Init Parameters and a Fixed Spread of 40\%\relax }}{43}{figure.caption.36}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces \gls {sr} With Different Spread Parameters and a Fixed Init Value of 2\%\relax }}{44}{figure.caption.37}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces \gls {sr} All Parametrisations of Network Spread\relax }}{52}{figure.caption.43}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces \gls {mps} All Parametrisations of Network Spread\relax }}{53}{figure.caption.44}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces \gls {mpr} All Parametrisations of Network Spread\relax }}{54}{figure.caption.45}%
+\contentsline {figure}{\numberline {A.4}{\ignorespaces \gls {gini} All Parametrisations of Network Spread\relax }}{55}{figure.caption.46}%
