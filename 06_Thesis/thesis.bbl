@@ -518,6 +518,55 @@
       \verb http://www.123library.org/book_details/?id=65116
       \endverb
     \endentry
+    \entry{gross_graph_2019}{book}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=262a8003dfe3a21fdbc9d111fe8ed2c6}{%
+           family={Gross},
+           familyi={G\bibinitperiod},
+           given={Jonathan\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b3aeb580253145eb2d36db90a7fb18d4}{%
+           family={Yellen},
+           familyi={Y\bibinitperiod},
+           given={Jay},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=044c39ecdcee48d9a291a007506fb222}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Boca Raton}%
+      }
+      \list{publisher}{1}{%
+        {{CRC} Press, Taylor \& Francis Group}%
+      }
+      \strng{namehash}{18e3d5298dbb05f2567de72f8bf8a1ed}
+      \strng{fullhash}{b28893d527baf82ee69b156103b2adb7}
+      \strng{bibnamehash}{b28893d527baf82ee69b156103b2adb7}
+      \strng{authorbibnamehash}{b28893d527baf82ee69b156103b2adb7}
+      \strng{authornamehash}{18e3d5298dbb05f2567de72f8bf8a1ed}
+      \strng{authorfullhash}{b28893d527baf82ee69b156103b2adb7}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Third edition}
+      \field{isbn}{978-1-4822-4948-4}
+      \field{pagetotal}{577}
+      \field{series}{Textbooks in mathematics}
+      \field{title}{Graph theory and its applications}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \keyw{Graph theory}
+    \endentry
     \entry{haber_how_1991}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=dc54fe6ba19414afd96d107ec03015ee}{%

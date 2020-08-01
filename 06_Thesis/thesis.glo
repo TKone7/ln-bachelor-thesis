@@ -4,7 +4,7 @@
 \glossaryentry{hash?\glossentry{hash}|setentrycounter[]{page}\glsnumberformat}{1}
 \glossaryentry{hash?\glossentry{hash}|setentrycounter[]{page}\glsnumberformat}{1}
 \glossaryentry{hash?\glossentry{hash}|setentrycounter[]{page}\glsnumberformat}{1}
-\glossaryentry{hash?\glossentry{hash}|setentrycounter[]{page}\glsnumberformat}{1}
+\glossaryentry{hash?\glossentry{hash}|setentrycounter[]{page}\glsnumberformat}{2}
 \glossaryentry{hash?\glossentry{hash}|setentrycounter[]{page}\glsnumberformat}{2}
 \glossaryentry{hash function?\glossentry{hashfunction}|setentrycounter[]{page}\glsnumberformat}{2}
 \glossaryentry{scalability trilemma?\glossentry{trilemma}|setentrycounter[]{page}\glsnumberformat}{2}
@@ -19,11 +19,11 @@
 \glossaryentry{base layer?\glossentry{base}|setentrycounter[]{page}\glsnumberformat}{3}
 \glossaryentry{pseudonymous?\glossentry{pseudonymous}|setentrycounter[]{page}\glsnumberformat}{3}
 \glossaryentry{block chain?\glossentry{blockchain}|setentrycounter[]{page}\glsnumberformat}{3}
-\glossaryentry{block chain?\glossentry{blockchain}|setentrycounter[]{page}\glsnumberformat}{3}
 \glossaryentry{block chain?\glossentry{blockchain}|setentrycounter[]{page}\glsnumberformat}{4}
 \glossaryentry{block chain?\glossentry{blockchain}|setentrycounter[]{page}\glsnumberformat}{4}
 \glossaryentry{block chain?\glossentry{blockchain}|setentrycounter[]{page}\glsnumberformat}{4}
-\glossaryentry{HTLC?\glossentry{htlc}|setentrycounter[]{page}\glsnumberformat}{4}
+\glossaryentry{block chain?\glossentry{blockchain}|setentrycounter[]{page}\glsnumberformat}{4}
+\glossaryentry{HTLC?\glossentry{htlc}|setentrycounter[]{page}\glsnumberformat}{5}
 \glossaryentry{preimage?\glossentry{preimage}|setentrycounter[]{page}\glsnumberformat}{5}
 \glossaryentry{hash?\glossentry{hash}|setentrycounter[]{page}\glsnumberformat}{5}
 \glossaryentry{hash?\glossentry{hash}|setentrycounter[]{page}\glsnumberformat}{5}
@@ -37,75 +37,85 @@
 \glossaryentry{base layer?\glossentry{base}|setentrycounter[]{page}\glsnumberformat}{6}
 \glossaryentry{pseudonymous?\glossentry{pseudonymous}|setentrycounter[]{page}\glsnumberformat}{6}
 \glossaryentry{HTLC?\glossentry{htlc}|setentrycounter[]{page}\glsnumberformat}{13}
-\glossaryentry{HTLC?\glossentry{htlc}|setentrycounter[]{page}\glsnumberformat}{13}
+\glossaryentry{HTLC?\glossentry{htlc}|setentrycounter[]{page}\glsnumberformat}{14}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{17}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{17}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{17}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{17}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{17}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{20}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{20}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{20}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{20}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{20}
-\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{20}
-\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{20}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{20}
-\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{21}
-\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{21}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{22}
-\glossaryentry{Remote Procedure Call?\glossentry{rpc}|setentrycounter[]{page}\glsnumberformat}{29}
-\glossaryentry{hash function?\glossentry{hashfunction}|setentrycounter[]{page}\glsnumberformat}{31}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{20}
+\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{20}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{21}
+\glossaryentry{Remote Procedure Call?\glossentry{rpc}|setentrycounter[]{page}\glsnumberformat}{28}
+\glossaryentry{hash function?\glossentry{hashfunction}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{35}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{35}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{36}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{36}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{36}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{36}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{36}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{36}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{36}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{36}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{37}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{37}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{37}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{37}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
 \glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{37}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{38}
-\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{38}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{38}
-\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{38}
+\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{37}
+\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{37}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{38}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{38}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{38}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{38}
-\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{38}
 \glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{38}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{39}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{39}
-\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{39}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{40}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{40}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{41}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{42}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{42}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{41}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{41}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{42}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{43}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{44}
+\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{44}
 \glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{44}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{45}
-\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{45}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{45}
-\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{45}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{44}
+\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{44}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{44}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{44}
+\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{44}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{44}
 \glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{45}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{45}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{45}
-\glossaryentry{proxy?\glossentry{proxy}|setentrycounter[]{page}\glsnumberformat}{45}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{45}
-\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{46}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{48}
-\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{48}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{47}
+\glossaryentry{SR?\glossentry{sr}|setentrycounter[]{page}\glsnumberformat}{51}
+\glossaryentry{MPS?\glossentry{mps}|setentrycounter[]{page}\glsnumberformat}{52}
+\glossaryentry{MPR?\glossentry{mpr}|setentrycounter[]{page}\glsnumberformat}{53}
+\glossaryentry{Gini?\glossentry{gini}|setentrycounter[]{page}\glsnumberformat}{54}

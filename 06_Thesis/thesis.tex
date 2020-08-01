@@ -1,11 +1,7 @@
 \documentclass[final]{fhnwreport}       %[mode] = draft or final
                                         %{class} = fhnwreport, article, 
                                         %          report, book, beamer, standalone
-%\usepackage{hyperref}
-%\usepackage{graphicx}
-%\usepackage{longtable} % To display tables on several pages
-%\usepackage{geometry}
-%\usepackage{listings}
+
 \usepackage{colortbl}
 \usepackage{lipsum}
 \usepackage{silence}
@@ -38,7 +34,7 @@
 
 \title{Proactive Rebalancing Algorithm in the Lightning Network}                          %Project Title
 \author{Effectiveness Simulation under Partial Participation}                %Document Type => Technical Report, ...
-\date{August 1, 2020}                   %Place and Date
+\date{August 7, 2020}                   %Place and Date
 
 \begin{document}
 %%---TITLEPAGE---------------------------------------------------------------------------
@@ -65,13 +61,17 @@ Expert                        &    René Pickhardt
 %% -- ABSTRACT
 \thispagestyle{empty}
 \begin{abstract}
-  Here follows my abstract
-  \lipsum{1-2}
+  In a decentralised payment channel network as the Lightning Network. it is difficult for nodes to find a path for routing a payment. Limited information about the payment channel states incur a high probability that a payment fails and has to be retried on another path. If the payment channels are more balanced the failure rate can be reduced. Hence, a rebalancing protocol is used to promote engagement in rebalancing activities. In a decentralised network each participant makes decisions about This thesis aims to demonstrate the effectivity of such a protocol assuming not all participants adopting it. In multiple experiments the real Lightning Network reconstructed and different adoption scenarios are simulated. Different measures are defined by which the effectivity of the protocol is judged.
+  
+  During the analysis of the results it was concluded that the centrality of participating nodes is of great importance. Absence of the most connected nodes lead to a significant drop in the routing measures. This was due to the fact that most rebalancing opportunities disappear once central hubs do not participate.
+  
+  The introduction addresses some basics about the Bitcoin and Lightning protocol. It also demonstrates why second layer technologies like Lightning are needed. Chapter~\ref{sec:graph} covers graph theory concepts, gives an introduction to general graph theory problems and narrows down the probelm space to the thesis topic. In Chapter~\ref{sec:rebal} the proposed rebalancing algorithm is elaborated. The experimental setup are covered in Chapter~\ref{sec:experiment}. Furthermore, the routing measures as well as tested scenarios are introduced. A more technical analysis of the written code can be foundn in Chapter~\ref{sec:method}. Finally, the results and main findings can be drawn and will be presented.
 
   \vspace{2ex}
-  \textbf{Keywords: Lightning, Bitcoin, path finding}
+  \textbf{Keywords}: Lightning Network, Bitcoin, path finding, rebalancing, routing, payment channel, protocol change, partial participation, experiment, simulation
 \end{abstract}
 \vfill
+\newpage
 
 %%---TABLE OF CONTENTS-------------------------------------------------------------------
 \pagenumbering{Roman}		
@@ -115,15 +115,15 @@ I also want to thank my supervisor Prof. Dr. Kaspar Riesen who immediately showe
 \clearpage
 \pagenumbering{arabic}
 \section{Introduction} 
-This section gives a brief introduction and overview of the Bitcoin and Lightning technology. It covers the history of digital cash, the advent of Bitcoin and explains the need for an off-chain scaling solution. 
+This section gives a brief introduction and overview of the Bitcoin and Lightning technology. It covers the history of digital cash, the advent of Bitcoin and explains the need for an off-chain scaling solution. The term Bitcoin refers to both the network of settlement and the native asset. To avoid confusion the term \emph{bitcoin} with a lowercase ``b'' represents the currency and \emph{Bitcoin} with uppercase ``B'' the settlement network.
 
 \subsection{Bitcoin: Peer to Peer Electronic Cash}\label{subsec:peertopeer}
-Bitcoin is a peer-to-peer electronic cash system first introduced in a white paper by the individual or group behind the pseudonym Satoshi Nakamoto \citep{nakamoto_bitcoin_2008}. This paper lines out the fundamental principles of the Bitcoin \gls{blockchain} that achieves digital transfer of value without a central third party. The next paragraph expands on the pre-bitcoin developments on electronic cash that eventually lead to the rise of Bitcoin. Additionally, the need for additional layer protocols is explained.
+Bitcoin is a peer-to-peer electronic cash system first introduced in a white paper by the individual or group behind the pseudonym Satoshi Nakamoto \citep{nakamoto_bitcoin_2008}. This paper lines out the fundamental principles of the Bitcoin \gls{blockchain} that achieves digital transfer of value without a central third party. The next paragraph expands on the pre-Bitcoin developments on electronic cash that eventually lead to the rise of Bitcoin. Additionally, the need for additional layer protocols is explained.
 
 \subsubsection{History of Digital Cash}
 Before the digital age cash was the dominant form of payment. A bank note or a coin embodies the respective face value to the bearer of it. Economical transactions can be made by simply exchanging this physical token by which the transaction was immediately settled. However, with the advent of e-commerce this simple and transparent mechanism was no longer possible. New institutions formed to fulfill the need of online transactions. Credit card companies and payment processors filled the gap of trust needed between the sender and the receiver of a transaction over the internet. This architecture came with significant drawbacks. Suddenly, the interacting parties are dependent on third parties which are collecting additional fees. Use of such systems require identification and since the intermediary can track all transactions, this reduces the user's privacy \citep{narayanan_bitcoin_2016}.
 
-Bitcoin is by no means the first system introduced to allow for a digital cash system. Already in 1983 \citeauthor{chaum_blind_1983} worked on new cryptographic primitives that should make electronic banking services more private and offer improved auditability \citep{chaum_blind_1983}. Although his technology still relied on a central ``bank'' server which issues electronic bills, blinded signatures allowed to anonymously transfer them. In 1989 the company \emph{DigiCash} was found by Chaum to commercialise the idea and a few banks did later implement it. Technological complexity, patents on the invention and the incapability of handling  user-to-user transactions prevented it from becoming a success \cite{narayanan_bitcoin_2016}. 
+Bitcoin is by no means the first system introduced to allow for a digital cash system. Already in 1983 \citeauthor{chaum_blind_1983} worked on new cryptographic primitives that should make electronic banking services more private and offer improved auditability \citep{chaum_blind_1983}. Although his technology still relied on a central ``bank'' server which issues electronic bills, blinded signatures allowed to anonymously transfer them. In 1989 the company \emph{DigiCash} was found by Chaum to commercialise the idea and a few banks did later implement it. Technological complexity, patents on the invention and the incapability of handling  user-to-user transactions prevented it from becoming a success \citep{narayanan_bitcoin_2016}. 
 
 An important problem in the evolution of digital cash has been the so called \emph{\gls{doublespend}}. Digital information has the property of being easily duplicated. This poses a problem to digital cash as this behaviour is generally unwanted. How can a receiver of digital cash be certain that the cash has not been spent to someone else before, thus eliminating its value? Satoshi Nakamoto introduced the concept of a global distributed ledger, a data structure that is append only and where any change must be disseminated to all participants. In order to keep the history of the ledger immutable Satoshi utilizes the idea of a time stamping server first proposed by \textcite{haber_how_1991} in 1991. It works by calculating the \gls{hash} of a piece of data and publishing it to all the participants. This serves as a proof that the data existed at this given time since otherwise the \gls{hash} could not have been calculated. The next piece of data to be published also contains the previous \gls{hash}, effectively linking them and forming a chain. If someone would now want to change the underlying data this would change its \gls{hash} and since it is included in the next element in the chain also this \gls{hash} would need to be changed up until the most recent element. 
 
@@ -155,7 +155,7 @@ Opening such a payment channel requires the two parties to create an on-chain Bi
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{channel_lifecycle.pdf}
-\caption{Life cycle of payment channel.}
+\caption{Life Cycle of Payment Channel}
 \label{fig:ChannelCycle}
 \end{figure}
 
@@ -180,20 +180,20 @@ To ensure privacy of payments the routing protocol uses \emph{\gls{onionrouting}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{htlc.pdf}
-\caption{Onion routing preserves privacy over the chose path.}
+\caption{Onion Routing Schema}
 \label{fig:onion}
 \end{figure}
 
 Figure~\ref{fig:onion} color codes the information which is only readable by the respective node with the same color. In each step the outermost layer is decrypted and the next hop gets revealed. The remaining encrypted data is passed on down the line. This ensures that each node only has a local view of the path knowing only about its predecessor and successor. Thus follows, the source of the payment needs to determine the complete path before sending a payment.
 
-Sending a payment requires the sender to find a viable path to the recipient. This is called \emph{\gls{sourcerouting}} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in Figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the $1$ BTC channel between him and Carol. This information however is only known to Bob and Carol, not to Alice. Alice only sees the public information which tells her that the channel has 1 BTC capacity. Local channel balances are kept private for two reasons. Every payment over a channel makes its balances to move. Keeping all nodes updated about all channel balances would necessitate to update them about every transaction. This is exactly how Bitcoin on the \emph{\gls{base}} work and the reason it does not scale. Secondly, informing the Network about every transaction is very bad for privacy, as an observer could easily determine who pays to whom over what path.
+Sending a payment requires the sender to find a viable path to the recipient. This is called \emph{\gls{sourcerouting}} and necessitates some information about the channel graph. When a new channel opens the parties notify the network about the channel, its capacity and the fee policies. Each other network participants stores this information and builds up its local view of the network. When a node constructs a payment it can query a path with enough capacity along all its channels, though this is not enough to be certain that the payment can be routed. The payment in Figure~\ref{fig:nopayment} of $0.5$ BTC can not be routed from Bob to Carol as Bob only owns $0.2$ BTC of the $1$ BTC channel between him and Carol. This information however is only known to Bob and Carol, not to Alice. Alice only sees the public information which tells her that the channel has 1 BTC capacity. Local channel balances are kept private for two reasons. Every payment over a channel makes its balances to move. Keeping all nodes updated about all channel balances would necessitate to update them about every transaction. This is exactly how Bitcoin on the \emph{\gls{base}} works and the reason it does not scale. Secondly, informing the Network about every transaction is very bad for privacy, as an observer could easily determine who pays to whom over what path.
 
 Not knowing local balance distribution of channels makes it hard for source nodes to construct a reliable path. When a payment fails along the path a new route can be calculated and tried. This however is coupled with time delays that can cause a negative user experience.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{nopayment.pdf}
-\caption{Payment fails when channel balances cannot accommodate the required transfer.}
+\caption{Failed Payment Because of Insufficient Channel Balance}
 \label{fig:nopayment}
 \end{figure}
 
@@ -210,7 +210,7 @@ Any value smaller than one \emph{sat} can not be recorded on the block chain. Ho
   {satoshi} & {sat} & 0.00000001 & {Native to the base layer}\\ 
   {millisatoshi} & {msat} & 0.00000000001 & {Native to the Lightning Network}\\ 
 \end{tabular}
-\caption{Bitcoin currency units used in this thesis.}
+\caption{Bitcoin Currency Units Used in this Thesis}
 \label{tab:units}
 \end{table}
 
@@ -221,14 +221,14 @@ Rebalancing is an activity where one node engages in a circular payment that pay
 
 
 \subsection{Problem Statement}
-These payment channel networks are decentralized by nature and protocol changes can not be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure\footnote{defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
+These payment channel networks are decentralised by nature and protocol changes can not be forced upon the node operators. Therefore, the question arises on how effective this protocol change will be assuming only partial participation of nodes. What are the effects of different levels of participation on the imbalance measure\footnote{defined as the inequality of the distribution of a nodes channel balance coefficients} of the network during repeated rebalancing cycles? What is the effect of different levels of participation on the network's ability to route payments between random nodes? 
 
 In the next section some fundamental graph theory concepts are formally introduced. An overview of some general graph theory problems are briefly elaborated. The field of problems is then narrowed down to the ones that find application in this thesis.
 
 Section~\ref{sec:rebal} elaborates on the rebalancing algorithm proposed in a protocol change. Section~\ref{sec:experiment} lays out what experiments are conducted and how improvement is measured while Section~\ref{sec:method} goes more in-depth about the implementation. Results are presented in Section~\ref{sec:result}. Finally, Section~\ref{sec:concl} summarises the findings and gives some clues about possible future research.
 
 \newpage
-\section{Graph Theory Concepts}
+\section{Graph Theory Concepts}\label{sec:graph}
 Graph theory is an old discipline which can be used to solve multifaceted problems in the real world. The following chapter contains an introduction to the basic principles and terminologies. It then defines different problems for which graph theory can be applied to find solutions. More emphasis is given to the topics which are applicable to the Lightning Network.
 
 \subsection{Formal Definition}\label{subsec:formal}
@@ -244,17 +244,17 @@ A graph is called \emph{planar} if it can be drawn on a plane without any edges 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{planar.png}
-\caption{Two Representations of the Same Graph, from \cite{rosen_discrete_2012}.}
+\caption{A Non-Planar and Planar Representations of the Same Graph, from \cite{rosen_discrete_2012}}
 \label{fig:planar}
 \end{figure}
 
 The cut of network $G=(V,E)$ is a partition of $V$ into two disjoint subsets $S$ and $T$. The cut is determined by a set of edges which each have one endpoint in $S$ and another in $T$ \citep{brossard_graph_2010}. In Section~\ref{subsubsec:maxflow} the cut is used to determine the minimum cut that minimises the capacity of the cut in a flow network.
 
 \subsection{General Problems}\label{subsec:genprob}
-\todo[inline]{write an introduction to this section}
+The beginning of this section explores the large field of problems within the discipline of graph theory. The specific field of network flow is then examined in greater depth. Eventually, the formally defined problem is applied to the Lightning Network and the thesis question.
 
 \subsubsection{Graph Coloring Problems}
-In \emph{graph coloring problems} vertices represent areas on a map. Areas that share a border are connected with an edge. The goal is to use as little colors as possible to color each area / vertex in such a way that adjacent areas have different colors. This minimum number is called the \emph{chromatic number} $\chi(G)$. \textcite{steen_four-color_1978} have delivered the proof to what was assumed to be true for a long period of time already; the chromatic number of a \emph{planar graph} in not greater than 4. 
+In \emph{graph coloring problems} vertices represent areas on a map. Areas that share a border are connected with an edge. The goal is to use as little colors as possible to color each area / vertex in such a way that adjacent areas have different colors. This minimum number is called the \emph{chromatic number} $\chi(G)$. \textcite{steen_four-color_1978} have delivered the proof to what was assumed to be true for a long period of time already; the chromatic number of a \emph{planar graph} in never greater than 4. 
 
 Graph coloring finds many applications in planning and scheduling tasks. When scheduling final exams time slots have to be defined for different subjects so that no student has two exams at the same time. In a graph where vertices are the subjects and an edge between to subjects represent a common student the resulting colors are the time slots.
 
@@ -262,7 +262,16 @@ Graph coloring finds many applications in planning and scheduling tasks. When sc
 Certain properties of graphs can only be proven if they are fulfilled in all their \emph{subgraphs}. Hence, it is important to find those. A graph $H = (W, F)$ is a subgraph of $G = (V, E)$ when $W \subseteq V$ and $F \subseteq E$. A subgraph can be \emph{induced} by $W \subseteq V$ which means the edge set $F$ contains only edges of $E$ for which both endpoints are contained in $W$. Similarly the union can be built of two graphs $G_1$ and $G_2$ where $G = G_1 \cup G_2$ and $V = V_1 \cup V_2$. 
 
 \subsubsection{Isomorphism Problems}
-Another area of graph theory aims to determine whether two graphs are \emph{isomorphic}. This means \textquote[{\cite{rosen_discrete_2012}}, p. 668]{there is a one-to-one correspondence between their vertex sets that preserves edges.} Different algorithms exist that can determine isomorphism of two graphs, however with exponential worst-case time complexity. These algorithms mainly find application in chemistry and bioinformatics.  
+Another area of graph theory aims to determine whether two graphs are \emph{isomorphic}. This means \textquote[{\cite{rosen_discrete_2012}}, p. 668]{there is a one-to-one correspondence between their vertex sets that preserves edges}. Figure~\ref{fig:iso} demonstrates two graphs which are structurally equivalent. Although the vertex labels and the arrangement is changed, all pair of adjacent vertices in graph $G$ can also be found in $H$. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{isomorphism.pdf}
+\caption{Two Structurally Equivalent Graphs, from \cite{gross_graph_2019}}
+\label{fig:iso}
+\end{figure}
+
+Different algorithms exist that can determine isomorphism of two graphs, however with exponential worst-case time complexity. These algorithms mainly find application in chemistry and bioinformatics. Also an example in integrated circuits can be thought of as described by \textcite{gross_graph_2019}. A computer chip company A develops a new efficient chip. Shortly after the launch, competitor B comes up with a very similar product. Suppose company A can prove an identical arrangement of circuitry on the board, they would have a case for a patent-infringement suit. They can apply algorithms to figure out whether there is isomorphism in the circuitries.
 
 \subsubsection{Path Problems}
 Different \emph{route problems} exist where the solution tries to find a path with certain properties within the graph. In the \emph{Seven Bridges of Königsberg} in Figure~\ref{fig:konig} the four sections of land are separated by a river and seven bridges are connecting them. The problem of passing every bridge exactly once and returning to the start can be formulated in terms of a graph with sections as vertices and bridges as edges. It is the question whether a graph has an Euler circuit or not. 
@@ -270,14 +279,17 @@ Different \emph{route problems} exist where the solution tries to find a path wi
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{koenigsberg.png}
-\caption{Seven Bridges of Königsberg, from \cite{rosen_discrete_2012}.}
+\caption{Seven Bridges of Königsberg, from \cite{rosen_discrete_2012}}
 \label{fig:konig}
 \end{figure}
 
-Many real-world applications exist where each edge needs to be visited once. E. g. a post office worker that has to deliver mail in different roads would be interested to only visit each street once. Similarly a machine that cleans the aisles in a grocery store can be programmed to find a euler circuit that cleans each aisle exactly once.
+Many real-world applications exist where each edge needs to be visited once. E.g. a post office worker that has to deliver mail in different roads would be interested to only visit each street once. Similarly a machine that cleans the aisles in a grocery store can be programmed to find a euler circuit that cleans each aisle exactly once.
 
+\subsubsection{Shortest Path}
+When edges have a weight assigned different problems can be modelled and optimised by finding a shortest path. A famous algorithm to find such a path is \emph{Dijkstra’s algorithm}. According to xy Dijkstra's algorithm is a tree-growing algorithm. This means it starts with a given vertex and grows in a tree-like structure only one edge in each step. Consequently, the algorithm produces an entire tree of shortest paths to all other nodes in the graph. Dijkstra’s algorithm only guarantees to find the shortest path as long as all the edge weights are non-negative. In graphs with negative weights the Floyd’s algorithm
+can be used alternatively.
 
-When edges have a weight assigned different problems can be modelled and optimised by finding a shortest path. A famous algorithm to find such a path is ``Dijkstra’s Algorithm''. Similarly, in the Traveling Salesperson Problem each vertex needs to be visited exactly one before returning to the starting point. Algorithms finding a path with low cost often use approximation since no algorithm with polynomial worst-case complexity exists. 
+Similarly, in the Traveling Salesperson Problem each vertex needs to be visited exactly once before returning to the starting point. Algorithms finding a path with low cost often use heuristics since no algorithm with polynomial worst-case complexity exists. Using heuristics in an algorithm means that one uses a guideline to make a decision instead of exhausting all possible options. While sacrificing the guarantee to find the best solution it is often the only way to solve the problem within a reasonable amount of time.
 
 \subsubsection{Network Flow}
 Different problems deal with the \emph{flow} in a network. Such networks have a capacity assigned to each directed edge. Often the goal is to find the maximum flow between a source and a sink node such that all intermediary nodes have equal in and outflow \citep{even_network_1975}. The next section explains more about this field of graph theory as it is most related to the problem encountered in the Lightning Network.
@@ -290,7 +302,7 @@ Many real world problems deal with transporting something over a network with li
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{flowgraph_1.pdf}
-\caption{Flow graph annotated with capacities, from \cite{brossard_graph_2010}.}
+\caption{Flow Graph Annotated With Capacities, from \cite{brossard_graph_2010}}
 \label{fig:flow_graph}
 \end{figure}
 
@@ -310,7 +322,7 @@ Those rules define that the flow between two nodes cannot exceed the assigned ca
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{flowgraph_2.pdf}
-\caption{Flow graph annotated with flow and capacities, from \cite{brossard_graph_2010}.}
+\caption{Flow Graph Annotated With Flow and Capacities, from \cite{brossard_graph_2010}}
 \label{fig:flow_graph_2}
 \end{figure}
 
@@ -341,7 +353,7 @@ In terms of network flow theory (see Section~\ref{subsec:flow}), the capacity $c
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{simple_channel.pdf}
-\caption{Lightning channel represented as attributed simple directed graph.}
+\caption{Lightning Channel Represented as Attributed Simple DiGraph}
 \label{fig:channel_graph}
 \end{figure}
 
@@ -382,7 +394,7 @@ Figure~\ref{fig:rebal} shows an example network with four nodes and four channel
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{rebalancing.pdf}
-\caption{Initial state of newly opened channels.}
+\caption{Initial State of Newly Opened Channels}
 \label{fig:rebal}
 \end{figure}
 
@@ -390,12 +402,13 @@ She can now construct a payment of e.g. 40 with the path [Alice, Bob, Charli, Da
 
 This action performed by Alice did of course not only change the balances of the channels she is involved but also the ones she used to route the self-payment. In this case the channels between Bob-Charli as well as Charli-David are also more balanced. While this was the case in this example it is not guaranteed to be true in all cases, it might well be that some channels end up less balanced. The reason why all the nodes are incentivised to participate are fees that they can collect on each payment they forward. In fact they do not even know that this payment is a rebalancing transaction. Hence, Alice has to pay fees for this rebalancing operation. 
 
+
 Rebalancing can be summarised as an activity performed by a single node attempting to improve the local balances of its channels by sending a payment out through one channel with excess balance and receiving it through a channel with too little balance, effectively paying itself. For all the nodes in the routing path this payment looks no different to any other payment, so they charge their normal routing fees. While the balances within the channel change a node's total balance remains constant. Alice still has a total balance of 100 allocated differently among her two channels. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{rebalancing2.pdf}
-\caption{Rebalancing from Alice through Bob, Charli and David.}
+\caption{Rebalancing from Alice through Bob, Charli and David}
 \label{fig:rebal2}
 \end{figure}
 
@@ -483,7 +496,7 @@ In a first step cycles are being determined on which nodes would agree to rebala
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{foaf.pdf}
-\caption{Sharing Rebalance Hints (Green) in the Friend of a Friend Network.}
+\caption{Sharing Rebalance Hints (Green) in the Friend of a Friend Network}
 \label{fig:foaf}
 \end{figure}
 
@@ -498,7 +511,7 @@ The network is hereogeneous in regards to the channel count and available capaci
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{channel_count_distr.pdf}
-\caption{Frequency Distribution of the Node's Channel Count.}
+\caption{Frequency Distribution of the Node's Channel Count}
 \label{fig:channelcount}
 \end{figure}
 
@@ -527,7 +540,7 @@ All these different methods return a score for each node by which one could make
 {Eigenvector centr.} & {0.916} & {0.698} & {1.0} & {0.880} \\
 {Pagerank} & {0.988} & {0.893} & {0.880} & {1.0} \\
 \end{tabular}
-\caption{Ranking Correlation Coefficients of Importance Measures.}
+\caption{Ranking Correlation Coefficients of Importance Measures}
 \label{tab:spearman}
 \end{table}
 
@@ -546,7 +559,7 @@ Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (
 \subfloat[Node's contribution to channels]{
   \includegraphics[width=0.45\linewidth]{node_count_to_contr_channel_count_eq_width.pdf}
 }
-\caption{Shows Boundary Definition by Equal Node Frequency.}
+\caption{Shows Boundary Definition by Equal Node Frequency}
 \label{fig:eqfreq}
 \end{figure}
 
@@ -571,7 +584,7 @@ For this node selection method let us assume that the adoption of the new protoc
 {0.6} & {8/12} & {\textbf{7/12}} & {9/10} & {8/14} & {7/11} & {7/10} & {7/11} & {\textbf{7/10}} & {\textbf{7/9}} & {7/10} \\ \hline
 
 \end{tabular}
-\caption{Shows Number of Iterations Needed to Achieve 99\% or 100\% of Participation}
+\caption{Number of Iterations Needed to Achieve 99\% / 100\% of Participation}
 \label{tab:param}
 \end{table}
 
@@ -611,7 +624,7 @@ class Network:
         self.flow = None
 	...
   \end{minted}
-  \caption{Part of Network's init method.}
+  \caption{Part of Network's Init Method}
   \label{code:init}
 \end{listing}
 
@@ -624,7 +637,7 @@ From the initial state one experiment can be executed. Such an experiment change
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\linewidth]{state_diagram_network.pdf}
-\caption{State diagram of the Network object.}
+\caption{State Diagram of the Network Object}
 \label{fig:state_network}
 \end{figure}
 
@@ -634,7 +647,7 @@ One experiment is often composed of multiple seperate experiments with different
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{experiment_network_class.pdf}
-\caption{Class relationship between Experiment and Network.}
+\caption{Class Relationship between Experiment and Network}
 \label{fig:experiment_class}
 \end{figure}
 
@@ -687,7 +700,7 @@ In order to run a simulation that resembles the real network closely, data from 
   highlightlines={4-6,8,14-15},
   highlightcolor=highlightyellow,
 ]{js}{code/raw.json}
-\caption{Raw channels provided by C-Lightning.}
+\caption{Raw Channels Extraced from C-Lightning}
 \label{code:rawchannel}
 \end{listing}
 
@@ -705,7 +718,7 @@ Listing~\ref{code:channelbyplugin} shows two entries of the same \texttt{short\_
     breaklines=true,
     breakanywhere=true
   ]{js}{code/channels.json}
-  \caption{Sample channels file produced by the plugin.}
+  \caption{Sample Channels File Produced by the Plugin}
   \label{code:channelbyplugin}
 \end{listing}
 \subsection{Preprocessing}\label{subsec:preproc}
@@ -739,7 +752,7 @@ for channel in reduced:
     else:
         shuffled.add(channel) 
   \end{minted}
-  \caption{Random Allocation of Channel Balance.}
+  \caption{Random Allocation of Channel Balance}
   \label{code:random_alloc}
 \end{listing}
 
@@ -751,7 +764,7 @@ Section~\ref{subsec:prop_algo} defined the rebalancing algorithm each node follo
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{flow_rebal.pdf}
-\caption{Flow Chart of a Rebalancing Experiment.}
+\caption{Flow Chart of a Rebalancing Experiment}
 \label{fig:flow_rebal}
 \end{figure}
 
@@ -795,7 +808,7 @@ The result of this procedure is a property \mintinline{python}{self.flow} which 
                 self.flow[v][u]['liquidity'] = amt_cp
             self.flow.add_edge(u, v, liquidity=amt)
   \end{minted}
-  \caption{Method to Calculate Each Nodes Willingness to Rebalance.}
+  \caption{Method to Calculate Each Nodes Willingness to Rebalance}
   \label{code:comp_flow}
 \end{listing}
 
@@ -834,7 +847,7 @@ During the future rebalancing process those set of circular paths will not chang
         random.shuffle(self.__cycles4)
         self.__store_cycles()
   \end{minted}
-  \caption{Extracts Cycles of Length 4 (or less) from the Flow Graph.}
+  \caption{Extracts Cycles of Length 4 (or less) from the Flow Graph}
   \label{code:comp_circles}
 \end{listing}
 
@@ -860,7 +873,7 @@ def exclude(self, excl_list):
         self.__cycles4 = cycles4
         ...
   \end{minted}
-  \caption{Reduction of the Available Rebalancing Cycles.}
+  \caption{Reduction of the Available Rebalancing Cycles}
   \label{code:reduc_cyc}
 \end{listing}
 
@@ -892,7 +905,7 @@ def __update_channel(self, tx, rev=False):
             self.flow[dest][src]['liquidity'] += amount
         [self.__update_node_gini(n) for n in circle[:-1]]
   \end{minted}
-  \caption{Record Each Rebalancing Payment.}
+  \caption{Record Each Rebalancing Payment}
   \label{code:record}
 \end{listing}
 
@@ -912,7 +925,7 @@ Before analysing the performance measures the change of the balance score (\gls{
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{results/3a65a961_gini_vs_rebalops_random.pdf}
-\caption{Compare Development of \gls{gini} Score During Rebalancing.}
+\caption{Compare Development of \gls{gini} Score During Rebalancing}
 \label{fig:gini_rebal_rand}
 \end{figure}
 
@@ -923,7 +936,7 @@ Note the second Y-axis which shows the relative capacity that participates at di
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{results/3a65a961_gini_vs_participation_random.pdf}
-\caption{Compare Final \gls{gini} Score with Participation Level.}
+\caption{Compare Final \gls{gini} Score with Participation Level}
 \label{fig:gini_part_rand}
 \end{figure}
 
@@ -932,7 +945,7 @@ The two charts in Figure~\ref{fig:pay_size_random} show the first performance me
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_median_payment_size_random.pdf}\hfill
 \includegraphics[width=.5\textwidth]{results/3a65a961_median_paymnet_size_vs_participation_random.pdf}
-\caption{\gls{mps} in Random Node Selection.}
+\caption{\gls{mps} in Random Node Selection}
 \label{fig:pay_size_random}
 \end{figure}
 
@@ -944,7 +957,7 @@ It can be seen that at a given \gls{gini} score, the performance measure is lowe
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_imbalance_random.pdf}\hfill
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_participation_random.pdf}
-\caption{\gls{sr} in Random Node Selection.}
+\caption{\gls{sr} in Random Node Selection}
 \label{fig:success_random}
 \end{figure}
 
@@ -953,7 +966,7 @@ Figure~\ref{fig:sizes_random} compares the third performance measure, \gls{mpr},
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.7\textwidth]{results/3a65a961_median_paymnets_vs_participation_random.pdf}
-\caption{\gls{mpr} in Random Node Selection.}
+\caption{\gls{mpr} in Random Node Selection}
 \label{fig:sizes_random}
 \end{figure}
 
@@ -966,7 +979,7 @@ The fact persists that lower participation results in lower performance measures
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{results/3a65a961_gini_vs_participation_size_linear_desc.pdf}
-\caption{Compare final \gls{gini} score with participation level.}
+\caption{Compare Final \gls{gini} Score with Participation Level}
 \label{fig:gini_part_size_linear_desc}
 \end{figure}
 
@@ -976,7 +989,7 @@ This lower \gls{gini} score has its effect on the performance measures which are
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_median_payment_size_size_linear_desc.pdf}\hfill
 \includegraphics[width=.5\textwidth]{results/3a65a961_median_paymnet_size_vs_participation_size_linear_desc.pdf}
-\caption{Median possible payment size in random node selection.}
+\caption{\gls{mps} in Random Node Selection}
 \label{fig:pay_size_size_linear_desc}
 \end{figure}
 
@@ -987,7 +1000,7 @@ The \gls{sr} in Figure~\ref{fig:success_size_linear_desc} is already with 10\% p
 \centering
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_imbalance_size_linear_desc.pdf}\hfill
 \includegraphics[width=.5\textwidth]{results/3a65a961_successrate_vs_participation_size_linear_desc.pdf}
-\caption{\gls{sr} in random node selection.}
+\caption{\gls{sr} in Random Node Selection}
 \label{fig:success_size_linear_desc}
 \end{figure}
 
@@ -996,7 +1009,7 @@ Also the ability to route certain payments is much better with lower participati
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.7\textwidth]{results/3a65a961_median_paymnets_vs_participation_size_linear_desc.pdf}
-\caption{Ability to make different payments.}
+\caption{Ability to Make Different Payments}
 \label{fig:sizes_size_linear_desc}
 \end{figure}
 
@@ -1007,7 +1020,7 @@ Instead of the top ranked nodes this part covers the selection from the lowest r
 \begin{figure}[htp]
 \centering
 \includegraphics[width=.7\textwidth]{results/3a65a961_gini_vs_participation_size_linear_asc.pdf}
-\caption{\gls{gini} score during different levels of participation.}
+\caption{\gls{gini} Score During Different Levels of Participation}
 \label{fig:gini_part_size_linear_asc}
 \end{figure}
 
@@ -1028,11 +1041,12 @@ When an experiment with low \emph{initial value} is compared to one with high \e
   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf} 
   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_10_40.pdf} 
   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_15_40.pdf}
-\caption{\gls{sr} With Different Init Parameters And a Fixed Spread of 40\%.}
+\caption{\gls{sr} With Different Init Parameters and a Fixed Spread of 40\%}
 \label{fig:fix_spread}
 \end{figure}
 
-However, when low and high \emph{spread} are compared the number of iterations to reach a 99\% coverage is reduced by 4. The development of the different measures does not vary much, simply the rate at which they progress. Figure~\ref{fig:fix_init} shows how the speed of spread in increased.
+However, when low and high \emph{spread} are compared the number of iterations to reach a 99\% coverage is reduced by 4. The development of the different measures does not vary much, simply the rate at which they progress. Figure~\ref{fig:fix_init} shows how the speed of spread in increased. The visualisation of the results with all parametrisations can be found in Figures \ref{fig:sr_all_spread}, \ref{fig:mps_all_spread}, \ref{fig:mpr_all_spread} and \ref{fig:gini_all_spread} which are part of the appendix.
+
 
 \newpage
 \begin{figure}[htp]
@@ -1040,7 +1054,7 @@ However, when low and high \emph{spread} are compared the number of iterations t
   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_40.pdf} 
   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_50.pdf} 
   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf}
-\caption{\gls{sr} With Different Spread Parameters And a Fixed Init Value of 2\%.}
+\caption{\gls{sr} With Different Spread Parameters and a Fixed Init Value of 2\%}
 \label{fig:fix_init}
 \end{figure}
 
@@ -1193,10 +1207,10 @@ Since the Lightning Technology is still in its infant stage, the protocol is sub
 
 \printglossaries
 
-
-\newpage
+\clearpage
 \appendix
 \section{Charts Network Spread Experiment}
+
 \newgeometry{left=1cm,right=0.1cm}
 \begin{figure}
 \begin{tabular}{ccc}
@@ -1207,7 +1221,8 @@ Since the Lightning Technology is still in its infant stage, the protocol is sub
   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{results/3a65a961_successrate_vs_participation_netw_spread_15_60.pdf}  \\
   (g) Init: 2 Spread: 60  & (h) Init: 10 Spread: 60 & (i) Init: 15 Spread: 60  \\[6pt]
 \end{tabular}
-\caption{Success Rate}
+\caption{\gls{sr} All Parametrisations of Network Spread}
+\label{fig:sr_all_spread}
 \end{figure}
 
 \newpage 
@@ -1220,7 +1235,8 @@ Since the Lightning Technology is still in its infant stage, the protocol is sub
   \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{results/3a65a961_median_paymnet_size_vs_participation_netw_spread_15_60.pdf}  \\
   (g) Init: 2 Spread: 60  & (h) Init: 10 Spread: 60 & (i) Init: 15 Spread: 60  \\[6pt]
 \end{tabular}
-\caption{Median possible payment size}
+\caption{\gls{mps} All Parametrisations of Network Spread}
+\label{fig:mps_all_spread}
 \end{figure}
 
 \newpage 
@@ -1233,7 +1249,8 @@ Since the Lightning Technology is still in its infant stage, the protocol is sub
   \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{results/3a65a961_median_paymnets_vs_participation_netw_spread_15_60.pdf}  \\
   (g) Init: 2 Spread: 60  & (h) Init: 10 Spread: 60 & (i) Init: 15 Spread: 60  \\[6pt]
 \end{tabular}
-\caption{Different payment sizes}
+\caption{\gls{mpr} All Parametrisations of Network Spread}
+\label{fig:mpr_all_spread}
 \end{figure}
 
 \newpage 
@@ -1245,10 +1262,9 @@ Since the Lightning Technology is still in its infant stage, the protocol is sub
   (d) Init: 2 Spread: 50  & (e) Init: 10 Spread: 50 & (f) Init: 15 Spread: 50  \\[6pt]
   \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_02_60.pdf} &   \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_10_60.pdf} & \includegraphics[width=60mm]{results/3a65a961_gini_vs_participation_netw_spread_15_60.pdf}  \\
   (g) Init: 2 Spread: 60  & (h) Init: 10 Spread: 60 & (i) Init: 15 Spread: 60  \\[6pt]
-%\multicolumn{2}{c}{\includegraphics[width=60mm]{results/3a65a961_gini_vs_rebalops_netw_spread_02_40.pdf} }\\
-%\multicolumn{2}{c}{(e) fifth}
 \end{tabular}
-\caption{Different payment sizes}
+\caption{\gls{gini} All Parametrisations of Network Spread}
+\label{fig:gini_all_spread}
 \end{figure}
 \restoregeometry
 
