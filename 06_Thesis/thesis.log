@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.26)  1 AUG 2020 16:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.26)  2 AUG 2020 11:23
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2999,7 +2999,7 @@ e/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf-dist/fonts/type1
 usr/share/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf-dist/fo
 nts/type1/public/lm/lmtti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on thesis.pdf (62 pages, 2485724 bytes).
+Output written on thesis.pdf (62 pages, 2485768 bytes).
 PDF statistics:
  4221 PDF objects out of 4296 (max. 8388607)
  1771 compressed objects within 18 object streams

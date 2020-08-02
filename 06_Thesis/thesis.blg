@@ -1,20 +1,20 @@
-[2] Config.pm:304> INFO - This is Biber 2.14
-[3] Config.pm:307> INFO - Logfile is 'thesis.blg'
-[131] biber:322> INFO - === Sat Aug  1, 2020, 13:14:20
-[159] Biber.pm:415> INFO - Reading 'thesis.bcf'
-[313] Biber.pm:943> INFO - Found 21 citekeys in bib section 0
-[329] Biber.pm:4256> INFO - Processing section 0
-[330] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
-[330] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
-[340] Biber.pm:4455> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
-[343] bibtex.pm:1653> INFO - LaTeX decoding ...
-[391] bibtex.pm:1471> INFO - Found BibTeX data source 'literature/bibliography.bib'
-[510] Utils.pm:304> WARN - ISBN '978-1-4613-9437-2 978-1-4613-9435-8' in entry 'steen_four-color_1978' is invalid - run biber with '--validate_datamodel' for details.
-[563] Utils.pm:304> WARN - ISBN '978-0-12-405856-9 978-1-299-19664-3' in entry 'golbeck_analyzing_2013' is invalid - run biber with '--validate_datamodel' for details.
-[621] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[621] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[621] Biber.pm:4084> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
-[621] Biber.pm:4090> INFO - No sort tailoring available for locale 'de-DE'
-[646] bbl.pm:652> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[665] bbl.pm:755> INFO - Output to thesis.bbl
-[665] Biber.pm:128> INFO - WARNINGS: 2
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'thesis.blg'
+[83] biber:322> INFO - === Sun Aug  2, 2020, 11:05:10
+[99] Biber.pm:415> INFO - Reading 'thesis.bcf'
+[186] Biber.pm:943> INFO - Found 21 citekeys in bib section 0
+[206] Biber.pm:4256> INFO - Processing section 0
+[207] Utils.pm:75> INFO - Globbing data source 'literature/bibliography.bib'
+[207] Utils.pm:91> INFO - Globbed data source 'literature/bibliography.bib' to literature/bibliography.bib
+[220] Biber.pm:4455> INFO - Looking for bibtex format file 'literature/bibliography.bib' for section 0
+[222] bibtex.pm:1653> INFO - LaTeX decoding ...
+[268] bibtex.pm:1471> INFO - Found BibTeX data source 'literature/bibliography.bib'
+[364] Utils.pm:304> WARN - ISBN '978-1-4613-9437-2 978-1-4613-9435-8' in entry 'steen_four-color_1978' is invalid - run biber with '--validate_datamodel' for details.
+[413] Utils.pm:304> WARN - ISBN '978-0-12-405856-9 978-1-299-19664-3' in entry 'golbeck_analyzing_2013' is invalid - run biber with '--validate_datamodel' for details.
+[462] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[463] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[463] Biber.pm:4084> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de-DE'
+[463] Biber.pm:4090> INFO - No sort tailoring available for locale 'de-DE'
+[487] bbl.pm:652> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[504] bbl.pm:755> INFO - Output to thesis.bbl
+[504] Biber.pm:128> INFO - WARNINGS: 2

@@ -47,7 +47,7 @@
 \renewcommand\arraystretch{2}
 \begin{center}
 \begin{tabular}{>{\bf}p{4cm} l}
-Organization                  &    FHNW, School of Business, Basel\\
+Organisation                  &    FHNW, School of Business, Basel\\
 Study program                 &    Business Information Technology\\
 Author                        &    Tobias Koller\\
 Supervisor                    &    Prof. Dr. Kaspar Riesen\\
@@ -61,11 +61,11 @@ Expert                        &    René Pickhardt
 %% -- ABSTRACT
 \thispagestyle{empty}
 \begin{abstract}
-  In a decentralised payment channel network as the Lightning Network. it is difficult for nodes to find a path for routing a payment. Limited information about the payment channel states incur a high probability that a payment fails and has to be retried on another path. If the payment channels are more balanced the failure rate can be reduced. Hence, a rebalancing protocol is used to promote engagement in rebalancing activities. In a decentralised network each participant makes decisions about This thesis aims to demonstrate the effectivity of such a protocol assuming not all participants adopting it. In multiple experiments the real Lightning Network reconstructed and different adoption scenarios are simulated. Different measures are defined by which the effectivity of the protocol is judged.
+  In a decentralised payment channel network as the Lightning Network, it is difficult for nodes to find a path for routing a payment. Limited information about the payment channel states incur a high probability that a payment fails and has to be retried on another path. If the payment channels were more balanced the failure rate could be reduced. Hence, a rebalancing protocol was introduced to promote engagement in rebalancing activities. In a decentralised network each participant makes decisions about the software it runs autonomously. Hence, no adoption of such a protocol can be enforced. This thesis aims to demonstrate the effectivity of such a protocol assuming not all participants adopting it. In multiple experiments different adoption scenarios were tested in a simulation of the real Lightning Network. Different measures are defined by which the effectivity of the protocol is judged.
   
-  During the analysis of the results it was concluded that the centrality of participating nodes is of great importance. Absence of the most connected nodes lead to a significant drop in the routing measures. This was due to the fact that most rebalancing opportunities disappear once central hubs do not participate.
+  The simulation demonstrated how the network's ability to route payments droped with lower participation levels. During the analysis of the results it was concluded that the centrality of participating nodes is of great importance. Absence of the most connected nodes lead to a significant drop in the routing measures. This was due to the fact that most rebalancing opportunities disappeared once central hubs did not participate.
   
-  The introduction addresses some basics about the Bitcoin and Lightning protocol. It also demonstrates why second layer technologies like Lightning are needed. Chapter~\ref{sec:graph} covers graph theory concepts, gives an introduction to general graph theory problems and narrows down the probelm space to the thesis topic. In Chapter~\ref{sec:rebal} the proposed rebalancing algorithm is elaborated. The experimental setup are covered in Chapter~\ref{sec:experiment}. Furthermore, the routing measures as well as tested scenarios are introduced. A more technical analysis of the written code can be foundn in Chapter~\ref{sec:method}. Finally, the results and main findings can be drawn and will be presented.
+  The introduction addresses some basics about the Bitcoin and Lightning protocol. It also demonstrates why second layer technologies such as Lightning are needed. Chapter~\ref{sec:graph} covers graph theory concepts, gives an introduction to general graph theory problems and narrows down the probelm space to the thesis topic. In Chapter~\ref{sec:rebal} the proposed rebalancing algorithm is elaborated. The experimental setup is covered in Chapter~\ref{sec:experiment}. Furthermore, the routing measures as well as tested scenarios are introduced. A more technical analysis of the written simulation code can be found in Chapter~\ref{sec:method}. Finally, the results and main findings can be drawn and will be presented in the final chapter.
 
   \vspace{2ex}
   \textbf{Keywords}: Lightning Network, Bitcoin, path finding, rebalancing, routing, payment channel, protocol change, partial participation, experiment, simulation
