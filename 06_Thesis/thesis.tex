@@ -463,7 +463,7 @@ So far the presented algorithm sounded like a win-win situation for everyone and
 
 \newpage
 \section{Experiment}\label{sec:experiment}
-Experiments are executed to find out how the effectiveness of proactive rebalancing is affected by different levels of participation. This section gives an abstract overview of what an experiment does, what parameters can be set and how it is executed. The subsequent Section~\ref{sec:method} explains the Python implemented in greater detail.
+Experiments are executed to find out how the effectiveness of proactive rebalancing is affected by different levels of participation. This section gives an abstract overview of what an experiment does, what parameters can be set and how it is executed. The subsequent Section~\ref{sec:method} explains the implemented Python code in greater detail.
 
 \subsection{Performance Measures}\label{sub:perfm}
 The goal of rebalancing is to improve the overall networks ability to route payments between its nodes. The effectiveness of the algorithm can only be determined by measuring this ability with the help of \emph{performance measures}. This is the generic term for the measures defined in this chapter. Some of the presented indicators were previously defined and used by \textcite{pickhardt_evaluating_2020}. 
@@ -471,13 +471,13 @@ The goal of rebalancing is to improve the overall networks ability to route paym
 To make a statement about the entire network, all the presented measures consider the ability to route payments for every node in the network. As it is unclear what payments nodes would want to make, the best that can be measured is one payment between each node in the network. A network with $N$ nodes results in a complete payment graph with a total number of payments $N(N-1)$. The network from the experiments has 2139 nodes which result in 4'575'321 payments to test. This puts a limit on the computational complexity of the measures since expensive calculations become unfeasible on consumer hardware.
 
 \subsubsection{Success Rate on Shortest Path}
-The ability to conduct any payment between two nodes is very fundamental. This \emph{success rate} (\emph{\gls{sr}}) can be measured by attempting to send a minimal payment of 1 sat over all shortest paths between any two nodes. The fraction of paths which can accommodate the payment from all shortest paths is the \gls{sr}. As the evaluation of the \gls{sr} is done over and over again the list of all shortest paths is cached for later use. The function \mintinline{python}{networkx.all_pairs_dijkstra_path()} is used to retrieve them. The weight to calculate short paths is represented by the fee a node would need to pay. The fee is defined by a variable and a fixed fee. As payment sizes are not known for this calculation simply the base fee is used for the shortest path calculation. 
+The ability to conduct any payment between two nodes is very fundamental. This \emph{success rate} (\emph{\gls{sr}}) can be measured by attempting to send a minimal payment of 1 sat over all shortest paths between any two nodes. The fraction of paths which can accommodate the payment from all shortest paths is the \gls{sr}. The weight to calculate short paths is represented by the fee a node would need to pay. The fee is defined by a variable and a fixed fee. As payment sizes are not known for this calculation simply the base fee is used for the shortest path calculation. 
 
 The \gls{sr} will give a good overview of how many nodes can reach each other with a minimal payment. The limitation of the measure is that it does not take payment size into account and minimal payments might not be very beneficial in reality.
 
 
 \subsubsection{Payment Size on Shortest Path}
-Similar to the \gls{sr} the \emph{median payment size} (\emph{\gls{mps}}) also considers the shortest paths between all node pairs. On all node pairs, the maximum amount that can be sent is calculated. This amount is defined by the smallest balance of edges along the path. From all possible payment amounts, the median is taken to come up with a measure for the entire network. Since the distribution of the payment amounts is expected to be highly skewed, the median is taken to summarise the data instead of the mean. This measure assesses how much the nodes can send to each other.
+Similar to the \gls{sr} the \emph{median payment size} (\emph{\gls{mps}}) also considers the shortest paths between all node pairs. On all node pairs, the maximum amount that can be sent is calculated. This amount is defined by the smallest balance of edges along the path. From all possible payment amounts, the median is taken to come up with a measure for the entire network. Since the distribution of the payment amounts is expected to be highly skewed, the median is taken to summarise the data instead of the mean. This measure assesses how much the nodes can send to each other along the shortest path    .
 
 \subsubsection{Multi Path Retry}
 Both \gls{mps} and \gls{sr} consider only the shortest path for their calculation. In reality, a node that receives a payment error would simply calculate new paths and retry the payment on those. A failed payment does not necessarily mean a bad user experience as several paths can be tried sequentially within a short amount of time. To account for this fact a measure will be defined that can check multiple paths instead of just one. The measure \emph{Multi Path Retry} (\emph{\gls{mpr}}) can be seen as a combination of the latter two. Additionally, the \gls{mpr} measure considers different payment sizes.
@@ -505,7 +505,7 @@ In the next step, rebalancing is executed within those cycles. For each payment,
 \subsection{Selection Strategies}\label{subsec:selstrat}
 While Section~\ref{subsec:pro} describes how proactive rebalancing is simulated it assumes that all nodes in the network participate. As the experiments aim to show the impact of different participation levels, the simulation has to be executed multiple times with different levels of participation. This is done since it can be assumed that not all nodes will adopt a new protocol immediately.
 
-The network is heterogeneous in regards to the channel count and available capacity per node. The distribution of the payment channels appears to follow a power-law distribution. However, no test has been executed to prove this, since \textquote[\cite{clauset_power-law_2009}, p. 1]{the detection and characterization of power laws is complicated by the large fluctuations that occur in the tail of the distribution}. Figure~\ref{fig:channelcount}, however, shows that little nodes have a large number of channels and most of the nodes have only a few. The result of the experiment, therefore, will vary depending on how the participating nodes are selected. 
+The network is heterogeneous in regards to the channel count and available capacity per node. The distribution of the payment channels appears to follow a power-law distribution. However, no test has been executed to prove this, since \textquote[\cite{clauset_power-law_2009}, p. 1]{the detection and characterization of power laws is complicated by the large fluctuations that occur in the tail of the distribution}. Figure~\ref{fig:channelcount}, however, shows that little nodes have a large number of channels and most of the nodes have only a few. The result of the experiment, therefore, will vary depending on how the participating nodes are selected. The next sections introduce different selection strategies.
 
 \begin{figure}[H]
 \centering
@@ -515,12 +515,12 @@ The network is heterogeneous in regards to the channel count and available capac
 \end{figure}
 
 \subsubsection{Randomised}
-The randomised selection executes experiments with participation levels from 10\% to 100\% in 10\% intervals (10\%, 20\%, \ldots, 90\%, 100\%). The nodes are selected randomly. The set of nodes in a smaller participation level are a subset of the larger ones. To make the experiments reproducible the \mintinline{python}{random} package is seeded with a fixed value.
+The randomised selection executes experiments with participation levels from 10\% to 100\% in 10\% intervals (10\%, 20\%, \ldots, 90\%, 100\%). The nodes are selected randomly. The set of nodes in a smaller participation level are a subset of the larger ones. To make the experiments reproducible the same seed is used to create randomness as this results in the same selection in repetitive experiments.
 
-There is a disadvantage to this method. Multiple random selections with different randomness result in other results. It could be that by coincidence a disproportionate amount of either large or small nodes are selected. To reduce this effect the experiment runs 10 samples with different randomness and the average of the measures is calculated. 
+When only one selection is executed, it could be that by coincidence a disproportionate amount of either large or small nodes are selected. To reduce this effect the experiment runs 10 samples with different randomness and the average of the measures is calculated. 
 
 \subsubsection{Node Ranking}
-In another scenario, more important or less important nodes could decide to participate in the protocol change first. Such a selection strategy, hence, needs to sort the nodes by their importance in the network. This feature can be measured in multiple ways. This section shows some ways how the node's importance can be determined. A preliminary experiment will show whether there is a significant difference in the rankings obtained by the different methods.
+In another scenario, more important or less important nodes could decide to participate in the protocol change first. Such a selection strategy, hence, needs to sort the nodes by their importance in the network. This feature can be measured in multiple ways. This section shows some ways how a node ranking can be determined. A preliminary experiment will show whether there is a significant difference in the rankings obtained by the different features.
 
 The \emph{degree centrality} is a simple measure. It counts the degree, the number of edges connected to a node (see Section~\ref{subsec:formal}). The higher the value, the more central a node is \citep{golbeck_analyzing_2013}.
 
@@ -543,12 +543,12 @@ All these different methods return a score for each node by which one could make
 \label{tab:spearman}
 \end{table}
 
-When simulating different level of participations the participating nodes can be chosen either from the top or the bottom of the ranked node list. This simulates an adoption starting by important or unimportant nodes respectively. 
+When simulating different level of participations the participating nodes can be chosen either from the top or the bottom of the ranked node list. This simulates an adoption starting by important or unimportant nodes first. 
 
 \subsubsection{Node Categories}\label{subsub:categ}
-Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by \emph{equal frequency binning} to ensure equal-sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. Hence, 100\% participation of one group corresponds to the participation of 33\% of the total network. 
+Similar as in the previous experiment the degree centrality is taken as a measure for a node's importance. This ranked list is then split up in three categories. The boundaries between the groups are determined by \emph{equal frequency binning} to ensure equal-sized groups of 713 nodes in each group. Then participation levels from 10\% to 100\% are executed for each category individually. Hence, 100\% participation of one group corresponds to the participation of 33\% of all nodes. 
 
-Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (a) is a cumulative histogram of the node degree (with a logarithmic scale). The boundaries fall on a node degree of 5 and 11. Figure (b) shows those same boundaries but with regards to how many channels those nodes contribute. It is visible that the number of channels is mainly concentrated in the last group. 
+Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (a) is a cumulative histogram of the node degree (with a logarithmic scale). The boundaries fall on a node degree of 5 and 11. Figure (b) shows those same boundaries but with regards to how many channels those nodes contribute. It is visible that the number of channels is mainly concentrated in the last group. This shows that while the number of nodes is equally distributed, the number of channels is not.
 
 \begin{figure}[H]
 \centering
@@ -565,7 +565,7 @@ Figure~\ref{fig:eqfreq} shows those boundaries in two different charts. Figure (
 \subsubsection{Network Spread}
 For this node selection method let us assume that the adoption of the new protocol is being spread through the network. Nodes only start adopting it when someone in their neighbourhood has adopted it. The simulation, therefore, starts with an initial set of nodes which participate in round 1. In each iteration, a certain fraction of their channel partners participates as well. This results in \emph{two experiment parameters} which can be adjusted to simulate the way adoption takes place. 
 
-\emph{Init parameter} defines how many nodes start adopting the protocol in iteration 1. \emph{Spread parameter} is the fraction of adjacent nodes that start participating after each iteration. Those two parameters should be chosen in a way that allows several participation levels similar to the 10 levels seen in the previous sections. Table~\ref{tab:param} shows the number of iterations required to reach either 99\% or 100\% of all nodes. The coloured columns and rows mark the parameters which were used for the experiments. An initial value of 2/10/15\% and a spread of 40/50/60\% result in total 9 experiments which all reach 99\% of the nodes within 7 to 11 iterations.
+\emph{Init parameter} defines how many nodes start adopting the protocol in iteration 1. \emph{Spread parameter} is the fraction of adjacent nodes that start participating after each iteration. Those two parameters should be chosen in a way that allows to test several participation levels similar to the 10 levels seen in the previous sections. Table~\ref{tab:param} shows the number of iterations required to reach either 99\% or 100\% of all nodes. The coloured columns and rows mark the parameters which were used for the experiments. An initial value of 2/10/15\% and a spread of 40/50/60\% result in total 9 experiments which all reach 99\% of the nodes within 7 to 11 iterations.
 
 \newcolumntype{a}{>{\columncolor{LightCyan}}c}
 \begin{table}[H]
@@ -586,8 +586,6 @@ For this node selection method let us assume that the adoption of the new protoc
 \caption{Number of Iterations Needed to Achieve 99\% / 100\% of Participation}
 \label{tab:param}
 \end{table}
-
-\todo[inline]{grammerly until htere}
 
 \newpage
 \section{Implementation of Simulation}\label{sec:method}
